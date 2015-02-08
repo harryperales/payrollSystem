@@ -1,0 +1,28 @@
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\bin\Debug\PayrollSystem.exe
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\bin\Debug\PayrollSystem.pdb
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\obj\Debug\PayrollSystem.Properties.Resources.resources
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\obj\Debug\PayrollSystem.csproj.GenerateResource.Cache
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\obj\Debug\PayrollSystem.exe
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\obj\Debug\PayrollSystem.pdb
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\bin\Debug\Payroll.mdf
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\bin\Debug\Payroll_log.ldf
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\bin\Debug\PayrollSystem.exe.config
+C:\Users\JenuNagil\AppData\Local\Temporary Projects\PayrollSystem\obj\Debug\PayrollSystem.view.IndexForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\bin\Debug\PayrollSystem.exe.config
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.exe
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.pdb
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\bin\Debug\Payroll.mdf
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\bin\Debug\Payroll_log.ldf
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\bin\Debug\PayrollSystem.exe
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\bin\Debug\PayrollSystem.pdb
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.Properties.Resources.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.IndexForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.csproj.GenerateResource.Cache
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.UpdateUserForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.DashboardForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.LoginForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayrollForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.AdminDashBoard.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.EmployeeForm.resources
