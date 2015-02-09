@@ -26,3 +26,5 @@ C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSy
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayrollForm.resources
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.AdminDashBoard.resources
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.EmployeeForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.MiscellaneousForm.resources
+C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PositionForm.resources

@@ -28,5 +28,13 @@ namespace PayrollSystem.controller
         void showUpdateUserForm(AdminDashBoard adminDashBoard, User user);
 
         void showAdminDashBoard(AdminDashBoard adminDashboard, UpdateUserForm updateUserForm);
+
+        void showAdminDashBoardForPosition(AdminDashBoard adminDashboard, PositionForm positionForm);
+
+        void showAdminDashBoardForMisc(AdminDashBoard adminDashboard, MiscellaneousForm miscForm);
+
+        void showPositionForm(AdminDashBoard adminDashboard);
+
+        void showMiscForm(AdminDashBoard adminDashboard);
     }
 }

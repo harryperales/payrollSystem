@@ -80,5 +80,29 @@ namespace PayrollSystem.controller
             updateUserForm.Close();
             adminDashboard.Show();
         }
+
+        public void showAdminDashBoardForPosition(AdminDashBoard adminDashboard, PositionForm positionForm)
+        {
+            positionForm.Close();
+            adminDashboard.Show();
+        }
+
+        public void showAdminDashBoardForMisc(AdminDashBoard adminDashboard, MiscellaneousForm miscForm)
+        {
+            miscForm.Close();
+            adminDashboard.Show();
+        }
+
+        public void showPositionForm(AdminDashBoard adminDashboard)
+        {
+            PositionForm positionForm = new PositionForm(adminDashboard);
+            positionForm.ShowDialog();
+        }
+
+        public void showMiscForm(AdminDashBoard adminDashboard)
+        {
+            MiscellaneousForm miscForm = new MiscellaneousForm(adminDashboard);
+            miscForm.ShowDialog();
+        }
     }
 }

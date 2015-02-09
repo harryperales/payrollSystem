@@ -52,6 +52,7 @@ namespace PayrollSystem.view
             if (l.SelectedIndex != -1)
             {
                 usersListBox.SelectedIndex = l.SelectedIndex;
+                adminTab.SelectedIndex = l.SelectedIndex;
                 usernameOrEmployeeId.Text = usersListBox.SelectedItem.ToString();
                 Console.WriteLine(usersListBox.SelectedItem.ToString());
             }
@@ -104,6 +105,18 @@ namespace PayrollSystem.view
 
             PayrollControllerInterface payslipController = new PayrollController();
             payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+        }
+
+        private void addPositionButton_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.showPositionForm(this);
+        }
+
+        private void createMiscButton_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.showMiscForm(this);
         }
     }
 }

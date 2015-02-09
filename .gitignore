@@ -188,6 +188,7 @@ publish/
 # except build/, which is used as an MSBuild target.
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
+# If using the old MSBuild-Integrated Package Restore, uncomment this:
 #!**/packages/repositories.config
 
 # Windows Azure Build Output
@@ -199,6 +200,8 @@ AppPackages/
 
 # Others
 *.[Cc]ache
+sql/
+*.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*
 ~$*
@@ -241,3 +244,49 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk

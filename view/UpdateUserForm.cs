@@ -23,6 +23,12 @@ namespace PayrollSystem.view
             this.user = user;
             InitializeComponent();
         }
+
+        public UpdateUserForm(User user)
+        {
+            this.user = user;
+            InitializeComponent();
+        }
         public UpdateUserForm(AdminDashBoard adminDashboard, User user)
         {
             this.adminDashboard = adminDashboard;

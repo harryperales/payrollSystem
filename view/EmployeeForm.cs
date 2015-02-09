@@ -122,7 +122,6 @@ namespace PayrollSystem.view
                     MessageBox.Show("Username is not available anymore, please create another username.");
                     return;
                 }
-
                 Role role = new Role();
                 employee.userAccount.role = role;
                 employee.userAccount.role.id = 2;

@@ -48,7 +48,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
@@ -69,10 +74,14 @@
     <Compile Include="controller\FormController.cs">
     </Compile>
     <Compile Include="controller\FormControllerInterface.cs" />
-    <Compile Include="controller\PayrollController.cs" />
-    <Compile Include="controller\PayrollControllerInterface.cs" />
     <Compile Include="controller\PayslipController.cs" />
     <Compile Include="controller\PayslipControllerInterface.cs" />
+    <Compile Include="controller\MiscControllerInterface.cs" />
+    <Compile Include="controller\MiscellaneousController.cs" />
+    <Compile Include="controller\PayrollController.cs" />
+    <Compile Include="controller\PayrollControllerInterface.cs" />
+    <Compile Include="controller\PositionController.cs" />
+    <Compile Include="controller\PositionControllerInterface.cs" />
     <Compile Include="controller\UserController.cs" />
     <Compile Include="controller\UserControllerInterface.cs" />
     <Compile Include="model\Adjustments.cs" />
@@ -113,6 +122,10 @@
     <Compile Include="service\RequestServiceInterface.cs" />
     <Compile Include="service\SalaryService.cs" />
     <Compile Include="service\SalaryServiceInterface.cs" />
+    <Compile Include="service\MiscService.cs" />
+    <Compile Include="service\MiscServiceInterface.cs" />
+    <Compile Include="service\PositionService.cs" />
+    <Compile Include="service\PositionServiceInterface.cs" />
     <Compile Include="service\UserService.cs" />
     <Compile Include="service\UserServiceInterface.cs" />
     <Compile Include="Settings.cs" />
@@ -165,6 +178,12 @@
     <EmbeddedResource Include="view\PayrollForm.resx">
       <DependentUpon>PayrollForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\MiscellaneousForm.resx">
+      <DependentUpon>MiscellaneousForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\PositionForm.resx">
+      <DependentUpon>PositionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\UpdateUserForm.resx">
       <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,11 +224,23 @@
     <Compile Include="view\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\MiscellaneousForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\MiscellaneousForm.Designer.cs">
+      <DependentUpon>MiscellaneousForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\PayrollForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\PayrollForm.Designer.cs">
       <DependentUpon>PayrollForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\PositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\PositionForm.Designer.cs">
+      <DependentUpon>PositionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\UpdateUserForm.cs">
       <SubType>Form</SubType>

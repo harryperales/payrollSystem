@@ -56,6 +56,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lastname = new System.Windows.Forms.TextBox();
             this.middlename = new System.Windows.Forms.TextBox();
+            this.position = new System.Windows.Forms.TextBox();
             this.firstname = new System.Windows.Forms.TextBox();
             this.employeeId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -68,6 +69,14 @@
             this.salary = new System.Windows.Forms.TextBox();
             this.salaryLabel = new System.Windows.Forms.Label();
             this.positionComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.middlename = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lastname = new System.Windows.Forms.TextBox();
+            this.dependents = new System.Windows.Forms.TextBox();
+            this.dependentsLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +112,7 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.username);
             this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.position);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lastname);
             this.panel1.Controls.Add(this.middlename);
@@ -326,6 +336,13 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Username";
             // 
+            // position
+            // 
+            this.position.Location = new System.Drawing.Point(114, 243);
+            this.position.Name = "position";
+            this.position.Size = new System.Drawing.Size(128, 20);
+            this.position.TabIndex = 9;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -390,6 +407,24 @@
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Birthday";
+            // 
+            // label2
+            // 
+            //this.label2.AutoSize = true;
+            //this.label2.Location = new System.Drawing.Point(21, 132);
+            //this.label2.Name = "label2";
+            //this.label2.Size = new System.Drawing.Size(52, 13);
+            //this.label2.TabIndex = 0;
+            //this.label2.Text = "Firstname";
+            //// 
+            //// label1
+            //// 
+            //this.label1.AutoSize = true;
+            //this.label1.Location = new System.Drawing.Point(21, 40);
+            //this.label1.Name = "label1";
+            //this.label1.Size = new System.Drawing.Size(67, 13);
+            //this.label1.TabIndex = 0;
+            //this.label1.Text = "Employee ID";
             // 
             // label4
             // 
@@ -458,6 +493,22 @@
             this.positionComboBox.Size = new System.Drawing.Size(128, 21);
             this.positionComboBox.TabIndex = 23;
             // 
+            // dependents
+            // 
+            this.dependents.Location = new System.Drawing.Point(356, 37);
+            this.dependents.Name = "dependents";
+            this.dependents.Size = new System.Drawing.Size(128, 20);
+            this.dependents.TabIndex = 20;
+            // 
+            // dependentsLabel
+            // 
+            this.dependentsLabel.AutoSize = true;
+            this.dependentsLabel.Location = new System.Drawing.Point(263, 40);
+            this.dependentsLabel.Name = "dependentsLabel";
+            this.dependentsLabel.Size = new System.Drawing.Size(65, 13);
+            this.dependentsLabel.TabIndex = 19;
+            this.dependentsLabel.Text = "Dependents";
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,6 +535,7 @@
         private System.Windows.Forms.TextBox employeeId;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox position;
         private System.Windows.Forms.TextBox confirmPassword;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label label10;

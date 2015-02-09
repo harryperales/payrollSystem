@@ -10,7 +10,7 @@ namespace PayrollSystem.model
         public int id { get; set; }
         public string name { get; set; }
         public decimal amount { get; set; }
-        public MiscType type { get; set; }
         public string description { get; set; }
+        public MiscType type { get; set; }
     }
 }
