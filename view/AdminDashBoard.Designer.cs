@@ -232,10 +232,11 @@
             // usersListBox
             // 
             this.usersListBox.FormattingEnabled = true;
-            this.usersListBox.Location = new System.Drawing.Point(6, 11);
+            this.usersListBox.Location = new System.Drawing.Point(0, 2);
             this.usersListBox.Name = "usersListBox";
-            this.usersListBox.Size = new System.Drawing.Size(296, 329);
+            this.usersListBox.Size = new System.Drawing.Size(289, 329);
             this.usersListBox.TabIndex = 0;
+            this.usersListBox.SelectedIndexChanged += new System.EventHandler(this.usersListBox_SelectedIndexChanged);
             // 
             // payrollListTab
             // 

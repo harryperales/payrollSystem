@@ -43,6 +43,8 @@ namespace PayrollSystem.view
 
         private void UpdateUserForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            FormControllerInterface formController = new FormController();
+            formController.showAdminDashBoard(adminDashboard, this);
             //indexForm.Show();
         }
 
