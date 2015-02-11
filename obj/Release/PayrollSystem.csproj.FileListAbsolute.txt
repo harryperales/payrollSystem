@@ -15,3 +15,4 @@ C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSy
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.pdb
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.AdminDashBoard.resources
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.EmployeeForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Release\PayrollSystem.exe.config

@@ -9,7 +9,7 @@ namespace PayrollSystem.service
 {
     public class PositionService : PositionServiceInterface
     {
-        SqlConnection sqlCon = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=D:\projects\PayrollSystem\PayrollSystem v1.0\PayrollSystem\PayrollSystem\Payroll.mdf;Integrated Security=True;User Instance=True");
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\Payroll.mdf;Integrated Security=True;User Instance=True");
         SqlCommand sqlCmd = new SqlCommand();
         SqlDataReader sqlDataReader;
 

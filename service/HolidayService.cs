@@ -9,7 +9,7 @@ namespace PayrollSystem.service
 {
     public class HolidayService : HolidayServiceInterface
     {
-        SqlConnection sqlCon = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\Payroll.mdf;Integrated Security=True;User Instance=True");
+        SqlConnection sqlCon = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\Payroll.mdf;Integrated Security=True;User Instance=True");
         SqlCommand sqlCmd = new SqlCommand();
         SqlDataReader sqlDataReader;
 
