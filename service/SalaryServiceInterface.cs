@@ -10,5 +10,7 @@ namespace PayrollSystem.service
         decimal calculatePeriodSalary(List<Attendance> attendances, decimal dailyBasedSalary);
 
         decimal calculatePeriodSalaryWithOvertimeRequests(List<Request> overtimeRequests, decimal dailyBasedSalary);
+
+        decimal calculatePeriodSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary);
     }
 }

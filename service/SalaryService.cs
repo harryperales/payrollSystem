@@ -77,5 +77,38 @@ namespace PayrollSystem.service
             decimal periodSalaryWithOvertime = decimal.Multiply(perHourBasedSalary, finalOvertimeTotalPercentage);
             return periodSalaryWithOvertime;
         }
+
+        public decimal calculatePeriodSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary)
+        {
+            List<Holiday> holidays = holidayService.fetchHolidays();
+            decimal periodSalary = 0.00M;
+            decimal perHourBasedSalary = 0.00M;
+            perHourBasedSalary = decimal.Divide(dailyBasedSalary, 8.00M);
+            foreach (Request leaveRequest in leaveRequests)
+            {
+                decimal calculatedSalary = calculatePerHourSalaryFromHoursSpent(perHourBasedSalary, 8.00M);
+
+                periodSalary += calculatedSalary;
+
+                foreach (Holiday holiday in holidays)
+                {
+
+                    if (!holiday.date.ToString("MM/dd/yyyy").Equals(leaveRequest.dateRequested.ToString("MM/dd/yyyy")))
+                    {
+                        //nothing to do, just to skip the loop
+                    }
+                    else if (holiday.holidayWages == HolidayWages.NonRegular)
+                    {
+                        periodSalary += decimal.Multiply(dailyBasedSalary, 0.30M); // add 30% of daily Salary
+                    }
+                    else if (holiday.holidayWages == HolidayWages.Regular)
+                    {
+                        periodSalary += dailyBasedSalary; // add 100% daily salary
+                    }
+
+                }
+            }
+            return periodSalary;
+        }
     }
 }

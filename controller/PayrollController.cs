@@ -41,6 +41,10 @@ namespace PayrollSystem.controller
             periodSalary += salaryService.calculatePeriodSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);
             Console.WriteLine("periodSalary---->>" + periodSalary);
 
+            List<Request> leaveRequests = requestService.fetchLeaveRequest(employee, startDatePeriod, endDatePeriod);
+
+            periodSalary += salaryService.calculatePeriodSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary);
+
             List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
 
             // fetch all request from that has an approved status within the inclusive dates

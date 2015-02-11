@@ -9,5 +9,7 @@ namespace PayrollSystem.service
     public interface RequestServiceInterface
     {
         List<Request> fetchOvertimeRequests(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
+
+        List<Request> fetchLeaveRequest(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
     }
 }
