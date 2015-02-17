@@ -16,3 +16,21 @@ C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSy
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.AdminDashBoard.resources
 C:\Users\JenuNagil\Documents\Visual Studio 2008\Projects\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.EmployeeForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Release\PayrollSystem.exe.config
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Release\Payroll.mdf
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Release\Payroll_log.ldf
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Release\PayrollSystem.exe
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Release\PayrollSystem.pdb
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\ResolveAssemblyReference.cache
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.Properties.Resources.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.AdminDashBoard.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.DashboardForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.EmployeeForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.IndexForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.LoginForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.PayrollForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.MiscellaneousForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.PositionForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.view.UpdateUserForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.csproj.GenerateResource.Cache
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.exe
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Release\PayrollSystem.pdb

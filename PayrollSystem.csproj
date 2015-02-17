@@ -48,7 +48,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -92,6 +91,7 @@
     <Compile Include="model\Deductions.cs" />
     <Compile Include="model\Earnings.cs" />
     <Compile Include="model\Employee.cs" />
+    <Compile Include="model\EmployeeMiscellaneous.cs" />
     <Compile Include="model\Holiday.cs" />
     <Compile Include="model\HolidayWages.cs" />
     <Compile Include="model\Miscellaneous.cs" />

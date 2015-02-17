@@ -9,5 +9,9 @@ namespace PayrollSystem.service
     public interface MiscellaneousServiceInterface
     {
         List<Miscellaneous> fetchMiscellaneousByDeductionType(Employee employee);
+
+        List<Miscellaneous> fetchMiscellaneousByBenefitType(Employee employee);
+
+        List<Miscellaneous> fetchBonusMiscellaneousByDescriptionAsDate(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
     }
 }
