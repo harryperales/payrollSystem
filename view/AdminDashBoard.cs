@@ -153,5 +153,10 @@ namespace PayrollSystem.view
             errorMessageLabel.Text = errorMessage;
             errorMessageLabel.Visible = true;
         }
+
+        private void viewRequest_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine(requestListBox.SelectedItem);
+        }
     }
 }

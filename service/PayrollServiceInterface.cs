@@ -10,6 +10,6 @@ namespace PayrollSystem.service
     {
         List<Payroll> fetchUserPayrolls(User user);
 
-        Payslip createPayslip();
+        Payslip createPayslip(Employee employee, Payslip payslip);
     }
 }

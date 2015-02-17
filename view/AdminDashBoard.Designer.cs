@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashBoard));
             this.employeeOptionPanel = new System.Windows.Forms.Panel();
+            this.viewRequest = new System.Windows.Forms.Button();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.startDateLabel = new System.Windows.Forms.Label();
+            this.updateLabel = new System.Windows.Forms.Label();
             this.endDatePeriod = new System.Windows.Forms.DateTimePicker();
             this.startDatePeriod = new System.Windows.Forms.DateTimePicker();
-            this.updateLabel = new System.Windows.Forms.Label();
             this.updatePanel = new System.Windows.Forms.Panel();
             this.searchForUpdateLabel = new System.Windows.Forms.Label();
             this.usernameOrEmployeeId = new System.Windows.Forms.TextBox();
@@ -51,21 +52,20 @@
             this.payrollListBox = new System.Windows.Forms.ListBox();
             this.miscListTab = new System.Windows.Forms.TabPage();
             this.miscListBox = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.errorMessageLabel = new System.Windows.Forms.Label();
-            this.viewRequest = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.requestListBox = new System.Windows.Forms.ListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
             this.userListTab.SuspendLayout();
             this.payrollListTab.SuspendLayout();
             this.miscListTab.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeOptionPanel
@@ -90,6 +90,20 @@
             this.employeeOptionPanel.Size = new System.Drawing.Size(315, 373);
             this.employeeOptionPanel.TabIndex = 0;
             // 
+            // viewRequest
+            // 
+            this.viewRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.viewRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewRequest.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.viewRequest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.viewRequest.Location = new System.Drawing.Point(6, 156);
+            this.viewRequest.Name = "viewRequest";
+            this.viewRequest.Size = new System.Drawing.Size(139, 36);
+            this.viewRequest.TabIndex = 11;
+            this.viewRequest.Text = "View Requests";
+            this.viewRequest.UseVisualStyleBackColor = false;
+            this.viewRequest.Click += new System.EventHandler(this.viewRequest_Click);
+            // 
             // endDateLabel
             // 
             this.endDateLabel.AutoSize = true;
@@ -112,6 +126,17 @@
             this.startDateLabel.TabIndex = 9;
             this.startDateLabel.Text = "Start Date";
             // 
+            // updateLabel
+            // 
+            this.updateLabel.AutoSize = true;
+            this.updateLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.updateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.updateLabel.Location = new System.Drawing.Point(38, 198);
+            this.updateLabel.Name = "updateLabel";
+            this.updateLabel.Size = new System.Drawing.Size(94, 17);
+            this.updateLabel.TabIndex = 6;
+            this.updateLabel.Text = "Update Area";
+            // 
             // endDatePeriod
             // 
             this.endDatePeriod.Font = new System.Drawing.Font("Century", 12F);
@@ -127,17 +152,6 @@
             this.startDatePeriod.Name = "startDatePeriod";
             this.startDatePeriod.Size = new System.Drawing.Size(213, 27);
             this.startDatePeriod.TabIndex = 7;
-            // 
-            // updateLabel
-            // 
-            this.updateLabel.AutoSize = true;
-            this.updateLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.updateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.updateLabel.Location = new System.Drawing.Point(38, 198);
-            this.updateLabel.Name = "updateLabel";
-            this.updateLabel.Size = new System.Drawing.Size(94, 17);
-            this.updateLabel.TabIndex = 6;
-            this.updateLabel.Text = "Update Area";
             // 
             // updatePanel
             // 
@@ -271,10 +285,10 @@
             // userListTab
             // 
             this.userListTab.Controls.Add(this.usersListBox);
-            this.userListTab.Location = new System.Drawing.Point(4, 33);
+            this.userListTab.Location = new System.Drawing.Point(4, 29);
             this.userListTab.Name = "userListTab";
             this.userListTab.Padding = new System.Windows.Forms.Padding(3);
-            this.userListTab.Size = new System.Drawing.Size(438, 336);
+            this.userListTab.Size = new System.Drawing.Size(438, 340);
             this.userListTab.TabIndex = 0;
             this.userListTab.Text = "Users";
             this.userListTab.UseVisualStyleBackColor = true;
@@ -293,10 +307,10 @@
             // payrollListTab
             // 
             this.payrollListTab.Controls.Add(this.payrollListBox);
-            this.payrollListTab.Location = new System.Drawing.Point(4, 33);
+            this.payrollListTab.Location = new System.Drawing.Point(4, 29);
             this.payrollListTab.Name = "payrollListTab";
             this.payrollListTab.Padding = new System.Windows.Forms.Padding(3);
-            this.payrollListTab.Size = new System.Drawing.Size(438, 336);
+            this.payrollListTab.Size = new System.Drawing.Size(438, 340);
             this.payrollListTab.TabIndex = 1;
             this.payrollListTab.Text = "Payroll";
             this.payrollListTab.UseVisualStyleBackColor = true;
@@ -313,10 +327,10 @@
             // miscListTab
             // 
             this.miscListTab.Controls.Add(this.miscListBox);
-            this.miscListTab.Location = new System.Drawing.Point(4, 33);
+            this.miscListTab.Location = new System.Drawing.Point(4, 29);
             this.miscListTab.Name = "miscListTab";
             this.miscListTab.Padding = new System.Windows.Forms.Padding(3);
-            this.miscListTab.Size = new System.Drawing.Size(438, 336);
+            this.miscListTab.Size = new System.Drawing.Size(438, 340);
             this.miscListTab.TabIndex = 2;
             this.miscListTab.Text = "Benefits/ Deductions";
             this.miscListTab.UseVisualStyleBackColor = true;
@@ -329,54 +343,6 @@
             this.miscListBox.Name = "miscListBox";
             this.miscListBox.Size = new System.Drawing.Size(438, 327);
             this.miscListBox.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.errorMessageLabel);
-            this.panel2.Controls.Add(this.exitPictureBox);
-            this.panel2.Controls.Add(this.employeeOptionPanel);
-            this.panel2.Controls.Add(this.adminTab);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(839, 478);
-            this.panel2.TabIndex = 3;
-            // 
-            // exitPictureBox
-            // 
-            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.exitPictureBox.Location = new System.Drawing.Point(787, 4);
-            this.exitPictureBox.Name = "exitPictureBox";
-            this.exitPictureBox.Size = new System.Drawing.Size(42, 37);
-            this.exitPictureBox.TabIndex = 3;
-            this.exitPictureBox.TabStop = false;
-            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
-            // 
-            // errorMessageLabel
-            // 
-            this.errorMessageLabel.AutoSize = true;
-            this.errorMessageLabel.BackColor = System.Drawing.Color.Transparent;
-            this.errorMessageLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.errorMessageLabel.Location = new System.Drawing.Point(97, 442);
-            this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(41, 20);
-            this.errorMessageLabel.TabIndex = 12;
-            this.errorMessageLabel.Text = "Error";
-            // 
-            // viewRequest
-            // 
-            this.viewRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.viewRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewRequest.Font = new System.Drawing.Font("Century Gothic", 12.25F);
-            this.viewRequest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.viewRequest.Location = new System.Drawing.Point(6, 156);
-            this.viewRequest.Name = "viewRequest";
-            this.viewRequest.Size = new System.Drawing.Size(139, 36);
-            this.viewRequest.TabIndex = 11;
-            this.viewRequest.Text = "View Requests";
-            this.viewRequest.UseVisualStyleBackColor = false;
             // 
             // tabPage1
             // 
@@ -398,6 +364,41 @@
             this.requestListBox.Size = new System.Drawing.Size(438, 327);
             this.requestListBox.TabIndex = 1;
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.errorMessageLabel);
+            this.panel2.Controls.Add(this.exitPictureBox);
+            this.panel2.Controls.Add(this.employeeOptionPanel);
+            this.panel2.Controls.Add(this.adminTab);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(839, 478);
+            this.panel2.TabIndex = 3;
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.BackColor = System.Drawing.Color.Transparent;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.errorMessageLabel.Location = new System.Drawing.Point(97, 442);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(41, 20);
+            this.errorMessageLabel.TabIndex = 12;
+            this.errorMessageLabel.Text = "Error";
+            // 
+            // exitPictureBox
+            // 
+            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.exitPictureBox.Location = new System.Drawing.Point(787, 4);
+            this.exitPictureBox.Name = "exitPictureBox";
+            this.exitPictureBox.Size = new System.Drawing.Size(42, 37);
+            this.exitPictureBox.TabIndex = 3;
+            this.exitPictureBox.TabStop = false;
+            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            // 
             // AdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,10 +418,10 @@
             this.userListTab.ResumeLayout(false);
             this.payrollListTab.ResumeLayout(false);
             this.miscListTab.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
-            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

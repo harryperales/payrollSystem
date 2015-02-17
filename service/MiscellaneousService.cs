@@ -25,7 +25,7 @@ namespace PayrollSystem.service
 
             misc.name = "SSS";
             misc.type = MiscType.Deductions;
-            misc.amount = Convert.ToDecimal("150.00");
+            misc.amount = Convert.ToDecimal("100.00");
 
             miscs.Add(misc);
 
@@ -52,23 +52,40 @@ namespace PayrollSystem.service
         public List<Miscellaneous> fetchMiscellaneousByBenefitType(Employee employee)
         {
             List<Miscellaneous> miscs = new List<Miscellaneous>();
-            Miscellaneous misc = new Miscellaneous();
-
-            misc.name = "Food";
-            misc.type = MiscType.Deductions;
-            misc.amount = Convert.ToDecimal("75.00");
-
-            miscs.Add(misc);
-
-            Miscellaneous misc2 = new Miscellaneous();
-
-            misc2.name = "Transportation";
-            misc2.type = MiscType.Deductions;
-            misc2.amount = Convert.ToDecimal("150.00");
-
-            miscs.Add(misc);
+            Miscellaneous foodAllowance = new Miscellaneous();
+            Miscellaneous transportationAllowance = new Miscellaneous();
+            foodAllowance = fetchMiscellaneousByName("FoodAllowance");
+            transportationAllowance = fetchMiscellaneousByName("TransportationAllowance");
+            
+            miscs.Add(foodAllowance);
+            miscs.Add(transportationAllowance);
 
             return miscs;
+        }
+
+        private Miscellaneous fetchMiscellaneousByName(string miscellaneousName)
+        {
+            Miscellaneous miscellaneous = new Miscellaneous();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT id, name, description, amount, type From Miscellaneous WHERE name = @name";
+            sqlCmd.Parameters.AddWithValue("@name", "foodAllowance");
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    miscellaneous = new Miscellaneous();
+                    miscellaneous.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    miscellaneous.description = sqlDataReader["name"].ToString();
+                    miscellaneous.description = sqlDataReader["description"].ToString();
+                    miscellaneous.amount = Convert.ToDecimal(sqlDataReader["amount"].ToString());
+                    miscellaneous.type = sqlDataReader["type"].ToString() == "Benefits" ? MiscType.Benefits : MiscType.Deductions;
+                }
+            }
+
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return miscellaneous;
         }
 
         public List<Miscellaneous> fetchBonusMiscellaneousByDescriptionAsDate(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod)
