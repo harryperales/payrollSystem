@@ -21,7 +21,14 @@ namespace PayrollSystem.view
             this.user = user;
             InitializeComponent();
             loadUsers();
+            loadPendingRequests();
+            hideErrorMessage();
             initializeDatePicker();
+        }
+
+        private void hideErrorMessage()
+        {
+            errorMessageLabel.Visible = false;
         }
 
         private void initializeDatePicker()
@@ -43,6 +50,16 @@ namespace PayrollSystem.view
             foreach (User user in users)
             {
                 usersListBox.Items.Add(user.username);
+            }
+        }
+
+        public void loadPendingRequests()
+        {
+            RequestControllerInterface requestController = new RequestController();
+            List<Request> requests = requestController.fetchAllPendingRequests();
+            foreach (Request request in requests)
+            {
+                requestListBox.Items.Add(request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
             }
         }
 
@@ -88,7 +105,7 @@ namespace PayrollSystem.view
             user = userController.fetchUserByUsername(user);
             if (user == null)
             {
-                MessageBox.Show("The user you specified does not exists.");
+                showErrorMessage("The user you specified does not exists.");
                 return;
             }
             else
@@ -102,6 +119,12 @@ namespace PayrollSystem.view
         {
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
+
+            if (employee == null || employee.Equals(""))
+            {
+                showErrorMessage("Please input a valid username.");
+                return;
+            }
 
             PayrollControllerInterface payslipController = new PayrollController();
             payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
@@ -117,6 +140,18 @@ namespace PayrollSystem.view
         {
             FormControllerInterface formController = new FormController();
             formController.showMiscForm(this);
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.showLoginWindow(this, loginForm);
+        }
+
+        private void showErrorMessage(string errorMessage)
+        {
+            errorMessageLabel.Text = errorMessage;
+            errorMessageLabel.Visible = true;
         }
     }
 }

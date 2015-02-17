@@ -44,5 +44,7 @@ namespace PayrollSystem.controller
         void closeTimeInOutForm(TimeInOutForm timeInOutForm);
 
         void closeLoginForm(LoginForm loginForm, TimeInOutForm timeInOutForm);
+
+        void showLoginWindow(AdminDashBoard adminDashBoard, LoginForm loginForm);
     }
 }

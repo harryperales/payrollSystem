@@ -130,5 +130,11 @@ namespace PayrollSystem.controller
             loginForm.Close();
             timeInOutForm.Show();
         }
+
+        public void showLoginWindow(AdminDashBoard adminDashBoard, LoginForm loginForm)
+        {
+            adminDashBoard.Close();
+            loginForm.Show();
+        }
     }
 }
