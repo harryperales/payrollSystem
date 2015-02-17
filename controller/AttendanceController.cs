@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PayrollSystem.model;
+using PayrollSystem.service;
+
+namespace PayrollSystem.controller
+{
+    public class AttendanceController : AttendanceControllerInterface
+    {
+        AttendanceServiceInterface attendanceService;
+        public AttendanceController()
+        {
+            attendanceService = new AttendanceService();
+        }
+        public Attendance saveEmployeeAttendance(Attendance attendance)
+        {
+            return attendanceService.addEmployeeTimeIn(attendance);
+        }
+        
+        public Attendance fetchEmployeeAttendanceByDate(Employee employee, DateTime currentDate)
+        {
+            return attendanceService.fetchEmployeeAttendanceByDate(employee, currentDate);
+        }
+
+        public Attendance updateEmployeeAttendance(Attendance attendance)
+        {
+            return attendanceService.updateEmployeeAttendance(attendance);
+        }
+    }
+}

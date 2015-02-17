@@ -13,5 +13,7 @@ namespace PayrollSystem.service
         Employee fetchEmployeeByUsername(string usernameOrEmployeeId);
 
         Employee updateEmployee(Employee employee);
+
+        Employee fetchEmployeeByEmployeeIdNUmber(long employeeNumber);
     }
 }

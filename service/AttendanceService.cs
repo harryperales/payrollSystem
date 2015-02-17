@@ -37,6 +37,7 @@ namespace PayrollSystem.service
         public Attendance fetchEmployeeAttendanceByDate(Employee employee, DateTime date)
         {
             Attendance attendance = new Attendance();
+            Console.WriteLine(date.ToString("MM/dd/yyyy"));
             sqlCon.Open();
             sqlCmd.CommandText = "SELECT id, timeIn, timeOut From Attendance WHERE employeeId = @employeeNumber AND timeIn LIKE @date;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
@@ -49,9 +50,13 @@ namespace PayrollSystem.service
                     attendance.id = Int32.Parse(sqlDataReader["id"].ToString());
                     attendance.employee = employee;
                     attendance.timeIn = Convert.ToDateTime(sqlDataReader["timeIn"].ToString());
-                    attendance.timeOut = Convert.ToDateTime(sqlDataReader["timeOut"].ToString());
-                    TimeSpan offSet = new TimeSpan(0);
-                    TimeSpan ts = Convert.ToDateTime(attendance.timeOut.ToString("hh:mm:ss tt")) - Convert.ToDateTime(attendance.timeIn.ToString("hh:mm:ss tt"));
+                    Console.WriteLine(sqlDataReader["timeOut"].ToString());
+                    if (sqlDataReader["timeOut"] != null && !sqlDataReader["timeOut"].ToString().Equals(""))
+                    {
+                        attendance.timeOut = Convert.ToDateTime(sqlDataReader["timeOut"].ToString());
+                    }
+                    //TimeSpan offSet = new TimeSpan(0);
+                    //TimeSpan ts = Convert.ToDateTime(attendance.timeOut.ToString("hh:mm:ss tt")) - Convert.ToDateTime(attendance.timeIn.ToString("hh:mm:ss tt"));
                     attendance.employee = employee;
                 }
             }
@@ -61,6 +66,28 @@ namespace PayrollSystem.service
             }
 
             sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return attendance;
+        }
+
+        public Attendance addEmployeeTimeIn(Attendance attendance)
+        {                        
+            sqlCon.Open();
+            sqlCmd.CommandText = "INSERT INTO Attendance (employeeId, timeIn) VALUES (@employeeId, @timeIn);SELECT CAST(scope_identity() AS int);";
+            sqlCmd.Parameters.AddWithValue("@employeeId", attendance.employee.id);
+            sqlCmd.Parameters.AddWithValue("@timeIn",attendance.timeIn.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            attendance.id = (int)sqlCmd.ExecuteScalar();
+            sqlCon.Close();
+            return attendance;
+        }
+
+        public Attendance updateEmployeeAttendance(Attendance attendance)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "UPDATE       Attendance SET timeOut = @timeOut WHERE (id = @id)";
+            sqlCmd.Parameters.AddWithValue("@id", attendance.id);
+            sqlCmd.Parameters.AddWithValue("@timeOut", attendance.timeOut.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            sqlCmd.ExecuteNonQuery();
             sqlCon.Close();
             return attendance;
         }

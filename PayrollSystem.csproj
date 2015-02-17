@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\AttendanceController.cs" />
+    <Compile Include="controller\AttendanceControllerInterface.cs" />
     <Compile Include="controller\EmployeeController.cs" />
     <Compile Include="controller\EmployeeControllerInterface.cs" />
     <Compile Include="controller\FormController.cs">
@@ -184,6 +186,9 @@
     <EmbeddedResource Include="view\PositionForm.resx">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\TimeInOutForm.resx">
+      <DependentUpon>TimeInOutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\UpdateUserForm.resx">
       <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +246,12 @@
     </Compile>
     <Compile Include="view\PositionForm.Designer.cs">
       <DependentUpon>PositionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\TimeInOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\TimeInOutForm.Designer.cs">
+      <DependentUpon>TimeInOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\UpdateUserForm.cs">
       <SubType>Form</SubType>

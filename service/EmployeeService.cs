@@ -95,6 +95,7 @@ namespace PayrollSystem.service
             }
             else
             {
+                employee = null;
                 Console.WriteLine("nothing");
             }
             sqlCon.Close();
@@ -103,7 +104,6 @@ namespace PayrollSystem.service
 
         public Employee updateEmployee(Employee employee)
         {
-            Console.WriteLine(employee.jobPosition.id);
             sqlCon.Open();
             sqlCmd.CommandText = "UPDATE [Employee] SET fullName = @fullName, birthDate = @birthDate, gender = @gender, civilStatus = @civilStatus, " 
             + "address = @address, contactNumber = @contactNumber, tin = @tin, sssId = @sssId, "
@@ -124,6 +124,53 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.AddWithValue("@jobPositionId", employee.jobPosition.id);
             sqlCmd.Parameters.AddWithValue("@id", employee.id);
             sqlCmd.ExecuteNonQuery();
+            sqlCon.Close();
+            return employee;
+        }
+
+        public Employee fetchEmployeeByEmployeeIdNUmber(long employeeNumber)
+        {
+            Employee employee = new Employee();
+            employee.userAccount = new User();
+            employee.jobPosition = new Position();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].username, [Employee].birthDate, [Employee].gender, "
+                         + "[Employee].civilStatus, [Employee].dependents, [Employee].address, [Employee].contactNumber, [Employee].tin, [Employee].sssId, [Employee].pagIbigId, [Employee].philHealthId, "
+                         + "[Employee].dateEmployed, [Employee].jobPositionId, [Position].name, [Position].salary, [Employee].userAccountId "
+                         + "FROM [Employee] INNER JOIN [User] ON [Employee].userAccountId = [User].id INNER JOIN "
+                         + "[Position] ON [Employee].jobPositionId = [Position].id "
+                         + "WHERE Employee.employeeId = @employeeId;";
+            sqlCmd.Parameters.AddWithValue("@employeeId", employeeNumber);
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    employee.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    employee.employeeId = Int64.Parse(sqlDataReader["employeeId"].ToString());
+                    employee.userAccount.username = sqlDataReader["username"].ToString();
+                    employee.fullName = sqlDataReader["fullName"].ToString();
+                    employee.gender = sqlDataReader["gender"].ToString();
+                    employee.birthDate = sqlDataReader["birthDate"].ToString();
+                    employee.civilStatus = sqlDataReader["civilStatus"].ToString();
+                    employee.dependents = Int32.Parse(sqlDataReader["dependents"].ToString());
+                    employee.address = sqlDataReader["address"].ToString();
+                    employee.contactNumber = sqlDataReader["contactNumber"].ToString();
+                    employee.tin = sqlDataReader["tin"].ToString();
+                    employee.sssId = sqlDataReader["sssId"].ToString();
+                    employee.philHealthId = sqlDataReader["philHealthId"].ToString();
+                    employee.pagIbigId = sqlDataReader["pagIbigId"].ToString();
+                    employee.dateEmployed = sqlDataReader["dateEmployed"].ToString();
+                    employee.jobPosition.id = Int32.Parse(sqlDataReader["jobPositionId"].ToString());
+                    employee.jobPosition.name = sqlDataReader["name"].ToString();
+                    employee.jobPosition.salary = sqlDataReader["salary"].ToString();
+                }
+            }
+            else
+            {
+                employee = null;
+                Console.WriteLine("nothing");
+            }
             sqlCon.Close();
             return employee;
         }

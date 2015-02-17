@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using PayrollSystem.model;
 using PayrollSystem.view;
+using System.Windows.Forms;
 
 namespace PayrollSystem.controller
 {
     public class FormController : FormControllerInterface
     {
+
+        public void index()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new TimeInOutForm());
+        }
 
         public void showDashboard(LoginForm loginForm, User user)
         {
@@ -103,6 +111,18 @@ namespace PayrollSystem.controller
         {
             MiscellaneousForm miscForm = new MiscellaneousForm(adminDashboard);
             miscForm.ShowDialog();
+        }
+
+        public void showLoginWindow(TimeInOutForm timeInOutForm)
+        {
+            LoginForm loginForm = new LoginForm();
+            timeInOutForm.Hide();
+            loginForm.ShowDialog();
+        }
+
+        public void closeTimeInOutForm(TimeInOutForm timeInOutForm)
+        {
+            timeInOutForm.Close();
         }
     }
 }
