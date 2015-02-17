@@ -8,7 +8,6 @@ namespace PayrollSystem.controller
 {
     public interface UserControllerInterface
     {
-        void index();
 
         List<User> viewAllUsers();
 

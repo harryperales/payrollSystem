@@ -13,9 +13,17 @@ namespace PayrollSystem.view
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        TimeInOutForm timeInOutForm;
+        public LoginForm(TimeInOutForm timeInOutForm)
         {
+            this.timeInOutForm = timeInOutForm;
             InitializeComponent();
+            hideErrorMessage();
+        }
+
+        private void hideErrorMessage()
+        {
+            errorMessageLabel.Visible = false;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -28,15 +36,33 @@ namespace PayrollSystem.view
             if (user == null)
             {
                 password.Text = "";
-                MessageBox.Show("The user you specified does not exists.");
+                showErrorMessage("The user you specified does not exists.");
                 return;
             }
             else
             {
                 password.Text = "";
+                hideErrorMessage();
                 FormControllerInterface formController = new FormController();
                 formController.showDashboard(this, user);
             }
+        }
+
+        private void showErrorMessage(string errorMessage)
+        {
+            errorMessageLabel.Text = errorMessage;
+            errorMessageLabel.Visible = true;
+        }
+
+        private void username_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hideErrorMessage();
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.closeLoginForm(this, timeInOutForm);
         }
     }
 }

@@ -18,14 +18,6 @@ namespace PayrollSystem.controller
             userService = new UserService();
         }
 
-        public void index()
-        {
-            Console.WriteLine(userService.fetchAllUsers());
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-        }
-
         public List<User> viewAllUsers()
         {
             return userService.fetchAllUsers();

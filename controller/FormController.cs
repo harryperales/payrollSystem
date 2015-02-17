@@ -115,7 +115,7 @@ namespace PayrollSystem.controller
 
         public void showLoginWindow(TimeInOutForm timeInOutForm)
         {
-            LoginForm loginForm = new LoginForm();
+            LoginForm loginForm = new LoginForm(timeInOutForm);
             timeInOutForm.Hide();
             loginForm.ShowDialog();
         }
@@ -123,6 +123,12 @@ namespace PayrollSystem.controller
         public void closeTimeInOutForm(TimeInOutForm timeInOutForm)
         {
             timeInOutForm.Close();
+        }
+
+        public void closeLoginForm(LoginForm loginForm, TimeInOutForm timeInOutForm)
+        {
+            loginForm.Close();
+            timeInOutForm.Show();
         }
     }
 }
