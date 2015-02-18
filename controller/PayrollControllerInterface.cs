@@ -8,8 +8,10 @@ namespace PayrollSystem.controller
 {
     public interface PayrollControllerInterface
     {
-        List<Payroll> fetchUserPayrolls(User user);
+        List<Payslip> fetchUserPayrolls(User user);
 
         Payslip createPayslip(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
+
+        Payslip fetchPayslipById(int payslipId);
     }
 }

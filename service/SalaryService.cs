@@ -193,7 +193,14 @@ namespace PayrollSystem.service
 
         private decimal fetchTaxCalculatedAmountForDeduction(decimal periodSalary, int lowerLimitIndex, int upperLimitIndex)
         {
-            string directory = Path.Combine(Environment.CurrentDirectory, "Resources/Tax_Table_Semi_Monthly.csv");
+            string fileName = "Tax_Table_Semi_Monthly.csv";
+            
+            return fetchDeductionAmount(periodSalary, lowerLimitIndex, upperLimitIndex, fileName);
+        }
+
+        private decimal fetchDeductionAmount(decimal periodSalary, int lowerLimitIndex, int upperLimitIndex, string fileName)
+        {
+            string directory = Path.Combine(Environment.CurrentDirectory, "Resources/" + fileName);
             directory = directory.Replace("\\", "/").Replace("/bin/Debug", "");
             directory = directory.Replace("\\", "/").Replace("/bin/Release", "");
 
@@ -212,18 +219,91 @@ namespace PayrollSystem.service
                 catch (FormatException formatException)
                 {
                     Console.WriteLine("-----------------------------------");
-                    Console.WriteLine("error log:"+formatException.Message);
+                    Console.WriteLine("error log:" + formatException.Message);
                     Console.WriteLine("-----------------------------------");
                 }
-                
+
                 if (periodSalary >= lowerLimitSalary && periodSalary <= upperLimitSalary)
                 {
-                    decimal taxAmountToDeduct =  Convert.ToDecimal(values[1].ToString());
+                    decimal taxAmountToDeduct = Convert.ToDecimal(values[1].ToString());
                     decimal taxPercent = Convert.ToDecimal(values[0].ToString());
-                    Console.WriteLine(taxAmountToDeduct + "+" + "[(" + periodSalary + "-" + (upperLimitSalary - 1) + ")X" + taxPercent + "]");
-                    taxAmountToDeduct += ((periodSalary - (upperLimitSalary-1)) * taxPercent);
-                    
+                    //Console.WriteLine(taxAmountToDeduct + "+" + "[(" + periodSalary + "-" + (upperLimitSalary - 1) + ")X" + taxPercent + "]");
+                    taxAmountToDeduct += ((periodSalary - (upperLimitSalary - 1)) * taxPercent);
+
                     return taxAmountToDeduct;
+                }
+            }
+            return 0.00M;
+        }
+
+        public decimal fetchSssDeductionsWithPeriodSalary(decimal periodSalary)
+        {
+            string fileName = "SSS_Table_Semi_Monthly.csv"; 
+            string directory = Path.Combine(Environment.CurrentDirectory, "Resources/" + fileName);
+            directory = directory.Replace("\\", "/").Replace("/bin/Debug", "");
+            directory = directory.Replace("\\", "/").Replace("/bin/Release", "");
+
+            var reader = new StreamReader(File.OpenRead(@directory));
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(',');
+                decimal lowerLimitSalary = 0.00M;
+                decimal upperLimitSalary = 0.00M;
+                try
+                {
+                    lowerLimitSalary = Convert.ToDecimal(values[0].ToString());
+                    upperLimitSalary = Convert.ToDecimal(values[1].ToString());
+                }
+                catch (FormatException formatException)
+                {
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine("error log:" + formatException.Message);
+                    Console.WriteLine("-----------------------------------");
+                }
+
+                if (periodSalary >= lowerLimitSalary && periodSalary <= upperLimitSalary)
+                {
+                    return Convert.ToDecimal(values[2].ToString());
+                }
+            }
+            return 0.00M;
+        }
+
+        public decimal fetchPagIbigDeductionWithPeriodSalary(decimal periodSalary)
+        {
+            return 100.00M;
+        }
+
+        public decimal fetchPhilHealthDeductionWithPeriodSalary(decimal periodSalary)
+        {
+            string fileName = "PhilHealt_Table_Semi_Monthly.csv";
+            string directory = Path.Combine(Environment.CurrentDirectory, "Resources/" + fileName);
+            directory = directory.Replace("\\", "/").Replace("/bin/Debug", "");
+            directory = directory.Replace("\\", "/").Replace("/bin/Release", "");
+
+            var reader = new StreamReader(File.OpenRead(@directory));
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(',');
+                decimal lowerLimitSalary = 0.00M;
+                decimal upperLimitSalary = 0.00M;
+                try
+                {
+                    lowerLimitSalary = Convert.ToDecimal(values[0].ToString());
+                    upperLimitSalary = Convert.ToDecimal(values[1].ToString());
+                }
+                catch (FormatException formatException)
+                {
+                    Console.WriteLine("-----------------------------------");
+                    Console.WriteLine("error log:" + formatException.Message);
+                    Console.WriteLine("-----------------------------------");
+                }
+
+                if (periodSalary >= lowerLimitSalary && periodSalary <= upperLimitSalary)
+                {
+                    return Convert.ToDecimal(values[2].ToString());
                 }
             }
             return 0.00M;

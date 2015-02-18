@@ -21,17 +21,17 @@ namespace PayrollSystem.view
             this.user = user;
             InitializeComponent();
             username.Text = user.username;
-            PayrollControllerInterface payrollController = new PayrollController();
-            List<Payroll> payrolls = payrollController.fetchUserPayrolls(user);
-            loadPayrollList(payrolls);
+            loadPayrollList();
         }
 
-        private void loadPayrollList(List<Payroll> payrolls)
+        private void loadPayrollList()
         {
+            PayrollControllerInterface payrollController = new PayrollController();
+            List<Payslip> payroll = payrollController.fetchUserPayrolls(user);
             userPayrollListBox.Items.Clear();
-            foreach(Payroll payroll in payrolls)
+            foreach(Payslip payslip in payroll)
             {
-                userPayrollListBox.Items.Add(payroll.startDate + "-" + payroll.endDate);
+                userPayrollListBox.Items.Add(payslip.id+".)"+payslip.startDatePeriod.ToString("MM/dd/yyyy") + "-" + payslip.endDatePeriod.ToString("MM/dd/yyyy"));
             }
         }
 
@@ -47,14 +47,34 @@ namespace PayrollSystem.view
 
         private void viewPayrollButton_Click(object sender, EventArgs e)
         {
-            FormControllerInterface formController = new FormController();
-            formController.showUserPayroll(this, user);
+            try
+            {
+                int payslipId = Convert.ToInt32(userPayrollListBox.SelectedItem.ToString().Split('.')[0]);
+                PayrollControllerInterface payrollController = new PayrollController();
+                Payslip payslip = payrollController.fetchPayslipById(payslipId);
+
+                EmployeeControllerInterface employeeController = new EmployeeController();
+                payslip.employee = employeeController.fetchEmployeeByUsername(user.username);
+
+                FormControllerInterface formController = new FormController();
+                formController.showUserPayroll(this, payslip);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No item selected: " + ex.Message);
+            }
         }
 
         private void DashboardForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormControllerInterface formController = new FormController();
             formController.showLoginWindow(login);
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.showLoginWindow(this, login);
         }
     }
 }

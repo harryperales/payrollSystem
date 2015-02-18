@@ -4,11 +4,19 @@ using System.Linq;
 using System.Text;
 using PayrollSystem.model;
 using PayrollSystem.view;
+using System.Windows.Forms;
 
 namespace PayrollSystem.controller
 {
     public class FormController : FormControllerInterface
     {
+
+        public void index()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new TimeInOutForm());
+        }
 
         public void showDashboard(LoginForm loginForm, User user)
         {
@@ -103,6 +111,63 @@ namespace PayrollSystem.controller
         {
             MiscellaneousForm miscForm = new MiscellaneousForm(adminDashboard);
             miscForm.ShowDialog();
+        }
+
+        public void showLoginWindow(TimeInOutForm timeInOutForm)
+        {
+            LoginForm loginForm = new LoginForm(timeInOutForm);
+            timeInOutForm.Hide();
+            loginForm.ShowDialog();
+        }
+
+        public void closeTimeInOutForm(TimeInOutForm timeInOutForm)
+        {
+            timeInOutForm.Close();
+        }
+
+        public void closeLoginForm(LoginForm loginForm, TimeInOutForm timeInOutForm)
+        {
+            loginForm.Close();
+            timeInOutForm.Show();
+        }
+
+        public void showLoginWindow(AdminDashBoard adminDashBoard, LoginForm loginForm)
+        {
+            adminDashBoard.Close();
+            loginForm.Show();
+        }
+
+        public void showLoginWindow(DashboardForm dashboardForm, LoginForm login)
+        {
+            dashboardForm.Close();
+            login.Show();
+        }
+
+        public void showRequestFormById(AdminDashBoard adminDashBoard, int requestId)
+        {
+            adminDashBoard.Hide();
+            RequestForm requestForm = new RequestForm(adminDashBoard, requestId);
+            requestForm.Show();
+        }
+
+        public void showAdminDashBoard(RequestForm requestForm, AdminDashBoard adminDashboard)
+        {
+            requestForm.Close();
+            adminDashboard.loadPendingRequests();
+            adminDashboard.Show();
+        }
+
+        public void showDashboardForm(PayrollForm payrollForm, DashboardForm dashboardForm)
+        {
+            payrollForm.Close();
+            dashboardForm.Show();
+        }
+
+        public void showUserPayroll(DashboardForm dashboardForm, Payslip payslip)
+        {
+            dashboardForm.Hide();
+            PayrollForm payrollForm = new PayrollForm(dashboardForm, payslip);
+            payrollForm.ShowDialog();
         }
     }
 }

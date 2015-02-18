@@ -14,8 +14,10 @@ namespace PayrollSystem
         [STAThread]
         static void Main()
         {
-            UserControllerInterface userController = new UserController();
-            userController.index();
+            //UserControllerInterface userController = new UserController();
+            //userController.index();
+            FormControllerInterface formController = new FormController();
+            formController.index();
         }
     }
 }

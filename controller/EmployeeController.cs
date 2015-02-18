@@ -28,5 +28,10 @@ namespace PayrollSystem.controller
         {
             return employeeService.updateEmployee(employee);
         }
+
+        public Employee fetchEmployeeByEmployeeIdNumber(long employeeNumber)
+        {
+            return employeeService.fetchEmployeeByEmployeeIdNUmber(employeeNumber);
+        }
     }
 }

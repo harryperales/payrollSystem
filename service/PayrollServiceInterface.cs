@@ -8,8 +8,10 @@ namespace PayrollSystem.service
 {
     public interface PayrollServiceInterface
     {
-        List<Payroll> fetchUserPayrolls(User user);
+        List<Payslip> fetchUserPayrolls(User user);
 
-        Payslip createPayslip();
+        Payslip createPayslip(Employee employee, Payslip payslip);
+
+        Payslip fetchPayslipById(int payslipId);
     }
 }
