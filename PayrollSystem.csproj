@@ -188,6 +188,9 @@
     <EmbeddedResource Include="view\PositionForm.resx">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\RequestForm.resx">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\TimeInOutForm.resx">
       <DependentUpon>TimeInOutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +251,12 @@
     </Compile>
     <Compile Include="view\PositionForm.Designer.cs">
       <DependentUpon>PositionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\RequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\RequestForm.Designer.cs">
+      <DependentUpon>RequestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\TimeInOutForm.cs">
       <SubType>Form</SubType>

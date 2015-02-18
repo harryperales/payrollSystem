@@ -22,7 +22,7 @@ namespace PayrollSystem.controller
             requestService = new RequestService();
             miscellaneousService = new MiscellaneousService();
         }
-        public List<Payroll> fetchUserPayrolls(User user)
+        public List<Payslip> fetchUserPayrolls(User user)
         {
             return payrollService.fetchUserPayrolls(user);
         }
@@ -42,25 +42,19 @@ namespace PayrollSystem.controller
 
             payslip.basePay = periodSalary;
             List<Request> overtimeRequests = requestService.fetchOvertimeRequests(employee, startDatePeriod, endDatePeriod);
-            payslip.request = overtimeRequests;
+            payslip.requests = overtimeRequests;
 
             periodSalary += salaryService.calculatePeriodSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);
             Console.WriteLine("periodSalaryWithOvertime---->>" + periodSalary);
 
             List<Request> leaveRequests = requestService.fetchLeaveRequest(employee, startDatePeriod, endDatePeriod);
-            payslip.request.AddRange(leaveRequests);
+            payslip.requests.AddRange(leaveRequests);
 
             periodSalary += salaryService.calculatePeriodSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary);
             Console.WriteLine("periodSalaryWithLeave---->>" + periodSalary);
 
-            List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
-            payslip.miscellaneous = deductions;
-
-            periodSalary = salaryService.calculatePeriodSalaryWithDeductions(deductions, periodSalary);
-            Console.WriteLine("periodSalaryWIthDeductions---->>" + periodSalary);
-
             List<Miscellaneous> benefits = miscellaneousService.fetchMiscellaneousByBenefitType(employee);
-            payslip.miscellaneous.AddRange(benefits);
+            payslip.miscellaneous = benefits;
 
             periodSalary = salaryService.calculatePeriodSalaryWithBenefits(benefits, periodSalary, attendances, leaveRequests);
             Console.WriteLine("periodSalaryWIthBenefits---->>" + periodSalary);
@@ -70,6 +64,16 @@ namespace PayrollSystem.controller
             periodSalary = salaryService.calculatePeriodSalaryWithBonus(bonuses, periodSalary);
             Console.WriteLine("periodSalaryWIthBonus---->>" + periodSalary);
 
+            List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
+            //payslip.miscellaneous = deductions;
+
+            periodSalary = salaryService.calculatePeriodSalaryWithDeductions(deductions, periodSalary);
+            Console.WriteLine("periodSalaryWIthDeductions---->>" + periodSalary);
+
+            payslip.sssDeduction = salaryService.fetchSssDeductionsWithPeriodSalary(periodSalary);
+            payslip.pagIbigDeduction = salaryService.fetchPagIbigDeductionWithPeriodSalary(periodSalary);
+            payslip.philHealthDeduction = salaryService.fetchPhilHealthDeductionWithPeriodSalary(periodSalary);
+
             payslip.taxDeduction = salaryService.calculatePeriodSalaryTax(employee, periodSalary);
             periodSalary -= payslip.taxDeduction;
 
@@ -77,6 +81,11 @@ namespace PayrollSystem.controller
             Console.WriteLine("periodSalaryWithholdingTax---->>" + periodSalary);
 
             return payrollService.createPayslip(employee, payslip);
+        }
+
+        public Payslip fetchPayslipById(int payslipId)
+        {
+            return payrollService.fetchPayslipById(payslipId);
         }
     }
 }

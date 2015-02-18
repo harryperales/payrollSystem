@@ -20,5 +20,11 @@ namespace PayrollSystem.service
         decimal calculatePeriodSalaryWithBonus(List<Miscellaneous> bonuses, decimal periodSalary);
 
         decimal calculatePeriodSalaryTax(Employee employee, decimal periodSalary);
+
+        decimal fetchSssDeductionsWithPeriodSalary(decimal periodSalary);
+
+        decimal fetchPagIbigDeductionWithPeriodSalary(decimal periodSalary);
+
+        decimal fetchPhilHealthDeductionWithPeriodSalary(decimal periodSalary);
     }
 }

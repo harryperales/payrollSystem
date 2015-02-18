@@ -49,7 +49,10 @@ namespace PayrollSystem.view
             List<User> users = userController.viewAllUsers();
             foreach (User user in users)
             {
-                usersListBox.Items.Add(user.username);
+                if (user.role.type != "admin")
+                {
+                    usersListBox.Items.Add(user.username);
+                }
             }
         }
 
@@ -59,7 +62,7 @@ namespace PayrollSystem.view
             List<Request> requests = requestController.fetchAllPendingRequests();
             foreach (Request request in requests)
             {
-                requestListBox.Items.Add(request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+                requestListBox.Items.Add(request.id+".) "+request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
             }
         }
 
@@ -69,9 +72,7 @@ namespace PayrollSystem.view
             if (l.SelectedIndex != -1)
             {
                 usersListBox.SelectedIndex = l.SelectedIndex;
-                adminTab.SelectedIndex = l.SelectedIndex;
                 usernameOrEmployeeId.Text = usersListBox.SelectedItem.ToString();
-                Console.WriteLine(usersListBox.SelectedItem.ToString());
             }
         }
 
@@ -117,18 +118,47 @@ namespace PayrollSystem.view
 
         private void createPayrollButton_Click(object sender, EventArgs e)
         {
-            EmployeeControllerInterface employeeController = new EmployeeController();
-            Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
-
-            if (employee == null || employee.Equals(""))
+            if (!selectAllCheckBox.Checked)
             {
-                showErrorMessage("Please input a valid username.");
-                return;
-            }
+                EmployeeControllerInterface employeeController = new EmployeeController();
+                Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
 
-            PayrollControllerInterface payslipController = new PayrollController();
-            payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+                if (employee == null || employee.Equals(""))
+                {
+                    showErrorMessage("Please input a valid username.");
+                    return;
+                }
+
+                PayrollControllerInterface payslipController = new PayrollController();
+                payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+            }
+            else
+            {
+                UserControllerInterface userController = new UserController();
+                List<User> users = userController.viewAllUsers();
+                foreach (User user in users)
+                {
+                    if (user.role.type != "admin")
+                    {
+
+                        EmployeeControllerInterface employeeController = new EmployeeController();
+                        Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+
+                        if (employee == null || employee.Equals(""))
+                        {
+                            showErrorMessage("Please input a valid username.");
+                            return;
+                        }
+
+                        PayrollControllerInterface payslipController = new PayrollController();
+                        payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+                    }
+                }
+                selectAllCheckBox.Checked = false;
+            }
         }
+
+        //private 
 
         private void addPositionButton_Click(object sender, EventArgs e)
         {
@@ -156,7 +186,17 @@ namespace PayrollSystem.view
 
         private void viewRequest_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(requestListBox.SelectedItem);
+            try
+            {
+                int requestId = Convert.ToInt32(requestListBox.SelectedItem.ToString().Split('.')[0]);
+                FormControllerInterface formController = new FormController();
+                formController.showRequestFormById(this, requestId);
+                Console.WriteLine(requestListBox.SelectedItem.ToString().Split('.')[0]);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No selected item: " + ex.Message);
+            }
         }
     }
 }

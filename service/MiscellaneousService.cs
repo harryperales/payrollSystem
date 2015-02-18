@@ -68,7 +68,7 @@ namespace PayrollSystem.service
             Miscellaneous miscellaneous = new Miscellaneous();
             sqlCon.Open();
             sqlCmd.CommandText = "SELECT id, name, description, amount, type From Miscellaneous WHERE name = @name";
-            sqlCmd.Parameters.AddWithValue("@name", "foodAllowance");
+            sqlCmd.Parameters.AddWithValue("@name", miscellaneousName);
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
             {
@@ -76,10 +76,10 @@ namespace PayrollSystem.service
                 {
                     miscellaneous = new Miscellaneous();
                     miscellaneous.id = Int32.Parse(sqlDataReader["id"].ToString());
-                    miscellaneous.description = sqlDataReader["name"].ToString();
+                    miscellaneous.name = sqlDataReader["name"].ToString();
                     miscellaneous.description = sqlDataReader["description"].ToString();
                     miscellaneous.amount = Convert.ToDecimal(sqlDataReader["amount"].ToString());
-                    miscellaneous.type = sqlDataReader["type"].ToString() == "Benefits" ? MiscType.Benefits : MiscType.Deductions;
+                    miscellaneous.type = MiscType.Benefits;
                 }
             }
 
@@ -121,13 +121,36 @@ namespace PayrollSystem.service
                     bonus.id = Int32.Parse(sqlDataReader["miscellaneousId"].ToString());
                     bonus.description = sqlDataReader["description"].ToString();
                     bonus.amount = Convert.ToDecimal(sqlDataReader["amount"].ToString());
-                    bonus.type = sqlDataReader["type"].ToString() == "Benefits" ? MiscType.Benefits : MiscType.Deductions;
+                    bonus.type = MiscType.Benefits;
                 }                
             }
 
             sqlCmd.Parameters.Clear();
             sqlCon.Close();
             return bonus;
+        }
+
+        public Miscellaneous fetchById(int miscellaneousId)
+        {
+            Miscellaneous misc = new Miscellaneous();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT id, name, description, amount, type From Miscellaneous WHERE id = @miscellaneousId;";
+            sqlCmd.Parameters.AddWithValue("@miscellaneousId", miscellaneousId);
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    misc.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    misc.name = sqlDataReader["name"].ToString();
+                    misc.description = sqlDataReader["description"].ToString();
+                    misc.amount = Convert.ToDecimal(sqlDataReader["amount"].ToString());
+                    misc.type = sqlDataReader["type"].ToString().Equals("Deduction") ? MiscType.Deductions : MiscType.Benefits;
+                }
+            }
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return misc;
         }
     }
 }

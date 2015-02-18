@@ -13,5 +13,7 @@ namespace PayrollSystem.service
         List<Miscellaneous> fetchMiscellaneousByBenefitType(Employee employee);
 
         List<Miscellaneous> fetchBonusMiscellaneousByDescriptionAsDate(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
+
+        Miscellaneous fetchById(int miscellaneousId);
     }
 }

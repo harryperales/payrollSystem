@@ -136,5 +136,38 @@ namespace PayrollSystem.controller
             adminDashBoard.Close();
             loginForm.Show();
         }
+
+        public void showLoginWindow(DashboardForm dashboardForm, LoginForm login)
+        {
+            dashboardForm.Close();
+            login.Show();
+        }
+
+        public void showRequestFormById(AdminDashBoard adminDashBoard, int requestId)
+        {
+            adminDashBoard.Hide();
+            RequestForm requestForm = new RequestForm(adminDashBoard, requestId);
+            requestForm.Show();
+        }
+
+        public void showAdminDashBoard(RequestForm requestForm, AdminDashBoard adminDashboard)
+        {
+            requestForm.Close();
+            adminDashboard.loadPendingRequests();
+            adminDashboard.Show();
+        }
+
+        public void showDashboardForm(PayrollForm payrollForm, DashboardForm dashboardForm)
+        {
+            payrollForm.Close();
+            dashboardForm.Show();
+        }
+
+        public void showUserPayroll(DashboardForm dashboardForm, Payslip payslip)
+        {
+            dashboardForm.Hide();
+            PayrollForm payrollForm = new PayrollForm(dashboardForm, payslip);
+            payrollForm.ShowDialog();
+        }
     }
 }

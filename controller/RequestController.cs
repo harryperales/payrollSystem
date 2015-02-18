@@ -18,5 +18,10 @@ namespace PayrollSystem.controller
         {
             return requestService.fetchAllPendingRequests();
         }
+
+        public void updateRequestStatusById(int requestId, string status)
+        {
+            requestService.updateRequestStatusById(requestId, status);
+        }
     }
 }

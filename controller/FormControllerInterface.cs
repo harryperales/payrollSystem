@@ -46,5 +46,15 @@ namespace PayrollSystem.controller
         void closeLoginForm(LoginForm loginForm, TimeInOutForm timeInOutForm);
 
         void showLoginWindow(AdminDashBoard adminDashBoard, LoginForm loginForm);
+
+        void showLoginWindow(DashboardForm dashboardForm, LoginForm login);
+
+        void showRequestFormById(AdminDashBoard adminDashBoard, int requestId);
+
+        void showAdminDashBoard(RequestForm requestForm, AdminDashBoard adminDashboard);
+
+        void showDashboardForm(PayrollForm payrollForm, DashboardForm dashboardForm);
+
+        void showUserPayroll(DashboardForm dashboardForm, Payslip payslip);
     }
 }

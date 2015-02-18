@@ -13,5 +13,11 @@ namespace PayrollSystem.service
         List<Request> fetchLeaveRequest(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
 
         List<Request> fetchAllPendingRequests();
+
+        Request fetchPendingRequestById(int requestId);
+
+        Request updateRequestStatusById(int requestId, string status);
+
+        Request fetchById(int requestId);
     }
 }

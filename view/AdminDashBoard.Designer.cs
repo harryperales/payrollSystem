@@ -48,21 +48,16 @@
             this.adminTab = new System.Windows.Forms.TabControl();
             this.userListTab = new System.Windows.Forms.TabPage();
             this.usersListBox = new System.Windows.Forms.ListBox();
-            this.payrollListTab = new System.Windows.Forms.TabPage();
-            this.payrollListBox = new System.Windows.Forms.ListBox();
-            this.miscListTab = new System.Windows.Forms.TabPage();
-            this.miscListBox = new System.Windows.Forms.ListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.requestListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
             this.userListTab.SuspendLayout();
-            this.payrollListTab.SuspendLayout();
-            this.miscListTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
@@ -74,6 +69,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeOptionPanel.BackColor = System.Drawing.Color.Transparent;
             this.employeeOptionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.employeeOptionPanel.Controls.Add(this.selectAllCheckBox);
             this.employeeOptionPanel.Controls.Add(this.viewRequest);
             this.employeeOptionPanel.Controls.Add(this.endDateLabel);
             this.employeeOptionPanel.Controls.Add(this.startDateLabel);
@@ -218,7 +214,7 @@
             this.addEmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addEmployeeButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
             this.addEmployeeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addEmployeeButton.Location = new System.Drawing.Point(151, 76);
+            this.addEmployeeButton.Location = new System.Drawing.Point(151, 118);
             this.addEmployeeButton.Name = "addEmployeeButton";
             this.addEmployeeButton.Size = new System.Drawing.Size(158, 34);
             this.addEmployeeButton.TabIndex = 2;
@@ -246,7 +242,7 @@
             this.createMiscButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createMiscButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
             this.createMiscButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.createMiscButton.Location = new System.Drawing.Point(151, 116);
+            this.createMiscButton.Location = new System.Drawing.Point(151, 156);
             this.createMiscButton.Name = "createMiscButton";
             this.createMiscButton.Size = new System.Drawing.Size(157, 36);
             this.createMiscButton.TabIndex = 8;
@@ -272,8 +268,6 @@
             // 
             this.adminTab.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.adminTab.Controls.Add(this.userListTab);
-            this.adminTab.Controls.Add(this.payrollListTab);
-            this.adminTab.Controls.Add(this.miscListTab);
             this.adminTab.Controls.Add(this.tabPage1);
             this.adminTab.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminTab.Location = new System.Drawing.Point(360, 50);
@@ -303,46 +297,6 @@
             this.usersListBox.Size = new System.Drawing.Size(438, 327);
             this.usersListBox.TabIndex = 0;
             this.usersListBox.SelectedIndexChanged += new System.EventHandler(this.usersListBox_SelectedIndexChanged);
-            // 
-            // payrollListTab
-            // 
-            this.payrollListTab.Controls.Add(this.payrollListBox);
-            this.payrollListTab.Location = new System.Drawing.Point(4, 29);
-            this.payrollListTab.Name = "payrollListTab";
-            this.payrollListTab.Padding = new System.Windows.Forms.Padding(3);
-            this.payrollListTab.Size = new System.Drawing.Size(438, 340);
-            this.payrollListTab.TabIndex = 1;
-            this.payrollListTab.Text = "Payroll";
-            this.payrollListTab.UseVisualStyleBackColor = true;
-            // 
-            // payrollListBox
-            // 
-            this.payrollListBox.FormattingEnabled = true;
-            this.payrollListBox.ItemHeight = 17;
-            this.payrollListBox.Location = new System.Drawing.Point(0, 4);
-            this.payrollListBox.Name = "payrollListBox";
-            this.payrollListBox.Size = new System.Drawing.Size(432, 327);
-            this.payrollListBox.TabIndex = 0;
-            // 
-            // miscListTab
-            // 
-            this.miscListTab.Controls.Add(this.miscListBox);
-            this.miscListTab.Location = new System.Drawing.Point(4, 29);
-            this.miscListTab.Name = "miscListTab";
-            this.miscListTab.Padding = new System.Windows.Forms.Padding(3);
-            this.miscListTab.Size = new System.Drawing.Size(438, 340);
-            this.miscListTab.TabIndex = 2;
-            this.miscListTab.Text = "Benefits/ Deductions";
-            this.miscListTab.UseVisualStyleBackColor = true;
-            // 
-            // miscListBox
-            // 
-            this.miscListBox.FormattingEnabled = true;
-            this.miscListBox.ItemHeight = 17;
-            this.miscListBox.Location = new System.Drawing.Point(0, 1);
-            this.miscListBox.Name = "miscListBox";
-            this.miscListBox.Size = new System.Drawing.Size(438, 327);
-            this.miscListBox.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -399,6 +353,17 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
+            // selectAllCheckBox
+            // 
+            this.selectAllCheckBox.AutoSize = true;
+            this.selectAllCheckBox.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.selectAllCheckBox.Location = new System.Drawing.Point(151, 82);
+            this.selectAllCheckBox.Name = "selectAllCheckBox";
+            this.selectAllCheckBox.Size = new System.Drawing.Size(95, 25);
+            this.selectAllCheckBox.TabIndex = 12;
+            this.selectAllCheckBox.Text = "All Users";
+            this.selectAllCheckBox.UseVisualStyleBackColor = true;
+            // 
             // AdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,8 +381,6 @@
             this.updatePanel.PerformLayout();
             this.adminTab.ResumeLayout(false);
             this.userListTab.ResumeLayout(false);
-            this.payrollListTab.ResumeLayout(false);
-            this.miscListTab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -451,11 +414,7 @@
         private System.Windows.Forms.Button addPositionButton;
         private System.Windows.Forms.Button createMiscButton;
         private System.Windows.Forms.TabControl adminTab;
-        private System.Windows.Forms.TabPage payrollListTab;
-        private System.Windows.Forms.TabPage miscListTab;
         private System.Windows.Forms.TabPage userListTab;
-        private System.Windows.Forms.ListBox payrollListBox;
-        private System.Windows.Forms.ListBox miscListBox;
         private System.Windows.Forms.ListBox usersListBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox exitPictureBox;
@@ -463,6 +422,7 @@
         private System.Windows.Forms.Button viewRequest;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ListBox requestListBox;
+        private System.Windows.Forms.CheckBox selectAllCheckBox;
 //>>>>>>> PayrollSystem/master
     }
 }

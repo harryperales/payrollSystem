@@ -9,5 +9,7 @@ namespace PayrollSystem.controller
     public interface RequestControllerInterface
     {
         List<Request> fetchAllPendingRequests();
+
+        void updateRequestStatusById(int requestId, string status);
     }
 }

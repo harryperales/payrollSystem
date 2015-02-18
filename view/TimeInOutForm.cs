@@ -120,12 +120,12 @@ namespace PayrollSystem.view
                 AttendanceControllerInterface attendanceController = new AttendanceController();
                 DateTime currentDate = DateTime.Now;
                 Attendance attendance = attendanceController.fetchEmployeeAttendanceByDate(employee, currentDate);
-                if (attendance.timeOut != null && attendance.timeOut.ToString("MM/dd/yyyy").Equals(DateTime.Now.Date.ToString("MM/dd/yyyy")))
+                if (attendance != null && !attendance.ToString().Equals("") && attendance.timeOut != null && !attendance.timeOut.ToString().Equals("") && attendance.timeOut.ToString("MM/dd/yyyy").Equals(DateTime.Now.Date.ToString("MM/dd/yyyy")))
                 {
                     showErrorMessage("User was already logged-out on " + attendance.timeOut);
                     return;
                 }
-                else if (attendance.timeIn == null || !attendance.timeIn.ToString("MM/dd/yyyy").Equals(DateTime.Now.Date.ToString("MM/dd/yyyy")))
+                else if (attendance == null)
                 {
                     showErrorMessage("User is not yet logged in.");
                     return;
