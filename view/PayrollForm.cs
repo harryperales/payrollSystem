@@ -34,6 +34,13 @@ namespace PayrollSystem.view
         private void initializeForm(Payslip payslip)
         {
             employeeFullName.Text = payslip.employee.fullName;
+            dateEmployed.Text = payslip.employee.dateEmployed;
+            employeeNumber.Text = payslip.employee.employeeId.ToString();
+            position.Text = payslip.employee.jobPosition.name;
+            startDatePeriod.Text = payslip.startDatePeriod.ToString();
+            endDatePeriod.Text = payslip.endDatePeriod.ToString();
+            datePayable.Text = payslip.dateCreated.ToString();
+
         }
 
         private void PayrollForm_FormClosed(object sender, FormClosedEventArgs e)

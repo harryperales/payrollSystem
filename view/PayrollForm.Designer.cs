@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayrollForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.employeeFullName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +47,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.employeeFullName = new System.Windows.Forms.Label();
+            this.dateEmployedLabel = new System.Windows.Forms.Label();
+            this.dateEmployed = new System.Windows.Forms.Label();
+            this.employeeNumberLabel = new System.Windows.Forms.Label();
+            this.positionLabel = new System.Windows.Forms.Label();
+            this.periodStartLabel = new System.Windows.Forms.Label();
+            this.periodEndLabel = new System.Windows.Forms.Label();
+            this.datePayableLabel = new System.Windows.Forms.Label();
+            this.employeeNumber = new System.Windows.Forms.Label();
+            this.position = new System.Windows.Forms.Label();
+            this.startDatePeriod = new System.Windows.Forms.Label();
+            this.endDatePeriod = new System.Windows.Forms.Label();
+            this.datePayable = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -62,11 +74,34 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.datePayable);
+            this.panel1.Controls.Add(this.endDatePeriod);
+            this.panel1.Controls.Add(this.startDatePeriod);
+            this.panel1.Controls.Add(this.position);
+            this.panel1.Controls.Add(this.employeeNumber);
+            this.panel1.Controls.Add(this.datePayableLabel);
+            this.panel1.Controls.Add(this.periodEndLabel);
+            this.panel1.Controls.Add(this.periodStartLabel);
+            this.panel1.Controls.Add(this.positionLabel);
+            this.panel1.Controls.Add(this.employeeNumberLabel);
+            this.panel1.Controls.Add(this.dateEmployed);
+            this.panel1.Controls.Add(this.dateEmployedLabel);
             this.panel1.Controls.Add(this.employeeFullName);
             this.panel1.Location = new System.Drawing.Point(12, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(846, 49);
+            this.panel1.Size = new System.Drawing.Size(846, 93);
             this.panel1.TabIndex = 0;
+            // 
+            // employeeFullName
+            // 
+            this.employeeFullName.AutoSize = true;
+            this.employeeFullName.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeFullName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeFullName.Location = new System.Drawing.Point(14, 6);
+            this.employeeFullName.Name = "employeeFullName";
+            this.employeeFullName.Size = new System.Drawing.Size(122, 15);
+            this.employeeFullName.TabIndex = 4;
+            this.employeeFullName.Text = "Employee Full Name";
             // 
             // panel2
             // 
@@ -78,9 +113,9 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(12, 118);
+            this.panel2.Location = new System.Drawing.Point(12, 162);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(505, 266);
+            this.panel2.Size = new System.Drawing.Size(505, 222);
             this.panel2.TabIndex = 1;
             // 
             // label3
@@ -118,9 +153,9 @@
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(523, 118);
+            this.panel3.Location = new System.Drawing.Point(523, 162);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(335, 384);
+            this.panel3.Size = new System.Drawing.Size(335, 340);
             this.panel3.TabIndex = 2;
             // 
             // label4
@@ -236,16 +271,137 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // employeeFullName
+            // dateEmployedLabel
             // 
-            this.employeeFullName.AutoSize = true;
-            this.employeeFullName.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.employeeFullName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.employeeFullName.Location = new System.Drawing.Point(14, 10);
-            this.employeeFullName.Name = "employeeFullName";
-            this.employeeFullName.Size = new System.Drawing.Size(149, 17);
-            this.employeeFullName.TabIndex = 4;
-            this.employeeFullName.Text = "Employee Full Name";
+            this.dateEmployedLabel.AutoSize = true;
+            this.dateEmployedLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEmployedLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dateEmployedLabel.Location = new System.Drawing.Point(14, 21);
+            this.dateEmployedLabel.Name = "dateEmployedLabel";
+            this.dateEmployedLabel.Size = new System.Drawing.Size(111, 15);
+            this.dateEmployedLabel.TabIndex = 5;
+            this.dateEmployedLabel.Text = "Employment Date:";
+            // 
+            // dateEmployed
+            // 
+            this.dateEmployed.AutoSize = true;
+            this.dateEmployed.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEmployed.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dateEmployed.Location = new System.Drawing.Point(131, 21);
+            this.dateEmployed.Name = "dateEmployed";
+            this.dateEmployed.Size = new System.Drawing.Size(92, 15);
+            this.dateEmployed.TabIndex = 6;
+            this.dateEmployed.Text = "Date Employed";
+            // 
+            // employeeNumberLabel
+            // 
+            this.employeeNumberLabel.AutoSize = true;
+            this.employeeNumberLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeNumberLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeNumberLabel.Location = new System.Drawing.Point(15, 36);
+            this.employeeNumberLabel.Name = "employeeNumberLabel";
+            this.employeeNumberLabel.Size = new System.Drawing.Size(110, 15);
+            this.employeeNumberLabel.TabIndex = 7;
+            this.employeeNumberLabel.Text = "Employee Number";
+            // 
+            // positionLabel
+            // 
+            this.positionLabel.AutoSize = true;
+            this.positionLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.positionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.positionLabel.Location = new System.Drawing.Point(15, 51);
+            this.positionLabel.Name = "positionLabel";
+            this.positionLabel.Size = new System.Drawing.Size(54, 15);
+            this.positionLabel.TabIndex = 8;
+            this.positionLabel.Text = "Position";
+            // 
+            // periodStartLabel
+            // 
+            this.periodStartLabel.AutoSize = true;
+            this.periodStartLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.periodStartLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.periodStartLabel.Location = new System.Drawing.Point(548, 6);
+            this.periodStartLabel.Name = "periodStartLabel";
+            this.periodStartLabel.Size = new System.Drawing.Size(125, 15);
+            this.periodStartLabel.TabIndex = 9;
+            this.periodStartLabel.Text = "PERIOD START DATE";
+            // 
+            // periodEndLabel
+            // 
+            this.periodEndLabel.AutoSize = true;
+            this.periodEndLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.periodEndLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.periodEndLabel.Location = new System.Drawing.Point(548, 21);
+            this.periodEndLabel.Name = "periodEndLabel";
+            this.periodEndLabel.Size = new System.Drawing.Size(113, 15);
+            this.periodEndLabel.TabIndex = 10;
+            this.periodEndLabel.Text = "PERIOD END DATE";
+            // 
+            // datePayableLabel
+            // 
+            this.datePayableLabel.AutoSize = true;
+            this.datePayableLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePayableLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.datePayableLabel.Location = new System.Drawing.Point(548, 36);
+            this.datePayableLabel.Name = "datePayableLabel";
+            this.datePayableLabel.Size = new System.Drawing.Size(92, 15);
+            this.datePayableLabel.TabIndex = 11;
+            this.datePayableLabel.Text = "DATE PAYABLE";
+            // 
+            // employeeNumber
+            // 
+            this.employeeNumber.AutoSize = true;
+            this.employeeNumber.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeNumber.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeNumber.Location = new System.Drawing.Point(131, 36);
+            this.employeeNumber.Name = "employeeNumber";
+            this.employeeNumber.Size = new System.Drawing.Size(103, 15);
+            this.employeeNumber.TabIndex = 12;
+            this.employeeNumber.Text = "123456789101";
+            // 
+            // position
+            // 
+            this.position.AutoSize = true;
+            this.position.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.position.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.position.Location = new System.Drawing.Point(131, 51);
+            this.position.Name = "position";
+            this.position.Size = new System.Drawing.Size(60, 15);
+            this.position.TabIndex = 13;
+            this.position.Text = "Associate";
+            // 
+            // startDatePeriod
+            // 
+            this.startDatePeriod.AutoSize = true;
+            this.startDatePeriod.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startDatePeriod.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.startDatePeriod.Location = new System.Drawing.Point(676, 6);
+            this.startDatePeriod.Name = "startDatePeriod";
+            this.startDatePeriod.Size = new System.Drawing.Size(83, 15);
+            this.startDatePeriod.TabIndex = 14;
+            this.startDatePeriod.Text = "01/01/2015";
+            // 
+            // endDatePeriod
+            // 
+            this.endDatePeriod.AutoSize = true;
+            this.endDatePeriod.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endDatePeriod.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.endDatePeriod.Location = new System.Drawing.Point(676, 21);
+            this.endDatePeriod.Name = "endDatePeriod";
+            this.endDatePeriod.Size = new System.Drawing.Size(83, 15);
+            this.endDatePeriod.TabIndex = 15;
+            this.endDatePeriod.Text = "01/01/2015";
+            // 
+            // datePayable
+            // 
+            this.datePayable.AutoSize = true;
+            this.datePayable.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePayable.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.datePayable.Location = new System.Drawing.Point(676, 36);
+            this.datePayable.Name = "datePayable";
+            this.datePayable.Size = new System.Drawing.Size(83, 15);
+            this.datePayable.TabIndex = 16;
+            this.datePayable.Text = "01/01/2015";
             // 
             // PayrollForm
             // 
@@ -300,5 +456,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.Label employeeFullName;
+        private System.Windows.Forms.Label dateEmployedLabel;
+        private System.Windows.Forms.Label dateEmployed;
+        private System.Windows.Forms.Label employeeNumberLabel;
+        private System.Windows.Forms.Label datePayable;
+        private System.Windows.Forms.Label endDatePeriod;
+        private System.Windows.Forms.Label startDatePeriod;
+        private System.Windows.Forms.Label position;
+        private System.Windows.Forms.Label employeeNumber;
+        private System.Windows.Forms.Label datePayableLabel;
+        private System.Windows.Forms.Label periodEndLabel;
+        private System.Windows.Forms.Label periodStartLabel;
+        private System.Windows.Forms.Label positionLabel;
     }
 }
