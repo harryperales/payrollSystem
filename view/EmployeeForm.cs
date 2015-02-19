@@ -24,6 +24,24 @@ namespace PayrollSystem.view
             initializeGender();
             initializeCivilStatus();
             initializeEmployeeId();
+            loadPosition();
+        }
+
+        private void initializeDependents()
+        {
+            dependents.Text = "0";
+        }
+
+        public void loadPosition()
+        {
+            positionComboBox.Items.Clear();
+            PositionControllerInterface positionController = new PositionController();
+            List<Position> positions = positionController.viewAllPosition();
+            foreach (Position position in positions)
+            {
+                positionComboBox.Items.Add(position.name);
+                if (positionComboBox.SelectedIndex == -1) positionComboBox.Text = position.name;
+            }
         }
 
         public EmployeeForm(AdminDashBoard adminDashboard, Employee employee)
@@ -91,8 +109,11 @@ namespace PayrollSystem.view
 
         private Boolean checkUsernameIfExist(User user)
         {
+            Console.WriteLine(user.username);
             UserControllerInterface userController = new UserController();
-            if (userController.fetchUserByUsername(user) != null)
+            User existingUser = userController.fetchUserByUsername(user);
+            Console.WriteLine(existingUser);
+            if ( existingUser == null || existingUser.ToString().Equals(""))
             {                
                 return false;
             }
@@ -195,6 +216,24 @@ namespace PayrollSystem.view
                     MessageBox.Show("Please try again, or contact the administrator.");
                 }
             }
+        }
+
+        private void positionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox positionComboBox = sender as ComboBox;
+            PositionControllerInterface positionController = new PositionController();
+            if (positionComboBox.SelectedIndex != -1)
+            {
+                Console.WriteLine(positionComboBox.SelectedItem.ToString());
+                Position position = positionController.fetchPositionByName(positionComboBox.SelectedItem.ToString());
+                salary.Text = position.salary.ToString();
+            }
+        }
+
+        private void exitPictureBox_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.showAdminDashBoard(adminDashboard, this);
         }
     }
 }

@@ -89,6 +89,7 @@ namespace PayrollSystem.view
                 attendance.employee = employee;
                 attendance.timeIn = currentDate;
                 attendanceController.saveEmployeeAttendance(attendance);
+                showErrorMessage("User is successfully logged-in on " + attendance.timeIn);
             }
         }
 

@@ -147,7 +147,7 @@ namespace PayrollSystem.service
 
                     request.employee = employee;
                     request.name = sqlDataReader["name"].ToString();
-                    request.status = sqlDataReader["status"].ToString() == "pending" ? RequestStatus.Waiting : RequestStatus.Disapproved;
+                    request.status = sqlDataReader["status"].ToString() == "pending" ? RequestStatus.Pending : RequestStatus.Disapproved;
                     request.description = sqlDataReader["description"].ToString();
                     request.dateRequested = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
                     requests.Add(request);
@@ -195,7 +195,7 @@ namespace PayrollSystem.service
 
                     request.employee = employee;
                     request.name = sqlDataReader["name"].ToString();
-                    request.status = sqlDataReader["status"].ToString() == "pending" ? RequestStatus.Waiting : RequestStatus.Disapproved;
+                    request.status = sqlDataReader["status"].ToString() == "pending" ? RequestStatus.Pending : RequestStatus.Disapproved;
                     request.description = sqlDataReader["description"].ToString();
                     request.dateRequested = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
                 }
@@ -219,8 +219,15 @@ namespace PayrollSystem.service
         public Request fetchById(int requestId)
         {
             Request request = new Request();
+            Employee employee = new Employee();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT id, name, description, dateRequested From Request WHERE requestId = @requestId;";
+            sqlCmd.CommandText = "SELECT Request.id, Request.name, Request.status, Request.description, "
+            + "Request.dateRequested, Employee.id AS employeeId, Employee.employeeId AS employeeNumber, "
+            + "Employee.userAccountId, Employee.fullName, Employee.birthDate, Employee.gender, "
+            + "Employee.civilStatus, Employee.dependents, Employee.address, "
+            + "Employee.contactNumber, Employee.tin, Employee.sssId, Employee.pagIbigId, "
+            + "Employee.philHealthId, Employee.dateEmployed, Employee.jobPositionId FROM Request INNER JOIN "
+            + "Employee ON Request.employeeId = Employee.id WHERE (Request.id = @requestId)";
             sqlCmd.Parameters.AddWithValue("@requestId", requestId);
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
@@ -228,8 +235,39 @@ namespace PayrollSystem.service
                 while (sqlDataReader.Read())
                 {
                     request.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    employee.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    employee.employeeId = Int64.Parse(sqlDataReader["employeeNumber"].ToString());
+                    employee.fullName = sqlDataReader["fullName"].ToString();
+                    employee.birthDate = sqlDataReader["birthDate"].ToString();
+                    employee.gender = sqlDataReader["gender"].ToString();
+                    employee.civilStatus = sqlDataReader["civilStatus"].ToString();
+                    employee.dependents = Int32.Parse(sqlDataReader["dependents"].ToString());
+                    employee.address = sqlDataReader["address"].ToString();
+                    employee.contactNumber = sqlDataReader["contactNumber"].ToString();
+                    employee.tin = sqlDataReader["tin"].ToString();
+                    employee.sssId = sqlDataReader["sssId"].ToString();
+                    employee.pagIbigId = sqlDataReader["pagIbigId"].ToString();
+                    employee.philHealthId = sqlDataReader["philHealthId"].ToString();
+                    employee.dateEmployed = sqlDataReader["dateEmployed"].ToString();
+
+                    request.employee = employee;
+                    Console.WriteLine(employee.fullName);
                     request.name = sqlDataReader["name"].ToString();
+                    string status = sqlDataReader["status"].ToString();
                     request.description = sqlDataReader["description"].ToString();
+                    request.dateRequested = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
+                    if (status.Equals("approved"))
+                    {
+                        request.status = RequestStatus.Approved;
+                    }
+                    else if (status.Equals("disapproved"))
+                    {
+                        request.status = RequestStatus.Disapproved;
+                    }
+                    else if (status.Equals("pending"))
+                    {
+                        request.status = RequestStatus.Disapproved;
+                    }
                     request.dateRequested = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
                 }
             }
@@ -240,6 +278,54 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.Clear();
             sqlCon.Close();
             return request;
+        }
+
+        public List<Request> fetchAllApprovedRequests()
+        {
+            List<Request> requests = new List<Request>();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT Request.id, Request.name, Request.status, Request.description, "
+            + "Request.dateRequested, Employee.id AS employeeId, Employee.employeeId AS employeeNumber, "
+            + "Employee.userAccountId, Employee.fullName, Employee.birthDate, Employee.gender, "
+            + "Employee.civilStatus, Employee.dependents, Employee.address, "
+            + "Employee.contactNumber, Employee.tin, Employee.sssId, Employee.pagIbigId, "
+            + "Employee.philHealthId, Employee.dateEmployed, Employee.jobPositionId FROM Request INNER JOIN "
+            + "Employee ON Request.employeeId = Employee.id WHERE (Request.status = @status)";
+            sqlCmd.Parameters.AddWithValue("@status", "approved");
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    Request request = new Request();
+                    request.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    Employee employee = new Employee();
+                    employee.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    employee.employeeId = Int64.Parse(sqlDataReader["employeeNumber"].ToString());
+                    employee.fullName = sqlDataReader["fullName"].ToString();
+                    employee.birthDate = sqlDataReader["birthDate"].ToString();
+                    employee.gender = sqlDataReader["gender"].ToString();
+                    employee.civilStatus = sqlDataReader["civilStatus"].ToString();
+                    employee.dependents = Int32.Parse(sqlDataReader["dependents"].ToString());
+                    employee.address = sqlDataReader["address"].ToString();
+                    employee.contactNumber = sqlDataReader["contactNumber"].ToString();
+                    employee.tin = sqlDataReader["tin"].ToString();
+                    employee.sssId = sqlDataReader["sssId"].ToString();
+                    employee.pagIbigId = sqlDataReader["pagIbigId"].ToString();
+                    employee.philHealthId = sqlDataReader["philHealthId"].ToString();
+                    employee.dateEmployed = sqlDataReader["dateEmployed"].ToString();
+
+                    request.employee = employee;
+                    request.name = sqlDataReader["name"].ToString();
+                    request.status = sqlDataReader["status"].ToString() == "pending" ? RequestStatus.Pending : RequestStatus.Disapproved;
+                    request.description = sqlDataReader["description"].ToString();
+                    request.dateRequested = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
+                    requests.Add(request);
+                }
+            }
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return requests;
         }
     }
 }

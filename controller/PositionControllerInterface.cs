@@ -8,6 +8,12 @@ namespace PayrollSystem.controller
 {
     public interface PositionControllerInterface
     {
-        Position addPosition(Position position);  
+        List<Position> viewAllPosition();
+
+        Position addPosition(Position position);
+
+        Position fetchPositionByName(string selectedPosition);
+
+        Position updatePosition(Position position); 
     }
 }

@@ -7,7 +7,7 @@ namespace PayrollSystem.model
 {
     public enum RequestStatus
     {
-        Waiting,
+        Pending,
         Approved,
         Disapproved
     }

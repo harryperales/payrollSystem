@@ -23,5 +23,10 @@ namespace PayrollSystem.controller
         {
             requestService.updateRequestStatusById(requestId, status);
         }
+
+        public List<Request> fetchAllApprovedRequests()
+        {
+            return requestService.fetchAllApprovedRequests();
+        }
     }
 }

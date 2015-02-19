@@ -19,5 +19,7 @@ namespace PayrollSystem.service
         Request updateRequestStatusById(int requestId, string status);
 
         Request fetchById(int requestId);
+
+        List<Request> fetchAllApprovedRequests();
     }
 }

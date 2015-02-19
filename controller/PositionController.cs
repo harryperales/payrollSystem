@@ -20,5 +20,20 @@ namespace PayrollSystem.controller
         {
             return positionService.addPosition(position);
         }
+
+        public List<Position> viewAllPosition()
+        {
+            return positionService.fetchAllPosition();
+        }
+
+        public Position fetchPositionByName(string selectedPosition)
+        {
+            return positionService.fetchPositionByName(selectedPosition);
+        }
+
+        public Position updatePosition(Position position)
+        {
+            return positionService.updatePosition(position);
+        }
     }
 }

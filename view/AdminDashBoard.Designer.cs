@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashBoard));
             this.employeeOptionPanel = new System.Windows.Forms.Panel();
+            this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
             this.viewRequest = new System.Windows.Forms.Button();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.startDateLabel = new System.Windows.Forms.Label();
@@ -48,19 +49,23 @@
             this.adminTab = new System.Windows.Forms.TabControl();
             this.userListTab = new System.Windows.Forms.TabPage();
             this.usersListBox = new System.Windows.Forms.ListBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.requestListBox = new System.Windows.Forms.ListBox();
+            this.pendingRequestTab = new System.Windows.Forms.TabPage();
+            this.pendingRequestListBox = new System.Windows.Forms.ListBox();
+            this.approvedRequestTab = new System.Windows.Forms.TabPage();
+            this.approvedRequestListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
             this.userListTab.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.pendingRequestTab.SuspendLayout();
+            this.approvedRequestTab.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // employeeOptionPanel
@@ -86,17 +91,28 @@
             this.employeeOptionPanel.Size = new System.Drawing.Size(315, 373);
             this.employeeOptionPanel.TabIndex = 0;
             // 
+            // selectAllCheckBox
+            // 
+            this.selectAllCheckBox.AutoSize = true;
+            this.selectAllCheckBox.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.selectAllCheckBox.Location = new System.Drawing.Point(151, 82);
+            this.selectAllCheckBox.Name = "selectAllCheckBox";
+            this.selectAllCheckBox.Size = new System.Drawing.Size(95, 25);
+            this.selectAllCheckBox.TabIndex = 12;
+            this.selectAllCheckBox.Text = "All Users";
+            this.selectAllCheckBox.UseVisualStyleBackColor = true;
+            // 
             // viewRequest
             // 
             this.viewRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.viewRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewRequest.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.viewRequest.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewRequest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.viewRequest.Location = new System.Drawing.Point(6, 156);
             this.viewRequest.Name = "viewRequest";
             this.viewRequest.Size = new System.Drawing.Size(139, 36);
             this.viewRequest.TabIndex = 11;
-            this.viewRequest.Text = "View Requests";
+            this.viewRequest.Text = "View Request";
             this.viewRequest.UseVisualStyleBackColor = false;
             this.viewRequest.Click += new System.EventHandler(this.viewRequest_Click);
             // 
@@ -240,7 +256,7 @@
             // 
             this.createMiscButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.createMiscButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createMiscButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.createMiscButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createMiscButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.createMiscButton.Location = new System.Drawing.Point(151, 156);
             this.createMiscButton.Name = "createMiscButton";
@@ -268,7 +284,8 @@
             // 
             this.adminTab.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.adminTab.Controls.Add(this.userListTab);
-            this.adminTab.Controls.Add(this.tabPage1);
+            this.adminTab.Controls.Add(this.pendingRequestTab);
+            this.adminTab.Controls.Add(this.approvedRequestTab);
             this.adminTab.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminTab.Location = new System.Drawing.Point(360, 50);
             this.adminTab.Name = "adminTab";
@@ -298,30 +315,51 @@
             this.usersListBox.TabIndex = 0;
             this.usersListBox.SelectedIndexChanged += new System.EventHandler(this.usersListBox_SelectedIndexChanged);
             // 
-            // tabPage1
+            // pendingRequestTab
             // 
-            this.tabPage1.Controls.Add(this.requestListBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(438, 340);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Requests";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.pendingRequestTab.Controls.Add(this.pendingRequestListBox);
+            this.pendingRequestTab.Location = new System.Drawing.Point(4, 29);
+            this.pendingRequestTab.Name = "pendingRequestTab";
+            this.pendingRequestTab.Padding = new System.Windows.Forms.Padding(3);
+            this.pendingRequestTab.Size = new System.Drawing.Size(438, 340);
+            this.pendingRequestTab.TabIndex = 3;
+            this.pendingRequestTab.Text = "Pending Requests";
+            this.pendingRequestTab.UseVisualStyleBackColor = true;
             // 
-            // requestListBox
+            // pendingRequestListBox
             // 
-            this.requestListBox.FormattingEnabled = true;
-            this.requestListBox.ItemHeight = 17;
-            this.requestListBox.Location = new System.Drawing.Point(0, -2);
-            this.requestListBox.Name = "requestListBox";
-            this.requestListBox.Size = new System.Drawing.Size(438, 327);
-            this.requestListBox.TabIndex = 1;
+            this.pendingRequestListBox.FormattingEnabled = true;
+            this.pendingRequestListBox.ItemHeight = 17;
+            this.pendingRequestListBox.Location = new System.Drawing.Point(0, 2);
+            this.pendingRequestListBox.Name = "pendingRequestListBox";
+            this.pendingRequestListBox.Size = new System.Drawing.Size(438, 327);
+            this.pendingRequestListBox.TabIndex = 1;
+            // 
+            // approvedRequestTab
+            // 
+            this.approvedRequestTab.Controls.Add(this.approvedRequestListBox);
+            this.approvedRequestTab.Location = new System.Drawing.Point(4, 29);
+            this.approvedRequestTab.Name = "approvedRequestTab";
+            this.approvedRequestTab.Padding = new System.Windows.Forms.Padding(3);
+            this.approvedRequestTab.Size = new System.Drawing.Size(438, 340);
+            this.approvedRequestTab.TabIndex = 4;
+            this.approvedRequestTab.Text = "Approved Request";
+            this.approvedRequestTab.UseVisualStyleBackColor = true;
+            // 
+            // approvedRequestListBox
+            // 
+            this.approvedRequestListBox.FormattingEnabled = true;
+            this.approvedRequestListBox.ItemHeight = 17;
+            this.approvedRequestListBox.Location = new System.Drawing.Point(0, 2);
+            this.approvedRequestListBox.Name = "approvedRequestListBox";
+            this.approvedRequestListBox.Size = new System.Drawing.Size(438, 327);
+            this.approvedRequestListBox.TabIndex = 2;
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.spinnerPictureBox);
             this.panel2.Controls.Add(this.errorMessageLabel);
             this.panel2.Controls.Add(this.exitPictureBox);
             this.panel2.Controls.Add(this.employeeOptionPanel);
@@ -353,22 +391,22 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // selectAllCheckBox
+            // spinnerPictureBox
             // 
-            this.selectAllCheckBox.AutoSize = true;
-            this.selectAllCheckBox.Font = new System.Drawing.Font("Century Gothic", 12.25F);
-            this.selectAllCheckBox.Location = new System.Drawing.Point(151, 82);
-            this.selectAllCheckBox.Name = "selectAllCheckBox";
-            this.selectAllCheckBox.Size = new System.Drawing.Size(95, 25);
-            this.selectAllCheckBox.TabIndex = 12;
-            this.selectAllCheckBox.Text = "All Users";
-            this.selectAllCheckBox.UseVisualStyleBackColor = true;
+            this.spinnerPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.spinnerPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("spinnerPictureBox.BackgroundImage")));
+            this.spinnerPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.spinnerPictureBox.Location = new System.Drawing.Point(324, 169);
+            this.spinnerPictureBox.Name = "spinnerPictureBox";
+            this.spinnerPictureBox.Size = new System.Drawing.Size(81, 74);
+            this.spinnerPictureBox.TabIndex = 13;
+            this.spinnerPictureBox.TabStop = false;
             // 
             // AdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 478);
+            this.ClientSize = new System.Drawing.Size(844, 478);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminDashBoard";
@@ -381,10 +419,12 @@
             this.updatePanel.PerformLayout();
             this.adminTab.ResumeLayout(false);
             this.userListTab.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.pendingRequestTab.ResumeLayout(false);
+            this.approvedRequestTab.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinnerPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,9 +460,12 @@
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.Label errorMessageLabel;
         private System.Windows.Forms.Button viewRequest;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ListBox requestListBox;
+        private System.Windows.Forms.TabPage pendingRequestTab;
+        private System.Windows.Forms.ListBox pendingRequestListBox;
         private System.Windows.Forms.CheckBox selectAllCheckBox;
+        private System.Windows.Forms.TabPage approvedRequestTab;
+        private System.Windows.Forms.ListBox approvedRequestListBox;
+        private System.Windows.Forms.PictureBox spinnerPictureBox;
 //>>>>>>> PayrollSystem/master
     }
 }

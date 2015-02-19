@@ -22,8 +22,10 @@ namespace PayrollSystem.view
             InitializeComponent();
             loadUsers();
             loadPendingRequests();
+            loadApprovedRequests();
             hideErrorMessage();
             initializeDatePicker();
+            hideSpinner();
         }
 
         private void hideErrorMessage()
@@ -62,7 +64,18 @@ namespace PayrollSystem.view
             List<Request> requests = requestController.fetchAllPendingRequests();
             foreach (Request request in requests)
             {
-                requestListBox.Items.Add(request.id+".) "+request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+                pendingRequestListBox.Items.Add(request.id+".) "+request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+            }
+        }
+
+        public void loadApprovedRequests()
+        {
+            RequestControllerInterface requestController = new RequestController();
+            List<Request> requests = requestController.fetchAllApprovedRequests();
+            foreach (Request request in requests)
+            {
+                Console.WriteLine("request:"+request.name);
+                approvedRequestListBox.Items.Add(request.id + ".) " + request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
             }
         }
 
@@ -116,8 +129,20 @@ namespace PayrollSystem.view
             }
         }
 
+        private void hideSpinner()
+        {
+            spinnerPictureBox.Visible = false;
+        }
+
+        private void showSpinner()
+        {
+            spinnerPictureBox.Visible = false;
+        }
+
         private void createPayrollButton_Click(object sender, EventArgs e)
         {
+            showSpinner();
+            hideErrorMessage();
             if (!selectAllCheckBox.Checked)
             {
                 EmployeeControllerInterface employeeController = new EmployeeController();
@@ -125,15 +150,19 @@ namespace PayrollSystem.view
 
                 if (employee == null || employee.Equals(""))
                 {
+                    hideSpinner();
                     showErrorMessage("Please input a valid username.");
                     return;
                 }
 
                 PayrollControllerInterface payslipController = new PayrollController();
                 payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+                hideSpinner();
+                showErrorMessage("Successfully create payroll to user: "+ employee.userAccount.username);
             }
             else
             {
+                
                 UserControllerInterface userController = new UserController();
                 List<User> users = userController.viewAllUsers();
                 foreach (User user in users)
@@ -146,6 +175,7 @@ namespace PayrollSystem.view
 
                         if (employee == null || employee.Equals(""))
                         {
+                            hideSpinner();
                             showErrorMessage("Please input a valid username.");
                             return;
                         }
@@ -155,10 +185,10 @@ namespace PayrollSystem.view
                     }
                 }
                 selectAllCheckBox.Checked = false;
+                hideSpinner();
+                showErrorMessage("Successfully create payroll to all users");
             }
         }
-
-        //private 
 
         private void addPositionButton_Click(object sender, EventArgs e)
         {
@@ -186,14 +216,24 @@ namespace PayrollSystem.view
 
         private void viewRequest_Click(object sender, EventArgs e)
         {
+            string selectedId ="";
             try
             {
-                int requestId = Convert.ToInt32(requestListBox.SelectedItem.ToString().Split('.')[0]);
+                Console.WriteLine(approvedRequestListBox.SelectedIndex);
+                Console.WriteLine(pendingRequestListBox.SelectedIndex);
+                if (pendingRequestListBox.SelectedIndex != -1)
+                {
+                    selectedId = pendingRequestListBox.SelectedItem.ToString().Split('.')[0];
+                }
+                else if(approvedRequestListBox.SelectedIndex != -1)
+                {
+                    selectedId = approvedRequestListBox.SelectedItem.ToString().Split('.')[0];
+                }
+                int requestId = Convert.ToInt32(selectedId);
                 FormControllerInterface formController = new FormController();
                 formController.showRequestFormById(this, requestId);
-                Console.WriteLine(requestListBox.SelectedItem.ToString().Split('.')[0]);
             }
-            catch (Exception ex)
+            catch (FormatException ex)
             {
                 Console.WriteLine("No selected item: " + ex.Message);
             }

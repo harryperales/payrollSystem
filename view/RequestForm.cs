@@ -27,13 +27,19 @@ namespace PayrollSystem.view
         private void initializeForm(int requestId)
         {
             RequestServiceInterface requestService = new RequestService();
-            Request request = requestService.fetchPendingRequestById(requestId);
+            Request request = requestService.fetchById(requestId);
 
-            requestedBy.Text = request.employee.fullName;
+            requestedBy.Text = request.employee.fullName.ToString();
             dateRequested.Text = request.dateRequested.ToString("MM/dd/yyyy");
             requestType.Text = request.name;
             status.Text = request.status.ToString();
             description.Text = request.description;
+
+            if (!status.Text.Equals("Pending"))
+            {
+                approveButton.Visible = false;
+                disapproveButton.Visible = false;
+            }
         }
 
         private void exitPictureBox_Click(object sender, EventArgs e)

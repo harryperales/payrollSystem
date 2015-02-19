@@ -11,5 +11,7 @@ namespace PayrollSystem.controller
         List<Request> fetchAllPendingRequests();
 
         void updateRequestStatusById(int requestId, string status);
+
+        List<Request> fetchAllApprovedRequests();
     }
 }

@@ -30,5 +30,67 @@ namespace PayrollSystem.service
 
             return position;
         }
+
+        public List<Position> fetchAllPosition()
+        {
+            List<Position> position = new List<Position>();
+
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT [Position].id, [Position].name, [Position].salary FROM [Position]";
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    Position pos = new Position();
+
+                    pos.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    pos.name = sqlDataReader["name"].ToString();
+                    pos.salary = sqlDataReader["salary"].ToString();
+                    position.Add(pos);
+                }
+            }
+            sqlCon.Close();
+
+            return position;
+        }
+
+        public Position fetchPositionByName(string selectedPosition)
+        {
+            Position position = new Position();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT id, name, salary FROM Position WHERE (name = @name);";
+            sqlCmd.Parameters.AddWithValue("@name", selectedPosition);
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    position.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    position.name = sqlDataReader["name"].ToString();
+                    position.salary = sqlDataReader["salary"].ToString();
+                    //misc.type = MiscType.Parse(sqlDataReader["type"].ToString()); 
+                    //misc.amount = Decimal.Parse(sqlDataReader["amount"].ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("nothing");
+            }
+            sqlCon.Close();
+            return position;
+        }
+
+        public Position updatePosition(Position position)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "UPDATE [Position] SET name = @name, salary = @salary WHERE (id = @id)";
+            sqlCmd.Parameters.AddWithValue("@name", position.name);
+            sqlCmd.Parameters.AddWithValue("@salary", position.salary);
+            sqlCmd.Parameters.AddWithValue("@id", position.id);
+            sqlCmd.ExecuteNonQuery();
+            sqlCon.Close();
+            return position;
+        }
     }
 }
