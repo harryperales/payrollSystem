@@ -103,6 +103,11 @@ namespace PayrollSystem.view
 
         private void updateEmployeeInfoButton_Click(object sender, EventArgs e)
         {
+            if (usernameOrEmployeeId.Equals(""))
+            {
+                showErrorMessage("Please input a valid username");
+                return;
+            }
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
 
