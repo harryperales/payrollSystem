@@ -15,18 +15,29 @@ namespace PayrollSystem.view
     {
         User user;
         DashboardForm dashboardForm;
+        AdminDashBoard adminDashboardForm;
         private Payslip payslip;
         public PayrollForm(DashboardForm dashboardForm, User user)
         {
             this.user = user;
             this.dashboardForm = dashboardForm;
+            adminDashboardForm = null;
             InitializeComponent();
+        }
+        public PayrollForm(AdminDashBoard adminDashboardForm, Payslip payslip)
+        {
+            this.payslip = payslip;
+            this.adminDashboardForm = adminDashboardForm;
+            dashboardForm = null;
+            InitializeComponent();
+            initializeForm(payslip);
         }
 
         public PayrollForm(DashboardForm dashboardForm, Payslip payslip)
         {
             this.payslip = payslip;
             this.dashboardForm = dashboardForm;
+            adminDashboardForm = null;
             InitializeComponent();
             initializeForm(payslip);
         }
@@ -144,14 +155,30 @@ namespace PayrollSystem.view
 
         private void PayrollForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FormControllerInterface formController = new FormController();
-            formController.showDashboardForm(dashboardForm);
+            if (dashboardForm != null)
+            {
+                FormControllerInterface formController = new FormController();
+                formController.showDashboardForm(this, dashboardForm);
+            }
+            else
+            {
+                FormControllerInterface formController = new FormController();
+                formController.showAdminDashboardForm(this, adminDashboardForm);
+            }
         }
 
         private void exitPictureBox_Click(object sender, EventArgs e)
         {
-            FormControllerInterface formController = new FormController();
-            formController.showDashboardForm(this, dashboardForm);
+            if (dashboardForm != null)
+            {
+                FormControllerInterface formController = new FormController();
+                formController.showDashboardForm(this, dashboardForm);
+            }
+            else
+            {
+                FormControllerInterface formController = new FormController();
+                formController.showAdminDashboardForm(this, adminDashboardForm);
+            }
         }
     }
 }

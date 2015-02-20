@@ -169,5 +169,18 @@ namespace PayrollSystem.controller
             PayrollForm payrollForm = new PayrollForm(dashboardForm, payslip);
             payrollForm.ShowDialog();
         }
+
+        public void showUserPayroll(AdminDashBoard adminDashBoard, Payslip payslip)
+        {
+            adminDashBoard.Hide();
+            PayrollForm payrollForm = new PayrollForm(adminDashBoard, payslip);
+            payrollForm.ShowDialog();
+        }
+
+        public void showAdminDashboardForm(PayrollForm payrollForm, AdminDashBoard adminDashboardForm)
+        {
+            payrollForm.Close();
+            adminDashboardForm.Show();
+        }
     }
 }

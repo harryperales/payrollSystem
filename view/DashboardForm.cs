@@ -47,8 +47,8 @@ namespace PayrollSystem.view
 
         private void viewPayrollButton_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 int payslipId = Convert.ToInt32(userPayrollListBox.SelectedItem.ToString().Split('.')[0]);
                 PayrollControllerInterface payrollController = new PayrollController();
                 Payslip payslip = payrollController.fetchPayslipById(payslipId);
@@ -58,11 +58,11 @@ namespace PayrollSystem.view
 
                 FormControllerInterface formController = new FormController();
                 formController.showUserPayroll(this, payslip);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("No item selected: " + ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No item selected: " + ex.Message);
+            }
         }
 
         private void DashboardForm_FormClosed(object sender, FormClosedEventArgs e)

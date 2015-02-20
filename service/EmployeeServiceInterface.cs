@@ -15,5 +15,7 @@ namespace PayrollSystem.service
         Employee updateEmployee(Employee employee);
 
         Employee fetchEmployeeByEmployeeIdNUmber(long employeeNumber);
+
+        Employee fetchEmployeeById(int employeeId);
     }
 }

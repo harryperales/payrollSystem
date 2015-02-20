@@ -53,23 +53,23 @@
             this.pendingRequestListBox = new System.Windows.Forms.ListBox();
             this.approvedRequestTab = new System.Windows.Forms.TabPage();
             this.approvedRequestListBox = new System.Windows.Forms.ListBox();
+            this.payrollTab = new System.Windows.Forms.TabPage();
+            this.payrollListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.viewPayslipButton = new System.Windows.Forms.Button();
             this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.payrollTab = new System.Windows.Forms.TabPage();
-            this.payrollListBox = new System.Windows.Forms.ListBox();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
             this.userListTab.SuspendLayout();
             this.pendingRequestTab.SuspendLayout();
             this.approvedRequestTab.SuspendLayout();
+            this.payrollTab.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
-            this.payrollTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeOptionPanel
@@ -326,7 +326,7 @@
             this.pendingRequestTab.Location = new System.Drawing.Point(4, 29);
             this.pendingRequestTab.Name = "pendingRequestTab";
             this.pendingRequestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.pendingRequestTab.Size = new System.Drawing.Size(438, 340);
+            this.pendingRequestTab.Size = new System.Drawing.Size(438, 296);
             this.pendingRequestTab.TabIndex = 3;
             this.pendingRequestTab.Text = "Pending Requests";
             this.pendingRequestTab.UseVisualStyleBackColor = true;
@@ -346,7 +346,7 @@
             this.approvedRequestTab.Location = new System.Drawing.Point(4, 29);
             this.approvedRequestTab.Name = "approvedRequestTab";
             this.approvedRequestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.approvedRequestTab.Size = new System.Drawing.Size(438, 340);
+            this.approvedRequestTab.Size = new System.Drawing.Size(438, 296);
             this.approvedRequestTab.TabIndex = 4;
             this.approvedRequestTab.Text = "Approved Request";
             this.approvedRequestTab.UseVisualStyleBackColor = true;
@@ -360,11 +360,32 @@
             this.approvedRequestListBox.Size = new System.Drawing.Size(438, 327);
             this.approvedRequestListBox.TabIndex = 2;
             // 
+            // payrollTab
+            // 
+            this.payrollTab.Controls.Add(this.payrollListBox);
+            this.payrollTab.Location = new System.Drawing.Point(4, 29);
+            this.payrollTab.Name = "payrollTab";
+            this.payrollTab.Padding = new System.Windows.Forms.Padding(3);
+            this.payrollTab.Size = new System.Drawing.Size(438, 296);
+            this.payrollTab.TabIndex = 5;
+            this.payrollTab.Text = "Payroll Sheet";
+            this.payrollTab.UseVisualStyleBackColor = true;
+            // 
+            // payrollListBox
+            // 
+            this.payrollListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.payrollListBox.FormattingEnabled = true;
+            this.payrollListBox.ItemHeight = 17;
+            this.payrollListBox.Location = new System.Drawing.Point(0, 0);
+            this.payrollListBox.Name = "payrollListBox";
+            this.payrollListBox.Size = new System.Drawing.Size(438, 293);
+            this.payrollListBox.TabIndex = 1;
+            // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.viewPayslipButton);
             this.panel2.Controls.Add(this.spinnerPictureBox);
             this.panel2.Controls.Add(this.errorMessageLabel);
             this.panel2.Controls.Add(this.exitPictureBox);
@@ -374,6 +395,20 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(839, 478);
             this.panel2.TabIndex = 3;
+            // 
+            // viewPayslipButton
+            // 
+            this.viewPayslipButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.viewPayslipButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewPayslipButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.viewPayslipButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.viewPayslipButton.Location = new System.Drawing.Point(648, 51);
+            this.viewPayslipButton.Name = "viewPayslipButton";
+            this.viewPayslipButton.Size = new System.Drawing.Size(158, 34);
+            this.viewPayslipButton.TabIndex = 14;
+            this.viewPayslipButton.Text = "View Payslip";
+            this.viewPayslipButton.UseVisualStyleBackColor = false;
+            this.viewPayslipButton.Click += new System.EventHandler(this.viewPayslipButton_Click);
             // 
             // spinnerPictureBox
             // 
@@ -408,40 +443,6 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12.25F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(648, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 34);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Add Employee";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // payrollTab
-            // 
-            this.payrollTab.Controls.Add(this.payrollListBox);
-            this.payrollTab.Location = new System.Drawing.Point(4, 29);
-            this.payrollTab.Name = "payrollTab";
-            this.payrollTab.Padding = new System.Windows.Forms.Padding(3);
-            this.payrollTab.Size = new System.Drawing.Size(438, 296);
-            this.payrollTab.TabIndex = 5;
-            this.payrollTab.Text = "Payroll Sheet";
-            this.payrollTab.UseVisualStyleBackColor = true;
-            // 
-            // payrollListBox
-            // 
-            this.payrollListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.payrollListBox.FormattingEnabled = true;
-            this.payrollListBox.ItemHeight = 17;
-            this.payrollListBox.Location = new System.Drawing.Point(0, 0);
-            this.payrollListBox.Name = "payrollListBox";
-            this.payrollListBox.Size = new System.Drawing.Size(438, 293);
-            this.payrollListBox.TabIndex = 1;
-            // 
             // AdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -461,11 +462,11 @@
             this.userListTab.ResumeLayout(false);
             this.pendingRequestTab.ResumeLayout(false);
             this.approvedRequestTab.ResumeLayout(false);
+            this.payrollTab.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
-            this.payrollTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -507,7 +508,7 @@
         private System.Windows.Forms.TabPage approvedRequestTab;
         private System.Windows.Forms.ListBox approvedRequestListBox;
         private System.Windows.Forms.PictureBox spinnerPictureBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button viewPayslipButton;
         private System.Windows.Forms.TabPage payrollTab;
         private System.Windows.Forms.ListBox payrollListBox;
 //>>>>>>> PayrollSystem/master

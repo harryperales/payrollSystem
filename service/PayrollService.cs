@@ -103,6 +103,7 @@ namespace PayrollSystem.service
         public Payslip fetchPayslipById(int payslipId)
         {
             Payslip payslip = new Payslip();
+            Employee employee = new Employee();
             sqlCon.Open();
             sqlCmd.CommandText = "SELECT * From Payroll WHERE id = @payslipId";
             sqlCmd.Parameters.AddWithValue("@payslipId", payslipId);
@@ -112,6 +113,8 @@ namespace PayrollSystem.service
                 while (sqlDataReader.Read())
                 {
                     payslip.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    employee.id = Int32.Parse(sqlDataReader["employeeId"].ToString());
+                    payslip.employee = employee;
                     payslip.dateCreated = Convert.ToDateTime(sqlDataReader["dateCreated"].ToString());
                     payslip.startDatePeriod = Convert.ToDateTime(sqlDataReader["startDate"].ToString());
                     payslip.endDatePeriod = Convert.ToDateTime(sqlDataReader["endDate"].ToString());

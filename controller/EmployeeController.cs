@@ -33,5 +33,10 @@ namespace PayrollSystem.controller
         {
             return employeeService.fetchEmployeeByEmployeeIdNUmber(employeeNumber);
         }
+
+        public Employee fetchEmployeeById(int employeeId)
+        {
+            return employeeService.fetchEmployeeById(employeeId);
+        }
     }
 }

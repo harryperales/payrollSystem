@@ -255,5 +255,25 @@ namespace PayrollSystem.view
                 Console.WriteLine("No selected item: " + ex.Message);
             }
         }
+
+        private void viewPayslipButton_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+                int payslipId = Convert.ToInt32(payrollListBox.SelectedItem.ToString().Split('.')[0]);
+                PayrollControllerInterface payrollController = new PayrollController();
+                Payslip payslip = payrollController.fetchPayslipById(payslipId);
+
+                EmployeeControllerInterface employeeController = new EmployeeController();
+                payslip.employee = employeeController.fetchEmployeeById(payslip.employee.id);
+
+                FormControllerInterface formController = new FormController();
+                formController.showUserPayroll(this, payslip);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("No item selected: " + ex.Message);
+            //}
+        }
     }
 }
