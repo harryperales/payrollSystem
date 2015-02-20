@@ -24,6 +24,31 @@ namespace PayrollSystem.view
             loadPayrollList();
             loadAttendanceHistory();
             loadUserCurrentAttendance();
+            hideErrorMessage();
+            initializeRequestTab();
+            loadPendingRequest();
+            loadApprovedRequest();
+        }
+
+        private void initializeRequestTab()
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            employeeName.Text = employee.fullName;
+            employeeNumber.Text = employee.employeeId.ToString();
+            dateFiled.Text = DateTime.Now.ToString("MM/dd/yyyy ddd");
+        }
+
+        private void hideErrorMessage()
+        {
+            errorMessageLabel.Visible = false;
+        }
+
+        private void initializeDatePicker()
+        {
+            dateOfLeave.Format = DateTimePickerFormat.Custom;
+            dateOfLeave.CustomFormat = "MMM dd, yyyy";
+            dateOfLeave.Value = DateTime.Now;
         }
 
         private void loadUserCurrentAttendance()
@@ -60,6 +85,32 @@ namespace PayrollSystem.view
             foreach(Payslip payslip in payroll)
             {
                 userPayrollListBox.Items.Add(payslip.id+".)"+payslip.startDatePeriod.ToString("MM/dd/yyyy") + "-" + payslip.endDatePeriod.ToString("MM/dd/yyyy"));
+            }
+        }
+
+        private void loadPendingRequest()
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            RequestControllerInterface requestController = new RequestController();
+            List<Request> requests = requestController.fetchPendingRequestByEmployee(employee);
+            pendingRequestListBox.Items.Clear();
+            foreach (Request request in requests)
+            {
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
+            }
+        }
+
+        private void loadApprovedRequest()
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            RequestControllerInterface requestController = new RequestController();
+            List<Request> requests = requestController.fetchApprovedRequestByEmployee(employee);
+            pendingRequestListBox.Items.Clear();
+            foreach (Request request in requests)
+            {
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
             }
         }
 
@@ -116,6 +167,74 @@ namespace PayrollSystem.view
         {
             FormControllerInterface formController = new FormController();
             formController.showLoginWindow(this, login);
+        }
+
+        private void leaveRequestButton_Click(object sender, EventArgs e)
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+
+            Request request = new Request();
+            request.employee = employee;
+            request.name = typeOfLeaveComboBox.Text;
+            request.requestedDate = Convert.ToDateTime(dateOfLeave.Text);
+            request.status = RequestStatus.Pending;
+            request.description = leaveDescription.Text;
+            request.dateFiled = Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy"));
+            RequestControllerInterface requestController = new RequestController();
+            request = requestController.createRequest(request);
+            if (request != null)
+            {
+                loadPendingRequest();
+                homeTabs.SelectedTab = pendingRequestTab;
+            }
+        }
+
+        private void showErrorMessage(string errorMessage)
+        {
+            errorMessageLabel.Text = errorMessage;
+            errorMessageLabel.Visible = true;
+        }
+
+        private void overtimeRequestButton_Click(object sender, EventArgs e)
+        {
+            var overtime = workingHour.Text.Split(':');
+            
+            TimeSpan time = new TimeSpan(0);
+            try {
+                if(overtime.Length == 1) {
+                    time = new TimeSpan(Convert.ToInt32(overtime[0]),0,0);
+                }
+                else if(overtime.Length == 2){
+                    time = new TimeSpan(Convert.ToInt32(overtime[0]),Convert.ToInt32(overtime[1]),0);
+                }
+            } 
+            catch( FormatException ex) {
+                showErrorMessage("Invalid working hour value");
+                return;
+            }
+            if (time < new TimeSpan(0))
+            {
+                showErrorMessage("Invalid working hour value");
+            }
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+
+            Request request = new Request();
+            request.employee = employee;
+            request.name = "OVERTIME";
+            request.requestedDate = Convert.ToDateTime(dateOfLeave.Text);
+            request.status = RequestStatus.Pending;
+            request.description = leaveDescription.Text;
+            DateTime date = DateTime.Now;
+            request.dateFiled = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, 0);// Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy "));
+            RequestControllerInterface requestController = new RequestController();
+            request = requestController.createRequest(request);
+            if (request != null)
+            {
+                loadPendingRequest();
+                homeTabs.SelectedTab = pendingRequestTab;
+            }
         }
     }
 }

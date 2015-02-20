@@ -30,7 +30,7 @@ namespace PayrollSystem.view
             Request request = requestService.fetchById(requestId);
 
             requestedBy.Text = request.employee.fullName.ToString();
-            dateRequested.Text = request.dateRequested.ToString("MM/dd/yyyy");
+            dateRequested.Text = request.dateFiled.ToString("MM/dd/yyyy");
             requestType.Text = request.name;
             status.Text = request.status.ToString();
             description.Text = request.description;

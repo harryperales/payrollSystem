@@ -37,24 +37,54 @@
             this.username = new System.Windows.Forms.Label();
             this.imagePanel = new System.Windows.Forms.Panel();
             this.myClockTab = new System.Windows.Forms.TabPage();
-            this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.attendanceListBox = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateToday = new System.Windows.Forms.Label();
-            this.clockInLabel = new System.Windows.Forms.Label();
-            this.clockedOutLabel = new System.Windows.Forms.Label();
-            this.clockedIn = new System.Windows.Forms.Label();
-            this.clockedOut = new System.Windows.Forms.Label();
-            this.clockOutNotificationLabel = new System.Windows.Forms.Label();
             this.validClockOut = new System.Windows.Forms.Label();
-            this.myRequestTab = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.clockOutNotificationLabel = new System.Windows.Forms.Label();
+            this.clockedOut = new System.Windows.Forms.Label();
+            this.clockedIn = new System.Windows.Forms.Label();
+            this.clockedOutLabel = new System.Windows.Forms.Label();
+            this.clockInLabel = new System.Windows.Forms.Label();
+            this.dateToday = new System.Windows.Forms.Label();
+            this.attendanceListBox = new System.Windows.Forms.ListBox();
+            this.requestTab = new System.Windows.Forms.TabPage();
+            this.requestPanel = new System.Windows.Forms.Panel();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
+            this.workingHour = new System.Windows.Forms.TextBox();
+            this.overtimeReqeustDescriptionLabel = new System.Windows.Forms.Label();
+            this.overtimeRequestDescription = new System.Windows.Forms.TextBox();
+            this.leaveDescription = new System.Windows.Forms.TextBox();
+            this.reasonLabel = new System.Windows.Forms.Label();
+            this.overtimeRequestButton = new System.Windows.Forms.Button();
+            this.overtimeRequestLabel = new System.Windows.Forms.Label();
+            this.workingHourLabel = new System.Windows.Forms.Label();
+            this.dateOfRequest = new System.Windows.Forms.DateTimePicker();
+            this.otherDateOfLeaveLabel = new System.Windows.Forms.Label();
+            this.leaveRequestButton = new System.Windows.Forms.Button();
+            this.leaveRequestLabel = new System.Windows.Forms.Label();
+            this.typeOfLeaveComboBox = new System.Windows.Forms.ComboBox();
+            this.typeOfLeaveLabel = new System.Windows.Forms.Label();
+            this.dateOfLeave = new System.Windows.Forms.DateTimePicker();
+            this.dateOfLeaveLabel = new System.Windows.Forms.Label();
+            this.dateFiled = new System.Windows.Forms.Label();
+            this.dateFiledLabel = new System.Windows.Forms.Label();
+            this.employeeName = new System.Windows.Forms.Label();
+            this.employeeNumber = new System.Windows.Forms.Label();
+            this.employeeNameLabel = new System.Windows.Forms.Label();
+            this.employeeNumberLabel = new System.Windows.Forms.Label();
+            this.pendingRequestTab = new System.Windows.Forms.TabPage();
+            this.approvedRequetTab = new System.Windows.Forms.TabPage();
+            this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.pendingRequestListBox = new System.Windows.Forms.ListBox();
+            this.approvedRequestListBox = new System.Windows.Forms.ListBox();
             this.homeTabs.SuspendLayout();
             this.dashboardTab.SuspendLayout();
             this.myClockTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
-            this.myRequestTab.SuspendLayout();
+            this.requestTab.SuspendLayout();
+            this.requestPanel.SuspendLayout();
+            this.pendingRequestTab.SuspendLayout();
+            this.approvedRequetTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // homeTabs
@@ -62,7 +92,9 @@
             this.homeTabs.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.homeTabs.Controls.Add(this.dashboardTab);
             this.homeTabs.Controls.Add(this.myClockTab);
-            this.homeTabs.Controls.Add(this.myRequestTab);
+            this.homeTabs.Controls.Add(this.requestTab);
+            this.homeTabs.Controls.Add(this.pendingRequestTab);
+            this.homeTabs.Controls.Add(this.approvedRequetTab);
             this.homeTabs.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.homeTabs.Location = new System.Drawing.Point(0, 41);
             this.homeTabs.Name = "homeTabs";
@@ -152,26 +184,6 @@
             this.myClockTab.TabIndex = 1;
             this.myClockTab.Text = "My Clock";
             // 
-            // exitPictureBox
-            // 
-            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.exitPictureBox.Location = new System.Drawing.Point(572, 1);
-            this.exitPictureBox.Name = "exitPictureBox";
-            this.exitPictureBox.Size = new System.Drawing.Size(42, 35);
-            this.exitPictureBox.TabIndex = 1;
-            this.exitPictureBox.TabStop = false;
-            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
-            // 
-            // attendanceListBox
-            // 
-            this.attendanceListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attendanceListBox.FormattingEnabled = true;
-            this.attendanceListBox.ItemHeight = 17;
-            this.attendanceListBox.Location = new System.Drawing.Point(249, 37);
-            this.attendanceListBox.Name = "attendanceListBox";
-            this.attendanceListBox.Size = new System.Drawing.Size(350, 259);
-            this.attendanceListBox.TabIndex = 5;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -187,60 +199,16 @@
             this.panel1.Size = new System.Drawing.Size(212, 214);
             this.panel1.TabIndex = 6;
             // 
-            // dateToday
+            // validClockOut
             // 
-            this.dateToday.AutoSize = true;
-            this.dateToday.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.dateToday.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dateToday.Location = new System.Drawing.Point(13, 13);
-            this.dateToday.Name = "dateToday";
-            this.dateToday.Size = new System.Drawing.Size(155, 17);
-            this.dateToday.TabIndex = 10;
-            this.dateToday.Text = "Jan 01, 2015 Friday";
-            // 
-            // clockInLabel
-            // 
-            this.clockInLabel.AutoSize = true;
-            this.clockInLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockInLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clockInLabel.Location = new System.Drawing.Point(13, 39);
-            this.clockInLabel.Name = "clockInLabel";
-            this.clockInLabel.Size = new System.Drawing.Size(86, 15);
-            this.clockInLabel.TabIndex = 11;
-            this.clockInLabel.Text = "Clocked in at:";
-            // 
-            // clockedOutLabel
-            // 
-            this.clockedOutLabel.AutoSize = true;
-            this.clockedOutLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockedOutLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clockedOutLabel.Location = new System.Drawing.Point(13, 104);
-            this.clockedOutLabel.Name = "clockedOutLabel";
-            this.clockedOutLabel.Size = new System.Drawing.Size(94, 15);
-            this.clockedOutLabel.TabIndex = 12;
-            this.clockedOutLabel.Text = "Clocked Out at:";
-            // 
-            // clockedIn
-            // 
-            this.clockedIn.AutoSize = true;
-            this.clockedIn.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockedIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clockedIn.Location = new System.Drawing.Point(31, 54);
-            this.clockedIn.Name = "clockedIn";
-            this.clockedIn.Size = new System.Drawing.Size(63, 15);
-            this.clockedIn.TabIndex = 13;
-            this.clockedIn.Text = "12:00:00";
-            // 
-            // clockedOut
-            // 
-            this.clockedOut.AutoSize = true;
-            this.clockedOut.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clockedOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clockedOut.Location = new System.Drawing.Point(31, 119);
-            this.clockedOut.Name = "clockedOut";
-            this.clockedOut.Size = new System.Drawing.Size(63, 15);
-            this.clockedOut.TabIndex = 14;
-            this.clockedOut.Text = "22:00:00";
+            this.validClockOut.AutoSize = true;
+            this.validClockOut.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validClockOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.validClockOut.Location = new System.Drawing.Point(31, 172);
+            this.validClockOut.Name = "validClockOut";
+            this.validClockOut.Size = new System.Drawing.Size(63, 15);
+            this.validClockOut.TabIndex = 16;
+            this.validClockOut.Text = "22:00:00";
             // 
             // clockOutNotificationLabel
             // 
@@ -253,35 +221,418 @@
             this.clockOutNotificationLabel.TabIndex = 15;
             this.clockOutNotificationLabel.Text = "You can clock out after:";
             // 
-            // validClockOut
+            // clockedOut
             // 
-            this.validClockOut.AutoSize = true;
-            this.validClockOut.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.validClockOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.validClockOut.Location = new System.Drawing.Point(31, 172);
-            this.validClockOut.Name = "validClockOut";
-            this.validClockOut.Size = new System.Drawing.Size(63, 15);
-            this.validClockOut.TabIndex = 16;
-            this.validClockOut.Text = "22:00:00";
+            this.clockedOut.AutoSize = true;
+            this.clockedOut.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockedOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clockedOut.Location = new System.Drawing.Point(31, 119);
+            this.clockedOut.Name = "clockedOut";
+            this.clockedOut.Size = new System.Drawing.Size(63, 15);
+            this.clockedOut.TabIndex = 14;
+            this.clockedOut.Text = "22:00:00";
             // 
-            // myRequestTab
+            // clockedIn
             // 
-            this.myRequestTab.BackColor = System.Drawing.Color.DarkGreen;
-            this.myRequestTab.Controls.Add(this.panel2);
-            this.myRequestTab.Location = new System.Drawing.Point(4, 29);
-            this.myRequestTab.Name = "myRequestTab";
-            this.myRequestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.myRequestTab.Size = new System.Drawing.Size(607, 338);
-            this.myRequestTab.TabIndex = 2;
-            this.myRequestTab.Text = "My Request";
+            this.clockedIn.AutoSize = true;
+            this.clockedIn.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockedIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clockedIn.Location = new System.Drawing.Point(31, 54);
+            this.clockedIn.Name = "clockedIn";
+            this.clockedIn.Size = new System.Drawing.Size(63, 15);
+            this.clockedIn.TabIndex = 13;
+            this.clockedIn.Text = "12:00:00";
             // 
-            // panel2
+            // clockedOutLabel
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Location = new System.Drawing.Point(8, 6);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(591, 325);
-            this.panel2.TabIndex = 0;
+            this.clockedOutLabel.AutoSize = true;
+            this.clockedOutLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockedOutLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clockedOutLabel.Location = new System.Drawing.Point(13, 104);
+            this.clockedOutLabel.Name = "clockedOutLabel";
+            this.clockedOutLabel.Size = new System.Drawing.Size(94, 15);
+            this.clockedOutLabel.TabIndex = 12;
+            this.clockedOutLabel.Text = "Clocked Out at:";
+            // 
+            // clockInLabel
+            // 
+            this.clockInLabel.AutoSize = true;
+            this.clockInLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clockInLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clockInLabel.Location = new System.Drawing.Point(13, 39);
+            this.clockInLabel.Name = "clockInLabel";
+            this.clockInLabel.Size = new System.Drawing.Size(86, 15);
+            this.clockInLabel.TabIndex = 11;
+            this.clockInLabel.Text = "Clocked in at:";
+            // 
+            // dateToday
+            // 
+            this.dateToday.AutoSize = true;
+            this.dateToday.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.dateToday.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dateToday.Location = new System.Drawing.Point(13, 13);
+            this.dateToday.Name = "dateToday";
+            this.dateToday.Size = new System.Drawing.Size(155, 17);
+            this.dateToday.TabIndex = 10;
+            this.dateToday.Text = "Jan 01, 2015 Friday";
+            // 
+            // attendanceListBox
+            // 
+            this.attendanceListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attendanceListBox.FormattingEnabled = true;
+            this.attendanceListBox.ItemHeight = 17;
+            this.attendanceListBox.Location = new System.Drawing.Point(249, 37);
+            this.attendanceListBox.Name = "attendanceListBox";
+            this.attendanceListBox.Size = new System.Drawing.Size(350, 259);
+            this.attendanceListBox.TabIndex = 5;
+            // 
+            // requestTab
+            // 
+            this.requestTab.BackColor = System.Drawing.Color.DarkGreen;
+            this.requestTab.Controls.Add(this.requestPanel);
+            this.requestTab.Location = new System.Drawing.Point(4, 29);
+            this.requestTab.Name = "requestTab";
+            this.requestTab.Padding = new System.Windows.Forms.Padding(3);
+            this.requestTab.Size = new System.Drawing.Size(607, 338);
+            this.requestTab.TabIndex = 2;
+            this.requestTab.Text = "Request";
+            // 
+            // requestPanel
+            // 
+            this.requestPanel.BackColor = System.Drawing.Color.Transparent;
+            this.requestPanel.Controls.Add(this.errorMessageLabel);
+            this.requestPanel.Controls.Add(this.workingHour);
+            this.requestPanel.Controls.Add(this.overtimeReqeustDescriptionLabel);
+            this.requestPanel.Controls.Add(this.overtimeRequestDescription);
+            this.requestPanel.Controls.Add(this.leaveDescription);
+            this.requestPanel.Controls.Add(this.reasonLabel);
+            this.requestPanel.Controls.Add(this.overtimeRequestButton);
+            this.requestPanel.Controls.Add(this.overtimeRequestLabel);
+            this.requestPanel.Controls.Add(this.workingHourLabel);
+            this.requestPanel.Controls.Add(this.dateOfRequest);
+            this.requestPanel.Controls.Add(this.otherDateOfLeaveLabel);
+            this.requestPanel.Controls.Add(this.leaveRequestButton);
+            this.requestPanel.Controls.Add(this.leaveRequestLabel);
+            this.requestPanel.Controls.Add(this.typeOfLeaveComboBox);
+            this.requestPanel.Controls.Add(this.typeOfLeaveLabel);
+            this.requestPanel.Controls.Add(this.dateOfLeave);
+            this.requestPanel.Controls.Add(this.dateOfLeaveLabel);
+            this.requestPanel.Controls.Add(this.dateFiled);
+            this.requestPanel.Controls.Add(this.dateFiledLabel);
+            this.requestPanel.Controls.Add(this.employeeName);
+            this.requestPanel.Controls.Add(this.employeeNumber);
+            this.requestPanel.Controls.Add(this.employeeNameLabel);
+            this.requestPanel.Controls.Add(this.employeeNumberLabel);
+            this.requestPanel.Location = new System.Drawing.Point(8, 6);
+            this.requestPanel.Name = "requestPanel";
+            this.requestPanel.Size = new System.Drawing.Size(591, 325);
+            this.requestPanel.TabIndex = 0;
+            // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.BackColor = System.Drawing.Color.Transparent;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.errorMessageLabel.Location = new System.Drawing.Point(3, 294);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(41, 20);
+            this.errorMessageLabel.TabIndex = 44;
+            this.errorMessageLabel.Text = "Error";
+            // 
+            // workingHour
+            // 
+            this.workingHour.Font = new System.Drawing.Font("Century", 12F);
+            this.workingHour.Location = new System.Drawing.Point(401, 101);
+            this.workingHour.Name = "workingHour";
+            this.workingHour.Size = new System.Drawing.Size(183, 27);
+            this.workingHour.TabIndex = 43;
+            this.workingHour.Text = "0";
+            // 
+            // overtimeReqeustDescriptionLabel
+            // 
+            this.overtimeReqeustDescriptionLabel.AutoSize = true;
+            this.overtimeReqeustDescriptionLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overtimeReqeustDescriptionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeReqeustDescriptionLabel.Location = new System.Drawing.Point(295, 141);
+            this.overtimeReqeustDescriptionLabel.Name = "overtimeReqeustDescriptionLabel";
+            this.overtimeReqeustDescriptionLabel.Size = new System.Drawing.Size(233, 15);
+            this.overtimeReqeustDescriptionLabel.TabIndex = 42;
+            this.overtimeReqeustDescriptionLabel.Text = "Reason or Purpose of Leave or Absence";
+            // 
+            // overtimeRequestDescription
+            // 
+            this.overtimeRequestDescription.Font = new System.Drawing.Font("Century", 12F);
+            this.overtimeRequestDescription.Location = new System.Drawing.Point(298, 159);
+            this.overtimeRequestDescription.Multiline = true;
+            this.overtimeRequestDescription.Name = "overtimeRequestDescription";
+            this.overtimeRequestDescription.Size = new System.Drawing.Size(286, 81);
+            this.overtimeRequestDescription.TabIndex = 41;
+            // 
+            // leaveDescription
+            // 
+            this.leaveDescription.Font = new System.Drawing.Font("Century", 12F);
+            this.leaveDescription.Location = new System.Drawing.Point(6, 160);
+            this.leaveDescription.Multiline = true;
+            this.leaveDescription.Name = "leaveDescription";
+            this.leaveDescription.Size = new System.Drawing.Size(271, 81);
+            this.leaveDescription.TabIndex = 40;
+            // 
+            // reasonLabel
+            // 
+            this.reasonLabel.AutoSize = true;
+            this.reasonLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reasonLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reasonLabel.Location = new System.Drawing.Point(4, 142);
+            this.reasonLabel.Name = "reasonLabel";
+            this.reasonLabel.Size = new System.Drawing.Size(233, 15);
+            this.reasonLabel.TabIndex = 39;
+            this.reasonLabel.Text = "Reason or Purpose of Leave or Absence";
+            // 
+            // overtimeRequestButton
+            // 
+            this.overtimeRequestButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.overtimeRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.overtimeRequestButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overtimeRequestButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeRequestButton.Location = new System.Drawing.Point(386, 247);
+            this.overtimeRequestButton.Name = "overtimeRequestButton";
+            this.overtimeRequestButton.Size = new System.Drawing.Size(198, 34);
+            this.overtimeRequestButton.TabIndex = 38;
+            this.overtimeRequestButton.Text = "Submit Overtime Request";
+            this.overtimeRequestButton.UseVisualStyleBackColor = false;
+            this.overtimeRequestButton.Click += new System.EventHandler(this.overtimeRequestButton_Click);
+            // 
+            // overtimeRequestLabel
+            // 
+            this.overtimeRequestLabel.AutoSize = true;
+            this.overtimeRequestLabel.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.overtimeRequestLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeRequestLabel.Location = new System.Drawing.Point(294, 49);
+            this.overtimeRequestLabel.Name = "overtimeRequestLabel";
+            this.overtimeRequestLabel.Size = new System.Drawing.Size(176, 21);
+            this.overtimeRequestLabel.TabIndex = 37;
+            this.overtimeRequestLabel.Text = "OVERTIME REQUEST";
+            // 
+            // workingHourLabel
+            // 
+            this.workingHourLabel.AutoSize = true;
+            this.workingHourLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.workingHourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.workingHourLabel.Location = new System.Drawing.Point(295, 108);
+            this.workingHourLabel.Name = "workingHourLabel";
+            this.workingHourLabel.Size = new System.Drawing.Size(88, 15);
+            this.workingHourLabel.TabIndex = 35;
+            this.workingHourLabel.Text = "Working Hour";
+            // 
+            // dateOfRequest
+            // 
+            this.dateOfRequest.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfRequest.Location = new System.Drawing.Point(401, 72);
+            this.dateOfRequest.Name = "dateOfRequest";
+            this.dateOfRequest.Size = new System.Drawing.Size(183, 22);
+            this.dateOfRequest.TabIndex = 34;
+            // 
+            // otherDateOfLeaveLabel
+            // 
+            this.otherDateOfLeaveLabel.AutoSize = true;
+            this.otherDateOfLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.otherDateOfLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.otherDateOfLeaveLabel.Location = new System.Drawing.Point(295, 78);
+            this.otherDateOfLeaveLabel.Name = "otherDateOfLeaveLabel";
+            this.otherDateOfLeaveLabel.Size = new System.Drawing.Size(104, 15);
+            this.otherDateOfLeaveLabel.TabIndex = 33;
+            this.otherDateOfLeaveLabel.Text = "Date Of Overtime";
+            // 
+            // leaveRequestButton
+            // 
+            this.leaveRequestButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.leaveRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.leaveRequestButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaveRequestButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.leaveRequestButton.Location = new System.Drawing.Point(105, 247);
+            this.leaveRequestButton.Name = "leaveRequestButton";
+            this.leaveRequestButton.Size = new System.Drawing.Size(172, 34);
+            this.leaveRequestButton.TabIndex = 26;
+            this.leaveRequestButton.Text = "Submit Leave Request";
+            this.leaveRequestButton.UseVisualStyleBackColor = false;
+            this.leaveRequestButton.Click += new System.EventHandler(this.leaveRequestButton_Click);
+            // 
+            // leaveRequestLabel
+            // 
+            this.leaveRequestLabel.AutoSize = true;
+            this.leaveRequestLabel.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaveRequestLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.leaveRequestLabel.Location = new System.Drawing.Point(3, 49);
+            this.leaveRequestLabel.Name = "leaveRequestLabel";
+            this.leaveRequestLabel.Size = new System.Drawing.Size(142, 21);
+            this.leaveRequestLabel.TabIndex = 25;
+            this.leaveRequestLabel.Text = "LEAVE REQUEST";
+            // 
+            // typeOfLeaveComboBox
+            // 
+            this.typeOfLeaveComboBox.FormattingEnabled = true;
+            this.typeOfLeaveComboBox.Items.AddRange(new object[] {
+            "Vacation Leave",
+            "Sick Leave",
+            "Bereavement Leave",
+            "Maternity Leave",
+            "Paternity Leave",
+            "Undertime"});
+            this.typeOfLeaveComboBox.Location = new System.Drawing.Point(94, 104);
+            this.typeOfLeaveComboBox.Name = "typeOfLeaveComboBox";
+            this.typeOfLeaveComboBox.Size = new System.Drawing.Size(183, 25);
+            this.typeOfLeaveComboBox.TabIndex = 24;
+            this.typeOfLeaveComboBox.Text = "Vacation Leave";
+            // 
+            // typeOfLeaveLabel
+            // 
+            this.typeOfLeaveLabel.AutoSize = true;
+            this.typeOfLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typeOfLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.typeOfLeaveLabel.Location = new System.Drawing.Point(3, 114);
+            this.typeOfLeaveLabel.Name = "typeOfLeaveLabel";
+            this.typeOfLeaveLabel.Size = new System.Drawing.Size(85, 15);
+            this.typeOfLeaveLabel.TabIndex = 19;
+            this.typeOfLeaveLabel.Text = "Type Of Leave";
+            // 
+            // dateOfLeave
+            // 
+            this.dateOfLeave.Font = new System.Drawing.Font("Century", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfLeave.Location = new System.Drawing.Point(94, 73);
+            this.dateOfLeave.Name = "dateOfLeave";
+            this.dateOfLeave.Size = new System.Drawing.Size(183, 22);
+            this.dateOfLeave.TabIndex = 18;
+            // 
+            // dateOfLeaveLabel
+            // 
+            this.dateOfLeaveLabel.AutoSize = true;
+            this.dateOfLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateOfLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dateOfLeaveLabel.Location = new System.Drawing.Point(3, 79);
+            this.dateOfLeaveLabel.Name = "dateOfLeaveLabel";
+            this.dateOfLeaveLabel.Size = new System.Drawing.Size(85, 15);
+            this.dateOfLeaveLabel.TabIndex = 17;
+            this.dateOfLeaveLabel.Text = "Date Of Leave";
+            // 
+            // dateFiled
+            // 
+            this.dateFiled.AutoSize = true;
+            this.dateFiled.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFiled.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dateFiled.Location = new System.Drawing.Point(486, 0);
+            this.dateFiled.Name = "dateFiled";
+            this.dateFiled.Size = new System.Drawing.Size(83, 15);
+            this.dateFiled.TabIndex = 16;
+            this.dateFiled.Text = "01/22/2015";
+            // 
+            // dateFiledLabel
+            // 
+            this.dateFiledLabel.AutoSize = true;
+            this.dateFiledLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFiledLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dateFiledLabel.Location = new System.Drawing.Point(398, 0);
+            this.dateFiledLabel.Name = "dateFiledLabel";
+            this.dateFiledLabel.Size = new System.Drawing.Size(64, 15);
+            this.dateFiledLabel.TabIndex = 15;
+            this.dateFiledLabel.Text = "Date Filed";
+            // 
+            // employeeName
+            // 
+            this.employeeName.AutoSize = true;
+            this.employeeName.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeName.Location = new System.Drawing.Point(120, 0);
+            this.employeeName.Name = "employeeName";
+            this.employeeName.Size = new System.Drawing.Size(107, 15);
+            this.employeeName.TabIndex = 14;
+            this.employeeName.Text = "Last, First Middle";
+            // 
+            // employeeNumber
+            // 
+            this.employeeNumber.AutoSize = true;
+            this.employeeNumber.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeNumber.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeNumber.Location = new System.Drawing.Point(120, 23);
+            this.employeeNumber.Name = "employeeNumber";
+            this.employeeNumber.Size = new System.Drawing.Size(103, 15);
+            this.employeeNumber.TabIndex = 13;
+            this.employeeNumber.Text = "123456789101";
+            // 
+            // employeeNameLabel
+            // 
+            this.employeeNameLabel.AutoSize = true;
+            this.employeeNameLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeNameLabel.Location = new System.Drawing.Point(4, 0);
+            this.employeeNameLabel.Name = "employeeNameLabel";
+            this.employeeNameLabel.Size = new System.Drawing.Size(97, 15);
+            this.employeeNameLabel.TabIndex = 12;
+            this.employeeNameLabel.Text = "Employee Name";
+            // 
+            // employeeNumberLabel
+            // 
+            this.employeeNumberLabel.AutoSize = true;
+            this.employeeNumberLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeNumberLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeNumberLabel.Location = new System.Drawing.Point(4, 23);
+            this.employeeNumberLabel.Name = "employeeNumberLabel";
+            this.employeeNumberLabel.Size = new System.Drawing.Size(110, 15);
+            this.employeeNumberLabel.TabIndex = 11;
+            this.employeeNumberLabel.Text = "Employee Number";
+            // 
+            // pendingRequestTab
+            // 
+            this.pendingRequestTab.BackColor = System.Drawing.Color.DarkGreen;
+            this.pendingRequestTab.Controls.Add(this.pendingRequestListBox);
+            this.pendingRequestTab.Location = new System.Drawing.Point(4, 29);
+            this.pendingRequestTab.Name = "pendingRequestTab";
+            this.pendingRequestTab.Padding = new System.Windows.Forms.Padding(3);
+            this.pendingRequestTab.Size = new System.Drawing.Size(607, 338);
+            this.pendingRequestTab.TabIndex = 3;
+            this.pendingRequestTab.Text = "Pending Request";
+            // 
+            // approvedRequetTab
+            // 
+            this.approvedRequetTab.BackColor = System.Drawing.Color.DarkGreen;
+            this.approvedRequetTab.Controls.Add(this.approvedRequestListBox);
+            this.approvedRequetTab.Location = new System.Drawing.Point(4, 29);
+            this.approvedRequetTab.Name = "approvedRequetTab";
+            this.approvedRequetTab.Padding = new System.Windows.Forms.Padding(3);
+            this.approvedRequetTab.Size = new System.Drawing.Size(607, 338);
+            this.approvedRequetTab.TabIndex = 4;
+            this.approvedRequetTab.Text = "Approved Request";
+            // 
+            // exitPictureBox
+            // 
+            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.exitPictureBox.Location = new System.Drawing.Point(572, 1);
+            this.exitPictureBox.Name = "exitPictureBox";
+            this.exitPictureBox.Size = new System.Drawing.Size(42, 35);
+            this.exitPictureBox.TabIndex = 1;
+            this.exitPictureBox.TabStop = false;
+            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            // 
+            // pendingRequestListBox
+            // 
+            this.pendingRequestListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pendingRequestListBox.FormattingEnabled = true;
+            this.pendingRequestListBox.ItemHeight = 17;
+            this.pendingRequestListBox.Location = new System.Drawing.Point(20, 23);
+            this.pendingRequestListBox.Name = "pendingRequestListBox";
+            this.pendingRequestListBox.Size = new System.Drawing.Size(564, 293);
+            this.pendingRequestListBox.TabIndex = 6;
+            // 
+            // approvedRequestListBox
+            // 
+            this.approvedRequestListBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.approvedRequestListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.approvedRequestListBox.FormattingEnabled = true;
+            this.approvedRequestListBox.ItemHeight = 17;
+            this.approvedRequestListBox.Location = new System.Drawing.Point(21, 23);
+            this.approvedRequestListBox.Name = "approvedRequestListBox";
+            this.approvedRequestListBox.Size = new System.Drawing.Size(564, 293);
+            this.approvedRequestListBox.TabIndex = 7;
             // 
             // DashboardForm
             // 
@@ -301,10 +652,14 @@
             this.dashboardTab.ResumeLayout(false);
             this.dashboardTab.PerformLayout();
             this.myClockTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.myRequestTab.ResumeLayout(false);
+            this.requestTab.ResumeLayout(false);
+            this.requestPanel.ResumeLayout(false);
+            this.requestPanel.PerformLayout();
+            this.pendingRequestTab.ResumeLayout(false);
+            this.approvedRequetTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,8 +684,35 @@
         private System.Windows.Forms.Label clockedIn;
         private System.Windows.Forms.Label validClockOut;
         private System.Windows.Forms.Label clockOutNotificationLabel;
-        private System.Windows.Forms.TabPage myRequestTab;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TabPage requestTab;
+        private System.Windows.Forms.Panel requestPanel;
+        private System.Windows.Forms.Label employeeNumberLabel;
+        private System.Windows.Forms.Label employeeName;
+        private System.Windows.Forms.Label employeeNumber;
+        private System.Windows.Forms.Label employeeNameLabel;
+        private System.Windows.Forms.Label dateOfLeaveLabel;
+        private System.Windows.Forms.DateTimePicker dateOfLeave;
+        private System.Windows.Forms.Label typeOfLeaveLabel;
+        private System.Windows.Forms.ComboBox typeOfLeaveComboBox;
+        private System.Windows.Forms.Label leaveRequestLabel;
+        private System.Windows.Forms.Button leaveRequestButton;
+        private System.Windows.Forms.Label reasonLabel;
+        private System.Windows.Forms.Button overtimeRequestButton;
+        private System.Windows.Forms.Label overtimeRequestLabel;
+        private System.Windows.Forms.Label workingHourLabel;
+        private System.Windows.Forms.DateTimePicker dateOfRequest;
+        private System.Windows.Forms.Label otherDateOfLeaveLabel;
+        private System.Windows.Forms.TextBox leaveDescription;
+        private System.Windows.Forms.Label overtimeReqeustDescriptionLabel;
+        private System.Windows.Forms.TextBox overtimeRequestDescription;
+        private System.Windows.Forms.Label dateFiled;
+        private System.Windows.Forms.Label dateFiledLabel;
+        private System.Windows.Forms.TextBox workingHour;
+        private System.Windows.Forms.Label errorMessageLabel;
+        private System.Windows.Forms.TabPage pendingRequestTab;
+        private System.Windows.Forms.TabPage approvedRequetTab;
+        private System.Windows.Forms.ListBox pendingRequestListBox;
+        private System.Windows.Forms.ListBox approvedRequestListBox;
 
     }
 }

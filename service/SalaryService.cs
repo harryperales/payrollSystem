@@ -121,7 +121,7 @@ namespace PayrollSystem.service
                 foreach (Holiday holiday in holidays)
                 {
 
-                    if (!holiday.date.ToString("MM/dd/yyyy").Equals(leaveRequest.dateRequested.ToString("MM/dd/yyyy")))
+                    if (!holiday.date.ToString("MM/dd/yyyy").Equals(leaveRequest.dateFiled.ToString("MM/dd/yyyy")))
                     {
                         //nothing to do, just to skip the loop
                     }

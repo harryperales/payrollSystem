@@ -74,9 +74,10 @@ namespace PayrollSystem.view
         {
             RequestControllerInterface requestController = new RequestController();
             List<Request> requests = requestController.fetchAllPendingRequests();
+            pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id+".) "+request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+                pendingRequestListBox.Items.Add(request.id+".) "+request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
             }
         }
 
@@ -84,16 +85,18 @@ namespace PayrollSystem.view
         {
             RequestControllerInterface requestController = new RequestController();
             List<Request> requests = requestController.fetchAllApprovedRequests();
+            approvedRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
                 Console.WriteLine("request:"+request.name);
-                approvedRequestListBox.Items.Add(request.id + ".) " + request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+                approvedRequestListBox.Items.Add(request.id + ".) " + request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
             }
         }
 
         private void usersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListBox l = sender as ListBox;
+            usersListBox.Items.Clear();
             if (l.SelectedIndex != -1)
             {
                 usersListBox.SelectedIndex = l.SelectedIndex;
@@ -260,17 +263,24 @@ namespace PayrollSystem.view
         {
             try
             {
-                int payslipId = Convert.ToInt32(payrollListBox.SelectedItem.ToString().Split('.')[0]);
-                PayrollControllerInterface payrollController = new PayrollController();
-                Payslip payslip = payrollController.fetchPayslipById(payslipId);
+                if (payrollListBox.SelectedIndex != -1)
+                {
+                    int payslipId = Convert.ToInt32(payrollListBox.SelectedItem.ToString().Split('.')[0]);
+                    PayrollControllerInterface payrollController = new PayrollController();
+                    Payslip payslip = payrollController.fetchPayslipById(payslipId);
 
-                EmployeeControllerInterface employeeController = new EmployeeController();
-                payslip.employee = employeeController.fetchEmployeeById(payslip.employee.id);
+                    EmployeeControllerInterface employeeController = new EmployeeController();
+                    payslip.employee = employeeController.fetchEmployeeById(payslip.employee.id);
 
-                FormControllerInterface formController = new FormController();
-                formController.showUserPayroll(this, payslip);
+                    FormControllerInterface formController = new FormController();
+                    formController.showUserPayroll(this, payslip);
+                }
+                else
+                {
+                    showErrorMessage("Please a record to view.");
+                }
             }
-            catch (Exception ex)
+            catch (FormatException ex)
             {
                 Console.WriteLine("No item selected: " + ex.Message);
             }

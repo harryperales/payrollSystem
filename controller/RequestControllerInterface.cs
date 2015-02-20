@@ -13,5 +13,11 @@ namespace PayrollSystem.controller
         void updateRequestStatusById(int requestId, string status);
 
         List<Request> fetchAllApprovedRequests();
+
+        Request createRequest(Request request);
+
+        List<Request> fetchPendingRequestByEmployee(Employee employee);
+
+        List<Request> fetchApprovedRequestByEmployee(Employee employee);
     }
 }

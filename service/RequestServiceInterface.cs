@@ -21,5 +21,11 @@ namespace PayrollSystem.service
         Request fetchById(int requestId);
 
         List<Request> fetchAllApprovedRequests();
+
+        Request createRequest(Request request);
+
+        List<Request> fetchPendingRequestByEmployee(Employee employee);
+
+        List<Request> fetchApprovedRequestByEmployee(Employee employee);
     }
 }

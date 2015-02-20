@@ -10,7 +10,8 @@ namespace PayrollSystem.model
         public int id { get; set; }
         public Employee employee { get; set; }
         public string name { get; set; }
-        public DateTime dateRequested { get; set; }
+        public DateTime requestedDate { get; set; }
+        public DateTime dateFiled { get; set; }
         public RequestStatus status { get; set; }
         public string description { get; set; }
     }

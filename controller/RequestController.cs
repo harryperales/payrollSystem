@@ -28,5 +28,20 @@ namespace PayrollSystem.controller
         {
             return requestService.fetchAllApprovedRequests();
         }
+
+        public Request createRequest(Request request)
+        {
+            return requestService.createRequest(request);
+        }
+
+        public List<Request> fetchPendingRequestByEmployee(Employee employee)
+        {
+            return requestService.fetchPendingRequestByEmployee(employee);
+        }
+
+        public List<Request> fetchApprovedRequestByEmployee(Employee employee)
+        {
+            return requestService.fetchApprovedRequestByEmployee(employee);
+        }
     }
 }
