@@ -90,7 +90,7 @@ namespace PayrollSystem.service
                     employee.dateEmployed = sqlDataReader["dateEmployed"].ToString();
                     employee.jobPosition.id = Int32.Parse(sqlDataReader["jobPositionId"].ToString());
                     employee.jobPosition.name = sqlDataReader["name"].ToString();
-                    employee.jobPosition.salary = sqlDataReader["salary"].ToString();
+                    employee.jobPosition.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());
                 }
             }
             else
@@ -163,7 +163,7 @@ namespace PayrollSystem.service
                     employee.dateEmployed = sqlDataReader["dateEmployed"].ToString();
                     employee.jobPosition.id = Int32.Parse(sqlDataReader["jobPositionId"].ToString());
                     employee.jobPosition.name = sqlDataReader["name"].ToString();
-                    employee.jobPosition.salary = sqlDataReader["salary"].ToString();
+                    employee.jobPosition.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());
                 }
             }
             else

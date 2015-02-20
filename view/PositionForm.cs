@@ -26,7 +26,15 @@ namespace PayrollSystem.view
             if (positionName.Text != null && salary.Text != null) {
                 Position position = new Position();
                 position.name = positionName.Text;
-                position.salary = salary.Text;
+                try
+                {
+                    position.salary = Convert.ToDecimal(salary.Text);
+                }
+                catch (FormatException fex)
+                {
+                    MessageBox.Show("Please input a valid Salary.");
+                    return;
+                }
                 positionController.addPosition(position);
                 FormControllerInterface formController = new FormController();
                 formController.showAdminDashBoardForPosition(adminDashboard, this);

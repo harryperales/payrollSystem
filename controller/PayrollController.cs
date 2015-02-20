@@ -37,7 +37,7 @@ namespace PayrollSystem.controller
             List<Attendance> attendances = attendanceService.fetchEmployeeAttendance(startDatePeriod, endDatePeriod, employee);
             
             decimal dailyBasedSalary = 0.00M;
-            Decimal.TryParse(employee.jobPosition.salary, out dailyBasedSalary);
+            dailyBasedSalary = employee.jobPosition.salary;
             decimal periodSalary = salaryService.calculatePeriodSalary(attendances, dailyBasedSalary);
 
             payslip.basePay = periodSalary;

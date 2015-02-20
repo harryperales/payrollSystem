@@ -63,7 +63,7 @@ namespace PayrollSystem.service
             return miscs;
         }
 
-        private Miscellaneous fetchMiscellaneousByName(string miscellaneousName)
+        public Miscellaneous fetchMiscellaneousByName(string miscellaneousName)
         {
             Miscellaneous miscellaneous = new Miscellaneous();
             sqlCon.Open();

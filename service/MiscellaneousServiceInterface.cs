@@ -15,5 +15,7 @@ namespace PayrollSystem.service
         List<Miscellaneous> fetchBonusMiscellaneousByDescriptionAsDate(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
 
         Miscellaneous fetchById(int miscellaneousId);
+
+        Miscellaneous fetchMiscellaneousByName(string miscellaneousName);
     }
 }

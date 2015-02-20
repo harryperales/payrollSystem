@@ -9,5 +9,9 @@ namespace PayrollSystem.controller
     public interface MiscControllerInterface
     {
         Miscellaneous addMisc(Miscellaneous miscellaneous);
+
+        Miscellaneous fetchFoodAllowance();
+
+        Miscellaneous fetchTranspoAllowance();
     }
 }

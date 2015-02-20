@@ -84,7 +84,7 @@ namespace PayrollSystem.service
         public Attendance updateEmployeeAttendance(Attendance attendance)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "UPDATE       Attendance SET timeOut = @timeOut WHERE (id = @id)";
+            sqlCmd.CommandText = "UPDATE Attendance SET timeOut = @timeOut WHERE (id = @id)";
             sqlCmd.Parameters.AddWithValue("@id", attendance.id);
             sqlCmd.Parameters.AddWithValue("@timeOut", attendance.timeOut.ToString("MM/dd/yyyy hh:mm:ss tt"));
             sqlCmd.ExecuteNonQuery();

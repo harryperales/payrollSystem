@@ -46,7 +46,7 @@ namespace PayrollSystem.service
 
                     pos.id = Int32.Parse(sqlDataReader["id"].ToString());
                     pos.name = sqlDataReader["name"].ToString();
-                    pos.salary = sqlDataReader["salary"].ToString();
+                    pos.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());
                     position.Add(pos);
                 }
             }
@@ -68,7 +68,7 @@ namespace PayrollSystem.service
                 {
                     position.id = Int32.Parse(sqlDataReader["id"].ToString());
                     position.name = sqlDataReader["name"].ToString();
-                    position.salary = sqlDataReader["salary"].ToString();
+                    position.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());
                     //misc.type = MiscType.Parse(sqlDataReader["type"].ToString()); 
                     //misc.amount = Decimal.Parse(sqlDataReader["amount"].ToString());
                 }
