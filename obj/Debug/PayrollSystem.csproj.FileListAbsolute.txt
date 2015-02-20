@@ -38,7 +38,6 @@ C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Payrol
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.AdminDashBoard.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.DashboardForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.EmployeeForm.resources
-C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.IndexForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.LoginForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayrollForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.MiscellaneousForm.resources

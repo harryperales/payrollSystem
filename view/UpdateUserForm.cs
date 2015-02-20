@@ -13,22 +13,15 @@ namespace PayrollSystem.view
 {
     public partial class UpdateUserForm : Form
     {
-        private IndexForm indexForm;
         private User user;
         private AdminDashBoard adminDashboard;
-
-        public UpdateUserForm(IndexForm index, User user)
-        {
-            indexForm = index;
-            this.user = user;
-            InitializeComponent();
-        }
 
         public UpdateUserForm(User user)
         {
             this.user = user;
             InitializeComponent();
         }
+
         public UpdateUserForm(AdminDashBoard adminDashboard, User user)
         {
             this.adminDashboard = adminDashboard;

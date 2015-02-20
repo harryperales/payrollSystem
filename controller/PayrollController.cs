@@ -87,5 +87,10 @@ namespace PayrollSystem.controller
         {
             return payrollService.fetchPayslipById(payslipId);
         }
+
+        public List<Payslip> fetchPayroll()
+        {
+            return payrollService.fetchPayroll();
+        }
     }
 }

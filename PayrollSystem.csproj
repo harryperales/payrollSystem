@@ -151,12 +151,6 @@
     <Compile Include="view\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -172,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\IndexForm.resx">
-      <DependentUpon>IndexForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -221,12 +212,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="view\IndexForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\IndexForm.Designer.cs">
-      <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\LoginForm.cs">
       <SubType>Form</SubType>

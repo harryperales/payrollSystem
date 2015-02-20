@@ -13,5 +13,7 @@ namespace PayrollSystem.service
         Payslip createPayslip(Employee employee, Payslip payslip);
 
         Payslip fetchPayslipById(int payslipId);
+
+        List<Payslip> fetchPayroll();
     }
 }

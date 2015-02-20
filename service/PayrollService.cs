@@ -183,5 +183,34 @@ namespace PayrollSystem.service
             sqlCon.Close();
             return miscellaneousIds;
         }
+
+        public List<Payslip> fetchPayroll()
+        {
+            List<Payslip> payroll = new List<Payslip>();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT * From Payroll;";
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    Payslip payslip = new Payslip();
+                    payslip.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    payslip.dateCreated = Convert.ToDateTime(sqlDataReader["dateCreated"].ToString());
+                    payslip.startDatePeriod = Convert.ToDateTime(sqlDataReader["startDate"].ToString());
+                    payslip.endDatePeriod = Convert.ToDateTime(sqlDataReader["endDate"].ToString());
+                    payslip.basePay = Convert.ToDecimal(sqlDataReader["basePay"].ToString());
+                    payslip.taxDeduction = Convert.ToDecimal(sqlDataReader["taxDeduction"].ToString());
+                    payslip.netPay = Convert.ToDecimal(sqlDataReader["netPay"].ToString());
+                    payslip.sssDeduction = Convert.ToDecimal(sqlDataReader["sssDeduction"].ToString());
+                    payslip.pagIbigDeduction = Convert.ToDecimal(sqlDataReader["pagIbigDeduction"].ToString());
+                    payslip.philHealthDeduction = Convert.ToDecimal(sqlDataReader["philHealthDeduction"].ToString());
+
+                    payroll.Add(payslip);
+                }
+            }
+            sqlCon.Close();
+            return payroll;
+        }
     }
 }

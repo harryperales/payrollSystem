@@ -13,5 +13,7 @@ namespace PayrollSystem.controller
         Payslip createPayslip(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
 
         Payslip fetchPayslipById(int payslipId);
+
+        List<Payslip> fetchPayroll();
     }
 }

@@ -21,11 +21,23 @@ namespace PayrollSystem.view
             this.user = user;
             InitializeComponent();
             loadUsers();
+            loadPayrollList();
             loadPendingRequests();
             loadApprovedRequests();
             hideErrorMessage();
             initializeDatePicker();
             hideSpinner();
+        }
+
+        private void loadPayrollList()
+        {
+            PayrollControllerInterface payrollController = new PayrollController();
+            List<Payslip> payroll = payrollController.fetchPayroll();
+            payrollListBox.Items.Clear();
+            foreach (Payslip payslip in payroll)
+            {
+                payrollListBox.Items.Add(payslip.id + ".)" + payslip.startDatePeriod.ToString("MM/dd/yyyy") + "-" + payslip.endDatePeriod.ToString("MM/dd/yyyy"));
+            }
         }
 
         private void hideErrorMessage()
