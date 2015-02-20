@@ -96,7 +96,6 @@ namespace PayrollSystem.view
         private void usersListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListBox l = sender as ListBox;
-            usersListBox.Items.Clear();
             if (l.SelectedIndex != -1)
             {
                 usersListBox.SelectedIndex = l.SelectedIndex;
@@ -161,6 +160,13 @@ namespace PayrollSystem.view
 
         private void createPayrollButton_Click(object sender, EventArgs e)
         {
+
+            TimeSpan validDate = endDatePeriod.Value - startDatePeriod.Value;
+            if (validDate <= new TimeSpan(23,0,0))
+            {
+                showErrorMessage("Invalid period.");
+                return;
+            }
             showSpinner();
             hideErrorMessage();
             if (!selectAllCheckBox.Checked)
@@ -178,7 +184,7 @@ namespace PayrollSystem.view
                 PayrollControllerInterface payslipController = new PayrollController();
                 payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
                 hideSpinner();
-                showErrorMessage("Successfully create payroll to user: "+ employee.userAccount.username);
+                showErrorMessage("Successfully created payroll to user: "+ employee.userAccount.username);
             }
             else
             {
