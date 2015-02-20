@@ -53,19 +53,25 @@
             this.pendingRequestListBox = new System.Windows.Forms.ListBox();
             this.approvedRequestTab = new System.Windows.Forms.TabPage();
             this.approvedRequestListBox = new System.Windows.Forms.ListBox();
+            this.positionTab = new System.Windows.Forms.TabPage();
+            this.positionListBox = new System.Windows.Forms.ListBox();
+            this.miscellaneousTab = new System.Windows.Forms.TabPage();
+            this.miscellaneousListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
             this.userListTab.SuspendLayout();
             this.pendingRequestTab.SuspendLayout();
             this.approvedRequestTab.SuspendLayout();
+            this.positionTab.SuspendLayout();
+            this.miscellaneousTab.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // employeeOptionPanel
@@ -94,10 +100,10 @@
             // selectAllCheckBox
             // 
             this.selectAllCheckBox.AutoSize = true;
-            this.selectAllCheckBox.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.selectAllCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.selectAllCheckBox.Location = new System.Drawing.Point(151, 82);
             this.selectAllCheckBox.Name = "selectAllCheckBox";
-            this.selectAllCheckBox.Size = new System.Drawing.Size(95, 25);
+            this.selectAllCheckBox.Size = new System.Drawing.Size(97, 24);
             this.selectAllCheckBox.TabIndex = 12;
             this.selectAllCheckBox.Text = "All Users";
             this.selectAllCheckBox.UseVisualStyleBackColor = true;
@@ -106,7 +112,7 @@
             // 
             this.viewRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.viewRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewRequest.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewRequest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.viewRequest.Location = new System.Drawing.Point(6, 156);
             this.viewRequest.Name = "viewRequest";
@@ -119,50 +125,50 @@
             // endDateLabel
             // 
             this.endDateLabel.AutoSize = true;
-            this.endDateLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.endDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.endDateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.endDateLabel.Location = new System.Drawing.Point(2, 43);
             this.endDateLabel.Name = "endDateLabel";
-            this.endDateLabel.Size = new System.Drawing.Size(72, 17);
+            this.endDateLabel.Size = new System.Drawing.Size(77, 20);
             this.endDateLabel.TabIndex = 10;
             this.endDateLabel.Text = "End Date";
             // 
             // startDateLabel
             // 
             this.startDateLabel.AutoSize = true;
-            this.startDateLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.startDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.startDateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.startDateLabel.Location = new System.Drawing.Point(3, 14);
             this.startDateLabel.Name = "startDateLabel";
-            this.startDateLabel.Size = new System.Drawing.Size(79, 17);
+            this.startDateLabel.Size = new System.Drawing.Size(83, 20);
             this.startDateLabel.TabIndex = 9;
             this.startDateLabel.Text = "Start Date";
             // 
             // updateLabel
             // 
             this.updateLabel.AutoSize = true;
-            this.updateLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.updateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.updateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.updateLabel.Location = new System.Drawing.Point(38, 198);
             this.updateLabel.Name = "updateLabel";
-            this.updateLabel.Size = new System.Drawing.Size(94, 17);
+            this.updateLabel.Size = new System.Drawing.Size(100, 20);
             this.updateLabel.TabIndex = 6;
             this.updateLabel.Text = "Update Area";
             // 
             // endDatePeriod
             // 
-            this.endDatePeriod.Font = new System.Drawing.Font("Century", 12F);
+            this.endDatePeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.endDatePeriod.Location = new System.Drawing.Point(90, 43);
             this.endDatePeriod.Name = "endDatePeriod";
-            this.endDatePeriod.Size = new System.Drawing.Size(210, 27);
+            this.endDatePeriod.Size = new System.Drawing.Size(210, 26);
             this.endDatePeriod.TabIndex = 8;
             // 
             // startDatePeriod
             // 
-            this.startDatePeriod.Font = new System.Drawing.Font("Century", 12F);
+            this.startDatePeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.startDatePeriod.Location = new System.Drawing.Point(87, 7);
             this.startDatePeriod.Name = "startDatePeriod";
-            this.startDatePeriod.Size = new System.Drawing.Size(213, 27);
+            this.startDatePeriod.Size = new System.Drawing.Size(213, 26);
             this.startDatePeriod.TabIndex = 7;
             // 
             // updatePanel
@@ -180,27 +186,27 @@
             // searchForUpdateLabel
             // 
             this.searchForUpdateLabel.AutoSize = true;
-            this.searchForUpdateLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.searchForUpdateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.searchForUpdateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.searchForUpdateLabel.Location = new System.Drawing.Point(15, 7);
             this.searchForUpdateLabel.Name = "searchForUpdateLabel";
-            this.searchForUpdateLabel.Size = new System.Drawing.Size(213, 17);
+            this.searchForUpdateLabel.Size = new System.Drawing.Size(215, 20);
             this.searchForUpdateLabel.TabIndex = 5;
             this.searchForUpdateLabel.Text = "Username/Employee number";
             // 
             // usernameOrEmployeeId
             // 
-            this.usernameOrEmployeeId.Font = new System.Drawing.Font("Century", 12F);
+            this.usernameOrEmployeeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.usernameOrEmployeeId.Location = new System.Drawing.Point(18, 27);
             this.usernameOrEmployeeId.Name = "usernameOrEmployeeId";
-            this.usernameOrEmployeeId.Size = new System.Drawing.Size(219, 27);
+            this.usernameOrEmployeeId.Size = new System.Drawing.Size(219, 26);
             this.usernameOrEmployeeId.TabIndex = 4;
             // 
             // updateUserPasswordButton
             // 
             this.updateUserPasswordButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.updateUserPasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateUserPasswordButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.updateUserPasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.updateUserPasswordButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.updateUserPasswordButton.Location = new System.Drawing.Point(18, 113);
             this.updateUserPasswordButton.Name = "updateUserPasswordButton";
@@ -214,7 +220,7 @@
             // 
             this.updateEmployeeInfoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.updateEmployeeInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateEmployeeInfoButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.updateEmployeeInfoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.updateEmployeeInfoButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.updateEmployeeInfoButton.Location = new System.Drawing.Point(18, 70);
             this.updateEmployeeInfoButton.Name = "updateEmployeeInfoButton";
@@ -228,7 +234,7 @@
             // 
             this.addEmployeeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.addEmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addEmployeeButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.addEmployeeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.addEmployeeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.addEmployeeButton.Location = new System.Drawing.Point(151, 118);
             this.addEmployeeButton.Name = "addEmployeeButton";
@@ -242,7 +248,7 @@
             // 
             this.createPayrollButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.createPayrollButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createPayrollButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.createPayrollButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.createPayrollButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.createPayrollButton.Location = new System.Drawing.Point(6, 76);
             this.createPayrollButton.Name = "createPayrollButton";
@@ -256,7 +262,7 @@
             // 
             this.createMiscButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.createMiscButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createMiscButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createMiscButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createMiscButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.createMiscButton.Location = new System.Drawing.Point(151, 156);
             this.createMiscButton.Name = "createMiscButton";
@@ -270,7 +276,7 @@
             // 
             this.addPositionButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.addPositionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addPositionButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.addPositionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.addPositionButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.addPositionButton.Location = new System.Drawing.Point(6, 116);
             this.addPositionButton.Name = "addPositionButton";
@@ -286,20 +292,22 @@
             this.adminTab.Controls.Add(this.userListTab);
             this.adminTab.Controls.Add(this.pendingRequestTab);
             this.adminTab.Controls.Add(this.approvedRequestTab);
-            this.adminTab.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminTab.Controls.Add(this.positionTab);
+            this.adminTab.Controls.Add(this.miscellaneousTab);
+            this.adminTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminTab.Location = new System.Drawing.Point(360, 50);
             this.adminTab.Name = "adminTab";
             this.adminTab.SelectedIndex = 0;
-            this.adminTab.Size = new System.Drawing.Size(446, 373);
+            this.adminTab.Size = new System.Drawing.Size(578, 373);
             this.adminTab.TabIndex = 2;
             // 
             // userListTab
             // 
             this.userListTab.Controls.Add(this.usersListBox);
-            this.userListTab.Location = new System.Drawing.Point(4, 29);
+            this.userListTab.Location = new System.Drawing.Point(4, 28);
             this.userListTab.Name = "userListTab";
             this.userListTab.Padding = new System.Windows.Forms.Padding(3);
-            this.userListTab.Size = new System.Drawing.Size(438, 340);
+            this.userListTab.Size = new System.Drawing.Size(570, 341);
             this.userListTab.TabIndex = 0;
             this.userListTab.Text = "Users";
             this.userListTab.UseVisualStyleBackColor = true;
@@ -308,20 +316,20 @@
             // 
             this.usersListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.usersListBox.FormattingEnabled = true;
-            this.usersListBox.ItemHeight = 17;
+            this.usersListBox.ItemHeight = 16;
             this.usersListBox.Location = new System.Drawing.Point(0, 2);
             this.usersListBox.Name = "usersListBox";
-            this.usersListBox.Size = new System.Drawing.Size(438, 327);
+            this.usersListBox.Size = new System.Drawing.Size(597, 324);
             this.usersListBox.TabIndex = 0;
             this.usersListBox.SelectedIndexChanged += new System.EventHandler(this.usersListBox_SelectedIndexChanged);
             // 
             // pendingRequestTab
             // 
             this.pendingRequestTab.Controls.Add(this.pendingRequestListBox);
-            this.pendingRequestTab.Location = new System.Drawing.Point(4, 29);
+            this.pendingRequestTab.Location = new System.Drawing.Point(4, 28);
             this.pendingRequestTab.Name = "pendingRequestTab";
             this.pendingRequestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.pendingRequestTab.Size = new System.Drawing.Size(438, 340);
+            this.pendingRequestTab.Size = new System.Drawing.Size(570, 341);
             this.pendingRequestTab.TabIndex = 3;
             this.pendingRequestTab.Text = "Pending Requests";
             this.pendingRequestTab.UseVisualStyleBackColor = true;
@@ -329,19 +337,19 @@
             // pendingRequestListBox
             // 
             this.pendingRequestListBox.FormattingEnabled = true;
-            this.pendingRequestListBox.ItemHeight = 17;
+            this.pendingRequestListBox.ItemHeight = 16;
             this.pendingRequestListBox.Location = new System.Drawing.Point(0, 2);
             this.pendingRequestListBox.Name = "pendingRequestListBox";
-            this.pendingRequestListBox.Size = new System.Drawing.Size(438, 327);
+            this.pendingRequestListBox.Size = new System.Drawing.Size(438, 324);
             this.pendingRequestListBox.TabIndex = 1;
             // 
             // approvedRequestTab
             // 
             this.approvedRequestTab.Controls.Add(this.approvedRequestListBox);
-            this.approvedRequestTab.Location = new System.Drawing.Point(4, 29);
+            this.approvedRequestTab.Location = new System.Drawing.Point(4, 28);
             this.approvedRequestTab.Name = "approvedRequestTab";
             this.approvedRequestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.approvedRequestTab.Size = new System.Drawing.Size(438, 340);
+            this.approvedRequestTab.Size = new System.Drawing.Size(570, 341);
             this.approvedRequestTab.TabIndex = 4;
             this.approvedRequestTab.Text = "Approved Request";
             this.approvedRequestTab.UseVisualStyleBackColor = true;
@@ -349,11 +357,51 @@
             // approvedRequestListBox
             // 
             this.approvedRequestListBox.FormattingEnabled = true;
-            this.approvedRequestListBox.ItemHeight = 17;
+            this.approvedRequestListBox.ItemHeight = 16;
             this.approvedRequestListBox.Location = new System.Drawing.Point(0, 2);
             this.approvedRequestListBox.Name = "approvedRequestListBox";
-            this.approvedRequestListBox.Size = new System.Drawing.Size(438, 327);
+            this.approvedRequestListBox.Size = new System.Drawing.Size(438, 324);
             this.approvedRequestListBox.TabIndex = 2;
+            // 
+            // positionTab
+            // 
+            this.positionTab.Controls.Add(this.positionListBox);
+            this.positionTab.Location = new System.Drawing.Point(4, 28);
+            this.positionTab.Name = "positionTab";
+            this.positionTab.Size = new System.Drawing.Size(570, 341);
+            this.positionTab.TabIndex = 5;
+            this.positionTab.Text = "Position";
+            this.positionTab.UseVisualStyleBackColor = true;
+            // 
+            // positionListBox
+            // 
+            this.positionListBox.FormattingEnabled = true;
+            this.positionListBox.ItemHeight = 16;
+            this.positionListBox.Location = new System.Drawing.Point(0, 0);
+            this.positionListBox.Name = "positionListBox";
+            this.positionListBox.Size = new System.Drawing.Size(567, 340);
+            this.positionListBox.TabIndex = 0;
+            this.positionListBox.SelectedIndexChanged += new System.EventHandler(this.positionListBox_SelectedIndexChanged);
+            // 
+            // miscellaneousTab
+            // 
+            this.miscellaneousTab.Controls.Add(this.miscellaneousListBox);
+            this.miscellaneousTab.Location = new System.Drawing.Point(4, 28);
+            this.miscellaneousTab.Name = "miscellaneousTab";
+            this.miscellaneousTab.Size = new System.Drawing.Size(570, 341);
+            this.miscellaneousTab.TabIndex = 6;
+            this.miscellaneousTab.Text = "Benefits/ Deductions";
+            this.miscellaneousTab.UseVisualStyleBackColor = true;
+            // 
+            // miscellaneousListBox
+            // 
+            this.miscellaneousListBox.FormattingEnabled = true;
+            this.miscellaneousListBox.ItemHeight = 16;
+            this.miscellaneousListBox.Location = new System.Drawing.Point(3, 3);
+            this.miscellaneousListBox.Name = "miscellaneousListBox";
+            this.miscellaneousListBox.Size = new System.Drawing.Size(567, 340);
+            this.miscellaneousListBox.TabIndex = 0;
+            this.miscellaneousListBox.SelectedIndexChanged += new System.EventHandler(this.miscellaneousListBox_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -366,18 +414,29 @@
             this.panel2.Controls.Add(this.adminTab);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(839, 478);
+            this.panel2.Size = new System.Drawing.Size(964, 478);
             this.panel2.TabIndex = 3;
+            // 
+            // spinnerPictureBox
+            // 
+            this.spinnerPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.spinnerPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("spinnerPictureBox.BackgroundImage")));
+            this.spinnerPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.spinnerPictureBox.Location = new System.Drawing.Point(324, 169);
+            this.spinnerPictureBox.Name = "spinnerPictureBox";
+            this.spinnerPictureBox.Size = new System.Drawing.Size(81, 74);
+            this.spinnerPictureBox.TabIndex = 13;
+            this.spinnerPictureBox.TabStop = false;
             // 
             // errorMessageLabel
             // 
             this.errorMessageLabel.AutoSize = true;
             this.errorMessageLabel.BackColor = System.Drawing.Color.Transparent;
-            this.errorMessageLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorMessageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.errorMessageLabel.Location = new System.Drawing.Point(97, 442);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(41, 20);
+            this.errorMessageLabel.Size = new System.Drawing.Size(49, 20);
             this.errorMessageLabel.TabIndex = 12;
             this.errorMessageLabel.Text = "Error";
             // 
@@ -391,22 +450,11 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // spinnerPictureBox
-            // 
-            this.spinnerPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.spinnerPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("spinnerPictureBox.BackgroundImage")));
-            this.spinnerPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.spinnerPictureBox.Location = new System.Drawing.Point(324, 169);
-            this.spinnerPictureBox.Name = "spinnerPictureBox";
-            this.spinnerPictureBox.Size = new System.Drawing.Size(81, 74);
-            this.spinnerPictureBox.TabIndex = 13;
-            this.spinnerPictureBox.TabStop = false;
-            // 
             // AdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 478);
+            this.ClientSize = new System.Drawing.Size(966, 478);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminDashBoard";
@@ -421,10 +469,12 @@
             this.userListTab.ResumeLayout(false);
             this.pendingRequestTab.ResumeLayout(false);
             this.approvedRequestTab.ResumeLayout(false);
+            this.positionTab.ResumeLayout(false);
+            this.miscellaneousTab.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinnerPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -466,6 +516,10 @@
         private System.Windows.Forms.TabPage approvedRequestTab;
         private System.Windows.Forms.ListBox approvedRequestListBox;
         private System.Windows.Forms.PictureBox spinnerPictureBox;
+        private System.Windows.Forms.TabPage positionTab;
+        private System.Windows.Forms.TabPage miscellaneousTab;
+        private System.Windows.Forms.ListBox positionListBox;
+        private System.Windows.Forms.ListBox miscellaneousListBox;
 //>>>>>>> PayrollSystem/master
     }
 }

@@ -107,9 +107,21 @@ namespace PayrollSystem.controller
             positionForm.ShowDialog();
         }
 
+        public void showPositionForm(AdminDashBoard adminDashboard, Position position)
+        {
+            PositionForm positionForm = new PositionForm(adminDashboard, position);
+            positionForm.ShowDialog();
+        }
+
         public void showMiscForm(AdminDashBoard adminDashboard)
         {
             MiscellaneousForm miscForm = new MiscellaneousForm(adminDashboard);
+            miscForm.ShowDialog();
+        }
+
+        public void showMiscForm(AdminDashBoard adminDashboard, Miscellaneous misc)
+        {
+            MiscellaneousForm miscForm = new MiscellaneousForm(adminDashboard, misc);
             miscForm.ShowDialog();
         }
 

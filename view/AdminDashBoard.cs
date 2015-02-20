@@ -23,6 +23,8 @@ namespace PayrollSystem.view
             loadUsers();
             loadPendingRequests();
             loadApprovedRequests();
+            loadPosition();
+            loadMiscellaneous();
             hideErrorMessage();
             initializeDatePicker();
             hideSpinner();
@@ -76,6 +78,30 @@ namespace PayrollSystem.view
             {
                 Console.WriteLine("request:"+request.name);
                 approvedRequestListBox.Items.Add(request.id + ".) " + request.dateRequested.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+            }
+        }
+
+        public void loadMiscellaneous()
+        {
+            miscellaneousListBox.Items.Clear();
+            MiscControllerInterface miscController = new MiscellaneousController();
+            List<Miscellaneous> misc = miscController.viewAllMisc();
+            foreach (Miscellaneous miscellaneous in misc)
+            {
+                Console.Write(miscellaneous.name);
+                miscellaneousListBox.Items.Add(miscellaneous.name);
+            }
+        }
+
+        public void loadPosition()
+        {
+            positionListBox.Items.Clear();
+            PositionControllerInterface positionController = new PositionController();
+            List<Position> position = positionController.viewAllPosition();
+            foreach (Position pos in position)
+            {
+                Console.Write(pos.name);
+                positionListBox.Items.Add(pos.name);
             }
         }
 
@@ -236,6 +262,33 @@ namespace PayrollSystem.view
             catch (FormatException ex)
             {
                 Console.WriteLine("No selected item: " + ex.Message);
+            }
+        }
+
+        private void positionListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox l = sender as ListBox;
+            PositionControllerInterface positionController = new PositionController();
+            if (l.SelectedIndex != -1)
+            {
+                adminTab.SelectedIndex = l.SelectedIndex;
+                Position position = positionController.fetchPositionByName(positionListBox.SelectedItem.ToString());
+                FormControllerInterface formController = new FormController();
+                formController.showPositionForm(this, position);
+            }
+
+        }
+
+        private void miscellaneousListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox l = sender as ListBox;
+            MiscControllerInterface miscController = new MiscellaneousController();
+            if (l.SelectedIndex != -1)
+            {
+                adminTab.SelectedIndex = l.SelectedIndex;
+                Miscellaneous misc = miscController.fetchMiscByName(miscellaneousListBox.SelectedItem.ToString());
+                FormControllerInterface formController = new FormController();
+                formController.showMiscForm(this, misc);
             }
         }
     }

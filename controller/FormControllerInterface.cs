@@ -35,7 +35,11 @@ namespace PayrollSystem.controller
 
         void showPositionForm(AdminDashBoard adminDashboard);
 
+        void showPositionForm(AdminDashBoard adminDashboard, Position position);
+
         void showMiscForm(AdminDashBoard adminDashboard);
+
+        void showMiscForm(AdminDashBoard adminDashboard, Miscellaneous misc);
 
         void index();
 

@@ -8,6 +8,12 @@ namespace PayrollSystem.controller
 {
     public interface MiscControllerInterface
     {
+        List<Miscellaneous> viewAllMisc();
+
         Miscellaneous addMisc(Miscellaneous miscellaneous);
+
+        Miscellaneous fetchMiscByName(string selectedMisc);
+
+        Miscellaneous updateMiscellaneous(Miscellaneous miscellaneous);
     }
 }
