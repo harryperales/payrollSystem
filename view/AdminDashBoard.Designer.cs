@@ -60,6 +60,8 @@
             this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.employeeNumberOrUsernameSearchBox = new System.Windows.Forms.TextBox();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
@@ -385,6 +387,8 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.employeeNumberOrUsernameSearchBox);
+            this.panel2.Controls.Add(this.searchButton);
             this.panel2.Controls.Add(this.viewPayslipButton);
             this.panel2.Controls.Add(this.spinnerPictureBox);
             this.panel2.Controls.Add(this.errorMessageLabel);
@@ -442,6 +446,28 @@
             this.exitPictureBox.TabIndex = 3;
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.searchButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.searchButton.Location = new System.Drawing.Point(550, 51);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(92, 34);
+            this.searchButton.TabIndex = 15;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = false;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // employeeNumberOrUsernameSearchBox
+            // 
+            this.employeeNumberOrUsernameSearchBox.Font = new System.Drawing.Font("Century", 12F);
+            this.employeeNumberOrUsernameSearchBox.Location = new System.Drawing.Point(360, 56);
+            this.employeeNumberOrUsernameSearchBox.Name = "employeeNumberOrUsernameSearchBox";
+            this.employeeNumberOrUsernameSearchBox.Size = new System.Drawing.Size(184, 27);
+            this.employeeNumberOrUsernameSearchBox.TabIndex = 6;
             // 
             // AdminDashBoard
             // 
@@ -511,6 +537,8 @@
         private System.Windows.Forms.Button viewPayslipButton;
         private System.Windows.Forms.TabPage payrollTab;
         private System.Windows.Forms.ListBox payrollListBox;
+        private System.Windows.Forms.TextBox employeeNumberOrUsernameSearchBox;
+        private System.Windows.Forms.Button searchButton;
 //>>>>>>> PayrollSystem/master
     }
 }

@@ -258,8 +258,8 @@ namespace PayrollSystem.view
 
         private void viewPayslipButton_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 int payslipId = Convert.ToInt32(payrollListBox.SelectedItem.ToString().Split('.')[0]);
                 PayrollControllerInterface payrollController = new PayrollController();
                 Payslip payslip = payrollController.fetchPayslipById(payslipId);
@@ -269,11 +269,62 @@ namespace PayrollSystem.view
 
                 FormControllerInterface formController = new FormController();
                 formController.showUserPayroll(this, payslip);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("No item selected: " + ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No item selected: " + ex.Message);
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            usersListBox.Items.Clear();
+            long employeeId = 0;
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            try
+            {
+                employeeId = Int64.Parse(employeeNumberOrUsernameSearchBox.Text);
+                Employee employee = employeeController.fetchEmployeeByEmployeeIdNumber(employeeId);
+                if (employee != null && !employee.Equals(""))
+                {
+                    List<User> users = new List<User>();
+                    users.Add(employee.userAccount);
+                    foreach (User user in users)
+                    {
+                        if (user.role.type != "admin")
+                        {
+                            usersListBox.Items.Add(user.username);
+                        }
+                    }
+                }
+                else
+                {
+                    showErrorMessage("User does not exist.");
+                }
+            }
+            catch ( FormatException ex)
+            {
+                UserControllerInterface userController = new UserController();
+                User searchedUser = new User();
+                searchedUser.username = employeeNumberOrUsernameSearchBox.Text;
+                List<User> users = new List<User>();
+                searchedUser = userController.fetchUserByUsername(searchedUser);
+                if (searchedUser != null && !searchedUser.Equals(""))
+                {
+                    users.Add(searchedUser);
+                    foreach (User user in users)
+                    {
+                        if (user.role.type != "admin")
+                        {
+                            usersListBox.Items.Add(user.username);
+                        }
+                    }
+                }
+                else
+                {
+                    showErrorMessage("User does not exist.");
+                }
+            }
         }
     }
 }
