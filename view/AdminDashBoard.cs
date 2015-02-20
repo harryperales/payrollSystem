@@ -36,7 +36,7 @@ namespace PayrollSystem.view
             payrollListBox.Items.Clear();
             foreach (Payslip payslip in payroll)
             {
-                payrollListBox.Items.Add(payslip.id + ".)" + payslip.startDatePeriod.ToString("MM/dd/yyyy") + "-" + payslip.endDatePeriod.ToString("MM/dd/yyyy"));
+                payrollListBox.Items.Add(payslip.id + ".)" + payslip.startDatePeriod.ToString("MM/dd/yyyy") + " - " + payslip.endDatePeriod.ToString("MM/dd/yyyy") + " | " + payslip.employee.userAccount.username);
             }
         }
 

@@ -198,6 +198,8 @@ namespace PayrollSystem.service
                 while (sqlDataReader.Read())
                 {
                     Payslip payslip = new Payslip();
+                    EmployeeServiceInterface employeeService = new EmployeeService();
+                    payslip.employee = employeeService.fetchEmployeeById(Int32.Parse(sqlDataReader["employeeId"].ToString()));
                     payslip.id = Int32.Parse(sqlDataReader["id"].ToString());
                     payslip.dateCreated = Convert.ToDateTime(sqlDataReader["dateCreated"].ToString());
                     payslip.startDatePeriod = Convert.ToDateTime(sqlDataReader["startDate"].ToString());
