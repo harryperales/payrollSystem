@@ -22,6 +22,34 @@ namespace PayrollSystem.view
             InitializeComponent();
             username.Text = user.username;
             loadPayrollList();
+            loadAttendanceHistory();
+            loadUserCurrentAttendance();
+        }
+
+        private void loadUserCurrentAttendance()
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            AttendanceControllerInterface attendanceController = new AttendanceController();
+            Attendance attendance = attendanceController.fetchEmployeeAttendanceByDate(employee, DateTime.Now);
+            if (attendance != null && !attendance.Equals(""))
+            {
+                clockedIn.Text = attendance.timeIn.ToString();
+                clockedOut.Text = attendance.timeOut.ToString();
+                DateTime timeToClockOut = calculateTimeToClockOut(attendance.timeIn);
+                validClockOut.Text = timeToClockOut.ToString();
+            }
+            else
+            {
+                clockedIn.Text = "Not yet clocked in.";
+                clockedOut.Text = "N/A";
+                validClockOut.Text = "N/A";
+            }
+        }
+
+        private DateTime calculateTimeToClockOut(DateTime timeIn)
+        {
+            return timeIn.AddHours(8);
         }
 
         private void loadPayrollList()
@@ -32,6 +60,19 @@ namespace PayrollSystem.view
             foreach(Payslip payslip in payroll)
             {
                 userPayrollListBox.Items.Add(payslip.id+".)"+payslip.startDatePeriod.ToString("MM/dd/yyyy") + "-" + payslip.endDatePeriod.ToString("MM/dd/yyyy"));
+            }
+        }
+
+        private void loadAttendanceHistory()
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            AttendanceControllerInterface attendanceController = new AttendanceController();
+            List<Attendance> attendanceSheet = attendanceController.fetchEmployeeAttendance(employee);
+            attendanceListBox.Items.Clear();
+            foreach (Attendance attendance in attendanceSheet)
+            {
+                attendanceListBox.Items.Add(attendance.id + ".)" + attendance.timeIn.ToString() + " | " + attendance.timeIn.ToString());
             }
         }
 

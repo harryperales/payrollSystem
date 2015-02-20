@@ -23,7 +23,7 @@ namespace PayrollSystem.service
             Employee employee = employeeService.fetchEmployeeByUsername(user.username);
             List<Payslip> payroll = new List<Payslip>();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT * From Payroll WHERE employeeId = @employeeId";
+            sqlCmd.CommandText = "SELECT * From Payroll WHERE employeeId = @employeeId ORDER BY id DESC;";
             sqlCmd.Parameters.AddWithValue("@employeeId", employee.id);
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
@@ -153,7 +153,7 @@ namespace PayrollSystem.service
         {
             List<int> requestIds = new List<int>();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT * From PayslipRequest WHERE payslipId = @payslipId";
+            sqlCmd.CommandText = "SELECT * From PayslipRequest WHERE payslipId = @payslipId ORDER BY id DESC;";
             sqlCmd.Parameters.AddWithValue("@payslipId", payslipId);
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
@@ -172,7 +172,7 @@ namespace PayrollSystem.service
         {
             List<int> miscellaneousIds = new List<int>();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT * From PayslipMiscellaneous WHERE payslipId = @payslipId";
+            sqlCmd.CommandText = "SELECT * From PayslipMiscellaneous WHERE payslipId = @payslipId ORDER BY id DESC;";
             sqlCmd.Parameters.AddWithValue("@payslipId", payslipId);
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
@@ -191,7 +191,7 @@ namespace PayrollSystem.service
         {
             List<Payslip> payroll = new List<Payslip>();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT * From Payroll;";
+            sqlCmd.CommandText = "SELECT * From Payroll ORDER BY id DESC;";
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
             {

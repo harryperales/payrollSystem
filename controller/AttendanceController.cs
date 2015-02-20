@@ -28,5 +28,10 @@ namespace PayrollSystem.controller
         {
             return attendanceService.updateEmployeeAttendance(attendance);
         }
+
+        public List<Attendance> fetchEmployeeAttendance(Employee employee)
+        {
+            return attendanceService.fetchEmployeeAttendance(employee);
+        }
     }
 }

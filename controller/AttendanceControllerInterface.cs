@@ -13,5 +13,7 @@ namespace PayrollSystem.controller
         Attendance fetchEmployeeAttendanceByDate(Employee employee, DateTime currentDate);
 
         Attendance updateEmployeeAttendance(Attendance attendance);
+
+        List<Attendance> fetchEmployeeAttendance(Employee employee);
     }
 }

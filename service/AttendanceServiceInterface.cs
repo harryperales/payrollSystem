@@ -15,5 +15,7 @@ namespace PayrollSystem.service
         Attendance fetchEmployeeAttendanceByDate(Employee employee, DateTime date);
 
         Attendance updateEmployeeAttendance(Attendance attendance);
+
+        List<Attendance> fetchEmployeeAttendance(Employee employee);
     }
 }

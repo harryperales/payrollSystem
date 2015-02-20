@@ -37,7 +37,6 @@ namespace PayrollSystem.service
         public Attendance fetchEmployeeAttendanceByDate(Employee employee, DateTime date)
         {
             Attendance attendance = new Attendance();
-            Console.WriteLine(date.ToString("MM/dd/yyyy"));
             sqlCon.Open();
             sqlCmd.CommandText = "SELECT id, timeIn, timeOut From Attendance WHERE employeeId = @employeeNumber AND timeIn LIKE @date;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
@@ -90,6 +89,38 @@ namespace PayrollSystem.service
             sqlCmd.ExecuteNonQuery();
             sqlCon.Close();
             return attendance;
+        }
+
+        public List<Attendance> fetchEmployeeAttendance(Employee employee)
+        {
+            List<Attendance> attendanceSheet = new List<Attendance>();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT id, timeIn, timeOut From Attendance WHERE employeeId = @employeeNumber ORDER BY id DESC;";
+            sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    Attendance attendance = new Attendance();
+                    attendance.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    attendance.employee = employee;
+                    attendance.timeIn = Convert.ToDateTime(sqlDataReader["timeIn"].ToString());
+                    Console.WriteLine(sqlDataReader["timeOut"].ToString());
+                    if (sqlDataReader["timeOut"] != null && !sqlDataReader["timeOut"].ToString().Equals(""))
+                    {
+                        attendance.timeOut = Convert.ToDateTime(sqlDataReader["timeOut"].ToString());
+                    }
+                    //TimeSpan offSet = new TimeSpan(0);
+                    //TimeSpan ts = Convert.ToDateTime(attendance.timeOut.ToString("hh:mm:ss tt")) - Convert.ToDateTime(attendance.timeIn.ToString("hh:mm:ss tt"));
+                    attendance.employee = employee;
+
+                    attendanceSheet.Add(attendance);
+                }
+            }
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return attendanceSheet;
         }
     }
 }
