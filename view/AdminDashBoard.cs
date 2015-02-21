@@ -304,7 +304,7 @@ namespace PayrollSystem.view
             EmployeeControllerInterface employeeController = new EmployeeController();
             try
             {
-                employeeId = Int64.Parse(employeeNumberOrUsernameSearchBox.Text);
+                employeeId = Int64.Parse(usernameOrEmployeeId.Text);
                 Employee employee = employeeController.fetchEmployeeByEmployeeIdNumber(employeeId);
                 if (employee != null && !employee.Equals(""))
                 {
@@ -327,7 +327,7 @@ namespace PayrollSystem.view
             {
                 UserControllerInterface userController = new UserController();
                 User searchedUser = new User();
-                searchedUser.username = employeeNumberOrUsernameSearchBox.Text;
+                searchedUser.username = usernameOrEmployeeId.Text;
                 List<User> users = new List<User>();
                 searchedUser = userController.fetchUserByUsername(searchedUser);
                 if (searchedUser != null && !searchedUser.Equals(""))
@@ -345,6 +345,56 @@ namespace PayrollSystem.view
                 {
                     showErrorMessage("User does not exist.");
                 }
+            }
+        }
+
+        private void resetLeaveCreditsButton_Click(object sender, EventArgs e)
+        {
+            showSpinner();
+            hideErrorMessage();
+            if (!selectAllCheckBox.Checked)
+            {
+                EmployeeControllerInterface employeeController = new EmployeeController();
+                Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
+
+                if (employee == null || employee.Equals(""))
+                {
+                    hideSpinner();
+                    showErrorMessage("Please input a valid username.");
+                    return;
+                }
+                LeaveCreditsControllerInteface leaveCreditsController = new LeaveCreditsController();
+                EmployeeLeaveCredits employeeLeaveCredits = leaveCreditsController.resetEmployeeLeaveCredits(employee);
+                hideSpinner();
+                showErrorMessage("Successfully created payroll to user: " + employee.userAccount.username);
+            }
+            else
+            {
+
+                UserControllerInterface userController = new UserController();
+                List<User> users = userController.viewAllUsers();
+                foreach (User user in users)
+                {
+                    if (user.role.type != "admin")
+                    {
+
+                        EmployeeControllerInterface employeeController = new EmployeeController();
+                        Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+
+                        if (employee == null || employee.Equals(""))
+                        {
+                            hideSpinner();
+                            showErrorMessage("Please input a valid username.");
+                            return;
+                        }
+
+                        PayrollControllerInterface payslipController = new PayrollController();
+                        payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+                    }
+                }
+                selectAllCheckBox.Checked = false;
+                hideSpinner();
+                showErrorMessage("Successfully create payroll to all users");
             }
         }
     }

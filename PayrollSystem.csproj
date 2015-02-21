@@ -75,6 +75,8 @@
     <Compile Include="controller\FormController.cs">
     </Compile>
     <Compile Include="controller\FormControllerInterface.cs" />
+    <Compile Include="controller\LeaveCreditsController.cs" />
+    <Compile Include="controller\LeaveCreditsControllerInteface.cs" />
     <Compile Include="controller\PayslipController.cs" />
     <Compile Include="controller\PayslipControllerInterface.cs" />
     <Compile Include="controller\MiscControllerInterface.cs" />

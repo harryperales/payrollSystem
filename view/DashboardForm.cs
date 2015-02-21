@@ -182,6 +182,41 @@ namespace PayrollSystem.view
             request.description = leaveDescription.Text;
             request.dateFiled = Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy"));
 
+
+
+            LeaveCreditsControllerInteface leaveCreditsService = new LeaveCreditsController();
+            LeaveCredits leaveCredits = leaveCreditsService.fetchLeaveCreditsByEmployee(employee);
+            if (request.name.Equals("Vacation Leave") && leaveCredits.vacationLeaveCredits < 1)
+            {
+                showErrorMessage("No available vacation leave credits.");
+                request.description += " (Leave Without Pay)";
+            }
+            else if (request.name.Equals("Sick Leave") && leaveCredits.sickLeaveCredits < 1)
+            {
+                showErrorMessage("No available sick leave credits.");
+                request.description += " (Leave Without Pay)";
+            }
+            else if (request.name.Equals("Bereavement Leave") && leaveCredits.bereavementLeaveCredits < 1)
+            {
+                showErrorMessage("No available beraavement leave credits.");
+                request.description += " (Leave Without Pay)";
+            }
+            else if (request.name.Equals("Paternity Leave") && leaveCredits.paternityLeaveCredits < 1)
+            {
+                showErrorMessage("No available paternity leave credits.");
+                request.description += " (Leave Without Pay)";
+            }
+            else if (request.name.Equals("Emergency Leave") && leaveCredits.emergencyLeaveCredits < 1)
+            {
+                showErrorMessage("No available emergency leave credits.");
+                request.description += " (Leave Without Pay)";
+            }
+            else if (request.name.Equals("Birthday Leave") && leaveCredits.birthdayLeaveCredits < 1)
+            {
+                showErrorMessage("No available birthday leave credits.");
+                return;
+            }
+
             RequestControllerInterface requestController = new RequestController();
             request = requestController.createRequest(request);
             if (request != null)

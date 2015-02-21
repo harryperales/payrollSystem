@@ -72,10 +72,10 @@
             this.employeeNameLabel = new System.Windows.Forms.Label();
             this.employeeNumberLabel = new System.Windows.Forms.Label();
             this.pendingRequestTab = new System.Windows.Forms.TabPage();
-            this.approvedRequetTab = new System.Windows.Forms.TabPage();
-            this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.pendingRequestListBox = new System.Windows.Forms.ListBox();
+            this.approvedRequetTab = new System.Windows.Forms.TabPage();
             this.approvedRequestListBox = new System.Windows.Forms.ListBox();
+            this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.homeTabs.SuspendLayout();
             this.dashboardTab.SuspendLayout();
             this.myClockTab.SuspendLayout();
@@ -476,9 +476,10 @@
             "Vacation Leave",
             "Sick Leave",
             "Bereavement Leave",
-            "Maternity Leave",
+            "Emergency Leave",
+            "Birthday Leave",
             "Paternity Leave",
-            "Undertime"});
+            ""});
             this.typeOfLeaveComboBox.Location = new System.Drawing.Point(94, 104);
             this.typeOfLeaveComboBox.Name = "typeOfLeaveComboBox";
             this.typeOfLeaveComboBox.Size = new System.Drawing.Size(183, 25);
@@ -592,6 +593,16 @@
             this.pendingRequestTab.TabIndex = 3;
             this.pendingRequestTab.Text = "Pending Request";
             // 
+            // pendingRequestListBox
+            // 
+            this.pendingRequestListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pendingRequestListBox.FormattingEnabled = true;
+            this.pendingRequestListBox.ItemHeight = 17;
+            this.pendingRequestListBox.Location = new System.Drawing.Point(20, 23);
+            this.pendingRequestListBox.Name = "pendingRequestListBox";
+            this.pendingRequestListBox.Size = new System.Drawing.Size(564, 293);
+            this.pendingRequestListBox.TabIndex = 6;
+            // 
             // approvedRequetTab
             // 
             this.approvedRequetTab.BackColor = System.Drawing.Color.DarkGreen;
@@ -603,26 +614,6 @@
             this.approvedRequetTab.TabIndex = 4;
             this.approvedRequetTab.Text = "Approved Request";
             // 
-            // exitPictureBox
-            // 
-            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.exitPictureBox.Location = new System.Drawing.Point(572, 1);
-            this.exitPictureBox.Name = "exitPictureBox";
-            this.exitPictureBox.Size = new System.Drawing.Size(42, 35);
-            this.exitPictureBox.TabIndex = 1;
-            this.exitPictureBox.TabStop = false;
-            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
-            // 
-            // pendingRequestListBox
-            // 
-            this.pendingRequestListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pendingRequestListBox.FormattingEnabled = true;
-            this.pendingRequestListBox.ItemHeight = 17;
-            this.pendingRequestListBox.Location = new System.Drawing.Point(20, 23);
-            this.pendingRequestListBox.Name = "pendingRequestListBox";
-            this.pendingRequestListBox.Size = new System.Drawing.Size(564, 293);
-            this.pendingRequestListBox.TabIndex = 6;
-            // 
             // approvedRequestListBox
             // 
             this.approvedRequestListBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -633,6 +624,16 @@
             this.approvedRequestListBox.Name = "approvedRequestListBox";
             this.approvedRequestListBox.Size = new System.Drawing.Size(564, 293);
             this.approvedRequestListBox.TabIndex = 7;
+            // 
+            // exitPictureBox
+            // 
+            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.exitPictureBox.Location = new System.Drawing.Point(572, 1);
+            this.exitPictureBox.Name = "exitPictureBox";
+            this.exitPictureBox.Size = new System.Drawing.Size(42, 35);
+            this.exitPictureBox.TabIndex = 1;
+            this.exitPictureBox.TabStop = false;
+            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
             // DashboardForm
             // 

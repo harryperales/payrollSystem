@@ -218,14 +218,35 @@ namespace PayrollSystem.service
 
             if (status == "approved")
             {
-                Console.WriteLine("------------:" + request.employee.id);
                 EmployeeServiceInterface employeeService = new EmployeeService();
                 Employee employee = employeeService.fetchEmployeeById(request.employee.id);
-                Console.WriteLine("------------:" + employee);
 
                 LeaveCreditServiceInterface leaveCreditsService = new LeaveCreditService();
                 LeaveCredits leaveCredits = leaveCreditsService.fetchLeaveCreditsByEmployee(employee);
-                
+                if (request.name.Equals("Vacation Leave"))
+                {
+                    leaveCredits.vacationLeaveCredits -= 1;
+                }
+                else if (request.name.Equals("Sick Leave"))
+                {
+                    leaveCredits.sickLeaveCredits -= 1;
+                }
+                else if (request.name.Equals("Bereavement Leave"))
+                {
+                    leaveCredits.bereavementLeaveCredits -= 1;
+                }
+                else if (request.name.Equals("Paternity Leave"))
+                {
+                    leaveCredits.paternityLeaveCredits -= 1;
+                }
+                else if (request.name.Equals("Emergency Leave"))
+                {
+                    leaveCredits.emergencyLeaveCredits -= 1;
+                }
+                else if (request.name.Equals("Birthday Leave"))
+                {
+                    leaveCredits.emergencyLeaveCredits -= 1;
+                }
                 EmployeeLeaveCredits employeeLeaveRequest = leaveCreditsService.updateEmployeeLeaveCredits(employee, leaveCredits);
             }
             return request;
