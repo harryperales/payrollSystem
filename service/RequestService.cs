@@ -38,7 +38,7 @@ namespace PayrollSystem.service
         {
             Request request = new Request();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT id, name, description, dateRequested From Request WHERE employeeId = @employeeNumber AND name = @name AND dateRequested LIKE @date AND status = @status;";
+            sqlCmd.CommandText = "SELECT id, name, description, requestedDate ,dateRequested From Request WHERE employeeId = @employeeNumber AND name = @name AND dateRequested LIKE @date AND status = @status;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
             sqlCmd.Parameters.AddWithValue("@name", "OVERTIME");
             sqlCmd.Parameters.AddWithValue("@date", "%" + date.ToString("MM/dd/yyyy") + "%");
@@ -52,6 +52,7 @@ namespace PayrollSystem.service
                     request.employee = employee;
                     request.name = sqlDataReader["name"].ToString();
                     request.description = sqlDataReader["description"].ToString();
+                    request.requestedDate = Convert.ToDateTime(sqlDataReader["requestedDate"].ToString());
                     request.dateFiled = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
                 }
             }

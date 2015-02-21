@@ -95,18 +95,72 @@ namespace PayrollSystem.service
             return decimal.Multiply(perHourBasedSalary, hour);
         }
 
-        public decimal calculatePeriodSalaryWithOvertimeRequests(List<Request> overtimeRequests, decimal dailyBasedSalary)
+        public decimal calculateDailyBasedSalaryWithOvertimeRequests(List<Request> overtimeRequests, decimal dailyBasedSalary)
         {
+            List<Holiday> holidays = holidayService.fetchHolidays();
+            decimal totalOvertimeSalary = 0.00M;
             decimal perHourBasedSalary = 0.00M;
             perHourBasedSalary = decimal.Divide(dailyBasedSalary, 8.00M);
-            int numberOfApprovedOvertimeRequests = overtimeRequests.Count;
-            decimal semiOvertimeTotalPercentage = decimal.Multiply(numberOfApprovedOvertimeRequests, 0.30M);
-            decimal finalOvertimeTotalPercentage = decimal.Add(semiOvertimeTotalPercentage, 1.00M);
-            decimal periodSalaryWithOvertime = decimal.Multiply(perHourBasedSalary, finalOvertimeTotalPercentage);
-            return periodSalaryWithOvertime;
+            decimal perHourBasedSalaryWithAddedPercent = 0.00M;
+            Boolean isOvertimeDateFallsToHoliday = false;
+            foreach (Request overtimeRequest in overtimeRequests)
+            {
+                foreach (Holiday holiday in holidays)
+                {
+
+                    if (overtimeRequestDateIsJustARegularDay(overtimeRequest, holiday))
+                    {
+                    }
+                    else if (overtimeDateIsEqualToNonRegularHoliday(overtimeRequest, holiday))
+                    {
+                        // add 30% of daily Salary
+                        perHourBasedSalaryWithAddedPercent = perHourBasedSalary + decimal.Multiply(0.30M, perHourBasedSalary);
+                        totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                        decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
+                        totalOvertimeSalary += decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent);
+                        isOvertimeDateFallsToHoliday = true;
+                    }
+                    else if (overtimeDateIsEqualToRegularHoliday(overtimeRequest, holiday))
+                    {
+                        // add 100% daily salary
+                        perHourBasedSalaryWithAddedPercent = perHourBasedSalary + perHourBasedSalary;
+                        totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                        decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
+                        totalOvertimeSalary += decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent);
+                        isOvertimeDateFallsToHoliday = true;
+                    }
+                }
+                if (!isOvertimeDateFallsToHoliday)
+                {
+                    perHourBasedSalaryWithAddedPercent = perHourBasedSalary + decimal.Multiply(0.25M, perHourBasedSalary);
+                    totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                    decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
+                    totalOvertimeSalary += decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent);
+                }
+                else
+                {
+                    isOvertimeDateFallsToHoliday = false;
+                }
+            }
+            return totalOvertimeSalary;
         }
 
-        public decimal calculatePeriodSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary)
+        private static bool overtimeDateIsEqualToRegularHoliday(Request overtimeRequest, Holiday holiday)
+        {
+            return overtimeRequest.requestedDate.ToString("MM/dd/yyyy").Equals(holiday.date.ToString("MM/dd/yyyy")) && holiday.holidayWages == HolidayWages.Regular;
+        }
+
+        private static bool overtimeDateIsEqualToNonRegularHoliday(Request overtimeRequest, Holiday holiday)
+        {
+            return overtimeRequest.requestedDate.ToString("MM/dd/yyyy").Equals(holiday.date.ToString("MM/dd/yyyy")) && holiday.holidayWages == HolidayWages.NonRegular;
+        }
+
+        private static bool overtimeRequestDateIsJustARegularDay(Request overtimeRequest, Holiday holiday)
+        {
+            return !holiday.date.ToString("MM/dd/yyyy").Equals(overtimeRequest.requestedDate.ToString("MM/dd/yyyy")) && !overtimeRequest.requestedDate.DayOfWeek.ToString().Equals("Sunday");
+        }
+
+        public decimal calculateDailBasedSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary)
         {
             List<Holiday> holidays = holidayService.fetchHolidays();
             decimal periodSalary = 0.00M;
@@ -187,6 +241,26 @@ namespace PayrollSystem.service
             {
                 taxAmountToBeDeducted = fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE_MARRIED_LOWER_LIMIT, SINGLE_MARRIED_UPPER_LIMIT);
                 Console.WriteLine(taxAmountToBeDeducted);
+            }
+            else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 1)
+            {
+                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE1_MARRIED1_LOWER_LIMIT, SINGLE1_MARRIED1_UPPER_LIMIT);
+            }
+            else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 2)
+            {
+                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE2_MARRIED2_LOWER_LIMIT, SINGLE2_MARRIED2_UPPER_LIMIT);
+            }
+            else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 3)
+            {
+                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE3_MARRIED3_LOWER_LIMIT, SINGLE3_MARRIED3_UPPER_LIMIT);
+            }
+            else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 4)
+            {
+                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE4_MARRIED4_LOWER_LIMIT, SINGLE4_MARRIED4_UPPER_LIMIT);
+            }
+            else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents > 4)
+            {
+                taxAmountToBeDeducted = periodSalary;
             }
             return taxAmountToBeDeducted;
         }

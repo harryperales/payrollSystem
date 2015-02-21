@@ -44,13 +44,13 @@ namespace PayrollSystem.controller
             List<Request> overtimeRequests = requestService.fetchOvertimeRequests(employee, startDatePeriod, endDatePeriod);
             payslip.requests = overtimeRequests;
 
-            periodSalary += salaryService.calculatePeriodSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);
+            periodSalary += salaryService.calculateDailyBasedSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);
             Console.WriteLine("periodSalaryWithOvertime---->>" + periodSalary);
 
             List<Request> leaveRequests = requestService.fetchLeaveRequest(employee, startDatePeriod, endDatePeriod);
             payslip.requests.AddRange(leaveRequests);
 
-            periodSalary += salaryService.calculatePeriodSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary);
+            periodSalary += salaryService.calculateDailBasedSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary);
             Console.WriteLine("periodSalaryWithLeave---->>" + periodSalary);
 
             List<Miscellaneous> benefits = miscellaneousService.fetchMiscellaneousByBenefitType(employee);
