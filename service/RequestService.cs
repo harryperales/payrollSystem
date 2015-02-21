@@ -208,13 +208,27 @@ namespace PayrollSystem.service
 
         public Request updateRequestStatusById(int requestId, string status)
         {
+            Request request = fetchById(requestId);
             sqlCon.Open();
             sqlCmd.CommandText = "UPDATE Request SET status = @status WHERE (id = @id);";
             sqlCmd.Parameters.AddWithValue("@status", status);
             sqlCmd.Parameters.AddWithValue("@id", requestId);
             sqlCmd.ExecuteNonQuery();
             sqlCon.Close();
-            return null;
+
+            if (status == "approved")
+            {
+                Console.WriteLine("------------:" + request.employee.id);
+                EmployeeServiceInterface employeeService = new EmployeeService();
+                Employee employee = employeeService.fetchEmployeeById(request.employee.id);
+                Console.WriteLine("------------:" + employee);
+
+                LeaveCreditServiceInterface leaveCreditsService = new LeaveCreditService();
+                LeaveCredits leaveCredits = leaveCreditsService.fetchLeaveCreditsByEmployee(employee);
+                
+                EmployeeLeaveCredits employeeLeaveRequest = leaveCreditsService.updateEmployeeLeaveCredits(employee, leaveCredits);
+            }
+            return request;
         }
 
         public Request fetchById(int requestId)
@@ -236,7 +250,7 @@ namespace PayrollSystem.service
                 while (sqlDataReader.Read())
                 {
                     request.id = Int32.Parse(sqlDataReader["id"].ToString());
-                    employee.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    employee.id = Int32.Parse(sqlDataReader["employeeId"].ToString());
                     employee.employeeId = Int64.Parse(sqlDataReader["employeeNumber"].ToString());
                     employee.fullName = sqlDataReader["fullName"].ToString();
                     employee.birthDate = sqlDataReader["birthDate"].ToString();
@@ -267,7 +281,7 @@ namespace PayrollSystem.service
                     }
                     else if (status.Equals("pending"))
                     {
-                        request.status = RequestStatus.Disapproved;
+                        request.status = RequestStatus.Pending;
                     }
                     request.dateFiled = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
                 }

@@ -24,7 +24,6 @@ namespace PayrollSystem.service
             User user = userService.createUser(employee.userAccount);
             if (user.id > 0)
             {
-                Console.WriteLine(user.id);
                 sqlCon.Open();
                 sqlCmd.CommandText = "INSERT into [Employee] (employeeId, userAccountId, fullName, "
                 + "birthDate, gender, civilStatus, dependents, address, contactNumber, tin, "
@@ -50,6 +49,9 @@ namespace PayrollSystem.service
                 sqlCmd.Parameters.AddWithValue("@jobPositionId", employee.jobPosition.id);
                 employee.id = (int)sqlCmd.ExecuteScalar();
                 sqlCon.Close();
+
+                LeaveCreditServiceInterface leaveCreditsService = new LeaveCreditService();
+                EmployeeLeaveCredits employeeLeaveCredits = leaveCreditsService.createEmployeeLeaveCredits(employee);
                 return employee;
             }
             return null;

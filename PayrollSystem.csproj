@@ -95,9 +95,11 @@
     <Compile Include="model\Deductions.cs" />
     <Compile Include="model\Earnings.cs" />
     <Compile Include="model\Employee.cs" />
+    <Compile Include="model\EmployeeLeaveCredits.cs" />
     <Compile Include="model\EmployeeMiscellaneous.cs" />
     <Compile Include="model\Holiday.cs" />
     <Compile Include="model\HolidayWages.cs" />
+    <Compile Include="model\LeaveCredits.cs" />
     <Compile Include="model\Miscellaneous.cs" />
     <Compile Include="model\MiscType.cs" />
     <Compile Include="model\Payroll.cs" />
@@ -118,6 +120,8 @@
     <Compile Include="service\EmployeeServiceInterface.cs" />
     <Compile Include="service\HolidayService.cs" />
     <Compile Include="service\HolidayServiceInterface.cs" />
+    <Compile Include="service\LeaveCreditService.cs" />
+    <Compile Include="service\LeaveCreditServiceInterface.cs" />
     <Compile Include="service\MiscellaneousService.cs" />
     <Compile Include="service\MiscellaneousServiceInterface.cs" />
     <Compile Include="service\PayrollService.cs" />

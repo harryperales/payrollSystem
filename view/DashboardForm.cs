@@ -181,6 +181,7 @@ namespace PayrollSystem.view
             request.status = RequestStatus.Pending;
             request.description = leaveDescription.Text;
             request.dateFiled = Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy"));
+
             RequestControllerInterface requestController = new RequestController();
             request = requestController.createRequest(request);
             if (request != null)

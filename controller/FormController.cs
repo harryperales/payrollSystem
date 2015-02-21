@@ -154,6 +154,7 @@ namespace PayrollSystem.controller
         {
             requestForm.Close();
             adminDashboard.loadPendingRequests();
+            adminDashboard.loadApprovedRequests();
             adminDashboard.Show();
         }
 

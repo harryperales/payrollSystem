@@ -155,14 +155,14 @@ namespace PayrollSystem.view
 
         private void showSpinner()
         {
-            spinnerPictureBox.Visible = false;
+            spinnerPictureBox.Visible = true;
         }
 
         private void createPayrollButton_Click(object sender, EventArgs e)
         {
 
             TimeSpan validDate = endDatePeriod.Value - startDatePeriod.Value;
-            if (validDate <= new TimeSpan(23,0,0))
+            if (validDate <= fetchValidDateDuration())
             {
                 showErrorMessage("Invalid period.");
                 return;
@@ -214,6 +214,11 @@ namespace PayrollSystem.view
                 hideSpinner();
                 showErrorMessage("Successfully create payroll to all users");
             }
+        }
+
+        private static TimeSpan fetchValidDateDuration()
+        {
+            return new TimeSpan(23, 59, 59);
         }
 
         private void addPositionButton_Click(object sender, EventArgs e)
@@ -283,7 +288,7 @@ namespace PayrollSystem.view
                 }
                 else
                 {
-                    showErrorMessage("Please a record to view.");
+                    showErrorMessage("Please select a record to view.");
                 }
             }
             catch (FormatException ex)
