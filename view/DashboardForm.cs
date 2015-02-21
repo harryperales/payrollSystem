@@ -28,12 +28,14 @@ namespace PayrollSystem.view
             initializeRequestTab();
             loadPendingRequest();
             loadApprovedRequest();
+            loadEmployeeLeaveCredits();
         }
 
         private void initializeRequestTab()
         {
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            idNumber.Text = employee.employeeId.ToString();
             employeeName.Text = employee.fullName;
             employeeNumber.Text = employee.employeeId.ToString();
             dateFiled.Text = DateTime.Now.ToString("MM/dd/yyyy ddd");
@@ -51,6 +53,20 @@ namespace PayrollSystem.view
             dateOfLeave.Value = DateTime.Now;
         }
 
+        private void loadEmployeeLeaveCredits()
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            LeaveCreditsControllerInteface leaveCreditsController = new LeaveCreditsController();
+            LeaveCredits leaveCredits = leaveCreditsController.fetchLeaveCreditsByEmployee(employee);
+            vacationLeave.Text = leaveCredits.vacationLeaveCredits.ToString();
+            sickLeave.Text = leaveCredits.sickLeaveCredits.ToString();
+            emergencyLeave.Text = leaveCredits.emergencyLeaveCredits.ToString();
+            paternityLeave.Text = leaveCredits.paternityLeaveCredits.ToString();
+            bereavementLeave.Text = leaveCredits.bereavementLeaveCredits.ToString();
+            birthdayLeave.Text = leaveCredits.birthdayLeaveCredits.ToString();
+        }
+
         private void loadUserCurrentAttendance()
         {
             EmployeeControllerInterface employeeController = new EmployeeController();
@@ -60,7 +76,7 @@ namespace PayrollSystem.view
             if (attendance != null && !attendance.Equals(""))
             {
                 clockedIn.Text = attendance.timeIn.ToString();
-                clockedOut.Text = attendance.timeOut.ToString();
+                clockedOut.Text = attendance.timeOut.ToString("MM/dd/yyyy").Equals("01/01/0001") ? "N/A" : attendance.timeOut.ToString() ;
                 DateTime timeToClockOut = calculateTimeToClockOut(attendance.timeIn);
                 validClockOut.Text = timeToClockOut.ToString();
             }
