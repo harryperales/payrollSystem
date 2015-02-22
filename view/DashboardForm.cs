@@ -139,7 +139,8 @@ namespace PayrollSystem.view
             attendanceListBox.Items.Clear();
             foreach (Attendance attendance in attendanceSheet)
             {
-                attendanceListBox.Items.Add(attendance.id + ".)" + attendance.timeIn.ToString() + " | " + attendance.timeIn.ToString());
+                string timeOutString = attendance.timeOut.ToString("MM/dd/yyyy").Equals("01/01/0001") ? "Missed Clocked Out" : attendance.timeOut.ToString();
+                attendanceListBox.Items.Add(attendance.id + ".)" + attendance.timeIn.ToString() + " | " + timeOutString);
             }
         }
 
