@@ -163,52 +163,35 @@ namespace PayrollSystem.service
         public decimal calculateDailBasedSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary)
         {
             List<Holiday> holidays = holidayService.fetchHolidays();
-            decimal periodSalary = 0.00M;
+            decimal totalSalaryWithLeaveRequest = 0.00M;
             decimal perHourBasedSalary = 0.00M;
             perHourBasedSalary = decimal.Divide(dailyBasedSalary, 8.00M);
             foreach (Request leaveRequest in leaveRequests)
             {
-                decimal calculatedSalary = calculatePerHourSalaryFromHoursSpent(perHourBasedSalary, 8.00M);
-
-                periodSalary += calculatedSalary;
-
-                foreach (Holiday holiday in holidays)
-                {
-
-                    if (!holiday.date.ToString("MM/dd/yyyy").Equals(leaveRequest.dateFiled.ToString("MM/dd/yyyy")))
-                    {
-                        //nothing to do, just to skip the loop
-                    }
-                    else if (holiday.holidayWages == HolidayWages.NonRegular)
-                    {
-                        periodSalary += decimal.Multiply(dailyBasedSalary, 0.30M); // add 30% of daily Salary
-                    }
-                    else if (holiday.holidayWages == HolidayWages.Regular)
-                    {
-                        periodSalary += dailyBasedSalary; // add 100% daily salary
-                    }
-
-                }
+                decimal calculatedSalaryWithHoursSpent = calculatePerHourSalaryFromHoursSpent(perHourBasedSalary, 8.00M);
+                totalSalaryWithLeaveRequest += calculatedSalaryWithHoursSpent;
             }
-            return periodSalary;
+            return totalSalaryWithLeaveRequest;
         }
 
-        public decimal calculatePeriodSalaryWithDeductions(List<Miscellaneous> deductions, decimal periodSalaryWithDeductions)
+        public decimal fetchTotalDeductions(List<Miscellaneous> deductions)
         {
+            decimal totalDeductions = 0.00M;
             foreach (Miscellaneous deduction in deductions)
             {
-                periodSalaryWithDeductions -= deduction.amount;
+                totalDeductions += deduction.amount;
             }
-            return periodSalaryWithDeductions;
+            return totalDeductions;
         }
 
-        public decimal calculatePeriodSalaryWithBenefits(List<Miscellaneous> benefits, decimal periodSalaryWithBenefits, List<Attendance> attendances, List<Request> leaveRequests)
+        public decimal fetchTotalAmountOfBenefits(List<Miscellaneous> benefits, List<Attendance> attendances, List<Request> leaveRequests)
         {
+            decimal totalAmountFromBenefits = 0.00M;
             foreach (Attendance attendance in attendances)
             {
                 foreach (Miscellaneous benefit in benefits)
                 {
-                    periodSalaryWithBenefits += benefit.amount;
+                    totalAmountFromBenefits += benefit.amount;
                 }
             }
 
@@ -217,21 +200,21 @@ namespace PayrollSystem.service
             {
                 foreach (Miscellaneous benefit in benefits)
                 {
-                    periodSalaryWithBenefits += benefit.amount;
+                    totalAmountFromBenefits += benefit.amount;
                 }
             }
-            return periodSalaryWithBenefits;
+            return totalAmountFromBenefits;
         }
 
-        public decimal calculatePeriodSalaryWithBonus(List<Miscellaneous> bonuses, decimal periodSalaryWithBonus)
+        public decimal fetchTotalBonus(List<Miscellaneous> bonuses)
         {
+            decimal totalBonus = 0.00M;
             foreach (Miscellaneous bonus in bonuses)
             {
-                Console.WriteLine(bonus.amount);
-                periodSalaryWithBonus += bonus.amount;
+                totalBonus += bonus.amount;
             }
 
-            return periodSalaryWithBonus;
+            return totalBonus;
         }
 
         public decimal calculatePeriodSalaryTax(Employee employee, decimal periodSalary)

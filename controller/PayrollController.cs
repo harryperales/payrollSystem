@@ -56,18 +56,19 @@ namespace PayrollSystem.controller
             List<Miscellaneous> benefits = miscellaneousService.fetchMiscellaneousByBenefitType(employee);
             payslip.miscellaneous = benefits;
 
-            periodSalary = salaryService.calculatePeriodSalaryWithBenefits(benefits, periodSalary, attendances, leaveRequests);
+            periodSalary += salaryService.fetchTotalAmountOfBenefits(benefits, attendances, leaveRequests);
             Console.WriteLine("periodSalaryWIthBenefits---->>" + periodSalary);
 
             List<Miscellaneous> bonuses = miscellaneousService.fetchBonusMiscellaneousByDescriptionAsDate(employee, startDatePeriod, endDatePeriod);
             payslip.miscellaneous.AddRange(bonuses);
-            periodSalary = salaryService.calculatePeriodSalaryWithBonus(bonuses, periodSalary);
+
+            periodSalary += salaryService.fetchTotalBonus(bonuses);
             Console.WriteLine("periodSalaryWIthBonus---->>" + periodSalary);
 
             List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
             //payslip.miscellaneous = deductions;
 
-            periodSalary = salaryService.calculatePeriodSalaryWithDeductions(deductions, periodSalary);
+            periodSalary -= salaryService.fetchTotalDeductions(deductions);
             Console.WriteLine("periodSalaryWIthDeductions---->>" + periodSalary);
 
             payslip.sssDeduction = salaryService.fetchSssDeductionsWithPeriodSalary(periodSalary);

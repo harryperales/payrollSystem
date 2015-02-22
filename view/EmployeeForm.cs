@@ -54,7 +54,6 @@ namespace PayrollSystem.view
 
         private void initializeEmployeeForm(Employee employee)
         {
-            Console.WriteLine("another");
             employeeId.Text = employee.employeeId.ToString();
             username.Enabled = false;
             username.Text = employee.userAccount.username;
@@ -123,6 +122,30 @@ namespace PayrollSystem.view
         private void createEmployeeButton_Click(object sender, EventArgs e)
         {
             EmployeeControllerInterface employeeController = new EmployeeController();
+            if(username.Text.Equals(""))
+            {
+                MessageBox.Show("Username cannot be empty.");
+                return;
+            }
+
+            if (firstname.Text.Equals(""))
+            {
+                MessageBox.Show("Firstname cannot be empty.");
+                return;
+            }
+
+            if (middlename.Text.Equals(""))
+            {
+                MessageBox.Show("Middlename cannot be empty.");
+                return;
+            }
+
+            if (lastname.Text.Equals(""))
+            {
+                MessageBox.Show("Lastname cannot be empty.");
+                return;
+            }
+
             if (createEmployeeButton.Text == "Create")
             {
                 if (password.Text != confirmPassword.Text)

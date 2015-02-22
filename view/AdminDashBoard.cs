@@ -124,9 +124,15 @@ namespace PayrollSystem.view
             }
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
-
-            FormControllerInterface formController = new FormController();
-            formController.showEmployeeForm(this, employee);
+            if (employee != null && employee.ToString().Equals(""))
+            {
+                FormControllerInterface formController = new FormController();
+                formController.showEmployeeForm(this, employee);
+            }
+            else
+            {
+                showErrorMessage("The user you specified does not exists.");
+            }
 
         }
 

@@ -13,11 +13,11 @@ namespace PayrollSystem.service
 
         decimal calculateDailBasedSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary);
 
-        decimal calculatePeriodSalaryWithDeductions(List<Miscellaneous> deductions, decimal periodSalary);
+        decimal fetchTotalDeductions(List<Miscellaneous> deductions);
 
-        decimal calculatePeriodSalaryWithBenefits(List<Miscellaneous> benefits, decimal periodSalary, List<Attendance> attendances, List<Request> leaveRequests);
+        decimal fetchTotalAmountOfBenefits(List<Miscellaneous> benefits, List<Attendance> attendances, List<Request> leaveRequests);
 
-        decimal calculatePeriodSalaryWithBonus(List<Miscellaneous> bonuses, decimal periodSalary);
+        decimal fetchTotalBonus(List<Miscellaneous> bonuses);
 
         decimal calculatePeriodSalaryTax(Employee employee, decimal periodSalary);
 
