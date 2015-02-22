@@ -77,7 +77,7 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id+".) "+request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+                pendingRequestListBox.Items.Add(request.id+".) "+request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0] + " | " + request.name);
             }
         }
 
@@ -89,7 +89,7 @@ namespace PayrollSystem.view
             foreach (Request request in requests)
             {
                 Console.WriteLine("request:"+request.name);
-                approvedRequestListBox.Items.Add(request.id + ".) " + request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0]);
+                approvedRequestListBox.Items.Add(request.id + ".) " + request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0] + " | " + request.name);
             }
         }
 

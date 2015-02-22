@@ -113,7 +113,7 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description + " | " + request.name);
             }
         }
 
@@ -126,7 +126,7 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description + " | " + request.name);
             }
         }
 
@@ -168,7 +168,7 @@ namespace PayrollSystem.view
                 FormControllerInterface formController = new FormController();
                 formController.showUserPayroll(this, payslip);
             }
-            catch (Exception ex)
+            catch (FormatException ex)
             {
                 Console.WriteLine("No item selected: " + ex.Message);
             }

@@ -43,5 +43,15 @@ namespace PayrollSystem.controller
         {
             return requestService.fetchApprovedRequestByEmployee(employee);
         }
+
+        public TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee)
+        {
+            return requestService.fetchTotalHoursOvertimeSpent(startDatePeriod, endDatePeriod, employee);
+        }
+
+        public List<Request> fetchOvertimeRequests(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod)
+        {
+            return requestService.fetchOvertimeRequests(employee, startDatePeriod, endDatePeriod);
+        }
     }
 }

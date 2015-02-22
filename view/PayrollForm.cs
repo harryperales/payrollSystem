@@ -44,6 +44,10 @@ namespace PayrollSystem.view
 
         private void initializeForm(Payslip payslip)
         {
+            RequestControllerInterface requestController = new RequestController();
+            MiscControllerInterface miscellaneousController = new MiscellaneousController();
+            SalaryControllerInterface salaryController = new SalaryController();
+            AttendanceControllerInterface attendanceController = new AttendanceController();
             employeeFullName.Text = payslip.employee.fullName;
             dateEmployed.Text = payslip.employee.dateEmployed;
             employeeNumber.Text = payslip.employee.employeeId.ToString();
@@ -54,26 +58,37 @@ namespace PayrollSystem.view
             positionName.Text = payslip.employee.jobPosition.name;
             dailyRate.Text = payslip.employee.jobPosition.salary.ToString("0.##");
             hourlyRate.Text = calculateHourlyRate(payslip.employee.jobPosition.salary).ToString("0.##");
-            TimeSpan timeSpent = fetchTotalHoursSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee);
+            TimeSpan timeSpent = fetchTotalHoursSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, attendanceController);
             hoursSpent.Text = timeSpent.ToString();
             totalBasePay.Text = calculateTotalBasePay(timeSpent, payslip.employee.jobPosition.salary).ToString("0.##");
-            decimal foodAllowanceAmount = fetchFoodAllowance(payslip);
+            decimal foodAllowanceAmount = fetchFoodAllowance(payslip, miscellaneousController);
             foodAllowance.Text = foodAllowanceAmount.ToString("0.##");
-            decimal transpoAllowanceAmount = fetchTranspoAllowance(payslip);
+            decimal transpoAllowanceAmount = fetchTranspoAllowance(payslip, miscellaneousController);
             transportation.Text = transpoAllowanceAmount.ToString("0.##");
+            overtimeHours.Text = fetchTotalHoursOvertimeSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController).ToString();
+            overtimeAmount.Text = calculateDailyBasedSalaryWithOvertimeRequests(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController).ToString("0.##");
 
 
         }
 
-        private decimal fetchFoodAllowance(Payslip payslip)
+        private decimal calculateDailyBasedSalaryWithOvertimeRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee, RequestControllerInterface requestController, SalaryControllerInterface salaryController)
         {
-            MiscControllerInterface miscellaneousController = new MiscellaneousController();
+            List<Request> overtimeRequests = requestController.fetchOvertimeRequests(employee, startDatePeriod, endDatePeriod);
+            return salaryController.calculateDailyBasedSalaryWithOvertimeRequests(overtimeRequests, employee.jobPosition.salary);
+        }
+
+        private TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee, RequestControllerInterface requestController)
+        {
+            return requestController.fetchTotalHoursOvertimeSpent(startDatePeriod, endDatePeriod, employee);
+        }
+
+        private decimal fetchFoodAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
+        {
             return miscellaneousController.fetchFoodAllowance().amount;
         }
 
-        private decimal fetchTranspoAllowance(Payslip payslip)
+        private decimal fetchTranspoAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
         {
-            MiscControllerInterface miscellaneousController = new MiscellaneousController();
             return miscellaneousController.fetchTranspoAllowance().amount;
         }
 
@@ -86,20 +101,24 @@ namespace PayrollSystem.view
             Console.WriteLine("hours:" + timeSpent.Hours);
             if (timeSpent.Days > 0) totalBasePay = timeSpent.Days * dailyBasedSalary;
             if( timeSpent.Hours > 0 ) totalBasePay += (timeSpent.Hours * hourlyRate);
-            if (timeSpent.Minutes > 0) totalBasePay += (timeSpent.Minutes * hourlyRate);
+            decimal convertedMinToHour = decimal.Divide(timeSpent.Minutes, 59);
+            if (timeSpent.Minutes > 0) totalBasePay += (convertedMinToHour * hourlyRate);
 
             return totalBasePay;
         }
 
-        private TimeSpan fetchTotalHoursSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee)
+        private TimeSpan fetchTotalHoursSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee,
+            AttendanceControllerInterface attendanceController)
         {
             var dates = Enumerable.Range(0, (endDatePeriod - startDatePeriod).Days + 1).Select(d => startDatePeriod.AddDays(d));
-            AttendanceControllerInterface attendanceController = new AttendanceController();
             List<Attendance> attendanceSheet = new List<Attendance>();
             foreach (var date in dates)
             {
                 Attendance attendance = attendanceController.fetchEmployeeAttendanceByDate(employee, date);
-                attendanceSheet.Add(attendance);
+                if (attendance != null)
+                {
+                    attendanceSheet.Add(attendance);
+                }
             }
 
             TimeSpan totalTimeSpent = new TimeSpan(0);

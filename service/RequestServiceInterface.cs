@@ -27,5 +27,9 @@ namespace PayrollSystem.service
         List<Request> fetchPendingRequestByEmployee(Employee employee);
 
         List<Request> fetchApprovedRequestByEmployee(Employee employee);
+
+        Request fetchEmployeeApprovedOvertimeRequestByDate(Employee employee, DateTime date);
+
+        TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
     }
 }

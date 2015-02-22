@@ -434,5 +434,26 @@ namespace PayrollSystem.service
             sqlCon.Close();
             return requests;
         }
+
+        public TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee)
+        {
+            TimeSpan totalHoursOvertimeSpent = new TimeSpan(0);
+            var dates = Enumerable.Range(0, (endDatePeriod - startDatePeriod).Days + 1).Select(d => startDatePeriod.AddDays(d));
+            RequestServiceInterface requestService = new RequestService();
+            foreach (var date in dates)
+            {
+
+                //totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                //decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
+                Request overtimeRequest = requestService.fetchEmployeeApprovedOvertimeRequestByDate(employee, date);
+                if (overtimeRequest != null)
+                {
+                    TimeSpan overtimeHourSpent = new TimeSpan(overtimeRequest.requestedDate.Hour, overtimeRequest.requestedDate.Minute, 0);
+                    totalHoursOvertimeSpent = totalHoursOvertimeSpent.Add(overtimeHourSpent);
+                }
+            }
+
+            return totalHoursOvertimeSpent;
+        }
     }
 }

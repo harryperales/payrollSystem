@@ -44,9 +44,36 @@
             this.dateEmployedLabel = new System.Windows.Forms.Label();
             this.employeeFullName = new System.Windows.Forms.Label();
             this.earningsPanel = new System.Windows.Forms.Panel();
+            this.earningLabel = new System.Windows.Forms.Label();
+            this.overtimeAmount = new System.Windows.Forms.Label();
+            this.overtimeHours = new System.Windows.Forms.Label();
+            this.overtimeLabel = new System.Windows.Forms.Label();
+            this.transportation = new System.Windows.Forms.Label();
+            this.foodAllowance = new System.Windows.Forms.Label();
+            this.dailyRate = new System.Windows.Forms.Label();
+            this.totalBasePay = new System.Windows.Forms.Label();
+            this.hoursSpent = new System.Windows.Forms.Label();
+            this.hourlyRate = new System.Windows.Forms.Label();
+            this.extraLabel = new System.Windows.Forms.Label();
+            this.transportationAllowanceLabel = new System.Windows.Forms.Label();
+            this.foodAllowanceLabel = new System.Windows.Forms.Label();
+            this.amountLabel = new System.Windows.Forms.Label();
+            this.hoursLabel = new System.Windows.Forms.Label();
+            this.basePayLabel = new System.Windows.Forms.Label();
+            this.hourlyRateLabel = new System.Windows.Forms.Label();
+            this.positionName = new System.Windows.Forms.Label();
             this.allowanceLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.philHealth = new System.Windows.Forms.Label();
+            this.sss = new System.Windows.Forms.Label();
+            this.pagIbig = new System.Windows.Forms.Label();
+            this.tax = new System.Windows.Forms.Label();
+            this.amountDeductionLabel = new System.Windows.Forms.Label();
+            this.philHealthLabel = new System.Windows.Forms.Label();
+            this.sssLabel = new System.Windows.Forms.Label();
+            this.pagIbigLabel = new System.Windows.Forms.Label();
+            this.taxLabel = new System.Windows.Forms.Label();
             this.deductionLabel = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
@@ -56,36 +83,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.positionName = new System.Windows.Forms.Label();
-            this.hourlyRateLabel = new System.Windows.Forms.Label();
-            this.basePayLabel = new System.Windows.Forms.Label();
-            this.hoursLabel = new System.Windows.Forms.Label();
-            this.amountLabel = new System.Windows.Forms.Label();
-            this.foodAllowanceLabel = new System.Windows.Forms.Label();
-            this.transportationAllowanceLabel = new System.Windows.Forms.Label();
-            this.taxLabel = new System.Windows.Forms.Label();
-            this.pagIbigLabel = new System.Windows.Forms.Label();
-            this.sssLabel = new System.Windows.Forms.Label();
-            this.philHealthLabel = new System.Windows.Forms.Label();
-            this.amountDeductionLabel = new System.Windows.Forms.Label();
-            this.philHealth = new System.Windows.Forms.Label();
-            this.sss = new System.Windows.Forms.Label();
-            this.pagIbig = new System.Windows.Forms.Label();
-            this.tax = new System.Windows.Forms.Label();
-            this.extraLabel = new System.Windows.Forms.Label();
-            this.performanceBonusLabel = new System.Windows.Forms.Label();
-            this.hourlyRate = new System.Windows.Forms.Label();
-            this.hoursSpent = new System.Windows.Forms.Label();
-            this.totalBasePay = new System.Windows.Forms.Label();
-            this.dailyRate = new System.Windows.Forms.Label();
-            this.foodAllowance = new System.Windows.Forms.Label();
-            this.transportation = new System.Windows.Forms.Label();
-            this.overtimeLabel = new System.Windows.Forms.Label();
-            this.overtimeHourlyRate = new System.Windows.Forms.Label();
-            this.overtimeHours = new System.Windows.Forms.Label();
-            this.overtimeAmount = new System.Windows.Forms.Label();
-            this.performanceBonus = new System.Windows.Forms.Label();
-            this.earningLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.earningsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -269,10 +266,8 @@
             this.earningsPanel.BackColor = System.Drawing.Color.Transparent;
             this.earningsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.earningsPanel.Controls.Add(this.earningLabel);
-            this.earningsPanel.Controls.Add(this.performanceBonus);
             this.earningsPanel.Controls.Add(this.overtimeAmount);
             this.earningsPanel.Controls.Add(this.overtimeHours);
-            this.earningsPanel.Controls.Add(this.overtimeHourlyRate);
             this.earningsPanel.Controls.Add(this.overtimeLabel);
             this.earningsPanel.Controls.Add(this.transportation);
             this.earningsPanel.Controls.Add(this.foodAllowance);
@@ -280,7 +275,6 @@
             this.earningsPanel.Controls.Add(this.totalBasePay);
             this.earningsPanel.Controls.Add(this.hoursSpent);
             this.earningsPanel.Controls.Add(this.hourlyRate);
-            this.earningsPanel.Controls.Add(this.performanceBonusLabel);
             this.earningsPanel.Controls.Add(this.extraLabel);
             this.earningsPanel.Controls.Add(this.transportationAllowanceLabel);
             this.earningsPanel.Controls.Add(this.foodAllowanceLabel);
@@ -295,6 +289,204 @@
             this.earningsPanel.Name = "earningsPanel";
             this.earningsPanel.Size = new System.Drawing.Size(450, 239);
             this.earningsPanel.TabIndex = 1;
+            // 
+            // earningLabel
+            // 
+            this.earningLabel.AutoSize = true;
+            this.earningLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.earningLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.earningLabel.Location = new System.Drawing.Point(38, 4);
+            this.earningLabel.Name = "earningLabel";
+            this.earningLabel.Size = new System.Drawing.Size(64, 15);
+            this.earningLabel.TabIndex = 31;
+            this.earningLabel.Text = "EARNINGS";
+            // 
+            // overtimeAmount
+            // 
+            this.overtimeAmount.AutoSize = true;
+            this.overtimeAmount.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.overtimeAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeAmount.Location = new System.Drawing.Point(365, 171);
+            this.overtimeAmount.Name = "overtimeAmount";
+            this.overtimeAmount.Size = new System.Drawing.Size(51, 15);
+            this.overtimeAmount.TabIndex = 29;
+            this.overtimeAmount.Text = "325.05";
+            // 
+            // overtimeHours
+            // 
+            this.overtimeHours.AutoSize = true;
+            this.overtimeHours.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.overtimeHours.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeHours.Location = new System.Drawing.Point(270, 171);
+            this.overtimeHours.Name = "overtimeHours";
+            this.overtimeHours.Size = new System.Drawing.Size(43, 15);
+            this.overtimeHours.TabIndex = 28;
+            this.overtimeHours.Text = "03:00";
+            // 
+            // overtimeLabel
+            // 
+            this.overtimeLabel.AutoSize = true;
+            this.overtimeLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.overtimeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeLabel.Location = new System.Drawing.Point(15, 171);
+            this.overtimeLabel.Name = "overtimeLabel";
+            this.overtimeLabel.Size = new System.Drawing.Size(62, 15);
+            this.overtimeLabel.TabIndex = 26;
+            this.overtimeLabel.Text = "Overtime ";
+            // 
+            // transportation
+            // 
+            this.transportation.AutoSize = true;
+            this.transportation.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.transportation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.transportation.Location = new System.Drawing.Point(365, 115);
+            this.transportation.Name = "transportation";
+            this.transportation.Size = new System.Drawing.Size(51, 15);
+            this.transportation.TabIndex = 25;
+            this.transportation.Text = "150.00";
+            // 
+            // foodAllowance
+            // 
+            this.foodAllowance.AutoSize = true;
+            this.foodAllowance.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.foodAllowance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.foodAllowance.Location = new System.Drawing.Point(365, 100);
+            this.foodAllowance.Name = "foodAllowance";
+            this.foodAllowance.Size = new System.Drawing.Size(43, 15);
+            this.foodAllowance.TabIndex = 24;
+            this.foodAllowance.Text = "75.00";
+            // 
+            // dailyRate
+            // 
+            this.dailyRate.AutoSize = true;
+            this.dailyRate.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.dailyRate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dailyRate.Location = new System.Drawing.Point(91, 46);
+            this.dailyRate.Name = "dailyRate";
+            this.dailyRate.Size = new System.Drawing.Size(51, 15);
+            this.dailyRate.TabIndex = 23;
+            this.dailyRate.Text = "306.40";
+            // 
+            // totalBasePay
+            // 
+            this.totalBasePay.AutoSize = true;
+            this.totalBasePay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.totalBasePay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.totalBasePay.Location = new System.Drawing.Point(365, 61);
+            this.totalBasePay.Name = "totalBasePay";
+            this.totalBasePay.Size = new System.Drawing.Size(59, 15);
+            this.totalBasePay.TabIndex = 22;
+            this.totalBasePay.Text = "2225.00";
+            // 
+            // hoursSpent
+            // 
+            this.hoursSpent.AutoSize = true;
+            this.hoursSpent.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.hoursSpent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.hoursSpent.Location = new System.Drawing.Point(270, 61);
+            this.hoursSpent.Name = "hoursSpent";
+            this.hoursSpent.Size = new System.Drawing.Size(43, 15);
+            this.hoursSpent.TabIndex = 21;
+            this.hoursSpent.Text = "25:00";
+            // 
+            // hourlyRate
+            // 
+            this.hourlyRate.AutoSize = true;
+            this.hourlyRate.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.hourlyRate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.hourlyRate.Location = new System.Drawing.Point(197, 61);
+            this.hourlyRate.Name = "hourlyRate";
+            this.hourlyRate.Size = new System.Drawing.Size(43, 15);
+            this.hourlyRate.TabIndex = 20;
+            this.hourlyRate.Text = "90.50";
+            // 
+            // extraLabel
+            // 
+            this.extraLabel.AutoSize = true;
+            this.extraLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.extraLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.extraLabel.Location = new System.Drawing.Point(14, 141);
+            this.extraLabel.Name = "extraLabel";
+            this.extraLabel.Size = new System.Drawing.Size(50, 15);
+            this.extraLabel.TabIndex = 18;
+            this.extraLabel.Text = "EXTRAS";
+            // 
+            // transportationAllowanceLabel
+            // 
+            this.transportationAllowanceLabel.AutoSize = true;
+            this.transportationAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.transportationAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.transportationAllowanceLabel.Location = new System.Drawing.Point(15, 115);
+            this.transportationAllowanceLabel.Name = "transportationAllowanceLabel";
+            this.transportationAllowanceLabel.Size = new System.Drawing.Size(154, 15);
+            this.transportationAllowanceLabel.TabIndex = 17;
+            this.transportationAllowanceLabel.Text = "Transportation Allowance";
+            // 
+            // foodAllowanceLabel
+            // 
+            this.foodAllowanceLabel.AutoSize = true;
+            this.foodAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.foodAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.foodAllowanceLabel.Location = new System.Drawing.Point(15, 100);
+            this.foodAllowanceLabel.Name = "foodAllowanceLabel";
+            this.foodAllowanceLabel.Size = new System.Drawing.Size(95, 15);
+            this.foodAllowanceLabel.TabIndex = 16;
+            this.foodAllowanceLabel.Text = "Food Allowance";
+            // 
+            // amountLabel
+            // 
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amountLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.amountLabel.Location = new System.Drawing.Point(365, 4);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(55, 15);
+            this.amountLabel.TabIndex = 15;
+            this.amountLabel.Text = "AMOUNT";
+            // 
+            // hoursLabel
+            // 
+            this.hoursLabel.AutoSize = true;
+            this.hoursLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hoursLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.hoursLabel.Location = new System.Drawing.Point(270, 4);
+            this.hoursLabel.Name = "hoursLabel";
+            this.hoursLabel.Size = new System.Drawing.Size(47, 15);
+            this.hoursLabel.TabIndex = 14;
+            this.hoursLabel.Text = "HOURS";
+            // 
+            // basePayLabel
+            // 
+            this.basePayLabel.AutoSize = true;
+            this.basePayLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.basePayLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.basePayLabel.Location = new System.Drawing.Point(15, 61);
+            this.basePayLabel.Name = "basePayLabel";
+            this.basePayLabel.Size = new System.Drawing.Size(59, 15);
+            this.basePayLabel.TabIndex = 13;
+            this.basePayLabel.Text = "Base Pay";
+            // 
+            // hourlyRateLabel
+            // 
+            this.hourlyRateLabel.AutoSize = true;
+            this.hourlyRateLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hourlyRateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.hourlyRateLabel.Location = new System.Drawing.Point(197, 4);
+            this.hourlyRateLabel.Name = "hourlyRateLabel";
+            this.hourlyRateLabel.Size = new System.Drawing.Size(54, 30);
+            this.hourlyRateLabel.TabIndex = 12;
+            this.hourlyRateLabel.Text = "HOURLY\r\n   RATE";
+            // 
+            // positionName
+            // 
+            this.positionName.AutoSize = true;
+            this.positionName.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.positionName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.positionName.Location = new System.Drawing.Point(14, 31);
+            this.positionName.Name = "positionName";
+            this.positionName.Size = new System.Drawing.Size(168, 15);
+            this.positionName.TabIndex = 5;
+            this.positionName.Text = "Associate Software Engineer";
             // 
             // allowanceLabel
             // 
@@ -339,6 +531,105 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(390, 239);
             this.panel3.TabIndex = 2;
+            // 
+            // philHealth
+            // 
+            this.philHealth.AutoSize = true;
+            this.philHealth.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.philHealth.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.philHealth.Location = new System.Drawing.Point(263, 76);
+            this.philHealth.Name = "philHealth";
+            this.philHealth.Size = new System.Drawing.Size(51, 15);
+            this.philHealth.TabIndex = 14;
+            this.philHealth.Text = "334.45";
+            // 
+            // sss
+            // 
+            this.sss.AutoSize = true;
+            this.sss.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sss.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sss.Location = new System.Drawing.Point(263, 61);
+            this.sss.Name = "sss";
+            this.sss.Size = new System.Drawing.Size(51, 15);
+            this.sss.TabIndex = 13;
+            this.sss.Text = "523.15";
+            // 
+            // pagIbig
+            // 
+            this.pagIbig.AutoSize = true;
+            this.pagIbig.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagIbig.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pagIbig.Location = new System.Drawing.Point(263, 46);
+            this.pagIbig.Name = "pagIbig";
+            this.pagIbig.Size = new System.Drawing.Size(51, 15);
+            this.pagIbig.TabIndex = 12;
+            this.pagIbig.Text = "100.00";
+            // 
+            // tax
+            // 
+            this.tax.AutoSize = true;
+            this.tax.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tax.Location = new System.Drawing.Point(263, 31);
+            this.tax.Name = "tax";
+            this.tax.Size = new System.Drawing.Size(59, 15);
+            this.tax.TabIndex = 11;
+            this.tax.Text = "1000.00";
+            // 
+            // amountDeductionLabel
+            // 
+            this.amountDeductionLabel.AutoSize = true;
+            this.amountDeductionLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.amountDeductionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.amountDeductionLabel.Location = new System.Drawing.Point(267, 4);
+            this.amountDeductionLabel.Name = "amountDeductionLabel";
+            this.amountDeductionLabel.Size = new System.Drawing.Size(55, 15);
+            this.amountDeductionLabel.TabIndex = 10;
+            this.amountDeductionLabel.Text = "AMOUNT";
+            // 
+            // philHealthLabel
+            // 
+            this.philHealthLabel.AutoSize = true;
+            this.philHealthLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.philHealthLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.philHealthLabel.Location = new System.Drawing.Point(3, 76);
+            this.philHealthLabel.Name = "philHealthLabel";
+            this.philHealthLabel.Size = new System.Drawing.Size(67, 15);
+            this.philHealthLabel.TabIndex = 9;
+            this.philHealthLabel.Text = "PhilHealth";
+            // 
+            // sssLabel
+            // 
+            this.sssLabel.AutoSize = true;
+            this.sssLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sssLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sssLabel.Location = new System.Drawing.Point(3, 61);
+            this.sssLabel.Name = "sssLabel";
+            this.sssLabel.Size = new System.Drawing.Size(28, 15);
+            this.sssLabel.TabIndex = 8;
+            this.sssLabel.Text = "SSS";
+            // 
+            // pagIbigLabel
+            // 
+            this.pagIbigLabel.AutoSize = true;
+            this.pagIbigLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagIbigLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pagIbigLabel.Location = new System.Drawing.Point(3, 46);
+            this.pagIbigLabel.Name = "pagIbigLabel";
+            this.pagIbigLabel.Size = new System.Drawing.Size(54, 15);
+            this.pagIbigLabel.TabIndex = 7;
+            this.pagIbigLabel.Text = "Pag-Ibig";
+            // 
+            // taxLabel
+            // 
+            this.taxLabel.AutoSize = true;
+            this.taxLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.taxLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.taxLabel.Location = new System.Drawing.Point(3, 31);
+            this.taxLabel.Name = "taxLabel";
+            this.taxLabel.Size = new System.Drawing.Size(122, 15);
+            this.taxLabel.TabIndex = 6;
+            this.taxLabel.Text = "BIR withholding Tax";
             // 
             // deductionLabel
             // 
@@ -433,336 +724,6 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // positionName
-            // 
-            this.positionName.AutoSize = true;
-            this.positionName.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.positionName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.positionName.Location = new System.Drawing.Point(14, 31);
-            this.positionName.Name = "positionName";
-            this.positionName.Size = new System.Drawing.Size(168, 15);
-            this.positionName.TabIndex = 5;
-            this.positionName.Text = "Associate Software Engineer";
-            // 
-            // hourlyRateLabel
-            // 
-            this.hourlyRateLabel.AutoSize = true;
-            this.hourlyRateLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hourlyRateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.hourlyRateLabel.Location = new System.Drawing.Point(197, 4);
-            this.hourlyRateLabel.Name = "hourlyRateLabel";
-            this.hourlyRateLabel.Size = new System.Drawing.Size(54, 30);
-            this.hourlyRateLabel.TabIndex = 12;
-            this.hourlyRateLabel.Text = "HOURLY\r\n   RATE";
-            // 
-            // basePayLabel
-            // 
-            this.basePayLabel.AutoSize = true;
-            this.basePayLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.basePayLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.basePayLabel.Location = new System.Drawing.Point(15, 61);
-            this.basePayLabel.Name = "basePayLabel";
-            this.basePayLabel.Size = new System.Drawing.Size(59, 15);
-            this.basePayLabel.TabIndex = 13;
-            this.basePayLabel.Text = "Base Pay";
-            // 
-            // hoursLabel
-            // 
-            this.hoursLabel.AutoSize = true;
-            this.hoursLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hoursLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.hoursLabel.Location = new System.Drawing.Point(270, 4);
-            this.hoursLabel.Name = "hoursLabel";
-            this.hoursLabel.Size = new System.Drawing.Size(47, 15);
-            this.hoursLabel.TabIndex = 14;
-            this.hoursLabel.Text = "HOURS";
-            // 
-            // amountLabel
-            // 
-            this.amountLabel.AutoSize = true;
-            this.amountLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amountLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.amountLabel.Location = new System.Drawing.Point(365, 4);
-            this.amountLabel.Name = "amountLabel";
-            this.amountLabel.Size = new System.Drawing.Size(55, 15);
-            this.amountLabel.TabIndex = 15;
-            this.amountLabel.Text = "AMOUNT";
-            // 
-            // foodAllowanceLabel
-            // 
-            this.foodAllowanceLabel.AutoSize = true;
-            this.foodAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.foodAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.foodAllowanceLabel.Location = new System.Drawing.Point(15, 100);
-            this.foodAllowanceLabel.Name = "foodAllowanceLabel";
-            this.foodAllowanceLabel.Size = new System.Drawing.Size(95, 15);
-            this.foodAllowanceLabel.TabIndex = 16;
-            this.foodAllowanceLabel.Text = "Food Allowance";
-            // 
-            // transportationAllowanceLabel
-            // 
-            this.transportationAllowanceLabel.AutoSize = true;
-            this.transportationAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.transportationAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.transportationAllowanceLabel.Location = new System.Drawing.Point(15, 115);
-            this.transportationAllowanceLabel.Name = "transportationAllowanceLabel";
-            this.transportationAllowanceLabel.Size = new System.Drawing.Size(154, 15);
-            this.transportationAllowanceLabel.TabIndex = 17;
-            this.transportationAllowanceLabel.Text = "Transportation Allowance";
-            // 
-            // taxLabel
-            // 
-            this.taxLabel.AutoSize = true;
-            this.taxLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taxLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.taxLabel.Location = new System.Drawing.Point(3, 31);
-            this.taxLabel.Name = "taxLabel";
-            this.taxLabel.Size = new System.Drawing.Size(122, 15);
-            this.taxLabel.TabIndex = 6;
-            this.taxLabel.Text = "BIR withholding Tax";
-            // 
-            // pagIbigLabel
-            // 
-            this.pagIbigLabel.AutoSize = true;
-            this.pagIbigLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagIbigLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pagIbigLabel.Location = new System.Drawing.Point(3, 46);
-            this.pagIbigLabel.Name = "pagIbigLabel";
-            this.pagIbigLabel.Size = new System.Drawing.Size(54, 15);
-            this.pagIbigLabel.TabIndex = 7;
-            this.pagIbigLabel.Text = "Pag-Ibig";
-            // 
-            // sssLabel
-            // 
-            this.sssLabel.AutoSize = true;
-            this.sssLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sssLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sssLabel.Location = new System.Drawing.Point(3, 61);
-            this.sssLabel.Name = "sssLabel";
-            this.sssLabel.Size = new System.Drawing.Size(28, 15);
-            this.sssLabel.TabIndex = 8;
-            this.sssLabel.Text = "SSS";
-            // 
-            // philHealthLabel
-            // 
-            this.philHealthLabel.AutoSize = true;
-            this.philHealthLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.philHealthLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.philHealthLabel.Location = new System.Drawing.Point(3, 76);
-            this.philHealthLabel.Name = "philHealthLabel";
-            this.philHealthLabel.Size = new System.Drawing.Size(67, 15);
-            this.philHealthLabel.TabIndex = 9;
-            this.philHealthLabel.Text = "PhilHealth";
-            // 
-            // amountDeductionLabel
-            // 
-            this.amountDeductionLabel.AutoSize = true;
-            this.amountDeductionLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.amountDeductionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.amountDeductionLabel.Location = new System.Drawing.Point(267, 4);
-            this.amountDeductionLabel.Name = "amountDeductionLabel";
-            this.amountDeductionLabel.Size = new System.Drawing.Size(55, 15);
-            this.amountDeductionLabel.TabIndex = 10;
-            this.amountDeductionLabel.Text = "AMOUNT";
-            // 
-            // philHealth
-            // 
-            this.philHealth.AutoSize = true;
-            this.philHealth.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.philHealth.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.philHealth.Location = new System.Drawing.Point(263, 76);
-            this.philHealth.Name = "philHealth";
-            this.philHealth.Size = new System.Drawing.Size(51, 15);
-            this.philHealth.TabIndex = 14;
-            this.philHealth.Text = "334.45";
-            // 
-            // sss
-            // 
-            this.sss.AutoSize = true;
-            this.sss.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sss.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sss.Location = new System.Drawing.Point(263, 61);
-            this.sss.Name = "sss";
-            this.sss.Size = new System.Drawing.Size(51, 15);
-            this.sss.TabIndex = 13;
-            this.sss.Text = "523.15";
-            // 
-            // pagIbig
-            // 
-            this.pagIbig.AutoSize = true;
-            this.pagIbig.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagIbig.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pagIbig.Location = new System.Drawing.Point(263, 46);
-            this.pagIbig.Name = "pagIbig";
-            this.pagIbig.Size = new System.Drawing.Size(51, 15);
-            this.pagIbig.TabIndex = 12;
-            this.pagIbig.Text = "100.00";
-            // 
-            // tax
-            // 
-            this.tax.AutoSize = true;
-            this.tax.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tax.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tax.Location = new System.Drawing.Point(263, 31);
-            this.tax.Name = "tax";
-            this.tax.Size = new System.Drawing.Size(59, 15);
-            this.tax.TabIndex = 11;
-            this.tax.Text = "1000.00";
-            // 
-            // extraLabel
-            // 
-            this.extraLabel.AutoSize = true;
-            this.extraLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.extraLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.extraLabel.Location = new System.Drawing.Point(14, 141);
-            this.extraLabel.Name = "extraLabel";
-            this.extraLabel.Size = new System.Drawing.Size(50, 15);
-            this.extraLabel.TabIndex = 18;
-            this.extraLabel.Text = "EXTRAS";
-            // 
-            // performanceBonusLabel
-            // 
-            this.performanceBonusLabel.AutoSize = true;
-            this.performanceBonusLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.performanceBonusLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.performanceBonusLabel.Location = new System.Drawing.Point(14, 156);
-            this.performanceBonusLabel.Name = "performanceBonusLabel";
-            this.performanceBonusLabel.Size = new System.Drawing.Size(120, 15);
-            this.performanceBonusLabel.TabIndex = 19;
-            this.performanceBonusLabel.Text = "Performance Bonus";
-            // 
-            // hourlyRate
-            // 
-            this.hourlyRate.AutoSize = true;
-            this.hourlyRate.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.hourlyRate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.hourlyRate.Location = new System.Drawing.Point(197, 61);
-            this.hourlyRate.Name = "hourlyRate";
-            this.hourlyRate.Size = new System.Drawing.Size(43, 15);
-            this.hourlyRate.TabIndex = 20;
-            this.hourlyRate.Text = "90.50";
-            // 
-            // hoursSpent
-            // 
-            this.hoursSpent.AutoSize = true;
-            this.hoursSpent.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.hoursSpent.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.hoursSpent.Location = new System.Drawing.Point(270, 61);
-            this.hoursSpent.Name = "hoursSpent";
-            this.hoursSpent.Size = new System.Drawing.Size(43, 15);
-            this.hoursSpent.TabIndex = 21;
-            this.hoursSpent.Text = "25:00";
-            // 
-            // totalBasePay
-            // 
-            this.totalBasePay.AutoSize = true;
-            this.totalBasePay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.totalBasePay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.totalBasePay.Location = new System.Drawing.Point(365, 61);
-            this.totalBasePay.Name = "totalBasePay";
-            this.totalBasePay.Size = new System.Drawing.Size(59, 15);
-            this.totalBasePay.TabIndex = 22;
-            this.totalBasePay.Text = "2225.00";
-            // 
-            // dailyRate
-            // 
-            this.dailyRate.AutoSize = true;
-            this.dailyRate.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.dailyRate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dailyRate.Location = new System.Drawing.Point(91, 46);
-            this.dailyRate.Name = "dailyRate";
-            this.dailyRate.Size = new System.Drawing.Size(51, 15);
-            this.dailyRate.TabIndex = 23;
-            this.dailyRate.Text = "306.40";
-            // 
-            // foodAllowance
-            // 
-            this.foodAllowance.AutoSize = true;
-            this.foodAllowance.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.foodAllowance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.foodAllowance.Location = new System.Drawing.Point(365, 100);
-            this.foodAllowance.Name = "foodAllowance";
-            this.foodAllowance.Size = new System.Drawing.Size(43, 15);
-            this.foodAllowance.TabIndex = 24;
-            this.foodAllowance.Text = "75.00";
-            // 
-            // transportation
-            // 
-            this.transportation.AutoSize = true;
-            this.transportation.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.transportation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.transportation.Location = new System.Drawing.Point(365, 115);
-            this.transportation.Name = "transportation";
-            this.transportation.Size = new System.Drawing.Size(51, 15);
-            this.transportation.TabIndex = 25;
-            this.transportation.Text = "150.00";
-            // 
-            // overtimeLabel
-            // 
-            this.overtimeLabel.AutoSize = true;
-            this.overtimeLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.overtimeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.overtimeLabel.Location = new System.Drawing.Point(15, 171);
-            this.overtimeLabel.Name = "overtimeLabel";
-            this.overtimeLabel.Size = new System.Drawing.Size(62, 15);
-            this.overtimeLabel.TabIndex = 26;
-            this.overtimeLabel.Text = "Overtime ";
-            // 
-            // overtimeHourlyRate
-            // 
-            this.overtimeHourlyRate.AutoSize = true;
-            this.overtimeHourlyRate.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.overtimeHourlyRate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.overtimeHourlyRate.Location = new System.Drawing.Point(197, 171);
-            this.overtimeHourlyRate.Name = "overtimeHourlyRate";
-            this.overtimeHourlyRate.Size = new System.Drawing.Size(39, 15);
-            this.overtimeHourlyRate.TabIndex = 27;
-            this.overtimeHourlyRate.Text = "+25%";
-            // 
-            // overtimeHours
-            // 
-            this.overtimeHours.AutoSize = true;
-            this.overtimeHours.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.overtimeHours.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.overtimeHours.Location = new System.Drawing.Point(270, 171);
-            this.overtimeHours.Name = "overtimeHours";
-            this.overtimeHours.Size = new System.Drawing.Size(43, 15);
-            this.overtimeHours.TabIndex = 28;
-            this.overtimeHours.Text = "03:00";
-            // 
-            // overtimeAmount
-            // 
-            this.overtimeAmount.AutoSize = true;
-            this.overtimeAmount.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.overtimeAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.overtimeAmount.Location = new System.Drawing.Point(365, 171);
-            this.overtimeAmount.Name = "overtimeAmount";
-            this.overtimeAmount.Size = new System.Drawing.Size(51, 15);
-            this.overtimeAmount.TabIndex = 29;
-            this.overtimeAmount.Text = "325.05";
-            // 
-            // performanceBonus
-            // 
-            this.performanceBonus.AutoSize = true;
-            this.performanceBonus.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.performanceBonus.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.performanceBonus.Location = new System.Drawing.Point(365, 156);
-            this.performanceBonus.Name = "performanceBonus";
-            this.performanceBonus.Size = new System.Drawing.Size(51, 15);
-            this.performanceBonus.TabIndex = 30;
-            this.performanceBonus.Text = "300.00";
-            // 
-            // earningLabel
-            // 
-            this.earningLabel.AutoSize = true;
-            this.earningLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.earningLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.earningLabel.Location = new System.Drawing.Point(38, 4);
-            this.earningLabel.Name = "earningLabel";
-            this.earningLabel.Size = new System.Drawing.Size(64, 15);
-            this.earningLabel.TabIndex = 31;
-            this.earningLabel.Text = "EARNINGS";
-            // 
             // PayrollForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -839,7 +800,6 @@
         private System.Windows.Forms.Label pagIbig;
         private System.Windows.Forms.Label tax;
         private System.Windows.Forms.Label extraLabel;
-        private System.Windows.Forms.Label performanceBonusLabel;
         private System.Windows.Forms.Label hourlyRate;
         private System.Windows.Forms.Label transportation;
         private System.Windows.Forms.Label foodAllowance;
@@ -847,10 +807,8 @@
         private System.Windows.Forms.Label totalBasePay;
         private System.Windows.Forms.Label hoursSpent;
         private System.Windows.Forms.Label overtimeLabel;
-        private System.Windows.Forms.Label overtimeHourlyRate;
         private System.Windows.Forms.Label overtimeHours;
         private System.Windows.Forms.Label overtimeAmount;
-        private System.Windows.Forms.Label performanceBonus;
         private System.Windows.Forms.Label earningLabel;
     }
 }

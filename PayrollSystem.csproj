@@ -87,6 +87,8 @@
     <Compile Include="controller\PositionControllerInterface.cs" />
     <Compile Include="controller\RequestController.cs" />
     <Compile Include="controller\RequestControllerInterface.cs" />
+    <Compile Include="controller\SalaryController.cs" />
+    <Compile Include="controller\SalaryControllerInterface.cs" />
     <Compile Include="controller\UserController.cs" />
     <Compile Include="controller\UserControllerInterface.cs" />
     <Compile Include="model\Adjustments.cs" />

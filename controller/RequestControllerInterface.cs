@@ -19,5 +19,9 @@ namespace PayrollSystem.controller
         List<Request> fetchPendingRequestByEmployee(Employee employee);
 
         List<Request> fetchApprovedRequestByEmployee(Employee employee);
+
+        TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
+
+        List<Request> fetchOvertimeRequests(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
     }
 }
