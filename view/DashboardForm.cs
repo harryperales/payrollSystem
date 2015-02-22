@@ -113,7 +113,7 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description + " | " + request.name);
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
             }
         }
 
@@ -126,7 +126,7 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description + " | " + request.name);
+                approvedRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
             }
         }
 
