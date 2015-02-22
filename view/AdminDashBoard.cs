@@ -190,6 +190,8 @@ namespace PayrollSystem.view
                 PayrollControllerInterface payslipController = new PayrollController();
                 payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
                 hideSpinner();
+                loadPayrollList();
+                adminTab.SelectedTab = payrollTab;
                 showErrorMessage("Successfully created payroll to user: "+ employee.userAccount.username);
             }
             else
@@ -218,6 +220,8 @@ namespace PayrollSystem.view
                 }
                 selectAllCheckBox.Checked = false;
                 hideSpinner();
+                loadPayrollList();
+                adminTab.SelectedTab = payrollTab;
                 showErrorMessage("Successfully create payroll to all users");
             }
         }
