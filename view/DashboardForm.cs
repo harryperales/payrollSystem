@@ -123,7 +123,7 @@ namespace PayrollSystem.view
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
             RequestControllerInterface requestController = new RequestController();
             List<Request> requests = requestController.fetchApprovedRequestByEmployee(employee);
-            pendingRequestListBox.Items.Clear();
+            approvedRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
                 approvedRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
@@ -255,10 +255,10 @@ namespace PayrollSystem.view
             
             TimeSpan time = new TimeSpan(0);
             try {
-                if(overtime.Length == 1) {
+                if(overtime.Length >= 1) {
                     time = new TimeSpan(Convert.ToInt32(overtime[0]),0,0);
                 }
-                else if(overtime.Length == 2){
+                else if(overtime.Length >= 2){
                     time = new TimeSpan(Convert.ToInt32(overtime[0]),Convert.ToInt32(overtime[1]),0);
                 }
             } 
@@ -266,19 +266,25 @@ namespace PayrollSystem.view
                 showErrorMessage("Invalid working hour value");
                 return;
             }
-            if (time < new TimeSpan(0))
+            if (time <= new TimeSpan(0))
             {
                 showErrorMessage("Invalid working hour value");
+                return;
+            }
+            if (overtimeRequestDescription.Text.Trim().Equals(""))
+            {
+                showErrorMessage("Description must not be empty.");
+                return;
             }
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
-
+            Console.WriteLine("time:" + time);
             Request request = new Request();
             request.employee = employee;
             request.name = "OVERTIME";
             request.requestedDate = Convert.ToDateTime(dateOfLeave.Text);
             request.status = RequestStatus.Pending;
-            request.description = leaveDescription.Text;
+            request.description = overtimeRequestDescription.Text;
             DateTime date = DateTime.Now;
             request.dateFiled = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, 0);// Convert.ToDateTime(DateTime.Now.ToString("MM/dd/yyyy "));
             RequestControllerInterface requestController = new RequestController();

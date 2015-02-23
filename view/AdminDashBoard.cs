@@ -88,7 +88,6 @@ namespace PayrollSystem.view
             approvedRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                Console.WriteLine("request:"+request.name);
                 approvedRequestListBox.Items.Add(request.id + ".) " + request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0] + " | " + request.name);
             }
         }
@@ -124,7 +123,7 @@ namespace PayrollSystem.view
             }
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(usernameOrEmployeeId.Text);
-            if (employee != null && employee.ToString().Equals(""))
+            if (employee != null && !employee.ToString().Equals(""))
             {
                 FormControllerInterface formController = new FormController();
                 formController.showEmployeeForm(this, employee);
@@ -260,8 +259,6 @@ namespace PayrollSystem.view
             string selectedId ="";
             try
             {
-                Console.WriteLine(approvedRequestListBox.SelectedIndex);
-                Console.WriteLine(pendingRequestListBox.SelectedIndex);
                 if (pendingRequestListBox.SelectedIndex != -1)
                 {
                     selectedId = pendingRequestListBox.SelectedItem.ToString().Split('.')[0];

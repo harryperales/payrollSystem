@@ -65,10 +65,17 @@ namespace PayrollSystem.view
             foodAllowance.Text = foodAllowanceAmount.ToString("0.##");
             decimal transpoAllowanceAmount = fetchTranspoAllowance(payslip, miscellaneousController);
             transportation.Text = transpoAllowanceAmount.ToString("0.##");
+            decimal thirteenMonth = 0.00M;
             overtimeHours.Text = fetchTotalHoursOvertimeSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController).ToString();
             overtimeAmount.Text = calculateDailyBasedSalaryWithOvertimeRequests(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController).ToString("0.##");
-
-
+            tax.Text = (payslip.taxDeduction * -1).ToString("0.##");
+            sss.Text = payslip.sssDeduction.ToString("0.##");
+            pagIbig.Text = payslip.pagIbigDeduction.ToString("0.##");
+            philHealth.Text = payslip.philHealthDeduction.ToString("0.##");
+            earnings.Text = payslip.basePay.ToString("0.##");
+            benefits.Text = (foodAllowanceAmount + transpoAllowanceAmount + thirteenMonth).ToString("0.##");
+            deductions.Text = (payslip.taxDeduction + ((payslip.sssDeduction + payslip.pagIbigDeduction + payslip.philHealthDeduction) * -1)).ToString("0.##");
+            netPay.Text = payslip.netPay.ToString("0.##");
         }
 
         private decimal calculateDailyBasedSalaryWithOvertimeRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee, RequestControllerInterface requestController, SalaryControllerInterface salaryController)

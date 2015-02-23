@@ -24,6 +24,18 @@ namespace PayrollSystem.view
             initializeForm(requestId);
         }
 
+        private void hideOvertimeFields()
+        {
+            overtimeWorkHourLabel.Visible = false;
+            overtimeWokingHour.Visible = false;
+        }
+
+        private void showOvertimeFields()
+        {
+            overtimeWorkHourLabel.Visible = true;
+            overtimeWokingHour.Visible = true;
+        }
+
         private void initializeForm(int requestId)
         {
             RequestServiceInterface requestService = new RequestService();
@@ -39,6 +51,15 @@ namespace PayrollSystem.view
             {
                 approveButton.Visible = false;
                 disapproveButton.Visible = false;
+            }
+            if (request.name.Equals("OVERTIME"))
+            {
+                overtimeWokingHour.Text = request.dateFiled.ToString("HH:mm");
+                showOvertimeFields();
+            }
+            else
+            {
+                hideOvertimeFields();
             }
         }
 

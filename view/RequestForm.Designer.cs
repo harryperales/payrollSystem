@@ -43,6 +43,8 @@
             this.dateRequestedLabel = new System.Windows.Forms.Label();
             this.requestedByLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.overtimeWorkHourLabel = new System.Windows.Forms.Label();
+            this.overtimeWokingHour = new System.Windows.Forms.Label();
             this.requestFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +52,8 @@
             // requestFormPanel
             // 
             this.requestFormPanel.BackColor = System.Drawing.Color.Transparent;
+            this.requestFormPanel.Controls.Add(this.overtimeWokingHour);
+            this.requestFormPanel.Controls.Add(this.overtimeWorkHourLabel);
             this.requestFormPanel.Controls.Add(this.disapproveButton);
             this.requestFormPanel.Controls.Add(this.approveButton);
             this.requestFormPanel.Controls.Add(this.status);
@@ -215,6 +219,28 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
+            // overtimeWorkHourLabel
+            // 
+            this.overtimeWorkHourLabel.AutoSize = true;
+            this.overtimeWorkHourLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.overtimeWorkHourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeWorkHourLabel.Location = new System.Drawing.Point(192, 167);
+            this.overtimeWorkHourLabel.Name = "overtimeWorkHourLabel";
+            this.overtimeWorkHourLabel.Size = new System.Drawing.Size(172, 17);
+            this.overtimeWorkHourLabel.TabIndex = 22;
+            this.overtimeWorkHourLabel.Text = "Overtime Woking Hour:";
+            // 
+            // overtimeWokingHour
+            // 
+            this.overtimeWokingHour.AutoSize = true;
+            this.overtimeWokingHour.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.overtimeWokingHour.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeWokingHour.Location = new System.Drawing.Point(374, 166);
+            this.overtimeWokingHour.Name = "overtimeWokingHour";
+            this.overtimeWokingHour.Size = new System.Drawing.Size(53, 17);
+            this.overtimeWokingHour.TabIndex = 23;
+            this.overtimeWokingHour.Text = "02:35";
+            // 
             // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,5 +277,7 @@
         private System.Windows.Forms.Button disapproveButton;
         private System.Windows.Forms.Button approveButton;
         private System.Windows.Forms.PictureBox exitPictureBox;
+        private System.Windows.Forms.Label overtimeWokingHour;
+        private System.Windows.Forms.Label overtimeWorkHourLabel;
     }
 }

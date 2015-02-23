@@ -24,9 +24,14 @@ namespace PayrollSystem.view
             initializeGender();
             initializeCivilStatus();
             initializeEmployeeId();
+            initializedEmploymentDate(DateTime.Now);
             loadPosition();
         }
 
+        private void initializedEmploymentDate(DateTime dateEmployed)
+        {
+            employmentDate.Text = dateEmployed.ToString("MM/dd/yyyy");
+        }
         private void initializeDependents()
         {
             dependents.Text = "0";
@@ -49,6 +54,7 @@ namespace PayrollSystem.view
             this.adminDashboard = adminDashboard;
             this.employee = employee;
             InitializeComponent();
+            initializedEmploymentDate(Convert.ToDateTime(employee.dateEmployed));
             initializeEmployeeForm(employee);
         }
 
