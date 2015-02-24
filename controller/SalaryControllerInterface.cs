@@ -9,5 +9,7 @@ namespace PayrollSystem.controller
     public interface SalaryControllerInterface
     {
         decimal calculateDailyBasedSalaryWithOvertimeRequests(List<Request> overtimeRequests, decimal dailyBasedSalary);
+
+        decimal fetchTotalCashAdvanceAmount(List<Request> cashAdvanceList);
     }
 }

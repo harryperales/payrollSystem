@@ -23,5 +23,9 @@ namespace PayrollSystem.controller
         TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
 
         List<Request> fetchOvertimeRequests(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
+
+        Request createCashAdvanceRequest(Request request);
+
+        List<Request> fetchAllApprovedCashAdvanceRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
     }
 }

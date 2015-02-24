@@ -31,5 +31,7 @@ namespace PayrollSystem.service
         Request fetchEmployeeApprovedOvertimeRequestByDate(Employee employee, DateTime date);
 
         TimeSpan fetchTotalHoursOvertimeSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
+
+        List<Request> fetchAllApprovedCashAdvanceRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
     }
 }

@@ -26,5 +26,7 @@ namespace PayrollSystem.service
         decimal fetchPagIbigDeductionWithPeriodSalary(decimal periodSalary);
 
         decimal fetchPhilHealthDeductionWithPeriodSalary(decimal periodSalary);
+
+        decimal fetchTotalCashAdvanceAmount(List<Request> cashAdvanceList);
     }
 }

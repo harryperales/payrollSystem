@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardForm));
             this.homeTabs = new System.Windows.Forms.TabControl();
             this.dashboardTab = new System.Windows.Forms.TabPage();
+            this.idNumber = new System.Windows.Forms.Label();
             this.payrollsLabel = new System.Windows.Forms.Label();
             this.viewPayrollButton = new System.Windows.Forms.Button();
             this.userPayrollListBox = new System.Windows.Forms.ListBox();
@@ -75,21 +76,21 @@
             this.pendingRequestListBox = new System.Windows.Forms.ListBox();
             this.approvedRequetTab = new System.Windows.Forms.TabPage();
             this.approvedRequestListBox = new System.Windows.Forms.ListBox();
-            this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.leaveCreditsTab = new System.Windows.Forms.TabPage();
-            this.vacationLeaveLabel = new System.Windows.Forms.Label();
-            this.sickLeaveLabel = new System.Windows.Forms.Label();
-            this.emergencyLeaveLabel = new System.Windows.Forms.Label();
-            this.paternityLeaveLabel = new System.Windows.Forms.Label();
-            this.bereavementLeaveLabel = new System.Windows.Forms.Label();
-            this.birthdayLeaveLabel = new System.Windows.Forms.Label();
-            this.vacationLeave = new System.Windows.Forms.Label();
-            this.sickLeave = new System.Windows.Forms.Label();
-            this.emergencyLeave = new System.Windows.Forms.Label();
-            this.paternityLeave = new System.Windows.Forms.Label();
-            this.bereavementLeave = new System.Windows.Forms.Label();
             this.birthdayLeave = new System.Windows.Forms.Label();
-            this.idNumber = new System.Windows.Forms.Label();
+            this.bereavementLeave = new System.Windows.Forms.Label();
+            this.paternityLeave = new System.Windows.Forms.Label();
+            this.emergencyLeave = new System.Windows.Forms.Label();
+            this.sickLeave = new System.Windows.Forms.Label();
+            this.vacationLeave = new System.Windows.Forms.Label();
+            this.birthdayLeaveLabel = new System.Windows.Forms.Label();
+            this.bereavementLeaveLabel = new System.Windows.Forms.Label();
+            this.paternityLeaveLabel = new System.Windows.Forms.Label();
+            this.emergencyLeaveLabel = new System.Windows.Forms.Label();
+            this.sickLeaveLabel = new System.Windows.Forms.Label();
+            this.vacationLeaveLabel = new System.Windows.Forms.Label();
+            this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.cashAdvanceButton = new System.Windows.Forms.Button();
             this.homeTabs.SuspendLayout();
             this.dashboardTab.SuspendLayout();
             this.myClockTab.SuspendLayout();
@@ -98,8 +99,8 @@
             this.requestPanel.SuspendLayout();
             this.pendingRequestTab.SuspendLayout();
             this.approvedRequetTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.leaveCreditsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // homeTabs
@@ -133,6 +134,17 @@
             this.dashboardTab.Size = new System.Drawing.Size(634, 338);
             this.dashboardTab.TabIndex = 0;
             this.dashboardTab.Text = "Dashboard";
+            // 
+            // idNumber
+            // 
+            this.idNumber.AutoSize = true;
+            this.idNumber.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.idNumber.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.idNumber.Location = new System.Drawing.Point(192, 18);
+            this.idNumber.Name = "idNumber";
+            this.idNumber.Size = new System.Drawing.Size(128, 17);
+            this.idNumber.TabIndex = 7;
+            this.idNumber.Text = "123456789101";
             // 
             // payrollsLabel
             // 
@@ -197,7 +209,7 @@
             this.myClockTab.Location = new System.Drawing.Point(4, 29);
             this.myClockTab.Name = "myClockTab";
             this.myClockTab.Padding = new System.Windows.Forms.Padding(3);
-            this.myClockTab.Size = new System.Drawing.Size(607, 338);
+            this.myClockTab.Size = new System.Drawing.Size(634, 338);
             this.myClockTab.TabIndex = 1;
             this.myClockTab.Text = "My Clock";
             // 
@@ -310,13 +322,14 @@
             this.requestTab.Location = new System.Drawing.Point(4, 29);
             this.requestTab.Name = "requestTab";
             this.requestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.requestTab.Size = new System.Drawing.Size(607, 338);
+            this.requestTab.Size = new System.Drawing.Size(634, 338);
             this.requestTab.TabIndex = 2;
             this.requestTab.Text = "Request";
             // 
             // requestPanel
             // 
             this.requestPanel.BackColor = System.Drawing.Color.Transparent;
+            this.requestPanel.Controls.Add(this.cashAdvanceButton);
             this.requestPanel.Controls.Add(this.errorMessageLabel);
             this.requestPanel.Controls.Add(this.workingHour);
             this.requestPanel.Controls.Add(this.overtimeReqeustDescriptionLabel);
@@ -627,7 +640,7 @@
             this.approvedRequetTab.Location = new System.Drawing.Point(4, 29);
             this.approvedRequetTab.Name = "approvedRequetTab";
             this.approvedRequetTab.Padding = new System.Windows.Forms.Padding(3);
-            this.approvedRequetTab.Size = new System.Drawing.Size(607, 338);
+            this.approvedRequetTab.Size = new System.Drawing.Size(634, 338);
             this.approvedRequetTab.TabIndex = 4;
             this.approvedRequetTab.Text = "Approved Request";
             // 
@@ -641,16 +654,6 @@
             this.approvedRequestListBox.Name = "approvedRequestListBox";
             this.approvedRequestListBox.Size = new System.Drawing.Size(564, 293);
             this.approvedRequestListBox.TabIndex = 7;
-            // 
-            // exitPictureBox
-            // 
-            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.exitPictureBox.Location = new System.Drawing.Point(609, 0);
-            this.exitPictureBox.Name = "exitPictureBox";
-            this.exitPictureBox.Size = new System.Drawing.Size(42, 35);
-            this.exitPictureBox.TabIndex = 1;
-            this.exitPictureBox.TabStop = false;
-            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
             // leaveCreditsTab
             // 
@@ -674,115 +677,16 @@
             this.leaveCreditsTab.TabIndex = 5;
             this.leaveCreditsTab.Text = "Leave Credits";
             // 
-            // vacationLeaveLabel
+            // birthdayLeave
             // 
-            this.vacationLeaveLabel.AutoSize = true;
-            this.vacationLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.vacationLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.vacationLeaveLabel.Location = new System.Drawing.Point(43, 43);
-            this.vacationLeaveLabel.Name = "vacationLeaveLabel";
-            this.vacationLeaveLabel.Size = new System.Drawing.Size(117, 17);
-            this.vacationLeaveLabel.TabIndex = 4;
-            this.vacationLeaveLabel.Text = "Vacation Leave:";
-            // 
-            // sickLeaveLabel
-            // 
-            this.sickLeaveLabel.AutoSize = true;
-            this.sickLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.sickLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sickLeaveLabel.Location = new System.Drawing.Point(43, 74);
-            this.sickLeaveLabel.Name = "sickLeaveLabel";
-            this.sickLeaveLabel.Size = new System.Drawing.Size(86, 17);
-            this.sickLeaveLabel.TabIndex = 5;
-            this.sickLeaveLabel.Text = "Sick Leave:";
-            // 
-            // emergencyLeaveLabel
-            // 
-            this.emergencyLeaveLabel.AutoSize = true;
-            this.emergencyLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.emergencyLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.emergencyLeaveLabel.Location = new System.Drawing.Point(43, 107);
-            this.emergencyLeaveLabel.Name = "emergencyLeaveLabel";
-            this.emergencyLeaveLabel.Size = new System.Drawing.Size(130, 17);
-            this.emergencyLeaveLabel.TabIndex = 6;
-            this.emergencyLeaveLabel.Text = "Emergency Leave";
-            // 
-            // paternityLeaveLabel
-            // 
-            this.paternityLeaveLabel.AutoSize = true;
-            this.paternityLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.paternityLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.paternityLeaveLabel.Location = new System.Drawing.Point(43, 142);
-            this.paternityLeaveLabel.Name = "paternityLeaveLabel";
-            this.paternityLeaveLabel.Size = new System.Drawing.Size(120, 17);
-            this.paternityLeaveLabel.TabIndex = 7;
-            this.paternityLeaveLabel.Text = "Paternity Leave:";
-            // 
-            // bereavementLeaveLabel
-            // 
-            this.bereavementLeaveLabel.AutoSize = true;
-            this.bereavementLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.bereavementLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bereavementLeaveLabel.Location = new System.Drawing.Point(43, 176);
-            this.bereavementLeaveLabel.Name = "bereavementLeaveLabel";
-            this.bereavementLeaveLabel.Size = new System.Drawing.Size(148, 17);
-            this.bereavementLeaveLabel.TabIndex = 8;
-            this.bereavementLeaveLabel.Text = "Bereavement Leave:";
-            // 
-            // birthdayLeaveLabel
-            // 
-            this.birthdayLeaveLabel.AutoSize = true;
-            this.birthdayLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.birthdayLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.birthdayLeaveLabel.Location = new System.Drawing.Point(43, 208);
-            this.birthdayLeaveLabel.Name = "birthdayLeaveLabel";
-            this.birthdayLeaveLabel.Size = new System.Drawing.Size(116, 17);
-            this.birthdayLeaveLabel.TabIndex = 9;
-            this.birthdayLeaveLabel.Text = "Birthday Leave:";
-            // 
-            // vacationLeave
-            // 
-            this.vacationLeave.AutoSize = true;
-            this.vacationLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.vacationLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.vacationLeave.Location = new System.Drawing.Point(207, 43);
-            this.vacationLeave.Name = "vacationLeave";
-            this.vacationLeave.Size = new System.Drawing.Size(28, 17);
-            this.vacationLeave.TabIndex = 10;
-            this.vacationLeave.Text = "12";
-            // 
-            // sickLeave
-            // 
-            this.sickLeave.AutoSize = true;
-            this.sickLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.sickLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.sickLeave.Location = new System.Drawing.Point(207, 74);
-            this.sickLeave.Name = "sickLeave";
-            this.sickLeave.Size = new System.Drawing.Size(28, 17);
-            this.sickLeave.TabIndex = 11;
-            this.sickLeave.Text = "12";
-            // 
-            // emergencyLeave
-            // 
-            this.emergencyLeave.AutoSize = true;
-            this.emergencyLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.emergencyLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.emergencyLeave.Location = new System.Drawing.Point(207, 107);
-            this.emergencyLeave.Name = "emergencyLeave";
-            this.emergencyLeave.Size = new System.Drawing.Size(18, 17);
-            this.emergencyLeave.TabIndex = 12;
-            this.emergencyLeave.Text = "7";
-            // 
-            // paternityLeave
-            // 
-            this.paternityLeave.AutoSize = true;
-            this.paternityLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.paternityLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.paternityLeave.Location = new System.Drawing.Point(207, 142);
-            this.paternityLeave.Name = "paternityLeave";
-            this.paternityLeave.Size = new System.Drawing.Size(18, 17);
-            this.paternityLeave.TabIndex = 13;
-            this.paternityLeave.Text = "3";
+            this.birthdayLeave.AutoSize = true;
+            this.birthdayLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.birthdayLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.birthdayLeave.Location = new System.Drawing.Point(207, 208);
+            this.birthdayLeave.Name = "birthdayLeave";
+            this.birthdayLeave.Size = new System.Drawing.Size(18, 17);
+            this.birthdayLeave.TabIndex = 15;
+            this.birthdayLeave.Text = "1";
             // 
             // bereavementLeave
             // 
@@ -795,27 +699,139 @@
             this.bereavementLeave.TabIndex = 14;
             this.bereavementLeave.Text = "3";
             // 
-            // birthdayLeave
+            // paternityLeave
             // 
-            this.birthdayLeave.AutoSize = true;
-            this.birthdayLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.birthdayLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.birthdayLeave.Location = new System.Drawing.Point(207, 208);
-            this.birthdayLeave.Name = "birthdayLeave";
-            this.birthdayLeave.Size = new System.Drawing.Size(18, 17);
-            this.birthdayLeave.TabIndex = 15;
-            this.birthdayLeave.Text = "1";
+            this.paternityLeave.AutoSize = true;
+            this.paternityLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.paternityLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.paternityLeave.Location = new System.Drawing.Point(207, 142);
+            this.paternityLeave.Name = "paternityLeave";
+            this.paternityLeave.Size = new System.Drawing.Size(18, 17);
+            this.paternityLeave.TabIndex = 13;
+            this.paternityLeave.Text = "3";
             // 
-            // idNumber
+            // emergencyLeave
             // 
-            this.idNumber.AutoSize = true;
-            this.idNumber.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.idNumber.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.idNumber.Location = new System.Drawing.Point(192, 18);
-            this.idNumber.Name = "idNumber";
-            this.idNumber.Size = new System.Drawing.Size(128, 17);
-            this.idNumber.TabIndex = 7;
-            this.idNumber.Text = "123456789101";
+            this.emergencyLeave.AutoSize = true;
+            this.emergencyLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.emergencyLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.emergencyLeave.Location = new System.Drawing.Point(207, 107);
+            this.emergencyLeave.Name = "emergencyLeave";
+            this.emergencyLeave.Size = new System.Drawing.Size(18, 17);
+            this.emergencyLeave.TabIndex = 12;
+            this.emergencyLeave.Text = "7";
+            // 
+            // sickLeave
+            // 
+            this.sickLeave.AutoSize = true;
+            this.sickLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.sickLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sickLeave.Location = new System.Drawing.Point(207, 74);
+            this.sickLeave.Name = "sickLeave";
+            this.sickLeave.Size = new System.Drawing.Size(28, 17);
+            this.sickLeave.TabIndex = 11;
+            this.sickLeave.Text = "12";
+            // 
+            // vacationLeave
+            // 
+            this.vacationLeave.AutoSize = true;
+            this.vacationLeave.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.vacationLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.vacationLeave.Location = new System.Drawing.Point(207, 43);
+            this.vacationLeave.Name = "vacationLeave";
+            this.vacationLeave.Size = new System.Drawing.Size(28, 17);
+            this.vacationLeave.TabIndex = 10;
+            this.vacationLeave.Text = "12";
+            // 
+            // birthdayLeaveLabel
+            // 
+            this.birthdayLeaveLabel.AutoSize = true;
+            this.birthdayLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.birthdayLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.birthdayLeaveLabel.Location = new System.Drawing.Point(43, 208);
+            this.birthdayLeaveLabel.Name = "birthdayLeaveLabel";
+            this.birthdayLeaveLabel.Size = new System.Drawing.Size(116, 17);
+            this.birthdayLeaveLabel.TabIndex = 9;
+            this.birthdayLeaveLabel.Text = "Birthday Leave:";
+            // 
+            // bereavementLeaveLabel
+            // 
+            this.bereavementLeaveLabel.AutoSize = true;
+            this.bereavementLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.bereavementLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bereavementLeaveLabel.Location = new System.Drawing.Point(43, 176);
+            this.bereavementLeaveLabel.Name = "bereavementLeaveLabel";
+            this.bereavementLeaveLabel.Size = new System.Drawing.Size(148, 17);
+            this.bereavementLeaveLabel.TabIndex = 8;
+            this.bereavementLeaveLabel.Text = "Bereavement Leave:";
+            // 
+            // paternityLeaveLabel
+            // 
+            this.paternityLeaveLabel.AutoSize = true;
+            this.paternityLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.paternityLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.paternityLeaveLabel.Location = new System.Drawing.Point(43, 142);
+            this.paternityLeaveLabel.Name = "paternityLeaveLabel";
+            this.paternityLeaveLabel.Size = new System.Drawing.Size(120, 17);
+            this.paternityLeaveLabel.TabIndex = 7;
+            this.paternityLeaveLabel.Text = "Paternity Leave:";
+            // 
+            // emergencyLeaveLabel
+            // 
+            this.emergencyLeaveLabel.AutoSize = true;
+            this.emergencyLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.emergencyLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.emergencyLeaveLabel.Location = new System.Drawing.Point(43, 107);
+            this.emergencyLeaveLabel.Name = "emergencyLeaveLabel";
+            this.emergencyLeaveLabel.Size = new System.Drawing.Size(130, 17);
+            this.emergencyLeaveLabel.TabIndex = 6;
+            this.emergencyLeaveLabel.Text = "Emergency Leave";
+            // 
+            // sickLeaveLabel
+            // 
+            this.sickLeaveLabel.AutoSize = true;
+            this.sickLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.sickLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.sickLeaveLabel.Location = new System.Drawing.Point(43, 74);
+            this.sickLeaveLabel.Name = "sickLeaveLabel";
+            this.sickLeaveLabel.Size = new System.Drawing.Size(86, 17);
+            this.sickLeaveLabel.TabIndex = 5;
+            this.sickLeaveLabel.Text = "Sick Leave:";
+            // 
+            // vacationLeaveLabel
+            // 
+            this.vacationLeaveLabel.AutoSize = true;
+            this.vacationLeaveLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.vacationLeaveLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.vacationLeaveLabel.Location = new System.Drawing.Point(43, 43);
+            this.vacationLeaveLabel.Name = "vacationLeaveLabel";
+            this.vacationLeaveLabel.Size = new System.Drawing.Size(117, 17);
+            this.vacationLeaveLabel.TabIndex = 4;
+            this.vacationLeaveLabel.Text = "Vacation Leave:";
+            // 
+            // exitPictureBox
+            // 
+            this.exitPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.exitPictureBox.Location = new System.Drawing.Point(609, 0);
+            this.exitPictureBox.Name = "exitPictureBox";
+            this.exitPictureBox.Size = new System.Drawing.Size(42, 35);
+            this.exitPictureBox.TabIndex = 1;
+            this.exitPictureBox.TabStop = false;
+            this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            // 
+            // cashAdvanceButton
+            // 
+            this.cashAdvanceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.cashAdvanceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cashAdvanceButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAdvanceButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceButton.Location = new System.Drawing.Point(401, 18);
+            this.cashAdvanceButton.Name = "cashAdvanceButton";
+            this.cashAdvanceButton.Size = new System.Drawing.Size(183, 29);
+            this.cashAdvanceButton.TabIndex = 45;
+            this.cashAdvanceButton.Text = "Cash Advance Request";
+            this.cashAdvanceButton.UseVisualStyleBackColor = false;
+            this.cashAdvanceButton.Click += new System.EventHandler(this.cashAdvanceButton_Click);
             // 
             // DashboardForm
             // 
@@ -842,9 +858,9 @@
             this.requestPanel.PerformLayout();
             this.pendingRequestTab.ResumeLayout(false);
             this.approvedRequetTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.leaveCreditsTab.ResumeLayout(false);
             this.leaveCreditsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -912,6 +928,7 @@
         private System.Windows.Forms.Label sickLeaveLabel;
         private System.Windows.Forms.Label vacationLeaveLabel;
         private System.Windows.Forms.Label idNumber;
+        private System.Windows.Forms.Button cashAdvanceButton;
 
     }
 }

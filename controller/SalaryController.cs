@@ -20,5 +20,10 @@ namespace PayrollSystem.controller
         {
             return salaryService.calculateDailyBasedSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);
         }
+
+        public decimal fetchTotalCashAdvanceAmount(List<Request> cashAdvanceList)
+        {
+            return salaryService.fetchTotalCashAdvanceAmount(cashAdvanceList);
+        }
     }
 }

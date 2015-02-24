@@ -230,27 +230,26 @@ namespace PayrollSystem.service
             if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 0)
             {
                 taxAmountToBeDeducted = fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE_MARRIED_LOWER_LIMIT, SINGLE_MARRIED_UPPER_LIMIT);
-                Console.WriteLine(taxAmountToBeDeducted);
             }
             else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 1)
             {
-                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE1_MARRIED1_LOWER_LIMIT, SINGLE1_MARRIED1_UPPER_LIMIT);
+                taxAmountToBeDeducted = fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE1_MARRIED1_LOWER_LIMIT, SINGLE1_MARRIED1_UPPER_LIMIT);
             }
             else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 2)
             {
-                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE2_MARRIED2_LOWER_LIMIT, SINGLE2_MARRIED2_UPPER_LIMIT);
+                taxAmountToBeDeducted = fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE2_MARRIED2_LOWER_LIMIT, SINGLE2_MARRIED2_UPPER_LIMIT);
             }
             else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 3)
             {
-                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE3_MARRIED3_LOWER_LIMIT, SINGLE3_MARRIED3_UPPER_LIMIT);
+                taxAmountToBeDeducted = fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE3_MARRIED3_LOWER_LIMIT, SINGLE3_MARRIED3_UPPER_LIMIT);
             }
             else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents == 4)
             {
-                taxAmountToBeDeducted = periodSalary - fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE4_MARRIED4_LOWER_LIMIT, SINGLE4_MARRIED4_UPPER_LIMIT);
+                taxAmountToBeDeducted = fetchTaxCalculatedAmountForDeduction(periodSalary, SINGLE4_MARRIED4_LOWER_LIMIT, SINGLE4_MARRIED4_UPPER_LIMIT);
             }
             else if ((employee.civilStatus.Equals("Single") || employee.civilStatus.Equals("Married")) && employee.dependents > 4)
             {
-                taxAmountToBeDeducted = periodSalary;
+                taxAmountToBeDeducted = 0.00M;
             }
             return taxAmountToBeDeducted;
         }
@@ -291,7 +290,7 @@ namespace PayrollSystem.service
                 {
                     decimal taxAmountToDeduct = Convert.ToDecimal(values[1].ToString());
                     decimal taxPercent = Convert.ToDecimal(values[0].ToString());
-                    //Console.WriteLine(taxAmountToDeduct + "+" + "[(" + periodSalary + "-" + (upperLimitSalary - 1) + ")X" + taxPercent + "]");
+                    Console.WriteLine(taxAmountToDeduct + "+" + "[(" + periodSalary + "-" + (upperLimitSalary - 1) + ")X" + taxPercent + "]");
                     taxAmountToDeduct += ((periodSalary - (upperLimitSalary - 1)) * taxPercent);
 
                     return taxAmountToDeduct;
@@ -371,6 +370,16 @@ namespace PayrollSystem.service
                 }
             }
             return 0.00M;
+        }
+
+        public decimal fetchTotalCashAdvanceAmount(List<Request> cashAdvanceList)
+        {
+            decimal totalCashAdvanceAmount = 0.00M;
+            foreach (Request cashAdvance in cashAdvanceList)
+            {
+                totalCashAdvanceAmount += Convert.ToDecimal(cashAdvance.description.Split('@')[1]);
+            }
+            return totalCashAdvanceAmount;
         }
     }
 }

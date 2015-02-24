@@ -65,6 +65,10 @@ namespace PayrollSystem.controller
             //periodSalary += salaryService.fetchTotalBonus(bonuses);
             //Console.WriteLine("periodSalaryWIthBonus---->>" + periodSalary);
 
+            List<Request> cashAdvanceList = requestService.fetchAllApprovedCashAdvanceRequests(startDatePeriod, endDatePeriod, employee);
+            periodSalary -= salaryService.fetchTotalCashAdvanceAmount(cashAdvanceList);
+            Console.WriteLine("periodSalaryWIthCashAdvance---->>" + periodSalary);
+
             List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
 
             periodSalary -= salaryService.fetchTotalDeductions(deductions);

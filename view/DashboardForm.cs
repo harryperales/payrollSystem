@@ -104,7 +104,7 @@ namespace PayrollSystem.view
             }
         }
 
-        private void loadPendingRequest()
+        public void loadPendingRequest()
         {
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
@@ -113,8 +113,13 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + request.description);
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.name + " | " + request.requestedDate + " | " + filterDescription(request.description));
             }
+        }
+
+        private string filterDescription(string description)
+        {
+            return description.Split('@')[0];
         }
 
         private void loadApprovedRequest()
@@ -294,6 +299,14 @@ namespace PayrollSystem.view
                 loadPendingRequest();
                 homeTabs.SelectedTab = pendingRequestTab;
             }
+        }
+
+        private void cashAdvanceButton_Click(object sender, EventArgs e)
+        {
+            EmployeeControllerInterface employeeController = new EmployeeController();
+            Employee employee = employeeController.fetchEmployeeByUsername(user.username);
+            FormControllerInterface formController = new FormController();
+            formController.showCashAdvanceForm(this, employee);
         }
     }
 }

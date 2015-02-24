@@ -60,5 +60,9 @@ namespace PayrollSystem.controller
         void showUserPayroll(AdminDashBoard adminDashBoard, Payslip payslip);
 
         void showAdminDashboardForm(PayrollForm payrollForm, AdminDashBoard adminDashboardForm);
+
+        void showDashboardForm(CashAdvanceForm cashAdvanceForm, DashboardForm dashboardForm);
+
+        void showCashAdvanceForm(DashboardForm dashboardForm, Employee employee);
     }
 }

@@ -87,7 +87,7 @@ namespace PayrollSystem.service
             sqlCon.Open();
             sqlCmd.CommandText = "SELECT id, name, description, requestedDate, dateRequested From Request WHERE employeeId = @employeeNumber AND dateRequested LIKE @date AND status = @status AND name LIKE @name;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
-            sqlCmd.Parameters.AddWithValue("@name", "%LEAVE%");
+            sqlCmd.Parameters.AddWithValue("@name", "%Leave%");
             sqlCmd.Parameters.AddWithValue("@date", "%" + date.ToString("MM/dd/yyyy") + "%");
             sqlCmd.Parameters.AddWithValue("@status", "approved");
             sqlDataReader = sqlCmd.ExecuteReader();
@@ -454,6 +454,54 @@ namespace PayrollSystem.service
             }
 
             return totalHoursOvertimeSpent;
+        }
+
+        public List<Request> fetchAllApprovedCashAdvanceRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee)
+        {
+            Console.WriteLine(">>>>>>>>>>>");
+            var dates = Enumerable.Range(0, (endDatePeriod - startDatePeriod).Days + 1).Select(d => startDatePeriod.AddDays(d));
+            List<Request> requests = new List<Request>();
+            foreach (var date in dates)
+            {
+                Request request = fetchAllApprovedCashAdvanceRequestsByDate(employee, date);
+                if (request != null)
+                {
+                    requests.Add(request);
+                }
+            }
+
+            return requests;
+        }
+
+        private Request fetchAllApprovedCashAdvanceRequestsByDate(Employee employee, DateTime date)
+        {
+            Request request = new Request();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT id, name, description, requestedDate, dateRequested From Request WHERE employeeId = @employeeNumber AND dateRequested LIKE @date AND status = @status AND name = @name;";
+            sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
+            sqlCmd.Parameters.AddWithValue("@name", "CashAdvance");
+            sqlCmd.Parameters.AddWithValue("@date", "%" + date.ToString("MM/dd/yyyy") + "%");
+            sqlCmd.Parameters.AddWithValue("@status", "approved");
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    request.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    request.employee = employee;
+                    request.name = sqlDataReader["name"].ToString();
+                    request.description = sqlDataReader["description"].ToString();
+                    request.requestedDate = Convert.ToDateTime(sqlDataReader["requestedDate"].ToString());
+                    request.dateFiled = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
+                }
+            }
+            else
+            {
+                request = null;
+            }
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return request;
         }
     }
 }

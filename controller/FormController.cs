@@ -183,5 +183,17 @@ namespace PayrollSystem.controller
             payrollForm.Close();
             adminDashboardForm.Show();
         }
+
+        public void showDashboardForm(CashAdvanceForm cashAdvanceForm, DashboardForm dashboardForm)
+        {
+            dashboardForm.loadPendingRequest();
+            cashAdvanceForm.Close();
+        }
+
+        public void showCashAdvanceForm(DashboardForm dashboardForm, Employee employee)
+        {
+            CashAdvanceForm cashAdvanceForm = new CashAdvanceForm(dashboardForm, employee);
+            cashAdvanceForm.ShowDialog();
+        }
     }
 }

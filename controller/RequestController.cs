@@ -53,5 +53,15 @@ namespace PayrollSystem.controller
         {
             return requestService.fetchOvertimeRequests(employee, startDatePeriod, endDatePeriod);
         }
+
+        public Request createCashAdvanceRequest(Request request)
+        {
+            return requestService.createRequest(request);
+        }
+
+        public List<Request> fetchAllApprovedCashAdvanceRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee)
+        {
+            return requestService.fetchAllApprovedCashAdvanceRequests(startDatePeriod, endDatePeriod, employee);
+        }
     }
 }

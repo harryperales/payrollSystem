@@ -57,6 +57,15 @@ namespace PayrollSystem.view
                 overtimeWokingHour.Text = request.dateFiled.ToString("HH:mm");
                 showOvertimeFields();
             }
+            else if (request.name.Equals("CashAdvance"))
+            {
+                hideOvertimeFields();
+                string[] descriptionAmount = request.description.Split('@');
+                description.Text = descriptionAmount[0];
+                cashAdvanceAmount.Text = descriptionAmount[1];
+                cashAdvanceAmountLabel.Visible = true;
+                cashAdvanceAmount.Visible = true;
+            }
             else
             {
                 hideOvertimeFields();

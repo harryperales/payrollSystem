@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RequestForm));
             this.requestFormPanel = new System.Windows.Forms.Panel();
+            this.overtimeWokingHour = new System.Windows.Forms.Label();
+            this.overtimeWorkHourLabel = new System.Windows.Forms.Label();
             this.disapproveButton = new System.Windows.Forms.Button();
             this.approveButton = new System.Windows.Forms.Button();
             this.status = new System.Windows.Forms.Label();
@@ -43,8 +45,8 @@
             this.dateRequestedLabel = new System.Windows.Forms.Label();
             this.requestedByLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.overtimeWorkHourLabel = new System.Windows.Forms.Label();
-            this.overtimeWokingHour = new System.Windows.Forms.Label();
+            this.cashAdvanceAmountLabel = new System.Windows.Forms.Label();
+            this.cashAdvanceAmount = new System.Windows.Forms.Label();
             this.requestFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +54,8 @@
             // requestFormPanel
             // 
             this.requestFormPanel.BackColor = System.Drawing.Color.Transparent;
+            this.requestFormPanel.Controls.Add(this.cashAdvanceAmount);
+            this.requestFormPanel.Controls.Add(this.cashAdvanceAmountLabel);
             this.requestFormPanel.Controls.Add(this.overtimeWokingHour);
             this.requestFormPanel.Controls.Add(this.overtimeWorkHourLabel);
             this.requestFormPanel.Controls.Add(this.disapproveButton);
@@ -70,6 +74,28 @@
             this.requestFormPanel.Name = "requestFormPanel";
             this.requestFormPanel.Size = new System.Drawing.Size(569, 315);
             this.requestFormPanel.TabIndex = 0;
+            // 
+            // overtimeWokingHour
+            // 
+            this.overtimeWokingHour.AutoSize = true;
+            this.overtimeWokingHour.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.overtimeWokingHour.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeWokingHour.Location = new System.Drawing.Point(374, 166);
+            this.overtimeWokingHour.Name = "overtimeWokingHour";
+            this.overtimeWokingHour.Size = new System.Drawing.Size(53, 17);
+            this.overtimeWokingHour.TabIndex = 23;
+            this.overtimeWokingHour.Text = "02:35";
+            // 
+            // overtimeWorkHourLabel
+            // 
+            this.overtimeWorkHourLabel.AutoSize = true;
+            this.overtimeWorkHourLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.overtimeWorkHourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.overtimeWorkHourLabel.Location = new System.Drawing.Point(192, 167);
+            this.overtimeWorkHourLabel.Name = "overtimeWorkHourLabel";
+            this.overtimeWorkHourLabel.Size = new System.Drawing.Size(172, 17);
+            this.overtimeWorkHourLabel.TabIndex = 22;
+            this.overtimeWorkHourLabel.Text = "Overtime Woking Hour:";
             // 
             // disapproveButton
             // 
@@ -219,27 +245,29 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // overtimeWorkHourLabel
+            // cashAdvanceAmountLabel
             // 
-            this.overtimeWorkHourLabel.AutoSize = true;
-            this.overtimeWorkHourLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.overtimeWorkHourLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.overtimeWorkHourLabel.Location = new System.Drawing.Point(192, 167);
-            this.overtimeWorkHourLabel.Name = "overtimeWorkHourLabel";
-            this.overtimeWorkHourLabel.Size = new System.Drawing.Size(172, 17);
-            this.overtimeWorkHourLabel.TabIndex = 22;
-            this.overtimeWorkHourLabel.Text = "Overtime Woking Hour:";
+            this.cashAdvanceAmountLabel.AutoSize = true;
+            this.cashAdvanceAmountLabel.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.cashAdvanceAmountLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceAmountLabel.Location = new System.Drawing.Point(302, 35);
+            this.cashAdvanceAmountLabel.Name = "cashAdvanceAmountLabel";
+            this.cashAdvanceAmountLabel.Size = new System.Drawing.Size(62, 17);
+            this.cashAdvanceAmountLabel.TabIndex = 24;
+            this.cashAdvanceAmountLabel.Text = "Amount";
+            this.cashAdvanceAmountLabel.Visible = false;
             // 
-            // overtimeWokingHour
+            // cashAdvanceAmount
             // 
-            this.overtimeWokingHour.AutoSize = true;
-            this.overtimeWokingHour.Font = new System.Drawing.Font("Britannic Bold", 12F);
-            this.overtimeWokingHour.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.overtimeWokingHour.Location = new System.Drawing.Point(374, 166);
-            this.overtimeWokingHour.Name = "overtimeWokingHour";
-            this.overtimeWokingHour.Size = new System.Drawing.Size(53, 17);
-            this.overtimeWokingHour.TabIndex = 23;
-            this.overtimeWokingHour.Text = "02:35";
+            this.cashAdvanceAmount.AutoSize = true;
+            this.cashAdvanceAmount.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.cashAdvanceAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceAmount.Location = new System.Drawing.Point(374, 35);
+            this.cashAdvanceAmount.Name = "cashAdvanceAmount";
+            this.cashAdvanceAmount.Size = new System.Drawing.Size(63, 17);
+            this.cashAdvanceAmount.TabIndex = 25;
+            this.cashAdvanceAmount.Text = "250.00";
+            this.cashAdvanceAmount.Visible = false;
             // 
             // RequestForm
             // 
@@ -279,5 +307,7 @@
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.Label overtimeWokingHour;
         private System.Windows.Forms.Label overtimeWorkHourLabel;
+        private System.Windows.Forms.Label cashAdvanceAmount;
+        private System.Windows.Forms.Label cashAdvanceAmountLabel;
     }
 }

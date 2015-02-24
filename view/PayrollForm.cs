@@ -68,6 +68,8 @@ namespace PayrollSystem.view
             decimal thirteenMonth = 0.00M;
             overtimeHours.Text = fetchTotalHoursOvertimeSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController).ToString();
             overtimeAmount.Text = calculateDailyBasedSalaryWithOvertimeRequests(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController).ToString("0.##");
+            decimal cashAdvanceDeci = calculateTotalCashAdvanceAmount(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController);
+            cashAdvanceAmount.Text = cashAdvanceDeci.ToString("0.##");
             tax.Text = (payslip.taxDeduction * -1).ToString("0.##");
             sss.Text = payslip.sssDeduction.ToString("0.##");
             pagIbig.Text = payslip.pagIbigDeduction.ToString("0.##");
@@ -80,8 +82,14 @@ namespace PayrollSystem.view
             }
             earnings.Text = payslip.basePay.ToString("0.##");
             benefits.Text = (foodAllowanceAmount + transpoAllowanceAmount + thirteenMonth).ToString("0.##");
-            deductions.Text = (payslip.taxDeduction + ((payslip.sssDeduction + payslip.pagIbigDeduction + payslip.philHealthDeduction) * -1)).ToString("0.##");
+            deductions.Text = (payslip.taxDeduction + ((payslip.sssDeduction + payslip.pagIbigDeduction + payslip.philHealthDeduction + cashAdvanceDeci) * -1)).ToString("0.##");
             netPay.Text = payslip.netPay.ToString("0.##");
+        }
+
+        private decimal calculateTotalCashAdvanceAmount(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee, RequestControllerInterface requestController, SalaryControllerInterface salaryController)
+        {
+            List<Request> cashAdvanceList = requestController.fetchAllApprovedCashAdvanceRequests(startDatePeriod, endDatePeriod, employee);
+            return salaryController.fetchTotalCashAdvanceAmount(cashAdvanceList);
         }
 
         private decimal calculateDailyBasedSalaryWithOvertimeRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee, RequestControllerInterface requestController, SalaryControllerInterface salaryController)

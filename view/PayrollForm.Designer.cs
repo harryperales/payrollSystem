@@ -44,6 +44,8 @@
             this.dateEmployedLabel = new System.Windows.Forms.Label();
             this.employeeFullName = new System.Windows.Forms.Label();
             this.earningsPanel = new System.Windows.Forms.Panel();
+            this.thirteenthMonthPay = new System.Windows.Forms.Label();
+            this.thirteenMonthPayLabel = new System.Windows.Forms.Label();
             this.earningLabel = new System.Windows.Forms.Label();
             this.overtimeAmount = new System.Windows.Forms.Label();
             this.overtimeHours = new System.Windows.Forms.Label();
@@ -86,8 +88,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.thirteenMonthPayLabel = new System.Windows.Forms.Label();
-            this.thirteenthMonthPay = new System.Windows.Forms.Label();
+            this.cashAdvanceAmount = new System.Windows.Forms.Label();
+            this.cashAdvanceLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.earningsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -296,6 +298,28 @@
             this.earningsPanel.Name = "earningsPanel";
             this.earningsPanel.Size = new System.Drawing.Size(450, 239);
             this.earningsPanel.TabIndex = 1;
+            // 
+            // thirteenthMonthPay
+            // 
+            this.thirteenthMonthPay.AutoSize = true;
+            this.thirteenthMonthPay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.thirteenthMonthPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.thirteenthMonthPay.Location = new System.Drawing.Point(365, 156);
+            this.thirteenthMonthPay.Name = "thirteenthMonthPay";
+            this.thirteenthMonthPay.Size = new System.Drawing.Size(51, 15);
+            this.thirteenthMonthPay.TabIndex = 33;
+            this.thirteenthMonthPay.Text = "325.05";
+            // 
+            // thirteenMonthPayLabel
+            // 
+            this.thirteenMonthPayLabel.AutoSize = true;
+            this.thirteenMonthPayLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.thirteenMonthPayLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.thirteenMonthPayLabel.Location = new System.Drawing.Point(15, 156);
+            this.thirteenMonthPayLabel.Name = "thirteenMonthPayLabel";
+            this.thirteenMonthPayLabel.Size = new System.Drawing.Size(98, 15);
+            this.thirteenMonthPayLabel.TabIndex = 32;
+            this.thirteenMonthPayLabel.Text = "13th Month Pay";
             // 
             // earningLabel
             // 
@@ -529,6 +553,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.cashAdvanceAmount);
+            this.panel3.Controls.Add(this.cashAdvanceLabel);
             this.panel3.Controls.Add(this.philHealth);
             this.panel3.Controls.Add(this.sss);
             this.panel3.Controls.Add(this.pagIbig);
@@ -773,27 +799,27 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // thirteenMonthPayLabel
+            // cashAdvanceAmount
             // 
-            this.thirteenMonthPayLabel.AutoSize = true;
-            this.thirteenMonthPayLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.thirteenMonthPayLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.thirteenMonthPayLabel.Location = new System.Drawing.Point(15, 156);
-            this.thirteenMonthPayLabel.Name = "thirteenMonthPayLabel";
-            this.thirteenMonthPayLabel.Size = new System.Drawing.Size(98, 15);
-            this.thirteenMonthPayLabel.TabIndex = 32;
-            this.thirteenMonthPayLabel.Text = "13th Month Pay";
+            this.cashAdvanceAmount.AutoSize = true;
+            this.cashAdvanceAmount.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAdvanceAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceAmount.Location = new System.Drawing.Point(263, 91);
+            this.cashAdvanceAmount.Name = "cashAdvanceAmount";
+            this.cashAdvanceAmount.Size = new System.Drawing.Size(51, 15);
+            this.cashAdvanceAmount.TabIndex = 16;
+            this.cashAdvanceAmount.Text = "250.25";
             // 
-            // thirteenthMonthPay
+            // cashAdvanceLabel
             // 
-            this.thirteenthMonthPay.AutoSize = true;
-            this.thirteenthMonthPay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.thirteenthMonthPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.thirteenthMonthPay.Location = new System.Drawing.Point(365, 156);
-            this.thirteenthMonthPay.Name = "thirteenthMonthPay";
-            this.thirteenthMonthPay.Size = new System.Drawing.Size(51, 15);
-            this.thirteenthMonthPay.TabIndex = 33;
-            this.thirteenthMonthPay.Text = "325.05";
+            this.cashAdvanceLabel.AutoSize = true;
+            this.cashAdvanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAdvanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceLabel.Location = new System.Drawing.Point(3, 91);
+            this.cashAdvanceLabel.Name = "cashAdvanceLabel";
+            this.cashAdvanceLabel.Size = new System.Drawing.Size(85, 15);
+            this.cashAdvanceLabel.TabIndex = 15;
+            this.cashAdvanceLabel.Text = "Cash Advance";
             // 
             // PayrollForm
             // 
@@ -886,5 +912,7 @@
         private System.Windows.Forms.Label netPay;
         private System.Windows.Forms.Label thirteenthMonthPay;
         private System.Windows.Forms.Label thirteenMonthPayLabel;
+        private System.Windows.Forms.Label cashAdvanceAmount;
+        private System.Windows.Forms.Label cashAdvanceLabel;
     }
 }
