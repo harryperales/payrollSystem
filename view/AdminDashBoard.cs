@@ -187,7 +187,11 @@ namespace PayrollSystem.view
                 }
 
                 PayrollControllerInterface payslipController = new PayrollController();
-                payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+                Payslip payslip = payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
+                if (thirteenMonthPayCheckBox.Checked)
+                {
+                    payslipController.addThirteenMonthPayToPayslip(employee, payslip);
+                }
                 hideSpinner();
                 loadPayrollList();
                 adminTab.SelectedTab = payrollTab;

@@ -15,5 +15,7 @@ namespace PayrollSystem.controller
         Payslip fetchPayslipById(int payslipId);
 
         List<Payslip> fetchPayroll();
+
+        Payslip addThirteenMonthPayToPayslip(Employee employee, Payslip payslip);
     }
 }

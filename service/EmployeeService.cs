@@ -52,6 +52,12 @@ namespace PayrollSystem.service
 
                 LeaveCreditServiceInterface leaveCreditsService = new LeaveCreditService();
                 EmployeeLeaveCredits employeeLeaveCredits = leaveCreditsService.createEmployeeLeaveCredits(employee);
+
+                MiscellaneousServiceInterface miscellaneousService = new MiscellaneousService();
+                Miscellaneous thirteenMonthBenefit = miscellaneousService.createThirteenMonthBenefit(employee);
+
+                Miscellaneous transportationBenefit = miscellaneousService.createTransportationBenefit(employee);
+                
                 return employee;
             }
             return null;

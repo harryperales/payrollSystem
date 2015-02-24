@@ -152,5 +152,106 @@ namespace PayrollSystem.service
             sqlCon.Close();
             return misc;
         }
+
+        public Miscellaneous createThirteenMonthBenefit(Employee employee)
+        {
+            Miscellaneous thirteenMonthPay = new Miscellaneous();
+            sqlCon.Open();
+            sqlCmd.CommandText = "INSERT INTO Miscellaneous (name, description, amount, type) "
+                + "VALUES (@name,@description,@amount,@type);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.Parameters.AddWithValue("@name", "ThirteenMonthAllowance");
+            sqlCmd.Parameters.AddWithValue("@description", "Thirteen Month Allowance starts @"+ Convert.ToDateTime(employee.dateEmployed).ToString("MM/dd/yyyy"));
+            sqlCmd.Parameters.AddWithValue("@amount", "0.00");
+            sqlCmd.Parameters.AddWithValue("@type", "Benefit");
+            thirteenMonthPay.id = (int)sqlCmd.ExecuteScalar();
+            sqlCon.Close();
+
+            EmployeeMiscellaneous thirteenMonthBenefit = createEmployeeMiscellaneous(employee, thirteenMonthPay);
+
+            return thirteenMonthPay;
+        }
+
+        public Miscellaneous createTransportationBenefit(Employee employee)
+        {
+            Miscellaneous transportationAllowance = new Miscellaneous();
+            sqlCon.Open();
+            sqlCmd.CommandText = "INSERT INTO Miscellaneous (name, description, amount, type) "
+                + "VALUES (@name,@description,@amount,@type);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.Parameters.AddWithValue("@name", "TransportationAllowance");
+            sqlCmd.Parameters.AddWithValue("@description", "Transportation Allowance");
+            sqlCmd.Parameters.AddWithValue("@amount", "0.00");
+            sqlCmd.Parameters.AddWithValue("@type", "Benefit");
+            transportationAllowance.id = (int)sqlCmd.ExecuteScalar();
+            sqlCon.Close();
+
+            EmployeeMiscellaneous thirteenMonthBenefit = createEmployeeMiscellaneous(employee, transportationAllowance);
+
+            return transportationAllowance;
+        }
+
+        private EmployeeMiscellaneous createEmployeeMiscellaneous(Employee employee, Miscellaneous miscellenaous)
+        {
+            EmployeeMiscellaneous employeeMiscellaneous = new EmployeeMiscellaneous();
+            sqlCon.Open();
+            sqlCmd.CommandText = "INSERT INTO EmployeeMiscellaneous (employeeId, miscellaneousId) "
+            + "VALUES (@employeeId, @miscellaneousId);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.Parameters.AddWithValue("@employeeId", employee.id);
+            sqlCmd.Parameters.AddWithValue("@miscellaneousId", miscellenaous.id);
+            employeeMiscellaneous.id = (int)sqlCmd.ExecuteScalar();
+            sqlCon.Close();
+
+            return employeeMiscellaneous;
+        }
+
+        public Miscellaneous calculateThirteenMonth(Employee employee, DateTime endDatePeriod)
+        {
+            Miscellaneous employeeMiscellaneous = fetchEmployeeMiscellaneousBenefitByEmployeeId(employee, "ThirteenMonthAllowance");
+            DateTime thirteenMonthStartDate = Convert.ToDateTime(employeeMiscellaneous.description.Split('@')[1]);
+            int monthDifference = calculateMonthDifference(endDatePeriod, thirteenMonthStartDate);
+            decimal thirteenMonthPay = (decimal.Divide(monthDifference, 12) * decimal.Multiply(employee.jobPosition.salary, 30));            
+            updateMiscellaneousBenefitAmountById(employeeMiscellaneous.id, thirteenMonthPay);
+            return fetchEmployeeMiscellaneousBenefitByEmployeeId(employee, "ThirteenMonthAllowance");
+        }
+
+        private void updateMiscellaneousBenefitAmountById(int id, decimal miscellaneousAmount)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "UPDATE Miscellaneous SET amount = @amount, description = @description WHERE (id = @id)";
+            sqlCmd.Parameters.AddWithValue("@id", id);
+            sqlCmd.Parameters.AddWithValue("@description", "Thirteen Month Allowance starts @"+DateTime.Now.ToString("MM/dd/yyyy"));
+            sqlCmd.Parameters.AddWithValue("@amount", miscellaneousAmount);
+            sqlCmd.ExecuteNonQuery();
+            sqlCon.Close();
+        }
+
+        public static int calculateMonthDifference(DateTime lValue, DateTime rValue)
+        {
+            return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
+        }
+
+        public Miscellaneous fetchEmployeeMiscellaneousBenefitByEmployeeId(Employee employee, string miscellaneousName)
+        {
+            Miscellaneous miscellaneous = null;
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT EmployeeMiscellaneous.id, Miscellaneous.id AS miscellaneousId, Miscellaneous.description, Miscellaneous.amount, Miscellaneous.type FROM EmployeeMiscellaneous INNER JOIN Miscellaneous ON EmployeeMiscellaneous.miscellaneousId = Miscellaneous.id WHERE (EmployeeMiscellaneous.employeeId = @employeeNumber) AND (name = @name);";
+            sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
+            sqlCmd.Parameters.AddWithValue("@name", miscellaneousName);
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    miscellaneous = new Miscellaneous();
+                    miscellaneous.id = Int32.Parse(sqlDataReader["miscellaneousId"].ToString());
+                    miscellaneous.description = sqlDataReader["description"].ToString();
+                    miscellaneous.amount = Convert.ToDecimal(sqlDataReader["amount"].ToString());
+                    miscellaneous.type = MiscType.Benefits;
+                }
+            }
+
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return miscellaneous;
+        }
     }
 }

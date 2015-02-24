@@ -76,6 +76,7 @@
             this.taxLabel = new System.Windows.Forms.Label();
             this.deductionLabel = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.netPay = new System.Windows.Forms.Label();
             this.deductions = new System.Windows.Forms.Label();
             this.benefits = new System.Windows.Forms.Label();
             this.earnings = new System.Windows.Forms.Label();
@@ -85,7 +86,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.netPay = new System.Windows.Forms.Label();
+            this.thirteenMonthPayLabel = new System.Windows.Forms.Label();
+            this.thirteenthMonthPay = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.earningsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -268,6 +270,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.earningsPanel.BackColor = System.Drawing.Color.Transparent;
             this.earningsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.earningsPanel.Controls.Add(this.thirteenthMonthPay);
+            this.earningsPanel.Controls.Add(this.thirteenMonthPayLabel);
             this.earningsPanel.Controls.Add(this.earningLabel);
             this.earningsPanel.Controls.Add(this.overtimeAmount);
             this.earningsPanel.Controls.Add(this.overtimeHours);
@@ -673,6 +677,16 @@
             this.panel5.Size = new System.Drawing.Size(846, 112);
             this.panel5.TabIndex = 3;
             // 
+            // netPay
+            // 
+            this.netPay.AutoSize = true;
+            this.netPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.netPay.Location = new System.Drawing.Point(182, 79);
+            this.netPay.Name = "netPay";
+            this.netPay.Size = new System.Drawing.Size(59, 15);
+            this.netPay.TabIndex = 16;
+            this.netPay.Text = "2705.83";
+            // 
             // deductions
             // 
             this.deductions.AutoSize = true;
@@ -759,15 +773,27 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // netPay
+            // thirteenMonthPayLabel
             // 
-            this.netPay.AutoSize = true;
-            this.netPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.netPay.Location = new System.Drawing.Point(182, 79);
-            this.netPay.Name = "netPay";
-            this.netPay.Size = new System.Drawing.Size(59, 15);
-            this.netPay.TabIndex = 16;
-            this.netPay.Text = "2705.83";
+            this.thirteenMonthPayLabel.AutoSize = true;
+            this.thirteenMonthPayLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.thirteenMonthPayLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.thirteenMonthPayLabel.Location = new System.Drawing.Point(15, 156);
+            this.thirteenMonthPayLabel.Name = "thirteenMonthPayLabel";
+            this.thirteenMonthPayLabel.Size = new System.Drawing.Size(98, 15);
+            this.thirteenMonthPayLabel.TabIndex = 32;
+            this.thirteenMonthPayLabel.Text = "13th Month Pay";
+            // 
+            // thirteenthMonthPay
+            // 
+            this.thirteenthMonthPay.AutoSize = true;
+            this.thirteenthMonthPay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.thirteenthMonthPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.thirteenthMonthPay.Location = new System.Drawing.Point(365, 156);
+            this.thirteenthMonthPay.Name = "thirteenthMonthPay";
+            this.thirteenthMonthPay.Size = new System.Drawing.Size(51, 15);
+            this.thirteenthMonthPay.TabIndex = 33;
+            this.thirteenthMonthPay.Text = "325.05";
             // 
             // PayrollForm
             // 
@@ -858,5 +884,7 @@
         private System.Windows.Forms.Label benefits;
         private System.Windows.Forms.Label earnings;
         private System.Windows.Forms.Label netPay;
+        private System.Windows.Forms.Label thirteenthMonthPay;
+        private System.Windows.Forms.Label thirteenMonthPayLabel;
     }
 }

@@ -7,6 +7,7 @@ namespace PayrollSystem.model
 {
     public class EmployeeMiscellaneous
     {
+        public int id { get; set; }
         public Employee employee { get; set; }
         public Miscellaneous miscellaneous { get; set; }
     }

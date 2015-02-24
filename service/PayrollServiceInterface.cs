@@ -15,5 +15,7 @@ namespace PayrollSystem.service
         Payslip fetchPayslipById(int payslipId);
 
         List<Payslip> fetchPayroll();
+
+        Payslip updatePayslipThirteenMonthPay(Payslip payslip, Miscellaneous thirteenMonthPay);
     }
 }

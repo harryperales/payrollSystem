@@ -72,6 +72,12 @@ namespace PayrollSystem.view
             sss.Text = payslip.sssDeduction.ToString("0.##");
             pagIbig.Text = payslip.pagIbigDeduction.ToString("0.##");
             philHealth.Text = payslip.philHealthDeduction.ToString("0.##");
+            thirteenthMonthPay.Visible = false;
+            if (payslip.thirteenMonthPay > 0.00M)
+            {
+                thirteenthMonthPay.Visible = true;
+                thirteenthMonthPay.Text = payslip.thirteenMonthPay.ToString("0.##");
+            }
             earnings.Text = payslip.basePay.ToString("0.##");
             benefits.Text = (foodAllowanceAmount + transpoAllowanceAmount + thirteenMonth).ToString("0.##");
             deductions.Text = (payslip.taxDeduction + ((payslip.sssDeduction + payslip.pagIbigDeduction + payslip.philHealthDeduction) * -1)).ToString("0.##");

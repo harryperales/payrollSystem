@@ -38,6 +38,7 @@ namespace PayrollSystem.service
                     payslip.basePay = Convert.ToDecimal(sqlDataReader["basePay"].ToString());
                     payslip.taxDeduction = Convert.ToDecimal(sqlDataReader["taxDeduction"].ToString());
                     payslip.netPay = Convert.ToDecimal(sqlDataReader["netPay"].ToString());
+                    payslip.thirteenMonthPay = Convert.ToDecimal(sqlDataReader["thirteenMonthPayAmount"].ToString());
                     payslip.sssDeduction = Convert.ToDecimal(sqlDataReader["sssDeduction"].ToString());
                     payslip.pagIbigDeduction = Convert.ToDecimal(sqlDataReader["pagIbigDeduction"].ToString());
                     payslip.philHealthDeduction = Convert.ToDecimal(sqlDataReader["philHealthDeduction"].ToString());
@@ -52,8 +53,8 @@ namespace PayrollSystem.service
         public Payslip createPayslip(Employee employee, Payslip payslip)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "INSERT INTO Payroll (dateCreated, employeeId, startDate, endDate, basePay, netPay, taxDeduction, sssDeduction, pagIbigDeduction, philHealthDeduction) "
-            + "VALUES (@dateCreated, @employeeId, @startDate, @endDate, @basePay, @netPay, @taxDeduction, @sssDeduction, @pagIbigDeduction, @philHealthDeduction);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.CommandText = "INSERT INTO Payroll (dateCreated, employeeId, startDate, endDate, basePay, thirteenMonthPayAmount, netPay, taxDeduction, sssDeduction, pagIbigDeduction, philHealthDeduction) "
+            + "VALUES (@dateCreated, @employeeId, @startDate, @endDate, @basePay, @thirteenMonthPayAmount, @netPay, @taxDeduction, @sssDeduction, @pagIbigDeduction, @philHealthDeduction);SELECT CAST(scope_identity() AS int)";
             sqlCmd.Parameters.AddWithValue("@dateCreated", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
             sqlCmd.Parameters.AddWithValue("@employeeId", employee.id);
             sqlCmd.Parameters.AddWithValue("@startDate", payslip.startDatePeriod.ToString("MM/dd/yyyy hh:mm:ss tt"));
@@ -62,6 +63,7 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.AddWithValue("@netPay", payslip.netPay);
             sqlCmd.Parameters.AddWithValue("@taxDeduction", payslip.taxDeduction);
             sqlCmd.Parameters.AddWithValue("@sssDeduction", payslip.sssDeduction);
+            sqlCmd.Parameters.AddWithValue("@thirteenMonthPayAmount", "0.00");
             sqlCmd.Parameters.AddWithValue("@pagIbigDeduction", payslip.pagIbigDeduction);
             sqlCmd.Parameters.AddWithValue("@philHealthDeduction", payslip.philHealthDeduction);
             payslip.id = (int)sqlCmd.ExecuteScalar();
@@ -216,6 +218,17 @@ namespace PayrollSystem.service
             }
             sqlCon.Close();
             return payroll;
+        }
+
+        public Payslip updatePayslipThirteenMonthPay(Payslip payslip, Miscellaneous thirteenMonthPay)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "UPDATE Payroll SET thirteenMonthPayAmount = @thirteenMonthPayAmount WHERE id = @id;";
+            sqlCmd.Parameters.AddWithValue("@id", payslip.id);
+            sqlCmd.Parameters.AddWithValue("@thirteenMonthPayAmount", thirteenMonthPay.amount);
+            sqlCmd.ExecuteNonQuery();
+            sqlCon.Close();
+            return null;
         }
     }
 }

@@ -80,6 +80,7 @@ namespace PayrollSystem.controller
             payslip.netPay = periodSalary;
             Console.WriteLine("periodSalaryWithholdingTax---->>" + periodSalary);
 
+            Miscellaneous thirteenMonth = miscellaneousService.calculateThirteenMonth(employee, endDatePeriod);
             return payrollService.createPayslip(employee, payslip);
         }
 
@@ -91,6 +92,12 @@ namespace PayrollSystem.controller
         public List<Payslip> fetchPayroll()
         {
             return payrollService.fetchPayroll();
+        }
+
+        public Payslip addThirteenMonthPayToPayslip(Employee employee, Payslip payslip)
+        {
+            Miscellaneous thirteenMonthPay = miscellaneousService.fetchEmployeeMiscellaneousBenefitByEmployeeId(employee, "ThirteenMonthAllowance");
+            return payrollService.updatePayslipThirteenMonthPay(payslip, thirteenMonthPay);
         }
     }
 }
