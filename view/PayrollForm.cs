@@ -59,15 +59,18 @@ namespace PayrollSystem.view
             dailyRate.Text = payslip.employee.jobPosition.salary.ToString("0.##");
             hourlyRate.Text = calculateHourlyRate(payslip.employee.jobPosition.salary).ToString("0.##");
             TimeSpan timeSpent = fetchTotalHoursSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, attendanceController);
-            hoursSpent.Text = timeSpent.ToString();
+            hoursSpent.Text = Math.Round(timeSpent.TotalHours, 2).ToString();
             totalBasePay.Text = calculateTotalBasePay(timeSpent, payslip.employee.jobPosition.salary).ToString("0.##");
             decimal foodAllowanceAmount = fetchFoodAllowance(payslip, miscellaneousController);
-            foodAllowance.Text = foodAllowanceAmount.ToString("0.##");
+            decimal totalFoodAllowanceAmount = calculateTotalSpecificAllowance(foodAllowanceAmount, timeSpent);
+            foodAllowance.Text = totalFoodAllowanceAmount.ToString("0.##");
             decimal transpoAllowanceAmount = fetchTranspoAllowance(payslip, miscellaneousController);
-            transportation.Text = transpoAllowanceAmount.ToString("0.##");
+            decimal totalTranspoAllowanceAmount = calculateTotalSpecificAllowance(transpoAllowanceAmount, timeSpent);
+            transportation.Text = totalTranspoAllowanceAmount.ToString("0.##");
             decimal thirteenMonth = 0.00M;
-            overtimeHours.Text = fetchTotalHoursOvertimeSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController).ToString();
-            overtimeAmount.Text = calculateDailyBasedSalaryWithOvertimeRequests(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController).ToString("0.##");
+            overtimeHours.Text = Math.Round(fetchTotalHoursOvertimeSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController).TotalHours, 2).ToString();
+            decimal totalOvertimeAmount = calculateDailyBasedSalaryWithOvertimeRequests(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController);
+            overtimeAmount.Text = totalOvertimeAmount.ToString("0.##");
             decimal cashAdvanceDeci = calculateTotalCashAdvanceAmount(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController);
             cashAdvanceAmount.Text = cashAdvanceDeci.ToString("0.##");
             tax.Text = (payslip.taxDeduction * -1).ToString("0.##");
@@ -81,9 +84,16 @@ namespace PayrollSystem.view
                 thirteenthMonthPay.Text = payslip.thirteenMonthPay.ToString("0.##");
             }
             earnings.Text = payslip.basePay.ToString("0.##");
-            benefits.Text = (foodAllowanceAmount + transpoAllowanceAmount + thirteenMonth).ToString("0.##");
-            deductions.Text = (payslip.taxDeduction + ((payslip.sssDeduction + payslip.pagIbigDeduction + payslip.philHealthDeduction + cashAdvanceDeci) * -1)).ToString("0.##");
-            netPay.Text = payslip.netPay.ToString("0.##");
+            benefits.Text = (totalOvertimeAmount + totalFoodAllowanceAmount + totalTranspoAllowanceAmount + thirteenMonth).ToString("0.##");
+            deductions.Text = ((decimal.Round(payslip.taxDeduction, 2) + decimal.Round(payslip.sssDeduction, 2) + decimal.Round(payslip.pagIbigDeduction, 2) + decimal.Round(payslip.philHealthDeduction, 2) + decimal.Round(cashAdvanceDeci, 2)) * -1).ToString("0.##");
+            decimal totalSalary = Convert.ToDecimal(earnings.Text) + Convert.ToDecimal(benefits.Text) + Convert.ToDecimal(deductions.Text);
+            netPay.Text = totalSalary.ToString("0.##");
+        }
+
+        private decimal calculateTotalSpecificAllowance(decimal allowanceAmount, TimeSpan timeSpent)
+        {
+            double convertedTimeSpentTotalHoursToDay = Math.Round(timeSpent.TotalHours, 2) / 8.00;
+            return decimal.Multiply(Convert.ToDecimal(convertedTimeSpentTotalHoursToDay), allowanceAmount);
         }
 
         private decimal calculateTotalCashAdvanceAmount(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee, RequestControllerInterface requestController, SalaryControllerInterface salaryController)
@@ -115,17 +125,9 @@ namespace PayrollSystem.view
 
         private decimal calculateTotalBasePay(TimeSpan timeSpent, decimal dailyBasedSalary)
         {
-            decimal totalBasePay = 0.0000M;
             decimal hourlyRate = calculateHourlyRate(dailyBasedSalary);
-            Console.WriteLine("Days:"+timeSpent.Days);
-            Console.WriteLine("minutes:" + timeSpent.Minutes);
-            Console.WriteLine("hours:" + timeSpent.Hours);
-            if (timeSpent.Days > 0) totalBasePay = timeSpent.Days * dailyBasedSalary;
-            if( timeSpent.Hours > 0 ) totalBasePay += (timeSpent.Hours * hourlyRate);
-            decimal convertedMinToHour = decimal.Divide(timeSpent.Minutes, 59);
-            if (timeSpent.Minutes > 0) totalBasePay += (convertedMinToHour * hourlyRate);
-
-            return totalBasePay;
+            double timeSpentWithTwoDecimal = Math.Round(timeSpent.TotalHours, 2);
+            return decimal.Multiply(Convert.ToDecimal(timeSpentWithTwoDecimal), hourlyRate);
         }
 
         private TimeSpan fetchTotalHoursSpent(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee,

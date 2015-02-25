@@ -56,7 +56,6 @@ namespace PayrollSystem.service
 
                 decimal convertedMinutesToHour = decimal.Divide(timeSpent.Minutes, 59);
                 calculatedSalaryWithTimeSpent += calculatePerHourSalaryFromHoursSpent(perHourBasedSalary, convertedMinutesToHour);
-
                 periodSalary += calculatedSalaryWithTimeSpent;
 
                 foreach (Holiday holiday in holidays)
@@ -122,34 +121,34 @@ namespace PayrollSystem.service
                     {
                         // add 30% of daily Salary
                         perHourBasedSalaryWithAddedPercent = perHourBasedSalary + decimal.Multiply(0.30M, perHourBasedSalary);
-                        totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                        totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent), 2);
                         decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
-                        totalOvertimeSalary += decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent);
+                        totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent), 2);
                         isOvertimeDateFallsToHoliday = true;
                     }
                     else if (overtimeDateIsEqualToRegularHoliday(overtimeRequest, holiday))
                     {
                         // add 100% daily salary
                         perHourBasedSalaryWithAddedPercent = perHourBasedSalary + perHourBasedSalary;
-                        totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                        totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent), 2);
                         decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
-                        totalOvertimeSalary += decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent);
+                        totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent), 2);
                         isOvertimeDateFallsToHoliday = true;
                     }
                 }
                 if (!isOvertimeDateFallsToHoliday)
                 {
                     perHourBasedSalaryWithAddedPercent = perHourBasedSalary + decimal.Multiply(0.25M, perHourBasedSalary);
-                    totalOvertimeSalary += decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent);
+                    totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent), 2);
                     decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
-                    totalOvertimeSalary += decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent);
+                    totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent), 2);
                 }
                 else
                 {
                     isOvertimeDateFallsToHoliday = false;
                 }
             }
-            return totalOvertimeSalary;
+            return decimal.Round(totalOvertimeSalary, 2);
         }
 
         private static bool overtimeDateIsEqualToRegularHoliday(Request overtimeRequest, Holiday holiday)
@@ -290,9 +289,9 @@ namespace PayrollSystem.service
                 {
                     decimal taxAmountToDeduct = Convert.ToDecimal(values[1].ToString());
                     decimal taxPercent = Convert.ToDecimal(values[0].ToString());
-                    Console.WriteLine(taxAmountToDeduct + "+" + "[(" + periodSalary + "-" + (upperLimitSalary - 1) + ")X" + taxPercent + "]");
-                    taxAmountToDeduct += ((periodSalary - (upperLimitSalary - 1)) * taxPercent);
-
+                    Console.WriteLine(taxAmountToDeduct + "+" + "[(" + periodSalary + "-" + (lowerLimitSalary) + ")X" + taxPercent + "]");
+                    taxAmountToDeduct = taxAmountToDeduct + ((periodSalary - lowerLimitSalary) * taxPercent);
+                    Console.WriteLine("taxAmountToDeduct:"+taxAmountToDeduct);
                     return taxAmountToDeduct;
                 }
             }

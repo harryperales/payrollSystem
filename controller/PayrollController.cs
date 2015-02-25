@@ -38,25 +38,25 @@ namespace PayrollSystem.controller
             
             decimal dailyBasedSalary = 0.00M;
             dailyBasedSalary = employee.jobPosition.salary;
-            decimal periodSalary = salaryService.calculatePeriodSalary(attendances, dailyBasedSalary);
+            decimal periodSalary = decimal.Round(salaryService.calculatePeriodSalary(attendances, dailyBasedSalary), 2);
 
             payslip.basePay = periodSalary;
             List<Request> overtimeRequests = requestService.fetchOvertimeRequests(employee, startDatePeriod, endDatePeriod);
             payslip.requests = overtimeRequests;
 
-            periodSalary += salaryService.calculateDailyBasedSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);
+            periodSalary += decimal.Round(salaryService.calculateDailyBasedSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary), 2);
             Console.WriteLine("periodSalaryWithOvertime---->>" + periodSalary);
 
             List<Request> leaveRequests = requestService.fetchLeaveRequest(employee, startDatePeriod, endDatePeriod);
             payslip.requests.AddRange(leaveRequests);
 
-            periodSalary += salaryService.calculateDailBasedSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary);
+            periodSalary += decimal.Round(salaryService.calculateDailBasedSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary), 2);
             Console.WriteLine("periodSalaryWithLeave---->>" + periodSalary);
 
             List<Miscellaneous> benefits = miscellaneousService.fetchMiscellaneousByBenefitType(employee);
             payslip.miscellaneous = benefits;
 
-            periodSalary += salaryService.fetchTotalAmountOfBenefits(benefits, attendances, leaveRequests);
+            periodSalary += decimal.Round(salaryService.fetchTotalAmountOfBenefits(benefits, attendances, leaveRequests), 2);
             Console.WriteLine("periodSalaryWIthBenefits---->>" + periodSalary);
 
             //List<Miscellaneous> bonuses = miscellaneousService.fetchBonusMiscellaneousByDescriptionAsDate(employee, startDatePeriod, endDatePeriod);
@@ -66,22 +66,27 @@ namespace PayrollSystem.controller
             //Console.WriteLine("periodSalaryWIthBonus---->>" + periodSalary);
 
             List<Request> cashAdvanceList = requestService.fetchAllApprovedCashAdvanceRequests(startDatePeriod, endDatePeriod, employee);
-            periodSalary -= salaryService.fetchTotalCashAdvanceAmount(cashAdvanceList);
+            periodSalary -= decimal.Round(salaryService.fetchTotalCashAdvanceAmount(cashAdvanceList), 2);
             Console.WriteLine("periodSalaryWIthCashAdvance---->>" + periodSalary);
 
-            List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
+            //List<Miscellaneous> deductions = miscellaneousService.fetchMiscellaneousByDeductionType(employee);
 
-            periodSalary -= salaryService.fetchTotalDeductions(deductions);
+            //periodSalary -= decimal.Round(salaryService.fetchTotalDeductions(deductions), 2);
+
+
+            payslip.sssDeduction = decimal.Round(salaryService.fetchSssDeductionsWithPeriodSalary(periodSalary), 2);
+            payslip.pagIbigDeduction = decimal.Round(salaryService.fetchPagIbigDeductionWithPeriodSalary(periodSalary), 2);
+            payslip.philHealthDeduction = decimal.Round(salaryService.fetchPhilHealthDeductionWithPeriodSalary(periodSalary), 2);
+
+            periodSalary -= payslip.sssDeduction;
+            periodSalary -= payslip.pagIbigDeduction;
+            periodSalary -= payslip.philHealthDeduction;
             Console.WriteLine("periodSalaryWIthDeductions---->>" + periodSalary);
-
-            payslip.sssDeduction = salaryService.fetchSssDeductionsWithPeriodSalary(periodSalary);
-            payslip.pagIbigDeduction = salaryService.fetchPagIbigDeductionWithPeriodSalary(periodSalary);
-            payslip.philHealthDeduction = salaryService.fetchPhilHealthDeductionWithPeriodSalary(periodSalary);
 
             payslip.taxDeduction = salaryService.calculatePeriodSalaryTax(employee, periodSalary);
             periodSalary -= payslip.taxDeduction;
 
-            payslip.netPay = periodSalary;
+            payslip.netPay = decimal.Round(periodSalary, 2);
             Console.WriteLine("periodSalaryWithholdingTax---->>" + periodSalary);
 
             Miscellaneous thirteenMonth = miscellaneousService.calculateThirteenMonth(employee, endDatePeriod);
