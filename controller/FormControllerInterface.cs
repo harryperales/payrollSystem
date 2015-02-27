@@ -64,5 +64,9 @@ namespace PayrollSystem.controller
         void showDashboardForm(CashAdvanceForm cashAdvanceForm, DashboardForm dashboardForm);
 
         void showCashAdvanceForm(DashboardForm dashboardForm, Employee employee);
+
+        void showAdminDashBoard(PayrollSheet payrollSheet);
+
+        void showPayrollSheet();
     }
 }

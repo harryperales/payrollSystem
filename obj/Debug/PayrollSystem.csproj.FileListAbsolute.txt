@@ -49,3 +49,4 @@ C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Payrol
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.TimeInOutForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.RequestForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.CashAdvanceForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayrollSheet.resources

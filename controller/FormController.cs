@@ -195,5 +195,16 @@ namespace PayrollSystem.controller
             CashAdvanceForm cashAdvanceForm = new CashAdvanceForm(dashboardForm, employee);
             cashAdvanceForm.ShowDialog();
         }
+
+        public void showAdminDashBoard(PayrollSheet payrollSheet)
+        {
+            payrollSheet.Close();
+        }
+
+        public void showPayrollSheet()
+        {
+            PayrollSheet payrollSheetForm = new PayrollSheet();
+            payrollSheetForm.ShowDialog();
+        }
     }
 }

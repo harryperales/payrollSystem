@@ -408,5 +408,11 @@ namespace PayrollSystem.view
                 showErrorMessage("Successfully create payroll to all users");
             }
         }
+
+        private void viewPayrollSheetDataGridButton_Click(object sender, EventArgs e)
+        {
+            FormControllerInterface formController = new FormController();
+            formController.showPayrollSheet();
+        }
     }
 }
