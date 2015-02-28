@@ -32,5 +32,20 @@ namespace PayrollSystem.controller
         {
             return miscellaneousservice.fetchMiscellaneousByName("TransportationAllowance");
         }
+
+        public Miscellaneous addMiscByEmployee(Miscellaneous benefitsMiscellaneous, Employee employee)
+        {
+            return miscellaneousservice.createMiscellaenousByEmployee(benefitsMiscellaneous, employee);
+        }
+
+        public Miscellaneous fetchMiscellaneousBenefitByNameAndEmployee(Employee employee, string benefitName)
+        {
+            return miscellaneousservice.fetchEmployeeMiscellaneousBenefitByEmployeeId(employee, benefitName);
+        }
+
+        public Miscellaneous updateMiscellaneousBenefitAmountById(Miscellaneous allowance)
+        {
+            return miscellaneousservice.updateMiscellaneousBenefitAmountById(allowance);
+        }
     }
 }

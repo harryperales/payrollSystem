@@ -25,5 +25,9 @@ namespace PayrollSystem.service
         Miscellaneous calculateThirteenMonth(Employee employee, DateTime endDatePeriod);
 
         Miscellaneous fetchEmployeeMiscellaneousBenefitByEmployeeId(Employee employee, string miscellaneousName);
+
+        Miscellaneous createMiscellaenousByEmployee(Miscellaneous miscellaneous, Employee employee);
+
+        Miscellaneous updateMiscellaneousBenefitAmountById(Miscellaneous allowance);
     }
 }

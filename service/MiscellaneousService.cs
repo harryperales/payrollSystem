@@ -171,6 +171,23 @@ namespace PayrollSystem.service
             return thirteenMonthPay;
         }
 
+        public Miscellaneous createMiscellaenousByEmployee(Miscellaneous miscellaneous, Employee employee)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "INSERT INTO [Miscellaneous] (name, description, amount, type) VALUES (@name, @description, @amount, @type);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.Parameters.AddWithValue("@name", miscellaneous.name);
+            sqlCmd.Parameters.AddWithValue("@description", miscellaneous.description);
+            sqlCmd.Parameters.AddWithValue("@amount", miscellaneous.amount);
+            sqlCmd.Parameters.AddWithValue("@type", miscellaneous.type == MiscType.Benefits ? "Benefit" : "Deduction");
+            miscellaneous.id = (int)sqlCmd.ExecuteScalar();
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+
+            EmployeeMiscellaneous transportationBenefit = createEmployeeMiscellaneous(employee, miscellaneous);
+
+            return miscellaneous;
+        }
+
         public Miscellaneous createTransportationBenefit(Employee employee)
         {
             Miscellaneous transportationAllowance = new Miscellaneous();
@@ -184,7 +201,7 @@ namespace PayrollSystem.service
             transportationAllowance.id = (int)sqlCmd.ExecuteScalar();
             sqlCon.Close();
 
-            EmployeeMiscellaneous thirteenMonthBenefit = createEmployeeMiscellaneous(employee, transportationAllowance);
+            EmployeeMiscellaneous transportationBenefit = createEmployeeMiscellaneous(employee, transportationAllowance);
 
             return transportationAllowance;
         }
@@ -252,6 +269,20 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.Clear();
             sqlCon.Close();
             return miscellaneous;
+        }
+
+        public Miscellaneous updateMiscellaneousBenefitAmountById(Miscellaneous allowance)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "UPDATE Miscellaneous SET amount = @amount WHERE (id = @id)";
+            Console.WriteLine("amount:"+allowance.amount);
+            Console.WriteLine("id:"+allowance.id);
+            sqlCmd.Parameters.AddWithValue("@amount", allowance.amount);
+            sqlCmd.Parameters.AddWithValue("@id", allowance.id);
+            sqlCmd.ExecuteNonQuery();
+            sqlCmd.Parameters.Clear();
+            sqlCon.Close();
+            return allowance;
         }
     }
 }

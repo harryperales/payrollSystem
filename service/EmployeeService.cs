@@ -55,8 +55,6 @@ namespace PayrollSystem.service
 
                 MiscellaneousServiceInterface miscellaneousService = new MiscellaneousService();
                 Miscellaneous thirteenMonthBenefit = miscellaneousService.createThirteenMonthBenefit(employee);
-
-                Miscellaneous transportationBenefit = miscellaneousService.createTransportationBenefit(employee);
                 
                 return employee;
             }

@@ -58,13 +58,13 @@
             this.payrollTab = new System.Windows.Forms.TabPage();
             this.payrollListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.viewPayrollSheetDataGridButton = new System.Windows.Forms.Button();
             this.thirteenMonthPayCheckBox = new System.Windows.Forms.CheckBox();
             this.resetLeaveCreditsButton = new System.Windows.Forms.Button();
             this.viewPayslipButton = new System.Windows.Forms.Button();
             this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.viewPayrollSheetDataGridButton = new System.Windows.Forms.Button();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
@@ -84,7 +84,9 @@
             this.employeeOptionPanel.BackColor = System.Drawing.Color.Transparent;
             this.employeeOptionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.employeeOptionPanel.Controls.Add(this.label1);
+            this.employeeOptionPanel.Controls.Add(this.thirteenMonthPayCheckBox);
             this.employeeOptionPanel.Controls.Add(this.selectAllCheckBox);
+            this.employeeOptionPanel.Controls.Add(this.resetLeaveCreditsButton);
             this.employeeOptionPanel.Controls.Add(this.viewRequest);
             this.employeeOptionPanel.Controls.Add(this.endDateLabel);
             this.employeeOptionPanel.Controls.Add(this.startDateLabel);
@@ -95,7 +97,6 @@
             this.employeeOptionPanel.Controls.Add(this.addEmployeeButton);
             this.employeeOptionPanel.Controls.Add(this.createPayrollButton);
             this.employeeOptionPanel.Controls.Add(this.createMiscButton);
-            this.employeeOptionPanel.Controls.Add(this.addPositionButton);
             this.employeeOptionPanel.Location = new System.Drawing.Point(24, 50);
             this.employeeOptionPanel.Name = "employeeOptionPanel";
             this.employeeOptionPanel.Size = new System.Drawing.Size(315, 373);
@@ -266,9 +267,9 @@
             this.addEmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addEmployeeButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
             this.addEmployeeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addEmployeeButton.Location = new System.Drawing.Point(151, 118);
+            this.addEmployeeButton.Location = new System.Drawing.Point(151, 156);
             this.addEmployeeButton.Name = "addEmployeeButton";
-            this.addEmployeeButton.Size = new System.Drawing.Size(158, 34);
+            this.addEmployeeButton.Size = new System.Drawing.Size(158, 36);
             this.addEmployeeButton.TabIndex = 2;
             this.addEmployeeButton.Text = "Add Employee";
             this.addEmployeeButton.UseVisualStyleBackColor = false;
@@ -280,7 +281,7 @@
             this.createPayrollButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createPayrollButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
             this.createPayrollButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.createPayrollButton.Location = new System.Drawing.Point(6, 76);
+            this.createPayrollButton.Location = new System.Drawing.Point(6, 116);
             this.createPayrollButton.Name = "createPayrollButton";
             this.createPayrollButton.Size = new System.Drawing.Size(139, 34);
             this.createPayrollButton.TabIndex = 0;
@@ -308,7 +309,7 @@
             this.addPositionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addPositionButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
             this.addPositionButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addPositionButton.Location = new System.Drawing.Point(6, 116);
+            this.addPositionButton.Location = new System.Drawing.Point(480, 48);
             this.addPositionButton.Name = "addPositionButton";
             this.addPositionButton.Size = new System.Drawing.Size(139, 36);
             this.addPositionButton.TabIndex = 7;
@@ -418,25 +419,39 @@
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.viewPayrollSheetDataGridButton);
-            this.panel2.Controls.Add(this.thirteenMonthPayCheckBox);
-            this.panel2.Controls.Add(this.resetLeaveCreditsButton);
             this.panel2.Controls.Add(this.viewPayslipButton);
             this.panel2.Controls.Add(this.spinnerPictureBox);
             this.panel2.Controls.Add(this.errorMessageLabel);
             this.panel2.Controls.Add(this.exitPictureBox);
             this.panel2.Controls.Add(this.employeeOptionPanel);
             this.panel2.Controls.Add(this.adminTab);
+            this.panel2.Controls.Add(this.addPositionButton);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(839, 478);
             this.panel2.TabIndex = 3;
+            // 
+            // viewPayrollSheetDataGridButton
+            // 
+            this.viewPayrollSheetDataGridButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.viewPayrollSheetDataGridButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.viewPayrollSheetDataGridButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewPayrollSheetDataGridButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.viewPayrollSheetDataGridButton.Location = new System.Drawing.Point(648, 51);
+            this.viewPayrollSheetDataGridButton.Name = "viewPayrollSheetDataGridButton";
+            this.viewPayrollSheetDataGridButton.Size = new System.Drawing.Size(158, 34);
+            this.viewPayrollSheetDataGridButton.TabIndex = 18;
+            this.viewPayrollSheetDataGridButton.Text = "View Payroll Sheet";
+            this.viewPayrollSheetDataGridButton.UseVisualStyleBackColor = false;
+            this.viewPayrollSheetDataGridButton.Click += new System.EventHandler(this.viewPayrollSheetDataGridButton_Click);
             // 
             // thirteenMonthPayCheckBox
             // 
             this.thirteenMonthPayCheckBox.AutoSize = true;
             this.thirteenMonthPayCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.thirteenMonthPayCheckBox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thirteenMonthPayCheckBox.Location = new System.Drawing.Point(360, 50);
+            this.thirteenMonthPayCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.thirteenMonthPayCheckBox.Location = new System.Drawing.Point(26, 74);
             this.thirteenMonthPayCheckBox.Name = "thirteenMonthPayCheckBox";
             this.thirteenMonthPayCheckBox.Size = new System.Drawing.Size(87, 36);
             this.thirteenMonthPayCheckBox.TabIndex = 17;
@@ -449,7 +464,7 @@
             this.resetLeaveCreditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetLeaveCreditsButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetLeaveCreditsButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.resetLeaveCreditsButton.Location = new System.Drawing.Point(491, 51);
+            this.resetLeaveCreditsButton.Location = new System.Drawing.Point(152, 118);
             this.resetLeaveCreditsButton.Name = "resetLeaveCreditsButton";
             this.resetLeaveCreditsButton.Size = new System.Drawing.Size(151, 34);
             this.resetLeaveCreditsButton.TabIndex = 15;
@@ -503,20 +518,6 @@
             this.exitPictureBox.TabIndex = 3;
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
-            // 
-            // viewPayrollSheetDataGridButton
-            // 
-            this.viewPayrollSheetDataGridButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.viewPayrollSheetDataGridButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.viewPayrollSheetDataGridButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewPayrollSheetDataGridButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.viewPayrollSheetDataGridButton.Location = new System.Drawing.Point(648, 51);
-            this.viewPayrollSheetDataGridButton.Name = "viewPayrollSheetDataGridButton";
-            this.viewPayrollSheetDataGridButton.Size = new System.Drawing.Size(158, 34);
-            this.viewPayrollSheetDataGridButton.TabIndex = 18;
-            this.viewPayrollSheetDataGridButton.Text = "View Payroll Sheet";
-            this.viewPayrollSheetDataGridButton.UseVisualStyleBackColor = false;
-            this.viewPayrollSheetDataGridButton.Click += new System.EventHandler(this.viewPayrollSheetDataGridButton_Click);
             // 
             // AdminDashBoard
             // 

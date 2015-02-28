@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.employmentDate = new System.Windows.Forms.TextBox();
+            this.employmentDateLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
             this.positionComboBox = new System.Windows.Forms.ComboBox();
             this.salary = new System.Windows.Forms.TextBox();
@@ -71,8 +73,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.employmentDateLabel = new System.Windows.Forms.Label();
-            this.employmentDate = new System.Windows.Forms.TextBox();
+            this.foodAllowance = new System.Windows.Forms.TextBox();
+            this.foodAllowanceLabel = new System.Windows.Forms.Label();
+            this.transpoAllowance = new System.Windows.Forms.TextBox();
+            this.transpoAllowanceLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +87,10 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.transpoAllowance);
+            this.panel1.Controls.Add(this.transpoAllowanceLabel);
+            this.panel1.Controls.Add(this.foodAllowance);
+            this.panel1.Controls.Add(this.foodAllowanceLabel);
             this.panel1.Controls.Add(this.employmentDate);
             this.panel1.Controls.Add(this.employmentDateLabel);
             this.panel1.Controls.Add(this.exitPictureBox);
@@ -131,6 +139,25 @@
             this.panel1.Size = new System.Drawing.Size(507, 317);
             this.panel1.TabIndex = 0;
             // 
+            // employmentDate
+            // 
+            this.employmentDate.Enabled = false;
+            this.employmentDate.Location = new System.Drawing.Point(111, 24);
+            this.employmentDate.Name = "employmentDate";
+            this.employmentDate.Size = new System.Drawing.Size(128, 20);
+            this.employmentDate.TabIndex = 26;
+            // 
+            // employmentDateLabel
+            // 
+            this.employmentDateLabel.AutoSize = true;
+            this.employmentDateLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employmentDateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employmentDateLabel.Location = new System.Drawing.Point(0, 26);
+            this.employmentDateLabel.Name = "employmentDateLabel";
+            this.employmentDateLabel.Size = new System.Drawing.Size(107, 15);
+            this.employmentDateLabel.TabIndex = 25;
+            this.employmentDateLabel.Text = "Employment Date";
+            // 
             // exitPictureBox
             // 
             this.exitPictureBox.Location = new System.Drawing.Point(485, -10);
@@ -159,7 +186,7 @@
             // salary
             // 
             this.salary.Enabled = false;
-            this.salary.Location = new System.Drawing.Point(353, 47);
+            this.salary.Location = new System.Drawing.Point(365, 47);
             this.salary.Name = "salary";
             this.salary.Size = new System.Drawing.Size(128, 20);
             this.salary.TabIndex = 22;
@@ -169,7 +196,7 @@
             this.salaryLabel.AutoSize = true;
             this.salaryLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.salaryLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.salaryLabel.Location = new System.Drawing.Point(266, 50);
+            this.salaryLabel.Location = new System.Drawing.Point(260, 50);
             this.salaryLabel.Name = "salaryLabel";
             this.salaryLabel.Size = new System.Drawing.Size(44, 15);
             this.salaryLabel.TabIndex = 21;
@@ -177,7 +204,7 @@
             // 
             // dependents
             // 
-            this.dependents.Location = new System.Drawing.Point(353, 24);
+            this.dependents.Location = new System.Drawing.Point(365, 25);
             this.dependents.Name = "dependents";
             this.dependents.Size = new System.Drawing.Size(128, 20);
             this.dependents.TabIndex = 20;
@@ -210,7 +237,7 @@
             this.createEmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createEmployeeButton.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.createEmployeeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.createEmployeeButton.Location = new System.Drawing.Point(353, 223);
+            this.createEmployeeButton.Location = new System.Drawing.Point(365, 258);
             this.createEmployeeButton.Name = "createEmployeeButton";
             this.createEmployeeButton.Size = new System.Drawing.Size(128, 40);
             this.createEmployeeButton.TabIndex = 17;
@@ -220,14 +247,14 @@
             // 
             // sssId
             // 
-            this.sssId.Location = new System.Drawing.Point(353, 141);
+            this.sssId.Location = new System.Drawing.Point(365, 135);
             this.sssId.Name = "sssId";
             this.sssId.Size = new System.Drawing.Size(128, 20);
             this.sssId.TabIndex = 14;
             // 
             // tin
             // 
-            this.tin.Location = new System.Drawing.Point(353, 118);
+            this.tin.Location = new System.Drawing.Point(365, 113);
             this.tin.Name = "tin";
             this.tin.Size = new System.Drawing.Size(128, 20);
             this.tin.TabIndex = 13;
@@ -237,7 +264,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(260, 144);
+            this.label12.Location = new System.Drawing.Point(259, 137);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 15);
             this.label12.TabIndex = 0;
@@ -248,7 +275,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(260, 121);
+            this.label13.Location = new System.Drawing.Point(260, 115);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(26, 15);
             this.label13.TabIndex = 0;
@@ -256,7 +283,7 @@
             // 
             // contactNumber
             // 
-            this.contactNumber.Location = new System.Drawing.Point(353, 92);
+            this.contactNumber.Location = new System.Drawing.Point(365, 91);
             this.contactNumber.Name = "contactNumber";
             this.contactNumber.Size = new System.Drawing.Size(128, 20);
             this.contactNumber.TabIndex = 12;
@@ -266,7 +293,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label14.Location = new System.Drawing.Point(248, 97);
+            this.label14.Location = new System.Drawing.Point(248, 94);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 15);
             this.label14.TabIndex = 0;
@@ -274,21 +301,21 @@
             // 
             // pagIbigId
             // 
-            this.pagIbigId.Location = new System.Drawing.Point(353, 187);
+            this.pagIbigId.Location = new System.Drawing.Point(365, 179);
             this.pagIbigId.Name = "pagIbigId";
             this.pagIbigId.Size = new System.Drawing.Size(128, 20);
             this.pagIbigId.TabIndex = 16;
             // 
             // philHealthId
             // 
-            this.philHealthId.Location = new System.Drawing.Point(353, 165);
+            this.philHealthId.Location = new System.Drawing.Point(365, 157);
             this.philHealthId.Name = "philHealthId";
             this.philHealthId.Size = new System.Drawing.Size(128, 20);
             this.philHealthId.TabIndex = 15;
             // 
             // address
             // 
-            this.address.Location = new System.Drawing.Point(353, 69);
+            this.address.Location = new System.Drawing.Point(365, 69);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(128, 20);
             this.address.TabIndex = 11;
@@ -298,7 +325,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.label16.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label16.Location = new System.Drawing.Point(260, 194);
+            this.label16.Location = new System.Drawing.Point(259, 181);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(71, 15);
             this.label16.TabIndex = 0;
@@ -309,7 +336,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.label17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label17.Location = new System.Drawing.Point(260, 168);
+            this.label17.Location = new System.Drawing.Point(260, 159);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(84, 15);
             this.label17.TabIndex = 0;
@@ -320,7 +347,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.label18.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label18.Location = new System.Drawing.Point(260, 76);
+            this.label18.Location = new System.Drawing.Point(260, 71);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(52, 15);
             this.label18.TabIndex = 0;
@@ -531,24 +558,43 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Employee ID";
             // 
-            // employmentDateLabel
+            // foodAllowance
             // 
-            this.employmentDateLabel.AutoSize = true;
-            this.employmentDateLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employmentDateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.employmentDateLabel.Location = new System.Drawing.Point(0, 26);
-            this.employmentDateLabel.Name = "employmentDateLabel";
-            this.employmentDateLabel.Size = new System.Drawing.Size(107, 15);
-            this.employmentDateLabel.TabIndex = 25;
-            this.employmentDateLabel.Text = "Employment Date";
+            this.foodAllowance.Location = new System.Drawing.Point(365, 201);
+            this.foodAllowance.Name = "foodAllowance";
+            this.foodAllowance.Size = new System.Drawing.Size(128, 20);
+            this.foodAllowance.TabIndex = 28;
+            this.foodAllowance.Text = "75.00";
             // 
-            // employmentDate
+            // foodAllowanceLabel
             // 
-            this.employmentDate.Enabled = false;
-            this.employmentDate.Location = new System.Drawing.Point(111, 24);
-            this.employmentDate.Name = "employmentDate";
-            this.employmentDate.Size = new System.Drawing.Size(128, 20);
-            this.employmentDate.TabIndex = 26;
+            this.foodAllowanceLabel.AutoSize = true;
+            this.foodAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.foodAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.foodAllowanceLabel.Location = new System.Drawing.Point(248, 203);
+            this.foodAllowanceLabel.Name = "foodAllowanceLabel";
+            this.foodAllowanceLabel.Size = new System.Drawing.Size(95, 15);
+            this.foodAllowanceLabel.TabIndex = 27;
+            this.foodAllowanceLabel.Text = "Food Allowance";
+            // 
+            // transpoAllowance
+            // 
+            this.transpoAllowance.Location = new System.Drawing.Point(365, 224);
+            this.transpoAllowance.Name = "transpoAllowance";
+            this.transpoAllowance.Size = new System.Drawing.Size(128, 20);
+            this.transpoAllowance.TabIndex = 30;
+            this.transpoAllowance.Text = "100.00";
+            // 
+            // transpoAllowanceLabel
+            // 
+            this.transpoAllowanceLabel.AutoSize = true;
+            this.transpoAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.transpoAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.transpoAllowanceLabel.Location = new System.Drawing.Point(248, 226);
+            this.transpoAllowanceLabel.Name = "transpoAllowanceLabel";
+            this.transpoAllowanceLabel.Size = new System.Drawing.Size(115, 15);
+            this.transpoAllowanceLabel.TabIndex = 29;
+            this.transpoAllowanceLabel.Text = "Transpo Allowance";
             // 
             // EmployeeForm
             // 
@@ -616,5 +662,9 @@
         private System.Windows.Forms.PictureBox exitPictureBox;
         private System.Windows.Forms.TextBox employmentDate;
         private System.Windows.Forms.Label employmentDateLabel;
+        private System.Windows.Forms.TextBox transpoAllowance;
+        private System.Windows.Forms.Label transpoAllowanceLabel;
+        private System.Windows.Forms.TextBox foodAllowance;
+        private System.Windows.Forms.Label foodAllowanceLabel;
     }
 }

@@ -26,6 +26,18 @@ namespace PayrollSystem.view
             initializeEmployeeId();
             initializedEmploymentDate(DateTime.Now);
             loadPosition();
+            initializeAllowance();
+        }
+
+        private void initializeAllowance()
+        {
+            Console.WriteLine("employee.id" + employee.id);
+            MiscControllerInterface miscellaneousController = new MiscellaneousController();
+            Miscellaneous foodAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "FoodAllowance");
+            Miscellaneous transpoAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "TransportationAllowance");
+
+            foodAllowance.Text = foodAllowanceBenefits.amount.ToString("0.##");
+            transpoAllowance.Text = transpoAllowanceBenefits.amount.ToString("0.##");
         }
 
         private void initializedEmploymentDate(DateTime dateEmployed)
@@ -56,6 +68,7 @@ namespace PayrollSystem.view
             InitializeComponent();
             initializedEmploymentDate(Convert.ToDateTime(employee.dateEmployed));
             initializeEmployeeForm(employee);
+            initializeAllowance();
         }
 
         private void initializeEmployeeForm(Employee employee)
@@ -152,6 +165,18 @@ namespace PayrollSystem.view
                 return;
             }
 
+            if (foodAllowance.Text.Equals(""))
+            {
+                MessageBox.Show("Food Allowance cannot be empty.");
+                return;
+            }
+
+            if (transpoAllowance.Text.Equals(""))
+            {
+                MessageBox.Show("Transpo Allowance cannot be empty.");
+                return;
+            }
+
             if (createEmployeeButton.Text == "Create")
             {
                 if (password.Text != confirmPassword.Text)
@@ -199,8 +224,38 @@ namespace PayrollSystem.view
                 employee.philHealthId = philHealthId.Text;
                 employee.pagIbigId = pagIbigId.Text;
                 employee.dateEmployed = DateTime.Now.ToString();
+
+                decimal foodAllowanceAmount = 0.00M;
+                decimal transpoAllowanceAmount = 0.00M;
+                try
+                {
+                    foodAllowanceAmount = Convert.ToDecimal(foodAllowance.Text);
+                    transpoAllowanceAmount = Convert.ToDecimal(transpoAllowance.Text);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Allowance amount must be a number!");
+                    return;
+                }
+
                 if (employeeController.saveEmployee(employee).id > 0)
                 {
+                    Miscellaneous foodAllowanceBenefits = new Miscellaneous();
+                    foodAllowanceBenefits.name = "FoodAllowance";
+                    foodAllowanceBenefits.description = "Food Allowance";
+                    foodAllowanceBenefits.amount = foodAllowanceAmount;
+                    foodAllowanceBenefits.type = MiscType.Benefits;
+
+                    Miscellaneous transpoAllowanceBenefits = new Miscellaneous();
+                    transpoAllowanceBenefits.name = "TransportationAllowance";
+                    transpoAllowanceBenefits.description = "Transportation Allowance";
+                    transpoAllowanceBenefits.amount = transpoAllowanceAmount;
+                    transpoAllowanceBenefits.type = MiscType.Benefits;
+
+                    MiscControllerInterface miscellaneousController = new MiscellaneousController();
+                    foodAllowanceBenefits = miscellaneousController.addMiscByEmployee(foodAllowanceBenefits, employee);
+                    transpoAllowanceBenefits = miscellaneousController.addMiscByEmployee(transpoAllowanceBenefits, employee);
+
                     MessageBox.Show("Successfully added new employee.");
                     FormControllerInterface formController = new FormController();
                     formController.showAdminDashBoard(adminDashboard, this);
@@ -234,8 +289,33 @@ namespace PayrollSystem.view
                 employee.sssId = sssId.Text;
                 employee.philHealthId = philHealthId.Text;
                 employee.pagIbigId = pagIbigId.Text;
+
+                decimal foodAllowanceAmount = 0.00M;
+                decimal transpoAllowanceAmount = 0.00M;
+                try
+                {
+                    foodAllowanceAmount = Convert.ToDecimal(foodAllowance.Text);
+                    transpoAllowanceAmount = Convert.ToDecimal(transpoAllowance.Text);
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Allowance amount must be a number!");
+                    return;
+                }
+
                 if (employeeController.updateEmployee(employee) != null)
                 {
+                    MiscControllerInterface miscellaneousController = new MiscellaneousController();
+
+                    Miscellaneous foodAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "FoodAllowance");
+                    foodAllowanceBenefits.amount = foodAllowanceAmount;
+
+                    Miscellaneous transpoAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "TransportationAllowance");
+                    transpoAllowanceBenefits.amount = transpoAllowanceAmount;
+
+                    foodAllowanceBenefits = miscellaneousController.updateMiscellaneousBenefitAmountById(foodAllowanceBenefits);
+                    foodAllowanceBenefits = miscellaneousController.updateMiscellaneousBenefitAmountById(transpoAllowanceBenefits);
+
                     MessageBox.Show("Successfully updated employee.");
                     FormControllerInterface formController = new FormController();
                     formController.showAdminDashBoard(adminDashboard, this);

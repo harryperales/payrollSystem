@@ -13,5 +13,11 @@ namespace PayrollSystem.controller
         Miscellaneous fetchFoodAllowance();
 
         Miscellaneous fetchTranspoAllowance();
+
+        Miscellaneous addMiscByEmployee(Miscellaneous foodAllowanceBenefits, Employee employee);
+
+        Miscellaneous fetchMiscellaneousBenefitByNameAndEmployee(Employee employee, string benefitName);
+
+        Miscellaneous updateMiscellaneousBenefitAmountById(Miscellaneous allowance);
     }
 }
