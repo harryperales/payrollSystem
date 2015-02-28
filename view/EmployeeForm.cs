@@ -26,12 +26,10 @@ namespace PayrollSystem.view
             initializeEmployeeId();
             initializedEmploymentDate(DateTime.Now);
             loadPosition();
-            initializeAllowance();
         }
 
         private void initializeAllowance()
         {
-            Console.WriteLine("employee.id" + employee.id);
             MiscControllerInterface miscellaneousController = new MiscellaneousController();
             Miscellaneous foodAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "FoodAllowance");
             Miscellaneous transpoAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "TransportationAllowance");
