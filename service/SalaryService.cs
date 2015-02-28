@@ -255,7 +255,7 @@ namespace PayrollSystem.service
 
         private decimal fetchTaxCalculatedAmountForDeduction(decimal periodSalary, int lowerLimitIndex, int upperLimitIndex)
         {
-            string fileName = "Tax_Table_Semi_Monthly.csv";
+            string fileName = "Tax_Table_Monthly.csv";
             
             return fetchDeductionAmount(periodSalary, lowerLimitIndex, upperLimitIndex, fileName);
         }
@@ -300,7 +300,7 @@ namespace PayrollSystem.service
 
         public decimal fetchSssDeductionsWithPeriodSalary(decimal periodSalary)
         {
-            string fileName = "SSS_Table_Semi_Monthly.csv"; 
+            string fileName = "SSS_Table_Monthly.csv"; 
             string directory = Path.Combine(Environment.CurrentDirectory, "Resources/" + fileName);
             directory = directory.Replace("\\", "/").Replace("/bin/Debug", "");
             directory = directory.Replace("\\", "/").Replace("/bin/Release", "");
@@ -339,7 +339,7 @@ namespace PayrollSystem.service
 
         public decimal fetchPhilHealthDeductionWithPeriodSalary(decimal periodSalary)
         {
-            string fileName = "PhilHealt_Table_Semi_Monthly.csv";
+            string fileName = "PhilHealth_Table_Semi_Monthly.csv";
             string directory = Path.Combine(Environment.CurrentDirectory, "Resources/" + fileName);
             directory = directory.Replace("\\", "/").Replace("/bin/Debug", "");
             directory = directory.Replace("\\", "/").Replace("/bin/Release", "");

@@ -9,6 +9,7 @@ namespace PayrollSystem.controller
 {
     public class PayrollController : PayrollControllerInterface
     {
+        private int AVERAGE_WORKING_DAY_PER_MONTH = 24;
         PayrollServiceInterface payrollService;
         AttendanceServiceInterface attendanceService;
         SalaryServiceInterface salaryService;
@@ -35,6 +36,7 @@ namespace PayrollSystem.controller
             payslip.startDatePeriod = startDatePeriod;
             payslip.endDatePeriod = endDatePeriod;
             List<Attendance> attendances = attendanceService.fetchEmployeeAttendance(startDatePeriod, endDatePeriod, employee);
+            decimal monthlySalary = decimal.Multiply(employee.jobPosition.salary, AVERAGE_WORKING_DAY_PER_MONTH);
             
             decimal dailyBasedSalary = 0.00M;
             dailyBasedSalary = employee.jobPosition.salary;
@@ -73,17 +75,21 @@ namespace PayrollSystem.controller
 
             //periodSalary -= decimal.Round(salaryService.fetchTotalDeductions(deductions), 2);
 
+            payslip.sssDeduction = decimal.Divide(salaryService.fetchSssDeductionsWithPeriodSalary(monthlySalary), 2);
+            payslip.sssDeduction = decimal.Round(payslip.sssDeduction, 2);
 
-            payslip.sssDeduction = decimal.Round(salaryService.fetchSssDeductionsWithPeriodSalary(periodSalary), 2);
-            payslip.pagIbigDeduction = decimal.Round(salaryService.fetchPagIbigDeductionWithPeriodSalary(periodSalary), 2);
-            payslip.philHealthDeduction = decimal.Round(salaryService.fetchPhilHealthDeductionWithPeriodSalary(periodSalary), 2);
+            payslip.pagIbigDeduction = decimal.Divide(salaryService.fetchPagIbigDeductionWithPeriodSalary(monthlySalary), 2);
+            payslip.pagIbigDeduction = decimal.Round(payslip.pagIbigDeduction, 2);
+
+            payslip.philHealthDeduction = decimal.Divide(salaryService.fetchPhilHealthDeductionWithPeriodSalary(monthlySalary), 2);
+            payslip.philHealthDeduction = decimal.Round(payslip.philHealthDeduction, 2);
 
             periodSalary -= payslip.sssDeduction;
             periodSalary -= payslip.pagIbigDeduction;
             periodSalary -= payslip.philHealthDeduction;
             Console.WriteLine("periodSalaryWIthDeductions---->>" + periodSalary);
 
-            payslip.taxDeduction = salaryService.calculatePeriodSalaryTax(employee, periodSalary);
+            payslip.taxDeduction = decimal.Divide(salaryService.calculatePeriodSalaryTax(employee, monthlySalary), 2);
             periodSalary -= payslip.taxDeduction;
 
             payslip.netPay = decimal.Round(periodSalary, 2);
