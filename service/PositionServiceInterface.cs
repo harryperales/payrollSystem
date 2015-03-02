@@ -15,5 +15,7 @@ namespace PayrollSystem.service
         Position fetchPositionByName(string selectedPosition);
 
         Position updatePosition(Position position);
+
+        Position fetchPositionById(int positionId);
     }
 }

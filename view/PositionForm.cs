@@ -18,6 +18,7 @@ namespace PayrollSystem.view
         {
             this.adminDashboard = adminDashboard;
             InitializeComponent();
+            loadPosition();
         }
 
         private void createPositionButton_Click(object sender, EventArgs e)
@@ -36,9 +37,45 @@ namespace PayrollSystem.view
                     return;
                 }
                 positionController.addPosition(position);
+                MessageBox.Show("Successfully added.");
                 FormControllerInterface formController = new FormController();
                 formController.showAdminDashBoardForPosition(adminDashboard, this);
             }
+        }
+
+        public void loadPosition()
+        {
+            positionComboBox.Items.Clear();
+            PositionControllerInterface positionController = new PositionController();
+            List<Position> positions = positionController.viewAllPosition();
+            foreach (Position position in positions)
+            {
+                positionComboBox.Items.Add(position.name);
+                if (positionComboBox.SelectedIndex == -1) positionComboBox.Text = position.name;
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            Position position = new Position();
+            PositionControllerInterface positionController = new PositionController();
+            Console.WriteLine(positionComboBox.Text);
+            position = positionController.fetchPositionByName(positionComboBox.Text);
+            try
+            {
+                position.salary = Convert.ToDecimal(updateSalary.Text);
+            }
+            catch (FormatException fex)
+            {
+                MessageBox.Show("Please input a valid Salary.");
+                return;
+            }
+
+            positionController.updatePosition(position);
+            MessageBox.Show("Successfully updated");
+            FormControllerInterface formController = new FormController();
+            formController.showAdminDashBoardForPosition(adminDashboard, this);
+            
         }
     }
 }

@@ -84,11 +84,34 @@ namespace PayrollSystem.service
         public Position updatePosition(Position position)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "UPDATE [Position] SET name = @name, salary = @salary WHERE (id = @id)";
-            sqlCmd.Parameters.AddWithValue("@name", position.name);
+            sqlCmd.CommandText = "UPDATE [Position] SET salary = @salary WHERE (id = @id)";
             sqlCmd.Parameters.AddWithValue("@salary", position.salary);
             sqlCmd.Parameters.AddWithValue("@id", position.id);
             sqlCmd.ExecuteNonQuery();
+            sqlCon.Close();
+            return position;
+        }
+
+        public Position fetchPositionById(int positionId)
+        {
+            Position position = new Position();
+            sqlCon.Open();
+            sqlCmd.CommandText = "SELECT id, name, salary FROM Position WHERE (id = @id);";
+            sqlCmd.Parameters.AddWithValue("@id", positionId);
+            sqlDataReader = sqlCmd.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    position.id = Int32.Parse(sqlDataReader["id"].ToString());
+                    position.name = sqlDataReader["name"].ToString();
+                    position.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("nothing");
+            }
             sqlCon.Close();
             return position;
         }

@@ -203,7 +203,7 @@ namespace PayrollSystem.view
                 employee.birthDate = birthdayTimePicker.Text;
                 employee.gender = genderComboBox.Text;
                 employee.jobPosition = new Position();
-                employee.jobPosition.id = 2;
+                employee.jobPosition.id = positionComboBox.SelectedIndex;
                 employee.jobPosition.name = positionComboBox.Text;
                 employee.civilStatus = civilStatusComboBox.Text;
                 try
@@ -270,7 +270,7 @@ namespace PayrollSystem.view
                 employee.fullName = lastname.Text + ", " + firstname.Text + " " + middlename.Text;
                 employee.birthDate = birthdayTimePicker.Text;
                 employee.gender = genderComboBox.Text;
-                employee.jobPosition.id = 2;
+                employee.jobPosition.id = positionComboBox.SelectedIndex;
                 employee.civilStatus = civilStatusComboBox.Text;
                 try
                 {

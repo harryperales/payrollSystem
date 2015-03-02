@@ -31,7 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashBoard));
             this.employeeOptionPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.thirteenMonthPayCheckBox = new System.Windows.Forms.CheckBox();
             this.selectAllCheckBox = new System.Windows.Forms.CheckBox();
+            this.resetLeaveCreditsButton = new System.Windows.Forms.Button();
             this.viewRequest = new System.Windows.Forms.Button();
             this.endDateLabel = new System.Windows.Forms.Label();
             this.startDateLabel = new System.Windows.Forms.Label();
@@ -59,12 +61,11 @@
             this.payrollListBox = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.viewPayrollSheetDataGridButton = new System.Windows.Forms.Button();
-            this.thirteenMonthPayCheckBox = new System.Windows.Forms.CheckBox();
-            this.resetLeaveCreditsButton = new System.Windows.Forms.Button();
             this.viewPayslipButton = new System.Windows.Forms.Button();
             this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.updatePositionButton = new System.Windows.Forms.Button();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
@@ -113,6 +114,19 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Applicable for payroll\r\nand leave credits";
             // 
+            // thirteenMonthPayCheckBox
+            // 
+            this.thirteenMonthPayCheckBox.AutoSize = true;
+            this.thirteenMonthPayCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.thirteenMonthPayCheckBox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thirteenMonthPayCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.thirteenMonthPayCheckBox.Location = new System.Drawing.Point(26, 74);
+            this.thirteenMonthPayCheckBox.Name = "thirteenMonthPayCheckBox";
+            this.thirteenMonthPayCheckBox.Size = new System.Drawing.Size(87, 36);
+            this.thirteenMonthPayCheckBox.TabIndex = 17;
+            this.thirteenMonthPayCheckBox.Text = "Add 13th \r\nMonth Pay";
+            this.thirteenMonthPayCheckBox.UseVisualStyleBackColor = false;
+            // 
             // selectAllCheckBox
             // 
             this.selectAllCheckBox.AutoSize = true;
@@ -123,6 +137,20 @@
             this.selectAllCheckBox.TabIndex = 12;
             this.selectAllCheckBox.Text = "All Users";
             this.selectAllCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // resetLeaveCreditsButton
+            // 
+            this.resetLeaveCreditsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.resetLeaveCreditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetLeaveCreditsButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetLeaveCreditsButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.resetLeaveCreditsButton.Location = new System.Drawing.Point(152, 118);
+            this.resetLeaveCreditsButton.Name = "resetLeaveCreditsButton";
+            this.resetLeaveCreditsButton.Size = new System.Drawing.Size(151, 34);
+            this.resetLeaveCreditsButton.TabIndex = 15;
+            this.resetLeaveCreditsButton.Text = "Reset Leave Credits";
+            this.resetLeaveCreditsButton.UseVisualStyleBackColor = false;
+            this.resetLeaveCreditsButton.Click += new System.EventHandler(this.resetLeaveCreditsButton_Click);
             // 
             // viewRequest
             // 
@@ -309,7 +337,7 @@
             this.addPositionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addPositionButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
             this.addPositionButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addPositionButton.Location = new System.Drawing.Point(480, 48);
+            this.addPositionButton.Location = new System.Drawing.Point(505, 50);
             this.addPositionButton.Name = "addPositionButton";
             this.addPositionButton.Size = new System.Drawing.Size(139, 36);
             this.addPositionButton.TabIndex = 7;
@@ -418,6 +446,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.updatePositionButton);
             this.panel2.Controls.Add(this.viewPayrollSheetDataGridButton);
             this.panel2.Controls.Add(this.viewPayslipButton);
             this.panel2.Controls.Add(this.spinnerPictureBox);
@@ -444,33 +473,6 @@
             this.viewPayrollSheetDataGridButton.Text = "View Payroll Sheet";
             this.viewPayrollSheetDataGridButton.UseVisualStyleBackColor = false;
             this.viewPayrollSheetDataGridButton.Click += new System.EventHandler(this.viewPayrollSheetDataGridButton_Click);
-            // 
-            // thirteenMonthPayCheckBox
-            // 
-            this.thirteenMonthPayCheckBox.AutoSize = true;
-            this.thirteenMonthPayCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.thirteenMonthPayCheckBox.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thirteenMonthPayCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.thirteenMonthPayCheckBox.Location = new System.Drawing.Point(26, 74);
-            this.thirteenMonthPayCheckBox.Name = "thirteenMonthPayCheckBox";
-            this.thirteenMonthPayCheckBox.Size = new System.Drawing.Size(87, 36);
-            this.thirteenMonthPayCheckBox.TabIndex = 17;
-            this.thirteenMonthPayCheckBox.Text = "Add 13th \r\nMonth Pay";
-            this.thirteenMonthPayCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // resetLeaveCreditsButton
-            // 
-            this.resetLeaveCreditsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.resetLeaveCreditsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetLeaveCreditsButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetLeaveCreditsButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.resetLeaveCreditsButton.Location = new System.Drawing.Point(152, 118);
-            this.resetLeaveCreditsButton.Name = "resetLeaveCreditsButton";
-            this.resetLeaveCreditsButton.Size = new System.Drawing.Size(151, 34);
-            this.resetLeaveCreditsButton.TabIndex = 15;
-            this.resetLeaveCreditsButton.Text = "Reset Leave Credits";
-            this.resetLeaveCreditsButton.UseVisualStyleBackColor = false;
-            this.resetLeaveCreditsButton.Click += new System.EventHandler(this.resetLeaveCreditsButton_Click);
             // 
             // viewPayslipButton
             // 
@@ -518,6 +520,19 @@
             this.exitPictureBox.TabIndex = 3;
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
+            // 
+            // updatePositionButton
+            // 
+            this.updatePositionButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.updatePositionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updatePositionButton.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.updatePositionButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.updatePositionButton.Location = new System.Drawing.Point(360, 50);
+            this.updatePositionButton.Name = "updatePositionButton";
+            this.updatePositionButton.Size = new System.Drawing.Size(139, 36);
+            this.updatePositionButton.TabIndex = 19;
+            this.updatePositionButton.Text = "Update Position";
+            this.updatePositionButton.UseVisualStyleBackColor = false;
             // 
             // AdminDashBoard
             // 
@@ -592,6 +607,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox thirteenMonthPayCheckBox;
         private System.Windows.Forms.Button viewPayrollSheetDataGridButton;
+        private System.Windows.Forms.Button updatePositionButton;
 //>>>>>>> PayrollSystem/master
     }
 }

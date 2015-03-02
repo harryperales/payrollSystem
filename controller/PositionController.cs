@@ -35,5 +35,10 @@ namespace PayrollSystem.controller
         {
             return positionService.updatePosition(position);
         }
+
+        public Position fetchPositionById(int positionId)
+        {
+            return positionService.fetchPositionById(positionId);
+        }
     }
 }
