@@ -58,10 +58,11 @@ namespace PayrollSystem.service
         public User createUser(User user)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "INSERT INTO [User] (username, password, role) VALUES (@username, @password, @roleId);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.CommandText = "INSERT INTO [User] (username, password, role, status) VALUES (@username, @password, @roleId, @status);SELECT CAST(scope_identity() AS int)";
             sqlCmd.Parameters.AddWithValue("@username", user.username);
             sqlCmd.Parameters.AddWithValue("@password", user.password);
             sqlCmd.Parameters.AddWithValue("@roleId", user.role.id);
+            sqlCmd.Parameters.AddWithValue("@status", "Enable");
             user.id = (int)sqlCmd.ExecuteScalar();
             sqlCon.Close();
             Console.WriteLine(user.id);

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.accountStatusComboBox = new System.Windows.Forms.ComboBox();
+            this.accountStatusLabel = new System.Windows.Forms.Label();
             this.transpoAllowance = new System.Windows.Forms.TextBox();
             this.transpoAllowanceLabel = new System.Windows.Forms.Label();
             this.foodAllowance = new System.Windows.Forms.TextBox();
@@ -77,8 +79,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.accountStatusLabel = new System.Windows.Forms.Label();
-            this.accountStatusComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +142,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(507, 317);
             this.panel1.TabIndex = 0;
+            // 
+            // accountStatusComboBox
+            // 
+            this.accountStatusComboBox.FormattingEnabled = true;
+            this.accountStatusComboBox.Items.AddRange(new object[] {
+            "Enable",
+            "Disable"});
+            this.accountStatusComboBox.Location = new System.Drawing.Point(365, 246);
+            this.accountStatusComboBox.Name = "accountStatusComboBox";
+            this.accountStatusComboBox.Size = new System.Drawing.Size(128, 21);
+            this.accountStatusComboBox.TabIndex = 32;
+            this.accountStatusComboBox.Text = "Enable";
+            this.accountStatusComboBox.Visible = false;
+            // 
+            // accountStatusLabel
+            // 
+            this.accountStatusLabel.AutoSize = true;
+            this.accountStatusLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.accountStatusLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.accountStatusLabel.Location = new System.Drawing.Point(248, 248);
+            this.accountStatusLabel.Name = "accountStatusLabel";
+            this.accountStatusLabel.Size = new System.Drawing.Size(90, 15);
+            this.accountStatusLabel.TabIndex = 31;
+            this.accountStatusLabel.Text = "Account Status";
+            this.accountStatusLabel.Visible = false;
             // 
             // transpoAllowance
             // 
@@ -599,29 +624,6 @@
             this.label1.Size = new System.Drawing.Size(78, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Employee ID";
-            // 
-            // accountStatusLabel
-            // 
-            this.accountStatusLabel.AutoSize = true;
-            this.accountStatusLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.accountStatusLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.accountStatusLabel.Location = new System.Drawing.Point(248, 248);
-            this.accountStatusLabel.Name = "accountStatusLabel";
-            this.accountStatusLabel.Size = new System.Drawing.Size(90, 15);
-            this.accountStatusLabel.TabIndex = 31;
-            this.accountStatusLabel.Text = "Account Status";
-            // 
-            // accountStatusComboBox
-            // 
-            this.accountStatusComboBox.FormattingEnabled = true;
-            this.accountStatusComboBox.Items.AddRange(new object[] {
-            "Enable",
-            "Disable"});
-            this.accountStatusComboBox.Location = new System.Drawing.Point(365, 246);
-            this.accountStatusComboBox.Name = "accountStatusComboBox";
-            this.accountStatusComboBox.Size = new System.Drawing.Size(128, 21);
-            this.accountStatusComboBox.TabIndex = 32;
-            this.accountStatusComboBox.Text = "Enable";
             // 
             // EmployeeForm
             // 

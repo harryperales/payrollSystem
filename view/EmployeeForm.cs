@@ -67,6 +67,13 @@ namespace PayrollSystem.view
             initializedEmploymentDate(Convert.ToDateTime(employee.dateEmployed));
             initializeEmployeeForm(employee);
             initializeAllowance();
+            initializeAccountStatus();
+        }
+
+        private void initializeAccountStatus()
+        {
+            accountStatusLabel.Visible = true;
+            accountStatusComboBox.Visible = true;
         }
 
         private void initializeEmployeeForm(Employee employee)

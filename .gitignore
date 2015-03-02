@@ -290,3 +290,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+bin/Debug/Payroll.mdf
+bin/Debug/Payroll_log.ldf
+bin/Debug/Payroll_log.ldf
