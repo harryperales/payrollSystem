@@ -27,7 +27,7 @@ namespace PayrollSystem.service
             List<User> users = new List<User>();
 
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id";
+            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].status, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id";
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
             {
@@ -35,12 +35,9 @@ namespace PayrollSystem.service
                 {
                     User user = new User();
                     user.role = new Role();
-                    Console.WriteLine(sqlDataReader["id"].ToString());
-                    Console.WriteLine(sqlDataReader["username"].ToString());
-                    Console.WriteLine(sqlDataReader["password"].ToString());
-                    Console.WriteLine(sqlDataReader["role"].ToString());
                     user.id = Int32.Parse(sqlDataReader["id"].ToString());
                     user.username = sqlDataReader["username"].ToString();
+                    user.status = sqlDataReader["status"].ToString().Equals("Enable") ? AccountStatus.Enable : AccountStatus.Disable;
                     user.password = sqlDataReader["password"].ToString();
                     user.role.id = Int32.Parse(sqlDataReader["roleId"].ToString());
                     user.role.type = sqlDataReader["type"].ToString();
@@ -75,7 +72,7 @@ namespace PayrollSystem.service
         public User fetchUser(User user)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id WHERE [User].username='"+user.username+"' AND [User].password='"+user.password+"'";
+            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].status, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id WHERE [User].username='"+user.username+"' AND [User].password='"+user.password+"'";
             sqlDataReader = sqlCmd.ExecuteReader();
             User existingUser = new User();
             if (sqlDataReader.HasRows)
@@ -86,6 +83,7 @@ namespace PayrollSystem.service
                     existingUser.id = Int32.Parse(sqlDataReader["id"].ToString());
                     existingUser.username = sqlDataReader["username"].ToString();
                     existingUser.password = sqlDataReader["password"].ToString();
+                    existingUser.status = sqlDataReader["status"].ToString().Equals("Enable") ? AccountStatus.Enable : AccountStatus.Disable;
                     existingUser.role.id = Int32.Parse(sqlDataReader["roleId"].ToString());
                     existingUser.role.type = sqlDataReader["type"].ToString();
                 }
@@ -102,10 +100,21 @@ namespace PayrollSystem.service
 
         public User updateUser(User user)
         {
-            Console.WriteLine(user.password);
-            Console.WriteLine(user.id);
             sqlCon.Open();
             sqlCmd.CommandText = "UPDATE [User] set password='"+user.password+"' where id='"+user.id+"'";
+            sqlCmd.ExecuteNonQuery();
+            sqlCon.Close();
+            return user;
+        }
+
+        public User updateUserAccountStatus(User user)
+        {
+            sqlCon.Open();
+            sqlCmd.CommandText = "UPDATE [User] SET status = @status WHERE (id = @id)";
+            sqlCmd.Parameters.AddWithValue("@status", user.status == AccountStatus.Enable ? "Enable" : "Disable");
+            sqlCmd.Parameters.AddWithValue("@id", user.id);
+
+            Console.WriteLine("user.updateUserAccountStatus:" + user.id);
             sqlCmd.ExecuteNonQuery();
             sqlCon.Close();
             return user;
@@ -114,7 +123,7 @@ namespace PayrollSystem.service
         public User fetchUserByUsername(User user)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id WHERE [User].username='" + user.username + "'";
+            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].status, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id WHERE [User].username='" + user.username + "'";
             sqlDataReader = sqlCmd.ExecuteReader();
             User existingUser = new User();
             if (sqlDataReader.HasRows)
@@ -125,6 +134,7 @@ namespace PayrollSystem.service
                     existingUser.id = Int32.Parse(sqlDataReader["id"].ToString());
                     existingUser.username = sqlDataReader["username"].ToString();
                     existingUser.password = sqlDataReader["password"].ToString();
+                    existingUser.status = sqlDataReader["status"].ToString().Equals("Enable") ? AccountStatus.Enable : AccountStatus.Disable;
                     existingUser.role.id = Int32.Parse(sqlDataReader["roleId"].ToString());
                     existingUser.role.type = sqlDataReader["type"].ToString();
                 }

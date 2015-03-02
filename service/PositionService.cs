@@ -59,6 +59,7 @@ namespace PayrollSystem.service
         {
             Position position = new Position();
             sqlCon.Open();
+            sqlCmd.Parameters.Clear();
             sqlCmd.CommandText = "SELECT id, name, salary FROM Position WHERE (name = @name);";
             sqlCmd.Parameters.AddWithValue("@name", selectedPosition);
             sqlDataReader = sqlCmd.ExecuteReader();
@@ -66,6 +67,7 @@ namespace PayrollSystem.service
             {
                 while (sqlDataReader.Read())
                 {
+                    Console.WriteLine("im here:");
                     position.id = Int32.Parse(sqlDataReader["id"].ToString());
                     position.name = sqlDataReader["name"].ToString();
                     position.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());

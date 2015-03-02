@@ -91,6 +91,7 @@
     <Compile Include="controller\SalaryControllerInterface.cs" />
     <Compile Include="controller\UserController.cs" />
     <Compile Include="controller\UserControllerInterface.cs" />
+    <Compile Include="model\AccountStatus.cs" />
     <Compile Include="model\Adjustments.cs" />
     <Compile Include="model\Allowances.cs" />
     <Compile Include="model\Attendance.cs" />

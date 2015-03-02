@@ -33,7 +33,7 @@ namespace PayrollSystem.view
             user.username = username.Text;
             user.password = password.Text;
             user = userController.fetchUser(user);
-            if (user == null)
+            if (user == null || user.status == AccountStatus.Disable)
             {
                 password.Text = "";
                 showErrorMessage("The user you specified does not exists.");

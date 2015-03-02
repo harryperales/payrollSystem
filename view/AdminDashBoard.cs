@@ -59,13 +59,18 @@ namespace PayrollSystem.view
         public void loadUsers()
         {
             usersListBox.Items.Clear();
+            employeeListBox.Items.Clear();
             UserControllerInterface userController = new UserController();
             List<User> users = userController.viewAllUsers();
             foreach (User user in users)
             {
-                if (user.role.type != "admin")
+                Console.WriteLine("user.status:" + user.status.ToString());
+                if (user.role.type != "admin" && user.status.ToString().Equals("Enable"))
                 {
+                    EmployeeControllerInterface employeeController = new EmployeeController();
+                    Employee employee = employeeController.fetchEmployeeByUsername(user.username);
                     usersListBox.Items.Add(user.username);
+                    employeeListBox.Items.Add(employee.fullName);
                 }
             }
         }
@@ -98,6 +103,7 @@ namespace PayrollSystem.view
             if (l.SelectedIndex != -1)
             {
                 usersListBox.SelectedIndex = l.SelectedIndex;
+                employeeListBox.SelectedIndex = l.SelectedIndex;
                 usernameOrEmployeeId.Text = usersListBox.SelectedItem.ToString();
             }
         }
@@ -204,7 +210,7 @@ namespace PayrollSystem.view
                 List<User> users = userController.viewAllUsers();
                 foreach (User user in users)
                 {
-                    if (user.role.type != "admin")
+                    if (user.role.type != "admin" && user.status == AccountStatus.Enable)
                     {
 
                         EmployeeControllerInterface employeeController = new EmployeeController();
@@ -413,6 +419,17 @@ namespace PayrollSystem.view
         {
             FormControllerInterface formController = new FormController();
             formController.showPayrollSheet();
+        }
+
+        private void employeeListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox l = sender as ListBox;
+            if (l.SelectedIndex != -1)
+            {
+                usersListBox.SelectedIndex = l.SelectedIndex;
+                employeeListBox.SelectedIndex = l.SelectedIndex;
+                usernameOrEmployeeId.Text = usersListBox.SelectedItem.ToString();
+            }
         }
     }
 }

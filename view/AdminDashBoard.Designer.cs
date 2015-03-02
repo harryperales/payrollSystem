@@ -65,6 +65,9 @@
             this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
+            this.employeeListBox = new System.Windows.Forms.ListBox();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.employeeFullNameLabel = new System.Windows.Forms.Label();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
@@ -360,6 +363,9 @@
             // 
             // userListTab
             // 
+            this.userListTab.Controls.Add(this.employeeFullNameLabel);
+            this.userListTab.Controls.Add(this.usernameLabel);
+            this.userListTab.Controls.Add(this.employeeListBox);
             this.userListTab.Controls.Add(this.usersListBox);
             this.userListTab.Location = new System.Drawing.Point(4, 29);
             this.userListTab.Name = "userListTab";
@@ -374,9 +380,9 @@
             this.usersListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.usersListBox.FormattingEnabled = true;
             this.usersListBox.ItemHeight = 17;
-            this.usersListBox.Location = new System.Drawing.Point(0, 2);
+            this.usersListBox.Location = new System.Drawing.Point(0, 19);
             this.usersListBox.Name = "usersListBox";
-            this.usersListBox.Size = new System.Drawing.Size(438, 327);
+            this.usersListBox.Size = new System.Drawing.Size(155, 276);
             this.usersListBox.TabIndex = 0;
             this.usersListBox.SelectedIndexChanged += new System.EventHandler(this.usersListBox_SelectedIndexChanged);
             // 
@@ -519,6 +525,39 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
+            // employeeListBox
+            // 
+            this.employeeListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.employeeListBox.FormattingEnabled = true;
+            this.employeeListBox.ItemHeight = 17;
+            this.employeeListBox.Location = new System.Drawing.Point(161, 19);
+            this.employeeListBox.Name = "employeeListBox";
+            this.employeeListBox.Size = new System.Drawing.Size(271, 276);
+            this.employeeListBox.TabIndex = 1;
+            this.employeeListBox.SelectedIndexChanged += new System.EventHandler(this.employeeListBox_SelectedIndexChanged);
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.usernameLabel.Location = new System.Drawing.Point(33, 2);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(72, 16);
+            this.usernameLabel.TabIndex = 18;
+            this.usernameLabel.Text = "Username";
+            // 
+            // employeeFullNameLabel
+            // 
+            this.employeeFullNameLabel.AutoSize = true;
+            this.employeeFullNameLabel.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeFullNameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.employeeFullNameLabel.Location = new System.Drawing.Point(241, 1);
+            this.employeeFullNameLabel.Name = "employeeFullNameLabel";
+            this.employeeFullNameLabel.Size = new System.Drawing.Size(69, 16);
+            this.employeeFullNameLabel.TabIndex = 19;
+            this.employeeFullNameLabel.Text = "Employee";
+            // 
             // AdminDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,6 +575,7 @@
             this.updatePanel.PerformLayout();
             this.adminTab.ResumeLayout(false);
             this.userListTab.ResumeLayout(false);
+            this.userListTab.PerformLayout();
             this.pendingRequestTab.ResumeLayout(false);
             this.approvedRequestTab.ResumeLayout(false);
             this.payrollTab.ResumeLayout(false);
@@ -592,6 +632,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox thirteenMonthPayCheckBox;
         private System.Windows.Forms.Button viewPayrollSheetDataGridButton;
+        private System.Windows.Forms.ListBox employeeListBox;
+        private System.Windows.Forms.Label employeeFullNameLabel;
+        private System.Windows.Forms.Label usernameLabel;
 //>>>>>>> PayrollSystem/master
     }
 }

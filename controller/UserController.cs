@@ -50,5 +50,10 @@ namespace PayrollSystem.controller
         {
             return userService.fetchUserByUsername(user);
         }
+
+        public User updateUserAccountStatus(User user)
+        {
+            return userService.updateUserAccountStatus(user);
+        }
     }
 }

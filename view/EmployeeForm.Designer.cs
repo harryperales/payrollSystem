@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.transpoAllowance = new System.Windows.Forms.TextBox();
+            this.transpoAllowanceLabel = new System.Windows.Forms.Label();
+            this.foodAllowance = new System.Windows.Forms.TextBox();
+            this.foodAllowanceLabel = new System.Windows.Forms.Label();
             this.employmentDate = new System.Windows.Forms.TextBox();
             this.employmentDateLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
@@ -73,10 +77,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.foodAllowance = new System.Windows.Forms.TextBox();
-            this.foodAllowanceLabel = new System.Windows.Forms.Label();
-            this.transpoAllowance = new System.Windows.Forms.TextBox();
-            this.transpoAllowanceLabel = new System.Windows.Forms.Label();
+            this.accountStatusLabel = new System.Windows.Forms.Label();
+            this.accountStatusComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exitPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +89,8 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.accountStatusComboBox);
+            this.panel1.Controls.Add(this.accountStatusLabel);
             this.panel1.Controls.Add(this.transpoAllowance);
             this.panel1.Controls.Add(this.transpoAllowanceLabel);
             this.panel1.Controls.Add(this.foodAllowance);
@@ -138,6 +142,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(507, 317);
             this.panel1.TabIndex = 0;
+            // 
+            // transpoAllowance
+            // 
+            this.transpoAllowance.Location = new System.Drawing.Point(365, 224);
+            this.transpoAllowance.Name = "transpoAllowance";
+            this.transpoAllowance.Size = new System.Drawing.Size(128, 20);
+            this.transpoAllowance.TabIndex = 30;
+            this.transpoAllowance.Text = "100.00";
+            // 
+            // transpoAllowanceLabel
+            // 
+            this.transpoAllowanceLabel.AutoSize = true;
+            this.transpoAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.transpoAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.transpoAllowanceLabel.Location = new System.Drawing.Point(248, 226);
+            this.transpoAllowanceLabel.Name = "transpoAllowanceLabel";
+            this.transpoAllowanceLabel.Size = new System.Drawing.Size(115, 15);
+            this.transpoAllowanceLabel.TabIndex = 29;
+            this.transpoAllowanceLabel.Text = "Transpo Allowance";
+            // 
+            // foodAllowance
+            // 
+            this.foodAllowance.Location = new System.Drawing.Point(365, 201);
+            this.foodAllowance.Name = "foodAllowance";
+            this.foodAllowance.Size = new System.Drawing.Size(128, 20);
+            this.foodAllowance.TabIndex = 28;
+            this.foodAllowance.Text = "75.00";
+            // 
+            // foodAllowanceLabel
+            // 
+            this.foodAllowanceLabel.AutoSize = true;
+            this.foodAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.foodAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.foodAllowanceLabel.Location = new System.Drawing.Point(248, 203);
+            this.foodAllowanceLabel.Name = "foodAllowanceLabel";
+            this.foodAllowanceLabel.Size = new System.Drawing.Size(95, 15);
+            this.foodAllowanceLabel.TabIndex = 27;
+            this.foodAllowanceLabel.Text = "Food Allowance";
             // 
             // employmentDate
             // 
@@ -235,11 +277,11 @@
             // 
             this.createEmployeeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.createEmployeeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createEmployeeButton.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.createEmployeeButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createEmployeeButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.createEmployeeButton.Location = new System.Drawing.Point(365, 258);
+            this.createEmployeeButton.Location = new System.Drawing.Point(365, 277);
             this.createEmployeeButton.Name = "createEmployeeButton";
-            this.createEmployeeButton.Size = new System.Drawing.Size(128, 40);
+            this.createEmployeeButton.Size = new System.Drawing.Size(128, 34);
             this.createEmployeeButton.TabIndex = 17;
             this.createEmployeeButton.Text = "Create";
             this.createEmployeeButton.UseVisualStyleBackColor = false;
@@ -558,43 +600,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Employee ID";
             // 
-            // foodAllowance
+            // accountStatusLabel
             // 
-            this.foodAllowance.Location = new System.Drawing.Point(365, 201);
-            this.foodAllowance.Name = "foodAllowance";
-            this.foodAllowance.Size = new System.Drawing.Size(128, 20);
-            this.foodAllowance.TabIndex = 28;
-            this.foodAllowance.Text = "75.00";
+            this.accountStatusLabel.AutoSize = true;
+            this.accountStatusLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.accountStatusLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.accountStatusLabel.Location = new System.Drawing.Point(248, 248);
+            this.accountStatusLabel.Name = "accountStatusLabel";
+            this.accountStatusLabel.Size = new System.Drawing.Size(90, 15);
+            this.accountStatusLabel.TabIndex = 31;
+            this.accountStatusLabel.Text = "Account Status";
             // 
-            // foodAllowanceLabel
+            // accountStatusComboBox
             // 
-            this.foodAllowanceLabel.AutoSize = true;
-            this.foodAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.foodAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.foodAllowanceLabel.Location = new System.Drawing.Point(248, 203);
-            this.foodAllowanceLabel.Name = "foodAllowanceLabel";
-            this.foodAllowanceLabel.Size = new System.Drawing.Size(95, 15);
-            this.foodAllowanceLabel.TabIndex = 27;
-            this.foodAllowanceLabel.Text = "Food Allowance";
-            // 
-            // transpoAllowance
-            // 
-            this.transpoAllowance.Location = new System.Drawing.Point(365, 224);
-            this.transpoAllowance.Name = "transpoAllowance";
-            this.transpoAllowance.Size = new System.Drawing.Size(128, 20);
-            this.transpoAllowance.TabIndex = 30;
-            this.transpoAllowance.Text = "100.00";
-            // 
-            // transpoAllowanceLabel
-            // 
-            this.transpoAllowanceLabel.AutoSize = true;
-            this.transpoAllowanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.transpoAllowanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.transpoAllowanceLabel.Location = new System.Drawing.Point(248, 226);
-            this.transpoAllowanceLabel.Name = "transpoAllowanceLabel";
-            this.transpoAllowanceLabel.Size = new System.Drawing.Size(115, 15);
-            this.transpoAllowanceLabel.TabIndex = 29;
-            this.transpoAllowanceLabel.Text = "Transpo Allowance";
+            this.accountStatusComboBox.FormattingEnabled = true;
+            this.accountStatusComboBox.Items.AddRange(new object[] {
+            "Enable",
+            "Disable"});
+            this.accountStatusComboBox.Location = new System.Drawing.Point(365, 246);
+            this.accountStatusComboBox.Name = "accountStatusComboBox";
+            this.accountStatusComboBox.Size = new System.Drawing.Size(128, 21);
+            this.accountStatusComboBox.TabIndex = 32;
+            this.accountStatusComboBox.Text = "Enable";
             // 
             // EmployeeForm
             // 
@@ -666,5 +693,7 @@
         private System.Windows.Forms.Label transpoAllowanceLabel;
         private System.Windows.Forms.TextBox foodAllowance;
         private System.Windows.Forms.Label foodAllowanceLabel;
+        private System.Windows.Forms.ComboBox accountStatusComboBox;
+        private System.Windows.Forms.Label accountStatusLabel;
     }
 }

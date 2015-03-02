@@ -74,9 +74,10 @@ namespace PayrollSystem.view
             employeeId.Text = employee.employeeId.ToString();
             username.Enabled = false;
             username.Text = employee.userAccount.username;
+            accountStatusComboBox.Text = employee.userAccount.status == AccountStatus.Enable ? "Enable" : "Disable";
             password.Enabled = false;
             confirmPassword.Enabled = false;
-            employee.fullName.Replace(",", "");
+            employee.fullName = employee.fullName.Replace(",", "");
             char[] delimiterChars = {' '};
             string[] words = employee.fullName.Split(delimiterChars);
             lastname.Text = words[0];
@@ -199,12 +200,12 @@ namespace PayrollSystem.view
                 employee.userAccount.role = role;
                 employee.userAccount.role.id = 2;
                 employee.userAccount.role.type = "employee";
+                employee.userAccount.status = AccountStatus.Enable;
                 employee.fullName = lastname.Text + ", " + firstname.Text + " " + middlename.Text;
                 employee.birthDate = birthdayTimePicker.Text;
                 employee.gender = genderComboBox.Text;
-                employee.jobPosition = new Position();
-                employee.jobPosition.id = positionComboBox.SelectedIndex;
-                employee.jobPosition.name = positionComboBox.Text;
+                PositionControllerInterface positionController = new PositionController();
+                employee.jobPosition = positionController.fetchPositionByName(positionComboBox.Text);
                 employee.civilStatus = civilStatusComboBox.Text;
                 try
                 {
@@ -270,7 +271,8 @@ namespace PayrollSystem.view
                 employee.fullName = lastname.Text + ", " + firstname.Text + " " + middlename.Text;
                 employee.birthDate = birthdayTimePicker.Text;
                 employee.gender = genderComboBox.Text;
-                employee.jobPosition.id = positionComboBox.SelectedIndex;
+                PositionControllerInterface positionController = new PositionController();
+                employee.jobPosition = positionController.fetchPositionByName(positionComboBox.Text);
                 employee.civilStatus = civilStatusComboBox.Text;
                 try
                 {
@@ -281,13 +283,19 @@ namespace PayrollSystem.view
                     MessageBox.Show("Dependents must be a number!");
                     return;
                 }
+
+                if (isAccountStatusInvalid())
+                {
+                    MessageBox.Show("Account status is not valid.");
+                    return;
+                }
                 employee.address = address.Text;
                 employee.contactNumber = contactNumber.Text;
                 employee.tin = tin.Text;
                 employee.sssId = sssId.Text;
                 employee.philHealthId = philHealthId.Text;
                 employee.pagIbigId = pagIbigId.Text;
-
+                employee.userAccount.status = accountStatusComboBox.Text.Equals("Disable") ? AccountStatus.Disable : AccountStatus.Enable;
                 decimal foodAllowanceAmount = 0.00M;
                 decimal transpoAllowanceAmount = 0.00M;
                 try
@@ -303,6 +311,10 @@ namespace PayrollSystem.view
 
                 if (employeeController.updateEmployee(employee) != null)
                 {
+
+                    UserControllerInterface userController = new UserController();
+                    userController.updateUserAccountStatus(employee.userAccount);
+
                     MiscControllerInterface miscellaneousController = new MiscellaneousController();
 
                     Miscellaneous foodAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "FoodAllowance");
@@ -323,6 +335,11 @@ namespace PayrollSystem.view
                     MessageBox.Show("Please try again, or contact the administrator.");
                 }
             }
+        }
+
+        private bool isAccountStatusInvalid()
+        {
+            return accountStatusComboBox.Text.Equals("") && (!accountStatusComboBox.Text.Equals("Enable") || !accountStatusComboBox.Text.Equals("Disable"));
         }
 
         private void positionComboBox_SelectedIndexChanged(object sender, EventArgs e)

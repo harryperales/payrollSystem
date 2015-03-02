@@ -67,7 +67,7 @@ namespace PayrollSystem.service
             employee.userAccount = new User();
             employee.jobPosition = new Position();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].username, [Employee].birthDate, [Employee].gender, "
+            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].id As userId, [User].username, [User].status, [Employee].birthDate, [Employee].gender, "
                          + "[Employee].civilStatus, [Employee].dependents, [Employee].address, [Employee].contactNumber, [Employee].tin, [Employee].sssId, [Employee].pagIbigId, [Employee].philHealthId, "
                          + "[Employee].dateEmployed, [Employee].jobPositionId, [Position].name, [Position].salary, [Employee].userAccountId "
                          + "FROM [Employee] INNER JOIN [User] ON [Employee].userAccountId = [User].id INNER JOIN "
@@ -81,7 +81,9 @@ namespace PayrollSystem.service
                 {
                     employee.id = Int32.Parse(sqlDataReader["id"].ToString());
                     employee.employeeId = Int64.Parse(sqlDataReader["employeeId"].ToString());
+                    employee.userAccount.id = Int32.Parse(sqlDataReader["userId"].ToString());
                     employee.userAccount.username = sqlDataReader["username"].ToString();
+                    employee.userAccount.status = sqlDataReader["status"].ToString().Equals("Enable") ? AccountStatus.Enable : AccountStatus.Disable;
                     employee.fullName = sqlDataReader["fullName"].ToString();
                     employee.gender = sqlDataReader["gender"].ToString();
                     employee.birthDate = sqlDataReader["birthDate"].ToString();
@@ -140,7 +142,7 @@ namespace PayrollSystem.service
             employee.userAccount = new User();
             employee.jobPosition = new Position();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].username, [Employee].birthDate, [Employee].gender, "
+            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].id As userId, [User].username, [User].status, [Employee].birthDate, [Employee].gender, "
                          + "[Employee].civilStatus, [Employee].dependents, [Employee].address, [Employee].contactNumber, [Employee].tin, [Employee].sssId, [Employee].pagIbigId, [Employee].philHealthId, "
                          + "[Employee].dateEmployed, [Employee].jobPositionId, [Position].name, [Position].salary, [Employee].userAccountId "
                          + "FROM [Employee] INNER JOIN [User] ON [Employee].userAccountId = [User].id INNER JOIN "
@@ -154,7 +156,9 @@ namespace PayrollSystem.service
                 {
                     employee.id = Int32.Parse(sqlDataReader["id"].ToString());
                     employee.employeeId = Int64.Parse(sqlDataReader["employeeId"].ToString());
+                    employee.userAccount.id = Int32.Parse(sqlDataReader["userId"].ToString());
                     employee.userAccount.username = sqlDataReader["username"].ToString();
+                    employee.userAccount.status = sqlDataReader["status"].ToString().Equals("Enable") ? AccountStatus.Enable : AccountStatus.Disable ;
                     employee.fullName = sqlDataReader["fullName"].ToString();
                     employee.gender = sqlDataReader["gender"].ToString();
                     employee.birthDate = sqlDataReader["birthDate"].ToString();
@@ -187,7 +191,7 @@ namespace PayrollSystem.service
             employee.userAccount = new User();
             employee.jobPosition = new Position();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].username, [Employee].birthDate, [Employee].gender, "
+            sqlCmd.CommandText = "SELECT [Employee].id, [Employee].employeeId, [Employee].fullName, [User].id As userId, [User].username, [User].status, [Employee].birthDate, [Employee].gender, "
                          + "[Employee].civilStatus, [Employee].dependents, [Employee].address, [Employee].contactNumber, [Employee].tin, [Employee].sssId, [Employee].pagIbigId, [Employee].philHealthId, "
                          + "[Employee].dateEmployed, [Employee].jobPositionId, [Position].name, [Position].salary, [Employee].userAccountId "
                          + "FROM [Employee] INNER JOIN [User] ON [Employee].userAccountId = [User].id INNER JOIN "
@@ -201,7 +205,9 @@ namespace PayrollSystem.service
                 {
                     employee.id = Int32.Parse(sqlDataReader["id"].ToString());
                     employee.employeeId = Int64.Parse(sqlDataReader["employeeId"].ToString());
+                    employee.userAccount.id = Int32.Parse(sqlDataReader["userId"].ToString());
                     employee.userAccount.username = sqlDataReader["username"].ToString();
+                    employee.userAccount.status = sqlDataReader["status"].ToString().Equals("Enable") ? AccountStatus.Enable : AccountStatus.Disable;
                     employee.fullName = sqlDataReader["fullName"].ToString();
                     employee.gender = sqlDataReader["gender"].ToString();
                     employee.birthDate = sqlDataReader["birthDate"].ToString();

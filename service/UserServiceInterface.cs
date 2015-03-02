@@ -19,5 +19,7 @@ namespace PayrollSystem.service
         User updateUser(User user);
 
         User fetchUserByUsername(User user);
+
+        User updateUserAccountStatus(User user);
     }
 }

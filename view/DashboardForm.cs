@@ -37,6 +37,7 @@ namespace PayrollSystem.view
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
             idNumber.Text = employee.employeeId.ToString();
             employeeName.Text = employee.fullName;
+            employeeFullName.Text = employee.fullName;
             employeeNumber.Text = employee.employeeId.ToString();
             dateFiled.Text = DateTime.Now.ToString("MM/dd/yyyy ddd");
         }

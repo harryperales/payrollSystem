@@ -49,6 +49,7 @@
             this.attendanceListBox = new System.Windows.Forms.ListBox();
             this.requestTab = new System.Windows.Forms.TabPage();
             this.requestPanel = new System.Windows.Forms.Panel();
+            this.cashAdvanceButton = new System.Windows.Forms.Button();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.workingHour = new System.Windows.Forms.TextBox();
             this.overtimeReqeustDescriptionLabel = new System.Windows.Forms.Label();
@@ -90,7 +91,7 @@
             this.sickLeaveLabel = new System.Windows.Forms.Label();
             this.vacationLeaveLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.cashAdvanceButton = new System.Windows.Forms.Button();
+            this.employeeFullName = new System.Windows.Forms.Label();
             this.homeTabs.SuspendLayout();
             this.dashboardTab.SuspendLayout();
             this.myClockTab.SuspendLayout();
@@ -122,6 +123,7 @@
             // dashboardTab
             // 
             this.dashboardTab.BackColor = System.Drawing.Color.DarkGreen;
+            this.dashboardTab.Controls.Add(this.employeeFullName);
             this.dashboardTab.Controls.Add(this.idNumber);
             this.dashboardTab.Controls.Add(this.payrollsLabel);
             this.dashboardTab.Controls.Add(this.viewPayrollButton);
@@ -140,7 +142,7 @@
             this.idNumber.AutoSize = true;
             this.idNumber.Font = new System.Drawing.Font("Britannic Bold", 12F);
             this.idNumber.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.idNumber.Location = new System.Drawing.Point(192, 18);
+            this.idNumber.Location = new System.Drawing.Point(177, 11);
             this.idNumber.Name = "idNumber";
             this.idNumber.Size = new System.Drawing.Size(128, 17);
             this.idNumber.TabIndex = 7;
@@ -163,9 +165,9 @@
             this.viewPayrollButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewPayrollButton.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.viewPayrollButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.viewPayrollButton.Location = new System.Drawing.Point(356, 72);
+            this.viewPayrollButton.Location = new System.Drawing.Point(411, 78);
             this.viewPayrollButton.Name = "viewPayrollButton";
-            this.viewPayrollButton.Size = new System.Drawing.Size(234, 38);
+            this.viewPayrollButton.Size = new System.Drawing.Size(179, 32);
             this.viewPayrollButton.TabIndex = 5;
             this.viewPayrollButton.Text = "View Payroll";
             this.viewPayrollButton.UseVisualStyleBackColor = false;
@@ -187,7 +189,7 @@
             this.username.AutoSize = true;
             this.username.Font = new System.Drawing.Font("Britannic Bold", 12F);
             this.username.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.username.Location = new System.Drawing.Point(192, 44);
+            this.username.Location = new System.Drawing.Point(178, 28);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(79, 17);
             this.username.TabIndex = 3;
@@ -357,6 +359,20 @@
             this.requestPanel.Name = "requestPanel";
             this.requestPanel.Size = new System.Drawing.Size(591, 325);
             this.requestPanel.TabIndex = 0;
+            // 
+            // cashAdvanceButton
+            // 
+            this.cashAdvanceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.cashAdvanceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cashAdvanceButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAdvanceButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceButton.Location = new System.Drawing.Point(401, 18);
+            this.cashAdvanceButton.Name = "cashAdvanceButton";
+            this.cashAdvanceButton.Size = new System.Drawing.Size(183, 29);
+            this.cashAdvanceButton.TabIndex = 45;
+            this.cashAdvanceButton.Text = "Cash Advance Request";
+            this.cashAdvanceButton.UseVisualStyleBackColor = false;
+            this.cashAdvanceButton.Click += new System.EventHandler(this.cashAdvanceButton_Click);
             // 
             // errorMessageLabel
             // 
@@ -819,19 +835,16 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // cashAdvanceButton
+            // employeeFullName
             // 
-            this.cashAdvanceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.cashAdvanceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cashAdvanceButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cashAdvanceButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cashAdvanceButton.Location = new System.Drawing.Point(401, 18);
-            this.cashAdvanceButton.Name = "cashAdvanceButton";
-            this.cashAdvanceButton.Size = new System.Drawing.Size(183, 29);
-            this.cashAdvanceButton.TabIndex = 45;
-            this.cashAdvanceButton.Text = "Cash Advance Request";
-            this.cashAdvanceButton.UseVisualStyleBackColor = false;
-            this.cashAdvanceButton.Click += new System.EventHandler(this.cashAdvanceButton_Click);
+            this.employeeFullName.AutoSize = true;
+            this.employeeFullName.Font = new System.Drawing.Font("Britannic Bold", 12F);
+            this.employeeFullName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.employeeFullName.Location = new System.Drawing.Point(178, 45);
+            this.employeeFullName.Name = "employeeFullName";
+            this.employeeFullName.Size = new System.Drawing.Size(119, 17);
+            this.employeeFullName.TabIndex = 8;
+            this.employeeFullName.Text = "Employee Name";
             // 
             // DashboardForm
             // 
@@ -845,7 +858,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dashboard";
+            this.Text = "7";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DashboardForm_FormClosed);
             this.homeTabs.ResumeLayout(false);
             this.dashboardTab.ResumeLayout(false);
@@ -929,6 +942,7 @@
         private System.Windows.Forms.Label vacationLeaveLabel;
         private System.Windows.Forms.Label idNumber;
         private System.Windows.Forms.Button cashAdvanceButton;
+        private System.Windows.Forms.Label employeeFullName;
 
     }
 }
