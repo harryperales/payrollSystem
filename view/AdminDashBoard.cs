@@ -64,7 +64,6 @@ namespace PayrollSystem.view
             List<User> users = userController.viewAllUsers();
             foreach (User user in users)
             {
-                Console.WriteLine("user.status:" + user.status.ToString());
                 if (user.role.type != "admin" && user.status.ToString().Equals("Enable"))
                 {
                     EmployeeControllerInterface employeeController = new EmployeeController();
@@ -317,6 +316,7 @@ namespace PayrollSystem.view
         private void searchButton_Click(object sender, EventArgs e)
         {
             usersListBox.Items.Clear();
+            employeeListBox.Items.Clear();
             long employeeId = 0;
             EmployeeControllerInterface employeeController = new EmployeeController();
             try
@@ -325,18 +325,21 @@ namespace PayrollSystem.view
                 Employee employee = employeeController.fetchEmployeeByEmployeeIdNumber(employeeId);
                 if (employee != null && !employee.Equals(""))
                 {
-                    List<User> users = new List<User>();
-                    users.Add(employee.userAccount);
-                    foreach (User user in users)
+                    if (employee.userAccount.role.type != "admin" && employee.userAccount.status.ToString().Equals("Enable"))
                     {
-                        if (user.role.type != "admin")
-                        {
-                            usersListBox.Items.Add(user.username);
-                        }
+                        usersListBox.Items.Add(employee.userAccount.username);
+                        employeeListBox.Items.Add(employee.fullName);
                     }
+                    else
+                    {
+                        loadUsers();
+                        showErrorMessage("User does not exist.");
+                    }
+                    
                 }
                 else
                 {
+                    loadUsers();
                     showErrorMessage("User does not exist.");
                 }
             }
@@ -345,21 +348,24 @@ namespace PayrollSystem.view
                 UserControllerInterface userController = new UserController();
                 User searchedUser = new User();
                 searchedUser.username = usernameOrEmployeeId.Text;
-                List<User> users = new List<User>();
                 searchedUser = userController.fetchUserByUsername(searchedUser);
                 if (searchedUser != null && !searchedUser.Equals(""))
                 {
-                    users.Add(searchedUser);
-                    foreach (User user in users)
+                    if (searchedUser.role.type != "admin" && searchedUser.status == AccountStatus.Enable)
                     {
-                        if (user.role.type != "admin")
-                        {
-                            usersListBox.Items.Add(user.username);
-                        }
+                        Employee employee = employeeController.fetchEmployeeByUsername(searchedUser.username);
+                        usersListBox.Items.Add(searchedUser.username);
+                        employeeListBox.Items.Add(employee.fullName);
+                    }
+                    else
+                    {
+                        loadUsers();
+                        showErrorMessage("User does not exist.");
                     }
                 }
                 else
                 {
+                    loadUsers();
                     showErrorMessage("User does not exist.");
                 }
             }
