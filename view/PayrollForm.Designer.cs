@@ -44,6 +44,9 @@
             this.dateEmployedLabel = new System.Windows.Forms.Label();
             this.employeeFullName = new System.Windows.Forms.Label();
             this.earningsPanel = new System.Windows.Forms.Panel();
+            this.totalLeavePay = new System.Windows.Forms.Label();
+            this.daysOfLeave = new System.Windows.Forms.Label();
+            this.leaveRequestLabel = new System.Windows.Forms.Label();
             this.thirteenthMonthPay = new System.Windows.Forms.Label();
             this.thirteenMonthPayLabel = new System.Windows.Forms.Label();
             this.earningLabel = new System.Windows.Forms.Label();
@@ -90,9 +93,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.totalLeavePay = new System.Windows.Forms.Label();
-            this.daysOfLeave = new System.Windows.Forms.Label();
-            this.leaveRequestLabel = new System.Windows.Forms.Label();
+            this.extrasTotalAmount = new System.Windows.Forms.Label();
+            this.extrasLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.earningsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -304,6 +306,42 @@
             this.earningsPanel.Name = "earningsPanel";
             this.earningsPanel.Size = new System.Drawing.Size(450, 239);
             this.earningsPanel.TabIndex = 1;
+            // 
+            // totalLeavePay
+            // 
+            this.totalLeavePay.AutoSize = true;
+            this.totalLeavePay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.totalLeavePay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.totalLeavePay.Location = new System.Drawing.Point(364, 186);
+            this.totalLeavePay.Name = "totalLeavePay";
+            this.totalLeavePay.Size = new System.Drawing.Size(51, 15);
+            this.totalLeavePay.TabIndex = 36;
+            this.totalLeavePay.Text = "325.05";
+            this.totalLeavePay.Visible = false;
+            // 
+            // daysOfLeave
+            // 
+            this.daysOfLeave.AutoSize = true;
+            this.daysOfLeave.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.daysOfLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.daysOfLeave.Location = new System.Drawing.Point(269, 186);
+            this.daysOfLeave.Name = "daysOfLeave";
+            this.daysOfLeave.Size = new System.Drawing.Size(45, 15);
+            this.daysOfLeave.TabIndex = 35;
+            this.daysOfLeave.Text = "3 days";
+            this.daysOfLeave.Visible = false;
+            // 
+            // leaveRequestLabel
+            // 
+            this.leaveRequestLabel.AutoSize = true;
+            this.leaveRequestLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.leaveRequestLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.leaveRequestLabel.Location = new System.Drawing.Point(14, 186);
+            this.leaveRequestLabel.Name = "leaveRequestLabel";
+            this.leaveRequestLabel.Size = new System.Drawing.Size(45, 15);
+            this.leaveRequestLabel.TabIndex = 34;
+            this.leaveRequestLabel.Text = "Leaves";
+            this.leaveRequestLabel.Visible = false;
             // 
             // thirteenthMonthPay
             // 
@@ -715,6 +753,8 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.Transparent;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.extrasTotalAmount);
+            this.panel5.Controls.Add(this.extrasLabel);
             this.panel5.Controls.Add(this.netPay);
             this.panel5.Controls.Add(this.deductions);
             this.panel5.Controls.Add(this.benefits);
@@ -728,14 +768,14 @@
             this.panel5.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.panel5.Location = new System.Drawing.Point(12, 407);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(846, 112);
+            this.panel5.Size = new System.Drawing.Size(846, 155);
             this.panel5.TabIndex = 3;
             // 
             // netPay
             // 
             this.netPay.AutoSize = true;
             this.netPay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.netPay.Location = new System.Drawing.Point(182, 79);
+            this.netPay.Location = new System.Drawing.Point(182, 102);
             this.netPay.Name = "netPay";
             this.netPay.Size = new System.Drawing.Size(59, 15);
             this.netPay.TabIndex = 16;
@@ -745,7 +785,7 @@
             // 
             this.deductions.AutoSize = true;
             this.deductions.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.deductions.Location = new System.Drawing.Point(182, 51);
+            this.deductions.Location = new System.Drawing.Point(182, 65);
             this.deductions.Name = "deductions";
             this.deductions.Size = new System.Drawing.Size(62, 15);
             this.deductions.TabIndex = 15;
@@ -774,7 +814,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 79);
+            this.label11.Location = new System.Drawing.Point(15, 102);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 15);
             this.label11.TabIndex = 11;
@@ -783,7 +823,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 51);
+            this.label10.Location = new System.Drawing.Point(15, 65);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(70, 15);
             this.label10.TabIndex = 10;
@@ -827,41 +867,24 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // totalLeavePay
+            // extrasTotalAmount
             // 
-            this.totalLeavePay.AutoSize = true;
-            this.totalLeavePay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.totalLeavePay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.totalLeavePay.Location = new System.Drawing.Point(364, 186);
-            this.totalLeavePay.Name = "totalLeavePay";
-            this.totalLeavePay.Size = new System.Drawing.Size(51, 15);
-            this.totalLeavePay.TabIndex = 36;
-            this.totalLeavePay.Text = "325.05";
-            this.totalLeavePay.Visible = false;
+            this.extrasTotalAmount.AutoSize = true;
+            this.extrasTotalAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.extrasTotalAmount.Location = new System.Drawing.Point(183, 50);
+            this.extrasTotalAmount.Name = "extrasTotalAmount";
+            this.extrasTotalAmount.Size = new System.Drawing.Size(51, 15);
+            this.extrasTotalAmount.TabIndex = 18;
+            this.extrasTotalAmount.Text = "361.21";
             // 
-            // daysOfLeave
+            // extrasLabel
             // 
-            this.daysOfLeave.AutoSize = true;
-            this.daysOfLeave.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.daysOfLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.daysOfLeave.Location = new System.Drawing.Point(269, 186);
-            this.daysOfLeave.Name = "daysOfLeave";
-            this.daysOfLeave.Size = new System.Drawing.Size(45, 15);
-            this.daysOfLeave.TabIndex = 35;
-            this.daysOfLeave.Text = "3 days";
-            this.daysOfLeave.Visible = false;
-            // 
-            // leaveRequestLabel
-            // 
-            this.leaveRequestLabel.AutoSize = true;
-            this.leaveRequestLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
-            this.leaveRequestLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.leaveRequestLabel.Location = new System.Drawing.Point(14, 186);
-            this.leaveRequestLabel.Name = "leaveRequestLabel";
-            this.leaveRequestLabel.Size = new System.Drawing.Size(45, 15);
-            this.leaveRequestLabel.TabIndex = 34;
-            this.leaveRequestLabel.Text = "Leaves";
-            this.leaveRequestLabel.Visible = false;
+            this.extrasLabel.AutoSize = true;
+            this.extrasLabel.Location = new System.Drawing.Point(15, 50);
+            this.extrasLabel.Name = "extrasLabel";
+            this.extrasLabel.Size = new System.Drawing.Size(43, 15);
+            this.extrasLabel.TabIndex = 17;
+            this.extrasLabel.Text = "Extras";
             // 
             // PayrollForm
             // 
@@ -959,5 +982,7 @@
         private System.Windows.Forms.Label totalLeavePay;
         private System.Windows.Forms.Label daysOfLeave;
         private System.Windows.Forms.Label leaveRequestLabel;
+        private System.Windows.Forms.Label extrasTotalAmount;
+        private System.Windows.Forms.Label extrasLabel;
     }
 }

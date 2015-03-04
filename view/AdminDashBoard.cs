@@ -26,7 +26,7 @@ namespace PayrollSystem.view
             loadApprovedRequests();
             hideErrorMessage();
             initializeDatePicker();
-            hideSpinner();
+
         }
 
         private void loadPayrollList()
@@ -81,7 +81,7 @@ namespace PayrollSystem.view
             pendingRequestListBox.Items.Clear();
             foreach (Request request in requests)
             {
-                pendingRequestListBox.Items.Add(request.id+".) "+request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0] + " | " + request.name);
+                pendingRequestListBox.Items.Add(request.id + ".) " + request.dateFiled.ToString("MM/dd/yyyy") + "|(" + request.employee.employeeId + ")|" + request.employee.fullName.Split(',')[0] + " | " + request.name);
             }
         }
 
@@ -158,26 +158,16 @@ namespace PayrollSystem.view
             }
         }
 
-        private void hideSpinner()
-        {
-            spinnerPictureBox.Visible = false;
-        }
-
-        private void showSpinner()
-        {
-            spinnerPictureBox.Visible = true;
-        }
 
         private void createPayrollButton_Click(object sender, EventArgs e)
         {
-
             TimeSpan validDate = endDatePeriod.Value - startDatePeriod.Value;
             if (validDate <= fetchValidDateDuration())
             {
                 showErrorMessage("Invalid period.");
                 return;
             }
-            showSpinner();
+
             hideErrorMessage();
             if (!selectAllCheckBox.Checked)
             {
@@ -186,7 +176,6 @@ namespace PayrollSystem.view
 
                 if (employee == null || employee.Equals(""))
                 {
-                    hideSpinner();
                     showErrorMessage("Please input a valid username.");
                     return;
                 }
@@ -197,14 +186,14 @@ namespace PayrollSystem.view
                 {
                     payslipController.addThirteenMonthPayToPayslip(employee, payslip);
                 }
-                hideSpinner();
+
                 loadPayrollList();
                 adminTab.SelectedTab = payrollTab;
-                showErrorMessage("Successfully created payroll to user: "+ employee.userAccount.username);
+                showErrorMessage("Successfully created payroll to user: " + employee.userAccount.username);
             }
             else
             {
-                
+
                 UserControllerInterface userController = new UserController();
                 List<User> users = userController.viewAllUsers();
                 foreach (User user in users)
@@ -217,7 +206,7 @@ namespace PayrollSystem.view
 
                         if (employee == null || employee.Equals(""))
                         {
-                            hideSpinner();
+
                             showErrorMessage("Please input a valid username.");
                             return;
                         }
@@ -227,7 +216,6 @@ namespace PayrollSystem.view
                     }
                 }
                 selectAllCheckBox.Checked = false;
-                hideSpinner();
                 loadPayrollList();
                 adminTab.SelectedTab = payrollTab;
                 showErrorMessage("Successfully create payroll to all users");
@@ -265,14 +253,14 @@ namespace PayrollSystem.view
 
         private void viewRequest_Click(object sender, EventArgs e)
         {
-            string selectedId ="";
+            string selectedId = "";
             try
             {
                 if (pendingRequestListBox.SelectedIndex != -1)
                 {
                     selectedId = pendingRequestListBox.SelectedItem.ToString().Split('.')[0];
                 }
-                else if(approvedRequestListBox.SelectedIndex != -1)
+                else if (approvedRequestListBox.SelectedIndex != -1)
                 {
                     selectedId = approvedRequestListBox.SelectedItem.ToString().Split('.')[0];
                 }
@@ -335,7 +323,7 @@ namespace PayrollSystem.view
                         loadUsers();
                         showErrorMessage("User does not exist.");
                     }
-                    
+
                 }
                 else
                 {
@@ -343,7 +331,7 @@ namespace PayrollSystem.view
                     showErrorMessage("User does not exist.");
                 }
             }
-            catch ( FormatException ex)
+            catch (FormatException ex)
             {
                 UserControllerInterface userController = new UserController();
                 User searchedUser = new User();
@@ -373,7 +361,7 @@ namespace PayrollSystem.view
 
         private void resetLeaveCreditsButton_Click(object sender, EventArgs e)
         {
-            showSpinner();
+
             hideErrorMessage();
             if (!selectAllCheckBox.Checked)
             {
@@ -382,13 +370,11 @@ namespace PayrollSystem.view
 
                 if (employee == null || employee.Equals(""))
                 {
-                    hideSpinner();
                     showErrorMessage("Please input a valid username.");
                     return;
                 }
                 LeaveCreditsControllerInteface leaveCreditsController = new LeaveCreditsController();
                 EmployeeLeaveCredits employeeLeaveCredits = leaveCreditsController.resetEmployeeLeaveCredits(employee);
-                hideSpinner();
                 showErrorMessage("Successfully created payroll to user: " + employee.userAccount.username);
             }
             else
@@ -406,17 +392,15 @@ namespace PayrollSystem.view
 
                         if (employee == null || employee.Equals(""))
                         {
-                            hideSpinner();
                             showErrorMessage("Please input a valid username.");
                             return;
                         }
 
                         PayrollControllerInterface payslipController = new PayrollController();
                         payslipController.createPayslip(startDatePeriod.Value, endDatePeriod.Value, employee);
-                    }
+                    }   
                 }
                 selectAllCheckBox.Checked = false;
-                hideSpinner();
                 showErrorMessage("Successfully create payroll to all users");
             }
         }

@@ -38,7 +38,7 @@ namespace PayrollSystem.service
         {
             Request request = new Request();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT id, name, description, requestedDate ,dateRequested From Request WHERE employeeId = @employeeNumber AND name = @name AND dateRequested LIKE @date AND status = @status;";
+            sqlCmd.CommandText = "SELECT id, name, description, requestedDate ,dateRequested From Request WHERE employeeId = @employeeNumber AND name = @name AND requestedDate LIKE @date AND status = @status;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
             sqlCmd.Parameters.AddWithValue("@name", "OVERTIME");
             sqlCmd.Parameters.AddWithValue("@date", "%" + date.ToString("MM/dd/yyyy") + "%");
@@ -54,6 +54,7 @@ namespace PayrollSystem.service
                     request.description = sqlDataReader["description"].ToString();
                     request.requestedDate = Convert.ToDateTime(sqlDataReader["requestedDate"].ToString());
                     request.dateFiled = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
+                    Console.WriteLine(request.requestedDate);
                 }
             }
             else
@@ -85,12 +86,12 @@ namespace PayrollSystem.service
         {
             Request request = new Request();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT id, name, description, requestedDate, dateRequested From Request WHERE employeeId = @employeeNumber AND dateRequested LIKE @date AND status = @status AND name LIKE @name AND description NOT LIKE @description;";
+            sqlCmd.CommandText = "SELECT id, name, description, requestedDate, dateRequested From Request WHERE employeeId = @employeeNumber AND requestedDate LIKE @date AND status = @status AND name LIKE @name AND description NOT LIKE @description;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
             sqlCmd.Parameters.AddWithValue("@description", "%(Leave Without Pay)%");
             sqlCmd.Parameters.AddWithValue("@name", "%Leave%");
             sqlCmd.Parameters.AddWithValue("@date", "%" + date.ToString("MM/dd/yyyy") + "%");
-            sqlCmd.Parameters.AddWithValue("@status", "approved");
+            sqlCmd.Parameters.AddWithValue("@status", "approved");  
             sqlDataReader = sqlCmd.ExecuteReader();
             if (sqlDataReader.HasRows)
             {
@@ -359,6 +360,7 @@ namespace PayrollSystem.service
                     request.description = sqlDataReader["description"].ToString();
                     request.dateFiled = Convert.ToDateTime(sqlDataReader["dateRequested"].ToString());
                     requests.Add(request);
+                    Console.WriteLine(request.name);
                 }
             }
             sqlCmd.Parameters.Clear();
@@ -449,7 +451,7 @@ namespace PayrollSystem.service
                 Request overtimeRequest = requestService.fetchEmployeeApprovedOvertimeRequestByDate(employee, date);
                 if (overtimeRequest != null)
                 {
-                    TimeSpan overtimeHourSpent = new TimeSpan(overtimeRequest.requestedDate.Hour, overtimeRequest.requestedDate.Minute, 0);
+                    TimeSpan overtimeHourSpent = new TimeSpan(overtimeRequest.dateFiled.Hour, overtimeRequest.dateFiled.Minute, 0);
                     totalHoursOvertimeSpent = totalHoursOvertimeSpent.Add(overtimeHourSpent);
                 }
             }

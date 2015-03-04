@@ -94,7 +94,8 @@ namespace PayrollSystem.view
             }
 
             earnings.Text = totalBasePayAmount.ToString("0.##");
-            benefits.Text = (totalOvertimeAmount + totalFoodAllowanceAmount + totalTranspoAllowanceAmount + thirteenMonth + totalLeaveRequest).ToString("0.##");
+            benefits.Text = (totalFoodAllowanceAmount + totalTranspoAllowanceAmount ).ToString("0.##");
+            extrasTotalAmount.Text = (totalOvertimeAmount + thirteenMonth + totalLeaveRequest).ToString("0.##");
             deductions.Text = ((decimal.Round(payslip.taxDeduction, 2) + decimal.Round(payslip.sssDeduction, 2) + decimal.Round(payslip.pagIbigDeduction, 2) + decimal.Round(payslip.philHealthDeduction, 2) + decimal.Round(cashAdvanceDeci, 2)) * -1).ToString("0.##");
             decimal totalSalary = Convert.ToDecimal(earnings.Text) + Convert.ToDecimal(benefits.Text) + Convert.ToDecimal(deductions.Text);
             netPay.Text = totalSalary.ToString("0.##");

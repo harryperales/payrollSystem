@@ -50,3 +50,9 @@ C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Payrol
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.RequestForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.CashAdvanceForm.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayrollSheet.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\view\PayslipWPFControl.baml
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\view\PayslipWPFControl.g.cs
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem_Content.g.cs
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem_MarkupCompile.cache
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.g.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayslipForm.resources

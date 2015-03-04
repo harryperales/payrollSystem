@@ -104,10 +104,13 @@ namespace PayrollSystem.service
             decimal totalOvertimeSalary = 0.00M;
             decimal perHourBasedSalary = 0.00M;
             perHourBasedSalary = decimal.Divide(dailyBasedSalary, 8.00M);
+            decimal perHourBasedSalaryWithOvertimePercent = perHourBasedSalary + decimal.Multiply(0.25M, perHourBasedSalary);
             decimal perHourBasedSalaryWithAddedPercent = 0.00M;
-            Boolean isOvertimeDateFallsToHoliday = false;
             foreach (Request overtimeRequest in overtimeRequests)
             {
+                totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.dateFiled).Hour, perHourBasedSalaryWithOvertimePercent), 2);
+                decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.dateFiled).Minute, 59);
+                totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithOvertimePercent), 2);
                 foreach (Holiday holiday in holidays)
                 {
 
@@ -117,32 +120,19 @@ namespace PayrollSystem.service
                     else if (overtimeDateIsEqualToNonRegularHoliday(overtimeRequest, holiday))
                     {
                         // add 30% of daily Salary
-                        perHourBasedSalaryWithAddedPercent = perHourBasedSalary + decimal.Multiply(0.30M, perHourBasedSalary);
-                        totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent), 2);
-                        decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
+                        perHourBasedSalaryWithAddedPercent = perHourBasedSalaryWithOvertimePercent + decimal.Multiply(0.30M, perHourBasedSalaryWithOvertimePercent);
+                        totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.dateFiled).Hour, perHourBasedSalaryWithAddedPercent), 2);
+                        convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.dateFiled).Minute, 59);
                         totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent), 2);
-                        isOvertimeDateFallsToHoliday = true;
                     }
                     else if (overtimeDateIsEqualToRegularHoliday(overtimeRequest, holiday))
                     {
                         // add 100% daily salary
-                        perHourBasedSalaryWithAddedPercent = perHourBasedSalary + perHourBasedSalary;
-                        totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent), 2);
-                        decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
+                        perHourBasedSalaryWithAddedPercent = perHourBasedSalaryWithOvertimePercent + perHourBasedSalaryWithOvertimePercent;
+                        totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.dateFiled).Hour, perHourBasedSalaryWithAddedPercent), 2);
+                        convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.dateFiled).Minute, 59);
                         totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent), 2);
-                        isOvertimeDateFallsToHoliday = true;
                     }
-                }
-                if (!isOvertimeDateFallsToHoliday)
-                {
-                    perHourBasedSalaryWithAddedPercent = perHourBasedSalary + decimal.Multiply(0.25M, perHourBasedSalary);
-                    totalOvertimeSalary += decimal.Round(decimal.Multiply(Convert.ToDateTime(overtimeRequest.requestedDate).Hour, perHourBasedSalaryWithAddedPercent), 2);
-                    decimal convertedMinToHour = decimal.Divide(Convert.ToDateTime(overtimeRequest.requestedDate).Minute, 59);
-                    totalOvertimeSalary += decimal.Round(decimal.Multiply(convertedMinToHour, perHourBasedSalaryWithAddedPercent), 2);
-                }
-                else
-                {
-                    isOvertimeDateFallsToHoliday = false;
                 }
             }
             return decimal.Round(totalOvertimeSalary, 2);

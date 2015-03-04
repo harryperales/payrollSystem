@@ -211,6 +211,9 @@
     <EmbeddedResource Include="view\PayrollSheet.resx">
       <DependentUpon>PayrollSheet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\PayslipForm.resx">
+      <DependentUpon>PayslipForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\PositionForm.resx">
       <DependentUpon>PositionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +274,15 @@
     </Compile>
     <Compile Include="view\PayrollSheet.Designer.cs">
       <DependentUpon>PayrollSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\PayslipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\PayslipForm.Designer.cs">
+      <DependentUpon>PayslipForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\PayslipWPFControl.xaml.cs">
+      <DependentUpon>PayslipWPFControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\PositionForm.cs">
       <SubType>Form</SubType>
@@ -352,6 +364,12 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="view\PayslipWPFControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

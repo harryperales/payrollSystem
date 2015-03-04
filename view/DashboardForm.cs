@@ -291,7 +291,7 @@ namespace PayrollSystem.view
             Request request = new Request();
             request.employee = employee;
             request.name = "OVERTIME";
-            request.requestedDate = Convert.ToDateTime(dateOfLeave.Text);
+            request.requestedDate = Convert.ToDateTime(dateOfRequest.Text);
             request.status = RequestStatus.Pending;
             request.description = overtimeRequestDescription.Text;
             DateTime date = DateTime.Now;
