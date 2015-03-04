@@ -52,6 +52,9 @@
             this.addPositionButton = new System.Windows.Forms.Button();
             this.adminTab = new System.Windows.Forms.TabControl();
             this.userListTab = new System.Windows.Forms.TabPage();
+            this.employeeFullNameLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.employeeListBox = new System.Windows.Forms.ListBox();
             this.usersListBox = new System.Windows.Forms.ListBox();
             this.pendingRequestTab = new System.Windows.Forms.TabPage();
             this.pendingRequestListBox = new System.Windows.Forms.ListBox();
@@ -65,9 +68,6 @@
             this.spinnerPictureBox = new System.Windows.Forms.PictureBox();
             this.errorMessageLabel = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.employeeListBox = new System.Windows.Forms.ListBox();
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.employeeFullNameLabel = new System.Windows.Forms.Label();
             this.employeeOptionPanel.SuspendLayout();
             this.updatePanel.SuspendLayout();
             this.adminTab.SuspendLayout();
@@ -375,6 +375,39 @@
             this.userListTab.Text = "Users";
             this.userListTab.UseVisualStyleBackColor = true;
             // 
+            // employeeFullNameLabel
+            // 
+            this.employeeFullNameLabel.AutoSize = true;
+            this.employeeFullNameLabel.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.employeeFullNameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.employeeFullNameLabel.Location = new System.Drawing.Point(241, 1);
+            this.employeeFullNameLabel.Name = "employeeFullNameLabel";
+            this.employeeFullNameLabel.Size = new System.Drawing.Size(69, 16);
+            this.employeeFullNameLabel.TabIndex = 19;
+            this.employeeFullNameLabel.Text = "Employee";
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.usernameLabel.Location = new System.Drawing.Point(33, 2);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(72, 16);
+            this.usernameLabel.TabIndex = 18;
+            this.usernameLabel.Text = "Username";
+            // 
+            // employeeListBox
+            // 
+            this.employeeListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.employeeListBox.FormattingEnabled = true;
+            this.employeeListBox.ItemHeight = 17;
+            this.employeeListBox.Location = new System.Drawing.Point(161, 19);
+            this.employeeListBox.Name = "employeeListBox";
+            this.employeeListBox.Size = new System.Drawing.Size(271, 276);
+            this.employeeListBox.TabIndex = 1;
+            this.employeeListBox.SelectedIndexChanged += new System.EventHandler(this.employeeListBox_SelectedIndexChanged);
+            // 
             // usersListBox
             // 
             this.usersListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -470,7 +503,7 @@
             this.viewPayrollSheetDataGridButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewPayrollSheetDataGridButton.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewPayrollSheetDataGridButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.viewPayrollSheetDataGridButton.Location = new System.Drawing.Point(648, 51);
+            this.viewPayrollSheetDataGridButton.Location = new System.Drawing.Point(361, 51);
             this.viewPayrollSheetDataGridButton.Name = "viewPayrollSheetDataGridButton";
             this.viewPayrollSheetDataGridButton.Size = new System.Drawing.Size(158, 34);
             this.viewPayrollSheetDataGridButton.TabIndex = 18;
@@ -524,39 +557,6 @@
             this.exitPictureBox.TabIndex = 3;
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
-            // 
-            // employeeListBox
-            // 
-            this.employeeListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.employeeListBox.FormattingEnabled = true;
-            this.employeeListBox.ItemHeight = 17;
-            this.employeeListBox.Location = new System.Drawing.Point(161, 19);
-            this.employeeListBox.Name = "employeeListBox";
-            this.employeeListBox.Size = new System.Drawing.Size(271, 276);
-            this.employeeListBox.TabIndex = 1;
-            this.employeeListBox.SelectedIndexChanged += new System.EventHandler(this.employeeListBox_SelectedIndexChanged);
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.usernameLabel.Location = new System.Drawing.Point(33, 2);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(72, 16);
-            this.usernameLabel.TabIndex = 18;
-            this.usernameLabel.Text = "Username";
-            // 
-            // employeeFullNameLabel
-            // 
-            this.employeeFullNameLabel.AutoSize = true;
-            this.employeeFullNameLabel.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeFullNameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.employeeFullNameLabel.Location = new System.Drawing.Point(241, 1);
-            this.employeeFullNameLabel.Name = "employeeFullNameLabel";
-            this.employeeFullNameLabel.Size = new System.Drawing.Size(69, 16);
-            this.employeeFullNameLabel.TabIndex = 19;
-            this.employeeFullNameLabel.Text = "Employee";
             // 
             // AdminDashBoard
             // 

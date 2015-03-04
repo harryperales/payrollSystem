@@ -33,7 +33,6 @@ namespace PayrollSystem.service
             decimal periodSalary = 0.00M;
             decimal perHourBasedSalary = 0.00M;
             perHourBasedSalary = decimal.Divide(dailyBasedSalary, 8.00M);
-            Console.WriteLine("attendancesCount" + attendances.Count);
             foreach (Attendance attendance in attendances)
             {
                 TimeSpan breakTimeHour = fetchOneHourBreakTimeSpan();
@@ -67,12 +66,10 @@ namespace PayrollSystem.service
                     } 
                     else if (holiday.holidayWages == HolidayWages.NonRegular)
                     {
-                        Console.WriteLine("non-regular");
                         periodSalary += decimal.Multiply(dailyBasedSalary, 0.30M); // add 30% of daily Salary
                     }
                     else if (holiday.holidayWages == HolidayWages.Regular)
                     {
-                        Console.WriteLine("regular");
                         periodSalary += dailyBasedSalary; // add 100% daily salary
                     }
 

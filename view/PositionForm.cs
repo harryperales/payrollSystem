@@ -59,7 +59,6 @@ namespace PayrollSystem.view
         {
             Position position = new Position();
             PositionControllerInterface positionController = new PositionController();
-            Console.WriteLine(positionComboBox.Text);
             position = positionController.fetchPositionByName(positionComboBox.Text);
             try
             {

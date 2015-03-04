@@ -27,5 +27,7 @@ namespace PayrollSystem.controller
         Request createCashAdvanceRequest(Request request);
 
         List<Request> fetchAllApprovedCashAdvanceRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee);
+
+        List<Request> fetchLeaveRequest(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod);
     }
 }

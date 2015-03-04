@@ -63,5 +63,10 @@ namespace PayrollSystem.controller
         {
             return requestService.fetchAllApprovedCashAdvanceRequests(startDatePeriod, endDatePeriod, employee);
         }
+
+        public List<Request> fetchLeaveRequest(Employee employee, DateTime startDatePeriod, DateTime endDatePeriod)
+        {
+            return requestService.fetchLeaveRequest(employee, startDatePeriod, endDatePeriod);
+        }
     }
 }

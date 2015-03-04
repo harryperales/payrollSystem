@@ -60,20 +60,29 @@ namespace PayrollSystem.view
             hourlyRate.Text = calculateHourlyRate(payslip.employee.jobPosition.salary).ToString("0.##");
             TimeSpan timeSpent = fetchTotalHoursSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, attendanceController);
             hoursSpent.Text = Math.Round(timeSpent.TotalHours, 2).ToString();
-            totalBasePay.Text = calculateTotalBasePay(timeSpent, payslip.employee.jobPosition.salary).ToString("0.##");
+            decimal totalBasePayAmount = calculateTotalBasePay(timeSpent, payslip.employee.jobPosition.salary);
+            totalBasePay.Text = totalBasePayAmount.ToString("0.##");
             decimal foodAllowanceAmount = fetchFoodAllowance(payslip, miscellaneousController);
             decimal totalFoodAllowanceAmount = calculateTotalSpecificAllowance(foodAllowanceAmount, timeSpent);
             foodAllowance.Text = totalFoodAllowanceAmount.ToString("0.##");
             decimal transpoAllowanceAmount = fetchTranspoAllowance(payslip, miscellaneousController);
-            decimal totalTranspoAllowanceAmount = calculateTotalSpecificAllowance(transpoAllowanceAmount, timeSpent);
-            transportation.Text = totalTranspoAllowanceAmount.ToString("0.##");
+            decimal totalTranspoAllowanceAmount = calculateTotalSpecificAllowance(transpoAllowanceAmount, timeSpent);            transportation.Text = totalTranspoAllowanceAmount.ToString("0.##");
             decimal thirteenMonth = 0.00M;
             overtimeHours.Text = Math.Round(fetchTotalHoursOvertimeSpent(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController).TotalHours, 2).ToString();
             decimal totalOvertimeAmount = calculateDailyBasedSalaryWithOvertimeRequests(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController);
             overtimeAmount.Text = totalOvertimeAmount.ToString("0.##");
+
+            List<Request> leaveRequests = requestController.fetchLeaveRequest(payslip.employee, payslip.startDatePeriod, payslip.endDatePeriod);
+            decimal totalLeaveRequest = salaryController.calculateDailBasedSalaryWithLeaveRequest(leaveRequests, payslip.employee.jobPosition.salary);
+            if (hasLeaveRequests(totalLeaveRequest))
+            {
+                showLeaveFields();
+                daysOfLeave.Text = leaveRequests.Count.ToString();
+                totalLeavePay.Text = totalLeaveRequest.ToString("0.##");
+            }
             decimal cashAdvanceDeci = calculateTotalCashAdvanceAmount(payslip.startDatePeriod, payslip.endDatePeriod, payslip.employee, requestController, salaryController);
             cashAdvanceAmount.Text = cashAdvanceDeci.ToString("0.##");
-            tax.Text = (payslip.taxDeduction * -1).ToString("0.##");
+            tax.Text = payslip.taxDeduction.ToString("0.##");
             sss.Text = payslip.sssDeduction.ToString("0.##");
             pagIbig.Text = payslip.pagIbigDeduction.ToString("0.##");
             philHealth.Text = payslip.philHealthDeduction.ToString("0.##");
@@ -81,13 +90,26 @@ namespace PayrollSystem.view
             if (payslip.thirteenMonthPay > 0.00M)
             {
                 thirteenthMonthPay.Visible = true;
-                thirteenthMonthPay.Text = payslip.thirteenMonthPay.ToString("0.##");
+                thirteenthMonthPay.Text = payslip.thirteenMonthPay.ToString("0.##") + " day/s";
             }
-            earnings.Text = payslip.basePay.ToString("0.##");
-            benefits.Text = (totalOvertimeAmount + totalFoodAllowanceAmount + totalTranspoAllowanceAmount + thirteenMonth).ToString("0.##");
+
+            earnings.Text = totalBasePayAmount.ToString("0.##");
+            benefits.Text = (totalOvertimeAmount + totalFoodAllowanceAmount + totalTranspoAllowanceAmount + thirteenMonth + totalLeaveRequest).ToString("0.##");
             deductions.Text = ((decimal.Round(payslip.taxDeduction, 2) + decimal.Round(payslip.sssDeduction, 2) + decimal.Round(payslip.pagIbigDeduction, 2) + decimal.Round(payslip.philHealthDeduction, 2) + decimal.Round(cashAdvanceDeci, 2)) * -1).ToString("0.##");
             decimal totalSalary = Convert.ToDecimal(earnings.Text) + Convert.ToDecimal(benefits.Text) + Convert.ToDecimal(deductions.Text);
             netPay.Text = totalSalary.ToString("0.##");
+        }
+
+        private void showLeaveFields()
+        {
+            leaveRequestLabel.Visible = true;
+            daysOfLeave.Visible = true;
+            totalLeavePay.Visible = true;
+        }
+
+        private static bool hasLeaveRequests(decimal totalLeaveRequest)
+        {
+            return totalLeaveRequest > 0.00M;
         }
 
         private decimal calculateTotalSpecificAllowance(decimal allowanceAmount, TimeSpan timeSpent)
@@ -115,12 +137,14 @@ namespace PayrollSystem.view
 
         private decimal fetchFoodAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
         {
-            return miscellaneousController.fetchFoodAllowance().amount;
+            return miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(payslip.employee, "FoodAllowance").amount;
+            //return miscellaneousController.fetchFoodAllowance().amount;
         }
 
         private decimal fetchTranspoAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
         {
-            return miscellaneousController.fetchTranspoAllowance().amount;
+            return miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(payslip.employee, "TransportationAllowance").amount;
+            //return miscellaneousController.fetchTranspoAllowance().amount;
         }
 
         private decimal calculateTotalBasePay(TimeSpan timeSpent, decimal dailyBasedSalary)

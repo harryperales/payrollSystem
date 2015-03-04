@@ -17,6 +17,7 @@ namespace PayrollSystem.model
         public decimal sssDeduction { get; set; }
         public decimal pagIbigDeduction { get; set; }
         public decimal philHealthDeduction { get; set; }
+        public decimal totalBenefits { get; set; }
         public decimal thirteenMonthPay { get; set; }
         public decimal netPay { get; set; }
         public List<Request> requests { get; set; }

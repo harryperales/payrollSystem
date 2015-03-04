@@ -11,5 +11,7 @@ namespace PayrollSystem.controller
         decimal calculateDailyBasedSalaryWithOvertimeRequests(List<Request> overtimeRequests, decimal dailyBasedSalary);
 
         decimal fetchTotalCashAdvanceAmount(List<Request> cashAdvanceList);
+
+        decimal calculateDailBasedSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary);
     }
 }

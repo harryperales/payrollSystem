@@ -133,10 +133,8 @@ namespace PayrollSystem.view
 
         private Boolean checkUsernameIfExist(User user)
         {
-            Console.WriteLine(user.username);
             UserControllerInterface userController = new UserController();
             User existingUser = userController.fetchUserByUsername(user);
-            Console.WriteLine(existingUser);
             if ( existingUser == null || existingUser.ToString().Equals(""))
             {                
                 return false;
@@ -355,7 +353,6 @@ namespace PayrollSystem.view
             PositionControllerInterface positionController = new PositionController();
             if (positionComboBox.SelectedIndex != -1)
             {
-                Console.WriteLine(positionComboBox.SelectedItem.ToString());
                 Position position = positionController.fetchPositionByName(positionComboBox.SelectedItem.ToString());
                 salary.Text = position.salary.ToString();
             }

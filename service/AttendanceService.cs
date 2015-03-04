@@ -49,7 +49,6 @@ namespace PayrollSystem.service
                     attendance.id = Int32.Parse(sqlDataReader["id"].ToString());
                     attendance.employee = employee;
                     attendance.timeIn = Convert.ToDateTime(sqlDataReader["timeIn"].ToString());
-                    Console.WriteLine(sqlDataReader["timeOut"].ToString());
                     if (sqlDataReader["timeOut"] != null && !sqlDataReader["timeOut"].ToString().Equals(""))
                     {
                         attendance.timeOut = Convert.ToDateTime(sqlDataReader["timeOut"].ToString());
@@ -106,7 +105,6 @@ namespace PayrollSystem.service
                     attendance.id = Int32.Parse(sqlDataReader["id"].ToString());
                     attendance.employee = employee;
                     attendance.timeIn = Convert.ToDateTime(sqlDataReader["timeIn"].ToString());
-                    Console.WriteLine(sqlDataReader["timeOut"].ToString());
                     if (sqlDataReader["timeOut"] != null && !sqlDataReader["timeOut"].ToString().Equals(""))
                     {
                         attendance.timeOut = Convert.ToDateTime(sqlDataReader["timeOut"].ToString());

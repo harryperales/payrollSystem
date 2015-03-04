@@ -38,6 +38,7 @@ namespace PayrollSystem.view
             table.Columns.Add("Start Date");
             table.Columns.Add("End Date");
             table.Columns.Add("Base Pay");
+            table.Columns.Add("Total Benefits");
             table.Columns.Add("Tax");
             table.Columns.Add("SSS");
             table.Columns.Add("Pag-Ibig");
@@ -49,9 +50,8 @@ namespace PayrollSystem.view
             // Add rows.
             foreach (var payslip in payrollSheet)
             {
-                Console.WriteLine(payslip.netPay);
 	            table.Rows.Add(payslip.dateCreated, payslip.employee.employeeId, payslip.startDatePeriod,
-                payslip.endDatePeriod, payslip.basePay, payslip.taxDeduction, payslip.sssDeduction, payslip.pagIbigDeduction,
+                payslip.endDatePeriod, payslip.basePay, payslip.totalBenefits, payslip.taxDeduction, payslip.sssDeduction, payslip.pagIbigDeduction,
                 payslip.philHealthDeduction, payslip.thirteenMonthPay, payslip.netPay);
             }
 

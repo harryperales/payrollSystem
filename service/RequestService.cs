@@ -85,8 +85,9 @@ namespace PayrollSystem.service
         {
             Request request = new Request();
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT id, name, description, requestedDate, dateRequested From Request WHERE employeeId = @employeeNumber AND dateRequested LIKE @date AND status = @status AND name LIKE @name;";
+            sqlCmd.CommandText = "SELECT id, name, description, requestedDate, dateRequested From Request WHERE employeeId = @employeeNumber AND dateRequested LIKE @date AND status = @status AND name LIKE @name AND description NOT LIKE @description;";
             sqlCmd.Parameters.AddWithValue("@employeeNumber", employee.id);
+            sqlCmd.Parameters.AddWithValue("@description", "%(Leave Without Pay)%");
             sqlCmd.Parameters.AddWithValue("@name", "%Leave%");
             sqlCmd.Parameters.AddWithValue("@date", "%" + date.ToString("MM/dd/yyyy") + "%");
             sqlCmd.Parameters.AddWithValue("@status", "approved");
@@ -224,6 +225,7 @@ namespace PayrollSystem.service
 
                 LeaveCreditServiceInterface leaveCreditsService = new LeaveCreditService();
                 LeaveCredits leaveCredits = leaveCreditsService.fetchLeaveCreditsByEmployee(employee);
+                Console.WriteLine("leave" + request.name);
                 if (request.name.Equals("Vacation Leave"))
                 {
                     leaveCredits.vacationLeaveCredits -= 1;
@@ -246,7 +248,7 @@ namespace PayrollSystem.service
                 }
                 else if (request.name.Equals("Birthday Leave"))
                 {
-                    leaveCredits.emergencyLeaveCredits -= 1;
+                    leaveCredits.birthdayLeaveCredits -= 1;
                 }
                 EmployeeLeaveCredits employeeLeaveRequest = leaveCreditsService.updateEmployeeLeaveCredits(employee, leaveCredits);
             }
@@ -288,7 +290,6 @@ namespace PayrollSystem.service
                     employee.dateEmployed = sqlDataReader["dateEmployed"].ToString();
 
                     request.employee = employee;
-                    Console.WriteLine(employee.fullName);
                     request.name = sqlDataReader["name"].ToString();
                     string status = sqlDataReader["status"].ToString();
                     request.description = sqlDataReader["description"].ToString();
@@ -458,7 +459,6 @@ namespace PayrollSystem.service
 
         public List<Request> fetchAllApprovedCashAdvanceRequests(DateTime startDatePeriod, DateTime endDatePeriod, Employee employee)
         {
-            Console.WriteLine(">>>>>>>>>>>");
             var dates = Enumerable.Range(0, (endDatePeriod - startDatePeriod).Days + 1).Select(d => startDatePeriod.AddDays(d));
             List<Request> requests = new List<Request>();
             foreach (var date in dates)

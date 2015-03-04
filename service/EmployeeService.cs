@@ -104,7 +104,6 @@ namespace PayrollSystem.service
             else
             {
                 employee = null;
-                Console.WriteLine("nothing");
             }
             sqlCon.Close();
             return employee;
@@ -179,7 +178,6 @@ namespace PayrollSystem.service
             else
             {
                 employee = null;
-                Console.WriteLine("nothing");
             }
             sqlCon.Close();
             return employee;
@@ -228,7 +226,6 @@ namespace PayrollSystem.service
             else
             {
                 employee = null;
-                Console.WriteLine("nothing");
             }
             sqlCon.Close();
             return employee;

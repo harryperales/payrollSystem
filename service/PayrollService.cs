@@ -38,6 +38,7 @@ namespace PayrollSystem.service
                     payslip.basePay = Convert.ToDecimal(sqlDataReader["basePay"].ToString());
                     payslip.taxDeduction = Convert.ToDecimal(sqlDataReader["taxDeduction"].ToString());
                     payslip.netPay = Convert.ToDecimal(sqlDataReader["netPay"].ToString());
+                    payslip.totalBenefits = Convert.ToDecimal(sqlDataReader["totalBenefits"].ToString());
                     payslip.thirteenMonthPay = Convert.ToDecimal(sqlDataReader["thirteenMonthPayAmount"].ToString());
                     payslip.sssDeduction = Convert.ToDecimal(sqlDataReader["sssDeduction"].ToString());
                     payslip.pagIbigDeduction = Convert.ToDecimal(sqlDataReader["pagIbigDeduction"].ToString());
@@ -53,10 +54,11 @@ namespace PayrollSystem.service
         public Payslip createPayslip(Employee employee, Payslip payslip)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "INSERT INTO Payroll (dateCreated, employeeId, startDate, endDate, basePay, thirteenMonthPayAmount, netPay, taxDeduction, sssDeduction, pagIbigDeduction, philHealthDeduction) "
-            + "VALUES (@dateCreated, @employeeId, @startDate, @endDate, @basePay, @thirteenMonthPayAmount, @netPay, @taxDeduction, @sssDeduction, @pagIbigDeduction, @philHealthDeduction);SELECT CAST(scope_identity() AS int)";
+            sqlCmd.CommandText = "INSERT INTO Payroll (dateCreated, employeeId, startDate, endDate, basePay, thirteenMonthPayAmount, netPay, taxDeduction, totalBenefits, sssDeduction, pagIbigDeduction, philHealthDeduction) "
+            + "VALUES (@dateCreated, @employeeId, @startDate, @endDate, @basePay, @thirteenMonthPayAmount, @netPay, @taxDeduction, @totalBenefits, @sssDeduction, @pagIbigDeduction, @philHealthDeduction);SELECT CAST(scope_identity() AS int)";
             sqlCmd.Parameters.AddWithValue("@dateCreated", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
             sqlCmd.Parameters.AddWithValue("@employeeId", employee.id);
+            sqlCmd.Parameters.AddWithValue("@totalBenefits", payslip.totalBenefits);            
             sqlCmd.Parameters.AddWithValue("@startDate", payslip.startDatePeriod.ToString("MM/dd/yyyy hh:mm:ss tt"));
             sqlCmd.Parameters.AddWithValue("@endDate", payslip.endDatePeriod.ToString("MM/dd/yyyy hh:mm:ss tt"));
             sqlCmd.Parameters.AddWithValue("@basePay", payslip.basePay);
@@ -207,6 +209,7 @@ namespace PayrollSystem.service
                     payslip.startDatePeriod = Convert.ToDateTime(sqlDataReader["startDate"].ToString());
                     payslip.endDatePeriod = Convert.ToDateTime(sqlDataReader["endDate"].ToString());
                     payslip.basePay = Convert.ToDecimal(sqlDataReader["basePay"].ToString());
+                    payslip.totalBenefits = Convert.ToDecimal(sqlDataReader["totalBenefits"].ToString());
                     payslip.taxDeduction = Convert.ToDecimal(sqlDataReader["taxDeduction"].ToString());
                     payslip.netPay = Convert.ToDecimal(sqlDataReader["netPay"].ToString());
                     payslip.sssDeduction = Convert.ToDecimal(sqlDataReader["sssDeduction"].ToString());

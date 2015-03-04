@@ -26,7 +26,6 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.AddWithValue("@salary", position.salary);
             position.id = (int)sqlCmd.ExecuteScalar();
             sqlCon.Close();
-            Console.WriteLine(position.id);
 
             return position;
         }
@@ -67,7 +66,6 @@ namespace PayrollSystem.service
             {
                 while (sqlDataReader.Read())
                 {
-                    Console.WriteLine("im here:");
                     position.id = Int32.Parse(sqlDataReader["id"].ToString());
                     position.name = sqlDataReader["name"].ToString();
                     position.salary = Convert.ToDecimal(sqlDataReader["salary"].ToString());
@@ -77,7 +75,7 @@ namespace PayrollSystem.service
             }
             else
             {
-                Console.WriteLine("nothing");
+                position = null;
             }
             sqlCon.Close();
             return position;
@@ -112,7 +110,7 @@ namespace PayrollSystem.service
             }
             else
             {
-                Console.WriteLine("nothing");
+                position = null;
             }
             sqlCon.Close();
             return position;

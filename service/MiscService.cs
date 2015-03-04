@@ -28,7 +28,6 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.AddWithValue("@type", miscellaneous.type);
             miscellaneous.id = (int)sqlCmd.ExecuteScalar();
             sqlCon.Close();
-            Console.WriteLine(miscellaneous.id);
 
             return miscellaneous;
         }

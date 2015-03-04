@@ -275,8 +275,6 @@ namespace PayrollSystem.service
         {
             sqlCon.Open();
             sqlCmd.CommandText = "UPDATE Miscellaneous SET amount = @amount WHERE (id = @id)";
-            Console.WriteLine("amount:"+allowance.amount);
-            Console.WriteLine("id:"+allowance.id);
             sqlCmd.Parameters.AddWithValue("@amount", allowance.amount);
             sqlCmd.Parameters.AddWithValue("@id", allowance.id);
             sqlCmd.ExecuteNonQuery();

@@ -25,5 +25,10 @@ namespace PayrollSystem.controller
         {
             return salaryService.fetchTotalCashAdvanceAmount(cashAdvanceList);
         }
+
+        public decimal calculateDailBasedSalaryWithLeaveRequest(List<Request> leaveRequests, decimal dailyBasedSalary)
+        {
+            return salaryService.calculateDailBasedSalaryWithLeaveRequest(leaveRequests, dailyBasedSalary);
+        }
     }
 }

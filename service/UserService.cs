@@ -52,7 +52,7 @@ namespace PayrollSystem.service
 
         public bool validateUser(User user)
         {
-            return true;
+            return false;
         }
 
         public User createUser(User user)
@@ -65,7 +65,6 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.AddWithValue("@status", "Enable");
             user.id = (int)sqlCmd.ExecuteScalar();
             sqlCon.Close();
-            Console.WriteLine(user.id);
 
             return user;
         }
@@ -73,7 +72,9 @@ namespace PayrollSystem.service
         public User fetchUser(User user)
         {
             sqlCon.Open();
-            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].status, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id WHERE [User].username='"+user.username+"' AND [User].password='"+user.password+"'";
+            sqlCmd.CommandText = "SELECT [User].id, [User].username, [User].password, [User].status, [User].role, Role.id AS roleId, Role.type FROM [User] INNER JOIN Role ON [User].role = Role.id WHERE [User].username=@username AND [User].password=@password";
+            sqlCmd.Parameters.AddWithValue("@username", user.username);
+            sqlCmd.Parameters.AddWithValue("@password", user.password);
             sqlDataReader = sqlCmd.ExecuteReader();
             User existingUser = new User();
             if (sqlDataReader.HasRows)
@@ -88,7 +89,6 @@ namespace PayrollSystem.service
                     existingUser.role.id = Int32.Parse(sqlDataReader["roleId"].ToString());
                     existingUser.role.type = sqlDataReader["type"].ToString();
                 }
-                Console.WriteLine("hello");
             }
             else
             {
@@ -115,7 +115,6 @@ namespace PayrollSystem.service
             sqlCmd.Parameters.AddWithValue("@status", user.status == AccountStatus.Enable ? "Enable" : "Disable");
             sqlCmd.Parameters.AddWithValue("@id", user.id);
 
-            Console.WriteLine("user.updateUserAccountStatus:" + user.id);
             sqlCmd.ExecuteNonQuery();
             sqlCon.Close();
             return user;

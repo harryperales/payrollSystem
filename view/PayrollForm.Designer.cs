@@ -67,6 +67,8 @@
             this.allowanceLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cashAdvanceAmount = new System.Windows.Forms.Label();
+            this.cashAdvanceLabel = new System.Windows.Forms.Label();
             this.philHealth = new System.Windows.Forms.Label();
             this.sss = new System.Windows.Forms.Label();
             this.pagIbig = new System.Windows.Forms.Label();
@@ -88,8 +90,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.exitPictureBox = new System.Windows.Forms.PictureBox();
-            this.cashAdvanceAmount = new System.Windows.Forms.Label();
-            this.cashAdvanceLabel = new System.Windows.Forms.Label();
+            this.totalLeavePay = new System.Windows.Forms.Label();
+            this.daysOfLeave = new System.Windows.Forms.Label();
+            this.leaveRequestLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.earningsPanel.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -272,6 +275,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.earningsPanel.BackColor = System.Drawing.Color.Transparent;
             this.earningsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.earningsPanel.Controls.Add(this.totalLeavePay);
+            this.earningsPanel.Controls.Add(this.daysOfLeave);
+            this.earningsPanel.Controls.Add(this.leaveRequestLabel);
             this.earningsPanel.Controls.Add(this.thirteenthMonthPay);
             this.earningsPanel.Controls.Add(this.thirteenMonthPayLabel);
             this.earningsPanel.Controls.Add(this.earningLabel);
@@ -370,7 +376,7 @@
             this.transportation.AutoSize = true;
             this.transportation.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.transportation.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.transportation.Location = new System.Drawing.Point(373, 115);
+            this.transportation.Location = new System.Drawing.Point(365, 115);
             this.transportation.Name = "transportation";
             this.transportation.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.transportation.Size = new System.Drawing.Size(51, 15);
@@ -382,7 +388,7 @@
             this.foodAllowance.AutoSize = true;
             this.foodAllowance.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
             this.foodAllowance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.foodAllowance.Location = new System.Drawing.Point(381, 100);
+            this.foodAllowance.Location = new System.Drawing.Point(368, 100);
             this.foodAllowance.Name = "foodAllowance";
             this.foodAllowance.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.foodAllowance.Size = new System.Drawing.Size(43, 15);
@@ -569,6 +575,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(390, 239);
             this.panel3.TabIndex = 2;
+            // 
+            // cashAdvanceAmount
+            // 
+            this.cashAdvanceAmount.AutoSize = true;
+            this.cashAdvanceAmount.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAdvanceAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceAmount.Location = new System.Drawing.Point(263, 91);
+            this.cashAdvanceAmount.Name = "cashAdvanceAmount";
+            this.cashAdvanceAmount.Size = new System.Drawing.Size(51, 15);
+            this.cashAdvanceAmount.TabIndex = 16;
+            this.cashAdvanceAmount.Text = "250.25";
+            // 
+            // cashAdvanceLabel
+            // 
+            this.cashAdvanceLabel.AutoSize = true;
+            this.cashAdvanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAdvanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cashAdvanceLabel.Location = new System.Drawing.Point(3, 91);
+            this.cashAdvanceLabel.Name = "cashAdvanceLabel";
+            this.cashAdvanceLabel.Size = new System.Drawing.Size(85, 15);
+            this.cashAdvanceLabel.TabIndex = 15;
+            this.cashAdvanceLabel.Text = "Cash Advance";
             // 
             // philHealth
             // 
@@ -799,27 +827,41 @@
             this.exitPictureBox.TabStop = false;
             this.exitPictureBox.Click += new System.EventHandler(this.exitPictureBox_Click);
             // 
-            // cashAdvanceAmount
+            // totalLeavePay
             // 
-            this.cashAdvanceAmount.AutoSize = true;
-            this.cashAdvanceAmount.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cashAdvanceAmount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cashAdvanceAmount.Location = new System.Drawing.Point(263, 91);
-            this.cashAdvanceAmount.Name = "cashAdvanceAmount";
-            this.cashAdvanceAmount.Size = new System.Drawing.Size(51, 15);
-            this.cashAdvanceAmount.TabIndex = 16;
-            this.cashAdvanceAmount.Text = "250.25";
+            this.totalLeavePay.AutoSize = true;
+            this.totalLeavePay.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.totalLeavePay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.totalLeavePay.Location = new System.Drawing.Point(364, 186);
+            this.totalLeavePay.Name = "totalLeavePay";
+            this.totalLeavePay.Size = new System.Drawing.Size(51, 15);
+            this.totalLeavePay.TabIndex = 36;
+            this.totalLeavePay.Text = "325.05";
+            this.totalLeavePay.Visible = false;
             // 
-            // cashAdvanceLabel
+            // daysOfLeave
             // 
-            this.cashAdvanceLabel.AutoSize = true;
-            this.cashAdvanceLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cashAdvanceLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cashAdvanceLabel.Location = new System.Drawing.Point(3, 91);
-            this.cashAdvanceLabel.Name = "cashAdvanceLabel";
-            this.cashAdvanceLabel.Size = new System.Drawing.Size(85, 15);
-            this.cashAdvanceLabel.TabIndex = 15;
-            this.cashAdvanceLabel.Text = "Cash Advance";
+            this.daysOfLeave.AutoSize = true;
+            this.daysOfLeave.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.daysOfLeave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.daysOfLeave.Location = new System.Drawing.Point(269, 186);
+            this.daysOfLeave.Name = "daysOfLeave";
+            this.daysOfLeave.Size = new System.Drawing.Size(45, 15);
+            this.daysOfLeave.TabIndex = 35;
+            this.daysOfLeave.Text = "3 days";
+            this.daysOfLeave.Visible = false;
+            // 
+            // leaveRequestLabel
+            // 
+            this.leaveRequestLabel.AutoSize = true;
+            this.leaveRequestLabel.Font = new System.Drawing.Font("Britannic Bold", 9.75F);
+            this.leaveRequestLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.leaveRequestLabel.Location = new System.Drawing.Point(14, 186);
+            this.leaveRequestLabel.Name = "leaveRequestLabel";
+            this.leaveRequestLabel.Size = new System.Drawing.Size(45, 15);
+            this.leaveRequestLabel.TabIndex = 34;
+            this.leaveRequestLabel.Text = "Leaves";
+            this.leaveRequestLabel.Visible = false;
             // 
             // PayrollForm
             // 
@@ -914,5 +956,8 @@
         private System.Windows.Forms.Label thirteenMonthPayLabel;
         private System.Windows.Forms.Label cashAdvanceAmount;
         private System.Windows.Forms.Label cashAdvanceLabel;
+        private System.Windows.Forms.Label totalLeavePay;
+        private System.Windows.Forms.Label daysOfLeave;
+        private System.Windows.Forms.Label leaveRequestLabel;
     }
 }

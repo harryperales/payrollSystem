@@ -156,7 +156,6 @@ namespace PayrollSystem.view
             if (l.SelectedIndex != -1)
             {
                 userPayrollListBox.SelectedIndex = l.SelectedIndex;
-                Console.WriteLine(userPayrollListBox.SelectedItem.ToString());
             }
         }
 
@@ -194,6 +193,11 @@ namespace PayrollSystem.view
 
         private void leaveRequestButton_Click(object sender, EventArgs e)
         {
+            if (typeOfLeaveComboBox.Text.Equals(""))
+            {
+                showErrorMessage("Input a valid Request.");
+                return;
+            }
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
 
@@ -284,7 +288,6 @@ namespace PayrollSystem.view
             }
             EmployeeControllerInterface employeeController = new EmployeeController();
             Employee employee = employeeController.fetchEmployeeByUsername(user.username);
-            Console.WriteLine("time:" + time);
             Request request = new Request();
             request.employee = employee;
             request.name = "OVERTIME";

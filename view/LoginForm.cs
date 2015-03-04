@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using PayrollSystem.controller;
 using PayrollSystem.model;
+using System.Windows.Forms.Integration;
 
 namespace PayrollSystem.view
 {
@@ -16,6 +17,10 @@ namespace PayrollSystem.view
         TimeInOutForm timeInOutForm;
         public LoginForm(TimeInOutForm timeInOutForm)
         {
+            //
+            //var wpfwindow = new UserControl1.Window1();
+            //ElementHost.EnableModelessKeyboardInterop(wpfwindow);
+           // wpfwindow.Show();
             this.timeInOutForm = timeInOutForm;
             InitializeComponent();
             hideErrorMessage();
@@ -33,7 +38,8 @@ namespace PayrollSystem.view
             user.username = username.Text;
             user.password = password.Text;
             user = userController.fetchUser(user);
-            if (user == null || user.status == AccountStatus.Disable)
+
+            if (isUserEmpty(user))
             {
                 password.Text = "";
                 showErrorMessage("The user you specified does not exists.");
@@ -46,6 +52,11 @@ namespace PayrollSystem.view
                 FormControllerInterface formController = new FormController();
                 formController.showDashboard(this, user);
             }
+        }
+
+        private bool isUserEmpty(User user)
+        {
+            return user == null || user.Equals("") || !user.password.Equals(password.Text) || user.status == AccountStatus.Disable;
         }
 
         private void showErrorMessage(string errorMessage)
