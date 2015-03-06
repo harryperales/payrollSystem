@@ -91,7 +91,7 @@ namespace PayrollSystem.view
 
         private DateTime calculateTimeToClockOut(DateTime timeIn)
         {
-            return timeIn.AddHours(8);
+            return timeIn.AddHours(9);
         }
 
         private void loadPayrollList()

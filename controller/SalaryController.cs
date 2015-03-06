@@ -16,6 +16,11 @@ namespace PayrollSystem.controller
             salaryService = new SalaryService();
         }
 
+        public SalaryController(SalaryServiceInterface salaryService)
+        {
+            this.salaryService = salaryService;
+        }
+
         public decimal calculateDailyBasedSalaryWithOvertimeRequests(List<Request> overtimeRequests, decimal dailyBasedSalary)
         {
             return salaryService.calculateDailyBasedSalaryWithOvertimeRequests(overtimeRequests, dailyBasedSalary);

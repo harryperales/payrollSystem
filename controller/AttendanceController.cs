@@ -14,6 +14,12 @@ namespace PayrollSystem.controller
         {
             attendanceService = new AttendanceService();
         }
+
+        public AttendanceController(AttendanceServiceInterface attendanceService)
+        {
+            this.attendanceService = attendanceService;
+        }
+
         public Attendance saveEmployeeAttendance(Attendance attendance)
         {
             return attendanceService.addEmployeeTimeIn(attendance);

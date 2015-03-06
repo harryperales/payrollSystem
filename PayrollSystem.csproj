@@ -92,9 +92,7 @@
     <Compile Include="controller\FormControllerInterface.cs" />
     <Compile Include="controller\LeaveCreditsController.cs" />
     <Compile Include="controller\LeaveCreditsControllerInteface.cs" />
-    <Compile Include="controller\PayslipController.cs" />
-    <Compile Include="controller\PayslipControllerInterface.cs" />
-    <Compile Include="controller\MiscControllerInterface.cs" />
+    <Compile Include="controller\MiscellaneousControllerInterface.cs" />
     <Compile Include="controller\MiscellaneousController.cs" />
     <Compile Include="controller\PayrollController.cs" />
     <Compile Include="controller\PayrollControllerInterface.cs" />
@@ -370,6 +368,64 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CrystalAnalysisCommLayerLib">
+      <Guid>{175E24D1-DB87-4E89-B312-39F5C9DAB36E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CrystalReportsCommonObjectModelLib">
+      <Guid>{FEA500D0-505E-423A-974F-32D054C2FA98}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CrystalReportsControllersLib">
+      <Guid>{AB846EEF-52F8-43B8-B1B3-8E9139D2E868}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CrystalReportsCubeDefModelLib">
+      <Guid>{478C4E24-FC28-4405-9B18-C4E51DFC5990}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CrystalReportsDataDefModelLib">
+      <Guid>{11F4A8F4-F6D2-4B7F-81C8-3B2DE88C712A}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CrystalReportsReportDefModelLib">
+      <Guid>{9B0B82D0-D659-4BE5-A72B-886C88187FF8}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

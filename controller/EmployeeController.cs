@@ -14,6 +14,12 @@ namespace PayrollSystem.controller
         {
             employeeService = new EmployeeService();
         }
+
+        public EmployeeController(EmployeeServiceInterface employeeService)
+        {
+            this.employeeService = employeeService;
+        }
+
         public Employee saveEmployee(Employee employee)
         {
             return employeeService.saveEmployee(employee);

@@ -17,6 +17,11 @@ namespace PayrollSystem.controller
         private int BIRTHDAY_LEAVE_CREDITS = 1;
         private int BEREAVEMENT_LEAVE_CREDITS = 3;
 
+        public LeaveCreditsController(LeaveCreditServiceInterface leaveCreditService)
+        {
+            this.leaveCreditService = leaveCreditService;
+        }
+
         public LeaveCreditsController()
         {
             leaveCreditService = new LeaveCreditService();

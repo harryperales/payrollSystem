@@ -30,7 +30,7 @@ namespace PayrollSystem.view
 
         private void initializeAllowance()
         {
-            MiscControllerInterface miscellaneousController = new MiscellaneousController();
+            MiscellaneousControllerInterface miscellaneousController = new MiscellaneousController();
             Miscellaneous foodAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "FoodAllowance");
             Miscellaneous transpoAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "TransportationAllowance");
 
@@ -256,7 +256,7 @@ namespace PayrollSystem.view
                     transpoAllowanceBenefits.amount = transpoAllowanceAmount;
                     transpoAllowanceBenefits.type = MiscType.Benefits;
 
-                    MiscControllerInterface miscellaneousController = new MiscellaneousController();
+                    MiscellaneousControllerInterface miscellaneousController = new MiscellaneousController();
                     foodAllowanceBenefits = miscellaneousController.addMiscByEmployee(foodAllowanceBenefits, employee);
                     transpoAllowanceBenefits = miscellaneousController.addMiscByEmployee(transpoAllowanceBenefits, employee);
 
@@ -320,7 +320,7 @@ namespace PayrollSystem.view
                     UserControllerInterface userController = new UserController();
                     userController.updateUserAccountStatus(employee.userAccount);
 
-                    MiscControllerInterface miscellaneousController = new MiscellaneousController();
+                    MiscellaneousControllerInterface miscellaneousController = new MiscellaneousController();
 
                     Miscellaneous foodAllowanceBenefits = miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(employee, "FoodAllowance");
                     foodAllowanceBenefits.amount = foodAllowanceAmount;

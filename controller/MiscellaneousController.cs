@@ -8,7 +8,7 @@ using PayrollSystem.service;
 
 namespace PayrollSystem.controller
 {
-    public class MiscellaneousController: MiscControllerInterface
+    public class MiscellaneousController: MiscellaneousControllerInterface
     {
         private MiscServiceInterface miscService;
         private MiscellaneousServiceInterface miscellaneousservice;
@@ -16,6 +16,11 @@ namespace PayrollSystem.controller
         {
             miscService = new MiscService();
             miscellaneousservice = new MiscellaneousService();
+        }
+
+        public MiscellaneousController(MiscellaneousServiceInterface miscellaneousservice)
+        {
+            this.miscellaneousservice = miscellaneousservice;
         }
 
         public Miscellaneous addMisc(Miscellaneous misc)

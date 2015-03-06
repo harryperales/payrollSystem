@@ -6,7 +6,7 @@ using PayrollSystem.model;
 
 namespace PayrollSystem.controller
 {
-    public interface MiscControllerInterface
+    public interface MiscellaneousControllerInterface
     {
         Miscellaneous addMisc(Miscellaneous miscellaneous);
 

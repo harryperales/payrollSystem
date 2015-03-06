@@ -15,6 +15,7 @@ namespace PayrollSystem.controller
         SalaryServiceInterface salaryService;
         RequestServiceInterface requestService;
         MiscellaneousServiceInterface miscellaneousService;
+
         public PayrollController()
         {
             payrollService = new PayrollService();
@@ -23,6 +24,12 @@ namespace PayrollSystem.controller
             requestService = new RequestService();
             miscellaneousService = new MiscellaneousService();
         }
+
+        public PayrollController(PayrollServiceInterface payrollService)
+        {
+            this.payrollService = payrollService;
+        }
+
         public List<Payslip> fetchUserPayrolls(User user)
         {
             return payrollService.fetchUserPayrolls(user);
@@ -49,7 +56,7 @@ namespace PayrollSystem.controller
             payslip.basePay = periodSalary;
 
             decimal totalAllowanceAmount = 0.00M;
-            MiscControllerInterface miscellaneousController = new MiscellaneousController();
+            MiscellaneousControllerInterface miscellaneousController = new MiscellaneousController();
             decimal foodAllowanceAmount = fetchFoodAllowance(payslip, miscellaneousController);
             decimal totalFoodAllowanceAmount = calculateTotalSpecificAllowance(foodAllowanceAmount, timeSpent);
             totalAllowanceAmount += totalFoodAllowanceAmount;
@@ -92,6 +99,7 @@ namespace PayrollSystem.controller
             payslip.taxDeduction = decimal.Divide(salaryService.calculatePeriodSalaryTax(employee, monthlySalary), 2);            
 
             decimal totalDeductions = (decimal.Round(payslip.taxDeduction, 2) + decimal.Round(payslip.sssDeduction, 2) + decimal.Round(payslip.pagIbigDeduction, 2) + decimal.Round(payslip.philHealthDeduction, 2) + decimal.Round(cashAdvanceAmount, 2));
+            payslip.totalDeduction = totalDeductions;
 
             decimal totalSalary = payslip.basePay + payslip.totalBenefits - totalDeductions;
             payslip.netPay = totalSalary;
@@ -170,13 +178,13 @@ namespace PayrollSystem.controller
             return decimal.Multiply(Convert.ToDecimal(convertedTimeSpentTotalHoursToDay), allowanceAmount);
         }
 
-        private decimal fetchFoodAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
+        private decimal fetchFoodAllowance(Payslip payslip, MiscellaneousControllerInterface miscellaneousController)
         {
             return miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(payslip.employee, "FoodAllowance").amount;
             //return miscellaneousController.fetchFoodAllowance().amount;
         }
 
-        private decimal fetchTranspoAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
+        private decimal fetchTranspoAllowance(Payslip payslip, MiscellaneousControllerInterface miscellaneousController)
         {
             return miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(payslip.employee, "TransportationAllowance").amount;
             //return miscellaneousController.fetchTranspoAllowance().amount;

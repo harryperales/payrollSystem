@@ -9,11 +9,17 @@ namespace PayrollSystem.controller
 {
     public class RequestController : RequestControllerInterface
     {
-        RequestServiceInterface requestService;
+        private RequestServiceInterface requestService;
         public RequestController()
         {
             requestService = new RequestService();
         }
+
+        public RequestController(RequestServiceInterface requestService)
+        {
+            this.requestService = requestService;
+        }
+
         public List<Request> fetchAllPendingRequests()
         {
             return requestService.fetchAllPendingRequests();

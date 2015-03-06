@@ -16,6 +16,11 @@ namespace PayrollSystem.controller
             positionService = new PositionService();
         }
 
+        public PositionController(PositionServiceInterface positionService)
+        {
+            this.positionService = positionService;
+        }
+
         public Position addPosition(Position position)
         {
             return positionService.addPosition(position);

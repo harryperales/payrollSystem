@@ -56,3 +56,16 @@ C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Payrol
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem_MarkupCompile.cache
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.g.resources
 C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.view.PayslipForm.resources
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Interop.CrystalAnalysisCommLayerLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Interop.CrystalReportsCommonObjectModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Interop.CrystalReportsControllersLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Interop.CrystalReportsCubeDefModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Interop.CrystalReportsDataDefModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\Interop.CrystalReportsReportDefModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\obj\Debug\PayrollSystem.csproj.ResolveComReference.cache
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Debug\Interop.CrystalAnalysisCommLayerLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Debug\Interop.CrystalReportsCommonObjectModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Debug\Interop.CrystalReportsControllersLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Debug\Interop.CrystalReportsCubeDefModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Debug\Interop.CrystalReportsDataDefModelLib.dll
+C:\Users\JenuNagil\Documents\GitHub\PayrollSystem\PayrollSystem\bin\Debug\Interop.CrystalReportsReportDefModelLib.dll

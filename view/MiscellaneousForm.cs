@@ -23,7 +23,7 @@ namespace PayrollSystem.view
 
         private void addMiscButton_Click(object sender, EventArgs e)
         {
-            MiscControllerInterface miscController = new MiscellaneousController();
+            MiscellaneousControllerInterface miscController = new MiscellaneousController();
             if (miscName.Text != null && miscAmount.Text != null)
             {
                 Miscellaneous misc = new Miscellaneous();

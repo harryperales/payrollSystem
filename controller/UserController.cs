@@ -18,6 +18,11 @@ namespace PayrollSystem.controller
             userService = new UserService();
         }
 
+        public UserController(UserServiceInterface userService)
+        {
+            this.userService = userService;
+        }
+
         public List<User> viewAllUsers()
         {
             return userService.fetchAllUsers();

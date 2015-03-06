@@ -45,7 +45,7 @@ namespace PayrollSystem.view
         private void initializeForm(Payslip payslip)
         {
             RequestControllerInterface requestController = new RequestController();
-            MiscControllerInterface miscellaneousController = new MiscellaneousController();
+            MiscellaneousControllerInterface miscellaneousController = new MiscellaneousController();
             SalaryControllerInterface salaryController = new SalaryController();
             AttendanceControllerInterface attendanceController = new AttendanceController();
             employeeFullName.Text = payslip.employee.fullName;
@@ -136,13 +136,13 @@ namespace PayrollSystem.view
             return requestController.fetchTotalHoursOvertimeSpent(startDatePeriod, endDatePeriod, employee);
         }
 
-        private decimal fetchFoodAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
+        private decimal fetchFoodAllowance(Payslip payslip, MiscellaneousControllerInterface miscellaneousController)
         {
             return miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(payslip.employee, "FoodAllowance").amount;
             //return miscellaneousController.fetchFoodAllowance().amount;
         }
 
-        private decimal fetchTranspoAllowance(Payslip payslip, MiscControllerInterface miscellaneousController)
+        private decimal fetchTranspoAllowance(Payslip payslip, MiscellaneousControllerInterface miscellaneousController)
         {
             return miscellaneousController.fetchMiscellaneousBenefitByNameAndEmployee(payslip.employee, "TransportationAllowance").amount;
             //return miscellaneousController.fetchTranspoAllowance().amount;
